@@ -1,0 +1,108 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aironmaster Landing</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="{% static 'webapp/css/style.css' %}" />
+
+    <!-- Мобильные стили -->
+    <link rel="stylesheet" href="{% static 'webapp/css/mobile.css' %}" media="(max-width: 767px)" />
+</head>
+<body>
+
+<header class="border-bottom py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Логотип слева -->
+        <div class="logo">
+            <a href="#" class="text-decoration-none fs-4 fw-bold text-primary">Aironmaster</a>
+        </div>
+
+        <!-- Меню -->
+        <nav>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="#screws">Шнеки</a></li>
+                <li class="nav-item"><a class="nav-link" href="#screw-spiral">Виток шнека</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reducers">Редукторы</a></li>
+                <li class="nav-item"><a class="nav-link" href="#bunkers-mixers">Бункеры, смесители</a></li>
+                <li class="nav-item"><a class="nav-link" href="#equipment">Оборудование</a></li>
+                <li class="nav-item"><a class="nav-link" href="#engineering">Инженерные услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <!-- Контакты справа -->
+        <div class="contacts d-flex gap-3 align-items-center">
+            <div class="d-flex align-items-center gap-1">
+                <img src="{% static 'icons/phone.svg' %}" alt="Телефон" width="20" height="20" />
+                <a href="tel:+71234567890" class="text-decoration-none text-dark">+7 (123) 456-78-90</a>
+            </div>
+            <div class="d-flex align-items-center gap-1">
+                <img src="{% static 'icons/email.svg' %}" alt="Почта" width="20" height="20" />
+                <a href="mailto:info@aironmaster.ru" class="text-decoration-none text-dark">info@aironmaster.ru</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container mt-5">
+    <!-- Пример секций с якорями -->
+    <section id="screws" class="mb-5">
+        <h2>Шнеки</h2>
+        <p>Описание шнеков...</p>
+    </section>
+
+    <section id="screw-spiral" class="mb-5">
+        <h2>Виток шнека</h2>
+        <p>Описание витков шнека...</p>
+    </section>
+
+    <section id="reducers" class="mb-5">
+        <h2>Редукторы</h2>
+        <p>Описание редукторов...</p>
+    </section>
+
+    <section id="bunkers-mixers" class="mb-5">
+        <h2>Бункеры и смесители</h2>
+        <p>Описание бункеров и смесителей...</p>
+    </section>
+
+    <section id="equipment" class="mb-5">
+        <h2>Оборудование</h2>
+        <p>Описание оборудования...</p>
+    </section>
+
+    <section id="engineering" class="mb-5">
+        <h2>Инженерные услуги</h2>
+        <p>Описание инженерных услуг...</p>
+    </section>
+
+    <section id="contacts" class="mb-5">
+        <h2>Контакты</h2>
+        <p>Наши контакты и форма обратной связи...</p>
+    </section>
+</main>
+
+<!-- Bootstrap JS (опционально для интерактивности) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Плавный скролл -->
+<script>
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+
+</body>
+</html>
