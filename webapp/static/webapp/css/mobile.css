@@ -55,3 +55,20 @@
     margin-bottom: 20px;
   }
 }
+
+/* Адаптивность */
+@media (max-width: 767px) {
+  .photo-banner {
+    min-height: 300px;
+    padding: 1rem;
+  }
+
+  .photo-banner h2 {
+    font-size: 2rem;
+  }
+
+  .photo-banner p {
+    font-size: 1rem;
+  }
+}
+
