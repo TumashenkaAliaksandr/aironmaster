@@ -6,8 +6,37 @@ body {
     padding: 0;
 }
 
+.border-bottom {
+  border-bottom: none !important;
+}
+
+
+.favicon-tooltip-content {
+  position: absolute;
+  bottom: 110%; /* над иконкой */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(4, 174, 199, 0.95);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.favicon-tooltip-wrapper:hover .favicon-tooltip-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 header {
-    background-color: #04aec7;
+    background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
@@ -59,19 +88,24 @@ nav .nav-link.active {
 }
 
 .photo-banner {
-  width: 100vw;
-  min-height: 400px; /* Минимальная высота баннера */
-  background: url('../img/baner.jpg') center/cover no-repeat;
+  /*width: 100vw;*/
+  min-height: 400px;
+  background: url('../img/TTR.jpg') center/cover no-repeat;
   color: white;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 0;
   box-sizing: border-box;
-  overflow: hidden; /* Обрезаем контент, выходящий за рамки */
+  overflow: hidden;
 }
+.photo-banner .container {
+  z-index: 2;
+  position: relative;
+}
+
 
 .photo-banner::before {
   content: '';
@@ -80,7 +114,7 @@ nav .nav-link.active {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
+  background-color: rgba(12, 3, 117, 0.5); /* Затемнение фона */
   z-index: 1; /* Поверх фона, под контентом */
 }
 
@@ -92,8 +126,9 @@ nav .nav-link.active {
 }
 
 .photo-banner h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
 }
 
 .photo-banner p {
@@ -102,18 +137,43 @@ nav .nav-link.active {
   margin-bottom: 2rem;
 }
 
+
 .photo-banner .btn {
-  background-color: #04aec7;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(270deg, #0297d3, #480576, #911bff);
+    background-size: auto;
+    background-size: 600% 600%;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    filter: drop-shadow(0 0 5px rgb(36, 78, 165));
+    transition: background-position 3s ease, filter 0.3s ease;
+    animation: pulseGlow 3s ease-in-out infinite;
+    cursor: pointer;
+    user-select: none;
 }
 
+
+/* Анимация плавного движения градиента */
 .photo-banner .btn:hover {
-  background-color: #06ca92;
+  background-position: 100% 0;
+  filter: drop-shadow(0 0 10px rgba(155, 48, 255, 0.9));
+}
+
+/* Мерцание (пульсация) */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(155, 48, 255, 0.7));
+  }
+  50% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 15px rgba(155, 48, 255, 1));
+  }
 }
 
 /* Адаптивность */
@@ -171,7 +231,7 @@ h2 {
     color: #222;
 }
 .top-bar {
-  background: linear-gradient(90deg, #04aad0, #06ca92, #00e676); /* три цвета: синий, зелёный, ярко-зелёный */
+  background: linear-gradient(90deg, #4a0073, #0099d5, #3f0e66);
   color: #f0f9f9; /* чуть светлее белого для мягкости */
   font-size: 0.85rem;
   padding: 0.3rem 0;
@@ -185,7 +245,7 @@ h2 {
   z-index: 1;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
   transition: filter 0.3s ease;
-
+  overflow: hidden;
   /* Тень для текста для улучшения читаемости */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
@@ -245,7 +305,7 @@ h2 {
     bottom: 40px;
     right: 30px;
     z-index: 10000;
-    background-color: #3ec2e0;
+    background: linear-gradient(90deg, #0099d5, #650898, #0099d5);
     color: white;
     border: none;
     padding: 4px 18px;
@@ -261,8 +321,9 @@ h2 {
 }
 
 #scrollToTopBtn:hover {
-    background-color: #06ca92;
+    background: linear-gradient(90deg, #650898, #0099d5, #650898);
 }
+
 
 /* Показываем кнопку при активном классе */
 #scrollToTopBtn.show {
@@ -280,13 +341,27 @@ h2 {
   min-height: 300px;
   color: white;
 
-  width: 100vw; /* Занимает всю ширину окна браузера */
+  width: 100vw;
   left: 50%;
   right: 50%;
-  margin-left: -50vw; /* Сдвигаем влево на половину ширины окна */
-  margin-right: -50vw; /* Сдвигаем вправо на половину ширины окна */
-  box-sizing: border-box; /* Чтобы padding учитывался внутри ширины */
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+
+  /* Убираем фон, фон будет через ::before */
+  background: transparent;
+  z-index: 0;
 }
+
+/* Плавный переход от бежевого к градиенту */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 80px; left: 0; right: 0; bottom: 0;
+  z-index: -1; /* под контентом футера */
+  background: linear-gradient( to top, #3e1882 0%, #0592ce 40%, #236dab 70%, beige 100%);
+}
+
 
 
 /* Фон футера под волной и контентом */
@@ -296,7 +371,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #04aec7;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
   z-index: 0;
 }
 
@@ -376,7 +451,7 @@ h2 {
 
 /* Копирайт на всю ширину */
 .footer-copyright {
-  background: linear-gradient(90deg, #04aad0, #06ca92, #00e676);
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
   color: #f0f9f9;
   font-size: 0.95rem;
   padding: 1rem 20px;
@@ -466,18 +541,69 @@ h2 {
   border: 0;
   border-radius: 16px;
 }
+.footer-email h4 {
+  color: #f0f9f9;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
 
-.footer-email p,
-.footer-email a {
+/* Контейнер для почты и иконки */
+.email-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* расстояние между почтой и иконкой */
+  color: #f0f9f9;
+}
+
+/* Текст почты */
+.footer-email p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #f0f9f9;
-  text-decoration: none;
+  user-select: text;
 }
 
-.footer-email img {
-  display: inline-block;
-  vertical-align: middle;
+/* Ссылка с иконкой */
+.footer-email a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-color: transparent; /* можно добавить цвет, если нужно */
 }
 
+/* Иконка внутри ссылки */
+.footer-email a img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Эффекты при наведении */
+.footer-email a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(59, 89, 152, 0.7);
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.footer-email a:hover img {
+  filter: brightness(1.2);
+}
