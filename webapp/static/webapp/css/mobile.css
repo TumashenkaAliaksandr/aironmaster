@@ -72,3 +72,43 @@
   }
 }
 
+/* Адаптивность */
+@media (max-width: 767px) {
+  .photo-banner {
+    min-height: 300px;
+    padding: 1rem;
+  }
+
+  .photo-banner h2 {
+    font-size: 2rem;
+  }
+
+  .photo-banner p {
+    font-size: 1rem;
+  }
+}
+
+/* Адаптивность: на маленьких экранах уменьшаем количество фото в строке */
+@media (max-width: 768px) {
+  .photo-row img {
+    width: calc((100% - 20px) / 2); /* 2 фото в строке */
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  #contacts .content-wrapper {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+
+  .contacts {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+

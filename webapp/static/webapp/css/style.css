@@ -1,7 +1,7 @@
 /* Общие стили */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: beige;
+    font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ecf7d8;
     margin: 0;
     padding: 0;
 }
@@ -129,6 +129,9 @@ nav .nav-link.active {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 .photo-banner p {
@@ -176,49 +179,541 @@ nav .nav-link.active {
   }
 }
 
-/* Адаптивность */
-@media (max-width: 767px) {
-  .photo-banner {
-    min-height: 300px;
-    padding: 1rem;
-  }
 
-  .photo-banner h2 {
-    font-size: 2rem;
-  }
+#screw-spiral {
+    width: 100vw; /* секция на всю ширину окна */
+    padding: 2.5rem 1.5rem;
+    background: linear-gradient(135deg, #5a1a7e, #0073b8, #5a1a7e);
+    color: #e0d9f1;
+    box-sizing: border-box;
+    text-align: center; /* центрируем текст */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* центрируем по горизонтали */
+    justify-content: center; /* центрируем по вертикали, если нужно */
+    min-height: 200px; /* можно задать минимальную высоту */
+}
 
-  .photo-banner p {
-    font-size: 1rem;
-  }
+.content-wrapper a[href^="tel:"] {
+  color: white;           /* белый цвет текста */
+  text-decoration: none;  /* убрать подчёркивание */
+  transition: color 0.3s ease;
+}
+
+.content-wrapper a[href^="tel:"]:hover,
+.content-wrapper a[href^="tel:"]:focus {
+  color: #95e6ff;         /* цвет при наведении */
+  text-decoration: underline;
 }
 
 
 
-/* Контакты */
+#screw-spiral .content-wrapper {
+  /* ваши текущие стили */
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(90deg, #1b4288, #0099d5, #1e5487);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+#screw-spiral .content-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Внутренний контейнер для ограничения ширины */
+#screw-spiral .content-wrapper {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
+  padding: 1rem 1.5rem;
+}
+
+#screw-spiral h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: white;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+}
+
+#screw-spiral p {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+    color: white;
+}
+
+#reducers-alt {
+  width: 100vw; /* секция на всю ширину окна */
+  padding: 2.5rem 1.5rem;
+  background: linear-gradient(135deg, #5a1a7e, #0073b8, #5a1a7e);
+  color: #e0d9f1;
+  box-sizing: border-box;
+  text-align: center; /* центрируем текст */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* центрируем по горизонтали */
+  justify-content: center; /* центрируем по вертикали, если нужно */
+  min-height: 200px; /* можно задать минимальную высоту */
+}
+
+#reducers-alt .content-wrapper {
+  /* ваши текущие стили */
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(90deg, #1b4288, #0099d5, #1e5487);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+#reducers-alt .content-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Внутренний контейнер для ограничения ширины */
+#reducers-alt .content-wrapper {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
+  padding: 1rem 1.5rem;
+}
+
+/* Стили заголовка */
+#reducers-alt h2 {
+    font-weight: 700;
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    color: white;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+}
+
+/* Стили параграфов */
+#reducers-alt p {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+    color: white;
+}
+
+#equipment {
+  width: 100vw;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  box-sizing: border-box;
+  color: #f0f9f9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+#equipment .content-wrapper {
+  /* ваши текущие стили */
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(90deg, #1b4288, #0099d5, #1e5487);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+#equipment .content-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+#equipment > div,
+#equipment > p,
+#equipment > h2 {
+  max-width: 700px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#equipment h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    color: white;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#equipment p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    color: white;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Кликабельные телефоны */
+#equipment a[href^="tel:"] {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#equipment a[href^="tel:"]:hover,
+#equipment a[href^="tel:"]:focus {
+  color: #95e6ff;
+  text-decoration: underline;
+}
+
+
+#engineering {
+  width: 100vw;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  box-sizing: border-box;
+  color: #f0f9f9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#engineering .content-wrapper {
+  /* ваши текущие стили */
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(90deg, #1b4288, #0099d5, #1e5487);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+#engineering .content-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+#engineering > div,
+#engineering > p,
+#engineering > h2 {
+  max-width: 700px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#engineering h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    color: white;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+#engineering p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    color: white;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Кликабельные телефоны */
+#engineering a[href^="tel:"] {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#engineering a[href^="tel:"]:hover,
+#engineering a[href^="tel:"]:focus {
+  color: #95e6ff;
+  text-decoration: underline;
+}
+
+
+
+#gallery {
+  max-width: 1200px; /* ограничение ширины контейнера */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.photo-row {
+  display: flex;
+  justify-content: space-between; /* равномерные отступы между фото */
+  gap: 10px; /* промежуток между фото */
+  margin-bottom: 15px; /* отступ между строками */
+}
+
+.photo-row img {
+  width: calc((100% - 30px) / 4); /* 4 фото в строке с учётом gap */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.photo-row img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+#bunkers-mixers {
+  width: 100vw;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  box-sizing: border-box;
+  color: #f0f9f9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#bunkers-mixers .content-wrapper {
+  /* ваши текущие стили */
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(90deg, #1b4288, #0099d5, #1e5487);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+#bunkers-mixers .content-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+
+#bunkers-mixers h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#bunkers-mixers p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+
+
+#contacts {
+  width: 100vw;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  box-sizing: border-box;
+  color: #f0f9f9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#contacts .content-wrapper {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+#contacts h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    color: white;
+}
+
+#contacts p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+  user-select: none;
+}
+
+/* Форма */
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #e0d9f1;
+}
+
+.form-row input,
+.form-row textarea {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: 1.5px solid #7a5bdc;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  resize: vertical;
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: #c1b8e6;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: #0099d5;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Кнопка */
+.btn-submit {
+  align-self: center;
+  padding: 0.75rem 2.5rem;
+  background: linear-gradient(90deg, #0099d5, #4a0073);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 153, 213, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background: linear-gradient(90deg, #4a0073, #0099d5);
+  box-shadow: 0 6px 20px rgba(74, 7, 115, 0.8);
+  outline: none;
+}
+
+/* Стили для блока контактов, интегрированные из ваших стилей */
 .contacts {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center; /* добавлено для центрирования */
+  margin-top: 1.5rem;
 }
 
 .contacts div {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem; /* объединено 0.3 и 0.4 в 0.4 */
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .contacts a {
-    color: #333; /* объединено #333 и #444 в #333 */
-    font-size: 0.95rem; /* объединено 0.9 и 0.95 в 0.95 */
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #f0f9f9; /* изменено с #333 на светлый цвет для контраста на темном фоне */
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease, filter 0.3s ease;
 }
 
 .contacts a:hover {
-    color: #95e6ff;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
-    transition: filter 0.3s;
+  color: #95e6ff;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
+
+#we-on-map {
+  position: relative;
+  width: 100vw;      /* на всю ширину экрана */
+  height: 100vh;     /* на всю высоту экрана */
+  background-image: url('../img');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+/*!* Градиент поверх фото *!*/
+/*#we-on-map::before {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  top: 0; left: 0; right: 0; bottom: 0;*/
+/*  background: linear-gradient(*/
+/*    rgba(0, 0, 0, 0.3),*/
+/*    rgba(0, 0, 0, 0.1)*/
+/*  );*/
+/*  pointer-events: none;*/
+/*  z-index: 1;*/
+/*}*/
+
+/* Контент поверх градиента */
+#we-on-map .content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+  padding: 0 1rem;
+}
+
+
+
 
 /* Секции */
 section {
@@ -336,7 +831,6 @@ h2 {
   padding: 80px 23px 40px;
   user-select: none;
   overflow: visible;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   min-height: 300px;
   color: white;
@@ -520,6 +1014,7 @@ h2 {
   transition: filter 0.3s;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
     text-transform: uppercase;
+    z-index: 10;
 }
 
 
@@ -540,6 +1035,7 @@ h2 {
   height: 100%;
   border: 0;
   border-radius: 16px;
+    z-index: 10;
 }
 .footer-email h4 {
   color: #f0f9f9;
