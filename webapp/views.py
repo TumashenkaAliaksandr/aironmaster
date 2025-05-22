@@ -1,8 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+
+from webapp.models import ItemObject
 
 
 def index(request):
-    return render(request, 'webapp/index.html')
+    item = get_object_or_404(ItemObject, pk=1)
+
+    photos = item.photos.all()  # связанные фотографии
+
+    context = {
+        'item': item,
+        'photos': photos,
+    }
+    return render(request, 'webapp/index.html', context)
 
 
 def services(request):

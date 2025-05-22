@@ -140,6 +140,60 @@ nav .nav-link.active {
   margin-bottom: 2rem;
 }
 
+.photo-description {
+    padding: 0.5rem 1rem 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+.photo-row {
+  display: flex;
+  gap: 10px; /* между фото */
+  margin-bottom: 1.5rem;
+}
+
+.photo-item {
+  position: relative;
+  width: calc((100% - 30px) / 4); /* чтобы совпадало с img */
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden; /* чтобы описание не выходило за границы */
+  transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: scale(1.05);
+  z-index: 1; /* чтобы при увеличении фото не перекрывалось соседними */
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  vertical-align: middle;
+}
+
+/* Описание внутри фото */
+.photo-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.5); /* полупрозрачный чёрный фон */
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 
 .photo-banner .btn {
     display: inline-flex;
@@ -465,10 +519,31 @@ nav .nav-link.active {
 
 
 #gallery {
-  max-width: 1200px; /* ограничение ширины контейнера */
+  /*max-width: 1200px; !* ограничение ширины контейнера *!*/
   margin: 0 auto;
   padding: 1rem;
 }
+
+#gallery {
+    background: linear-gradient(66deg, #ecf7d8, #524a80); /* светлый градиент */
+    padding: 2rem;
+    /*border-bottom-left-radius: 12px;*/
+    /*border-bottom-right-radius: 12px;*/
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* Анимация плавного появления */
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+/* Ключевые кадры для fade-in */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
 
 .photo-row {
   display: flex;
@@ -478,7 +553,7 @@ nav .nav-link.active {
 }
 
 .photo-row img {
-  width: calc((100% - 30px) / 4); /* 4 фото в строке с учётом gap */
+  /*width: calc((100% - 30px) / 4); !* 4 фото в строке с учётом gap *!*/
   height: auto;
   border-radius: 8px;
   object-fit: cover;

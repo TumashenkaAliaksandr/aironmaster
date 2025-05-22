@@ -1,34 +1,35 @@
 {% extends 'main/base.html' %}
+{% load custom_filters %}
 {% load static %}
 
 {% block content %}
 
     <section class="photo-banner">
         <div class="photo-banner-content">
-            <h2>ШНЕКИ СПИРАЛИ ШНЕКОВ</h2><br>
+            <h2>{{ item.name }}</h2><br>
             <h2>ВИТКИ ШНЕКОВ</h2>
-            <p>СОБСТВЕННОГО ПРОИЗВОДСТВА В РБ</p>
-            <p>+37529-934-14-62 (A1)<br>+37529-812-49-72 (МТС)</p>
+            <p>{{ item.description }}</p>
+            <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
             <a href="#" class="btn">Подробнее</a>
         </div>
     </section>
-
-
-    <!-- секции с якорями -->
     <section id="gallery" class="mb-5">
-        <div class="photo-row">
-            <img src="{% static 'webapp/img/photo1.jpg' %}" alt="Фото 1"/>
-            <img src="{% static 'webapp/img/photo2.jpg' %}" alt="Фото 2"/>
-            <img src="{% static 'webapp/img/photo3.jpg' %}" alt="Фото 3"/>
-            <img src="{% static 'webapp/img/photo4.jpg' %}" alt="Фото 4"/>
-        </div>
-        <div class="photo-row">
-            <img src="{% static 'webapp/img/photo5.jpg' %}" alt="Фото 5"/>
-            <img src="{% static 'webapp/img/photo6.jpg' %}" alt="Фото 6"/>
-            <img src="{% static 'webapp/img/photo7.jpg' %}" alt="Фото 7"/>
-            <img src="{% static 'webapp/img/photo8.jpg' %}" alt="Фото 8"/>
-        </div>
+        {% for row in photos|slice:"0:8"|batch:4 %}
+            <div class="photo-row">
+                {% for photo in row %}
+                    <div class="photo-item">
+                        <img src="{{ photo.photo.url }}" alt="{{ photo.description }}">
+                        {% if photo.description %}
+                            <div class="photo-description">{{ photo.description }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
     </section>
+
+
+
 
     <section id="screw-spiral" class="mb-5">
     <div class="content-wrapper">
