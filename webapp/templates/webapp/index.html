@@ -7,13 +7,12 @@
     <section class="photo-banner">
         <div class="photo-banner-content">
             <h2>{{ item.name }}</h2><br>
-            <h2>ВИТКИ ШНЕКОВ</h2>
             <p>{{ item.description }}</p>
             <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
             <a href="#" class="btn">Подробнее</a>
         </div>
     </section>
-    <section id="gallery" class="mb-5">
+    <section id="gallery" class="mb-0">
         {% for row in photos|slice:"0:8"|batch:4 %}
             <div class="photo-row">
                 {% for photo in row %}
@@ -31,7 +30,7 @@
 
 
 
-    <section id="screw-spiral" class="mb-5">
+    <section id="screw-spiral" class="mb-0">
     <div class="content-wrapper">
         <h2>ВИТОК ШНЕКА КОРМОРАЗДАТЧИКА</h2>
         <p>РСК, ИСРК 12</p>

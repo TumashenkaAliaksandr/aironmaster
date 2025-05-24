@@ -235,9 +235,9 @@ nav .nav-link.active {
 
 
 #screw-spiral {
-    width: 100vw; /* секция на всю ширину окна */
+    /*width: 100vw; !* секция на всю ширину окна *!*/
     padding: 2.5rem 1.5rem;
-    background: linear-gradient(135deg, #5a1a7e, #0073b8, #5a1a7e);
+    background: linear-gradient(135deg, #eaf5d7, #b8bdbb, #69648d);
     color: #e0d9f1;
     box-sizing: border-box;
     text-align: center; /* центрируем текст */
@@ -268,7 +268,7 @@ nav .nav-link.active {
   width: 100%;
   border-radius: 12px;
   padding: 2rem 2.5rem;
-  background: linear-gradient(90deg, #1b4288, #0099d5, #1e5487);
+  background: linear-gradient(144deg, #dce1d9, #9a98a9, #0198d4);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
@@ -525,11 +525,12 @@ nav .nav-link.active {
 }
 
 #gallery {
-    background: linear-gradient(66deg, #ecf7d8, #524a80); /* светлый градиент */
+    background: linear-gradient(66deg, #e8f3d6, #8e8ca2); /* светлый градиент */
+    background: linear-gradient(66deg, #dee8d0, #8e8ca2); /* светлый градиент */
     padding: 2rem;
     /*border-bottom-left-radius: 12px;*/
     /*border-bottom-right-radius: 12px;*/
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/*    box-shadow: rgba(255, 88, 88, 0.15) 0 4px 18px, rgba(0, 0, 0, 0.08) 0 1.5px 4px;*/
 
     /* Анимация плавного появления */
     opacity: 0;
@@ -787,7 +788,9 @@ nav .nav-link.active {
   padding: 0 1rem;
 }
 
-
+.nav-link:focus, .nav-link:hover {
+  color: #236dab;
+}
 
 
 /* Секции */
