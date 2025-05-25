@@ -5,21 +5,25 @@
 {% block content %}
 
     <section class="photo-banner">
-        <div class="photo-banner-content">
-            <h2>{{ item.name }}</h2><br>
-            <p>{{ item.description }}</p>
-            <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
-            <a href="#" class="btn">Подробнее</a>
-        </div>
+        {% for main_banner in banner %}
+            <div class="photo-banner-content">
+                <h2>{{ main_banner.name }}</h2><br>
+                <p>{{ main_banner.description|safe }}</p>
+                <p>{{ main_banner.phone1 }}<br>{{ main_banner.phone2 }}</p>
+                <a href="#" class="btn">Подробнее</a>
+            </div>
+        {% endfor %}
     </section>
+
     <section id="gallery" class="mb-0">
-        {% for row in photos|slice:"0:8"|batch:4 %}
-            <div class="photo-row">
-                {% for photo in row %}
-                    <div class="photo-item">
-                        <img src="{{ photo.photo.url }}" alt="{{ photo.description }}">
-                        {% if photo.description %}
-                            <div class="photo-description">{{ photo.description }}</div>
+        {% for row in photose|batch:4 %}
+            <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                {% for item in row %}
+                    <div class="photo-item" style="flex: 1;">
+                        <img src="{{ item.photo.url }}" alt="{{ item.description }}"
+                             style="width: 100%; height: auto; object-fit: cover;">
+                        {% if item.description %}
+                            <div class="photo-description">{{ item.description }}</div>
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -36,11 +40,12 @@
             </div>
 
             <div class="photo-gallery">
-                {% for photo in item.photos.all|slice:"0:8"|batch:4 %}
-                    <div class="photo-row">
-                        {% for p in photo %}
-                            <div class="photo-item">
-                                <img src="{{ p.photo.url }}" alt="{{ p.description }}">
+                {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
+                    <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        {% for p in photo_row %}
+                            <div class="photo-item" style="flex: 1;">
+                                <img src="{{ p.photo.url }}" alt="{{ p.description }}"
+                                     style="width: 100%; height: auto; object-fit: cover;">
                                 {% if p.description %}
                                     <div class="photo-description">{{ p.description }}</div>
                                 {% endif %}
@@ -53,24 +58,22 @@
         <div class="gradient"></div>
     {% endfor %}
 
-
- <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">
-    <div class="block flex-grow-1" style="min-width: 200px;">
-        <h2>👷🏻‍♂️ ИНЖИНИРИНГОВЫЕ УСЛУГИ</h2>
-        <p>Проектирование оборудования под Ваши нужды.</p>
+    <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">
+        <div class="block flex-grow-1" style="min-width: 200px;">
+            <h2>👷🏻‍♂️ ИНЖИНИРИНГОВЫЕ УСЛУГИ</h2>
+            <p>Проектирование оборудования под Ваши нужды.</p>
+        </div>
+        <div class="block flex-grow-1" style="min-width: 200px;">
+            <h2>🧰 ОБОРУДОВАНИЕ НА ЗАКАЗ</h2>
+            <p>ПОДАТЧИКИ, ЦИКЛОНЫ, ДОЗАТОРЫ</p>
+        </div>
+        <div class="block flex-grow-1" style="min-width: 200px;">
+            <p>Наши телефоны ☎️ <br/>
+                <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>
+                <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)
+            </p>
+        </div>
     </div>
-    <div class="block flex-grow-1" style="min-width: 200px;">
-        <h2>🧰 ОБОРУДОВАНИЕ НА ЗАКАЗ</h2>
-        <p>ПОДАТЧИКИ, ЦИКЛОНЫ, ДОЗАТОРЫ</p>
-    </div>
-    <div class="block flex-grow-1" style="min-width: 200px;">
-        <p>Наши телефоны ☎️ <br/>
-            <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>
-            <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)
-        </p>
-    </div>
-</div>
-
 
     <section id="contacts" class="mb-0">
         <div class="content-wrapper">

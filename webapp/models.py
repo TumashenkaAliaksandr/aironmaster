@@ -41,3 +41,30 @@ class ItemPhoto(models.Model):
             if self.contact_object.photos.exclude(pk=self.pk).count() >= 8:
                 raise ValidationError("Максимум 8 фотографий на один объект.")
 
+
+
+class Banner(models.Model):
+    name = models.CharField("Имя", max_length=255)
+    description = models.TextField("Описание", blank=True)
+    phone1 = models.CharField("Телефон 1", max_length=20, blank=True)
+    phone2 = models.CharField("Телефон 2", max_length=20, blank=True)
+
+    photo1 = models.ImageField("Фото 1", upload_to='banners/', blank=True, null=True)
+    photo1_description = models.CharField("Описание фото 1", max_length=255, blank=True)
+
+    photo2 = models.ImageField("Фото 2", upload_to='banners/', blank=True, null=True)
+    photo2_description = models.CharField("Описание фото 2", max_length=255, blank=True)
+
+    photo3 = models.ImageField("Фото 3", upload_to='banners/', blank=True, null=True)
+    photo3_description = models.CharField("Описание фото 3", max_length=255, blank=True)
+
+    photo4 = models.ImageField("Фото 4", upload_to='banners/', blank=True, null=True)
+    photo4_description = models.CharField("Описание фото 4", max_length=255, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Баннер"
+        verbose_name_plural = "Баннеры"
+
