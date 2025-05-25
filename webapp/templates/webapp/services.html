@@ -1,6 +1,32 @@
 {% extends 'main/base.html' %}
+{% load custom_filters %}
 {% load static %}
 
 {% block content %}
+    {% for item in items %}
+        <section id="screw-spiral" class="item-section">
+            <div class="content-wrapper">
+                <h2>{{ item.name }}</h2>
+                <p>{{ item.description }}</p>
+                <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
+            </div>
 
+            <div class="photo-gallery">
+                {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
+                    <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        {% for p in photo_row %}
+                            <div class="photo-item" style="flex: 1;">
+                                <img src="{{ p.photo.url }}" alt="{{ p.description }}"
+                                     style="width: 100%; height: auto; object-fit: cover;">
+                                {% if p.description %}
+                                    <div class="photo-description">{{ p.description }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <div class="gradient"></div>
+    {% endfor %}
 {% endblock %}

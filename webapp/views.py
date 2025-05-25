@@ -32,7 +32,17 @@ def index(request):
 
 
 def services(request):
-    return render(request, 'webapp/services.html')
+    item = get_object_or_404(ItemObject, pk=1)
+    items = ItemObject.objects.prefetch_related('photos').distinct()
+    # Получаем фотографии для item (ItemObject)
+    photos = item.photos.all()
+
+    context = {
+        'item': item,
+        'items': items,
+        'photos': photos,
+    }
+    return render(request, 'webapp/services.html', context=context)
 
 def single_services(request):
     return render(request, 'webapp/single_services.html')

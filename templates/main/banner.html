@@ -1,0 +1,33 @@
+{% load static %}
+{% load custom_filters %}
+
+
+{% block content %}
+    <section class="photo-banner">
+        {% for main_banner in banner %}
+            <div class="photo-banner-content">
+                <h2>{{ main_banner.name }}</h2><br>
+                <p>{{ main_banner.description|safe }}</p>
+                <p>{{ main_banner.phone1 }}<br>{{ main_banner.phone2 }}</p>
+                <a href="{% url 'services' %}" class="btn">Подробнее</a>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section id="gallery" class="mb-0">
+        {% for row in photose|batch:4 %}
+            <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                {% for item in row %}
+                    <div class="photo-item" style="flex: 1;">
+                        <img src="{{ item.photo.url }}" alt="{{ item.description }}"
+                             style="width: 100%; height: auto; object-fit: cover;">
+                        {% if item.description %}
+                            <div class="photo-description">{{ item.description }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}
