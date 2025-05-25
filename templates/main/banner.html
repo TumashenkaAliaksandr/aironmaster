@@ -8,7 +8,14 @@
             <div class="photo-banner-content">
                 <h2>{{ main_banner.name }}</h2><br>
                 <p>{{ main_banner.description|safe }}</p>
-                <p>{{ main_banner.phone1 }}<br>{{ main_banner.phone2 }}</p>
+                <p>
+                    {% if main_banner.phone1 %}
+                        <a href="tel:{{ main_banner.phone1|cut:" " }}">{{ main_banner.phone1 }}</a><br>
+                    {% endif %}
+                    {% if main_banner.phone2 %}
+                        <a href="tel:{{ main_banner.phone2|cut:" " }}">{{ main_banner.phone2 }}</a>
+                    {% endif %}
+                </p>
                 <a href="{% url 'services' %}" class="btn">Подробнее</a>
             </div>
         {% endfor %}

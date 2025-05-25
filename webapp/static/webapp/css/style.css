@@ -125,6 +125,23 @@ nav .nav-link.active {
   margin: 0 auto;
 }
 
+.photo-banner a {
+    color: whitesmoke;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.photo-banner a:hover,
+.photo-banner a:focus {
+    color: #00b7ff;
+    transform: scale(1.05);
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+
 .photo-banner h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -139,6 +156,8 @@ nav .nav-link.active {
     line-height: 1.6;
     margin-bottom: 2rem;
     text-transform: uppercase;
+    color: whitesmoke;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 .photo-description {
