@@ -237,7 +237,7 @@ nav .nav-link.active {
 #screw-spiral {
     /*width: 100vw; !* секция на всю ширину окна *!*/
     padding: 2.5rem 1.5rem;
-    background: linear-gradient(135deg, #eaf5d7, #b8bdbb, #69648d);
+    background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
     color: #e0d9f1;
     box-sizing: border-box;
     text-align: center; /* центрируем текст */
@@ -260,6 +260,11 @@ nav .nav-link.active {
   text-decoration: underline;
 }
 
+.gradient {
+  height: 25px; /* adjust height as needed */
+  background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
+  width: 100%;
+}
 
 
 #screw-spiral .content-wrapper {
@@ -282,11 +287,12 @@ nav .nav-link.active {
 
 /* Внутренний контейнер для ограничения ширины */
 #screw-spiral .content-wrapper {
-  max-width: 700px;
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
-  padding: 1rem 1.5rem;
+    max-width: 700px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
+    padding: 1rem 1.5rem;
+    margin-bottom: 30px;
 }
 
 #screw-spiral h2 {
@@ -501,6 +507,11 @@ nav .nav-link.active {
     text-transform: uppercase;
     color: white;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    text-align: center;
+}
+
+.text-end {
+  text-align: center !important;
 }
 
 /* Кликабельные телефоны */
@@ -618,7 +629,7 @@ nav .nav-link.active {
 
 
 #contacts {
-  width: 100vw;
+  /*width: 100vw;*/
   padding: 3rem 1.5rem;
   background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
   box-sizing: border-box;
@@ -749,7 +760,7 @@ nav .nav-link.active {
 
 #we-on-map {
   position: relative;
-  width: 100vw;      /* на всю ширину экрана */
+  /*width: 100vw;      !* на всю ширину экрана *!*/
   height: 100vh;     /* на всю высоту экрана */
   background-image: url('../img');
   background-size: cover;
@@ -763,6 +774,26 @@ nav .nav-link.active {
   text-align: center;
   padding: 1rem;
 }
+
+#we-on-map {
+  position: relative;
+  overflow: hidden;
+}
+
+#we-on-map::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+
+  background:
+    linear-gradient(90deg, #4a0073, #0099d5, #543071), linear-gradient(to bottom, rgba(245, 240, 230, 0) 30%, #eaece6 100%);
+
+  background-blend-mode: screen; /* мягкое смешивание */
+
+  pointer-events: none;
+  z-index: 1;
+}
+
 
 /*!* Градиент поверх фото *!*/
 /*#we-on-map::before {*/
@@ -996,10 +1027,10 @@ h2 {
   align-items: flex-start;
   flex-wrap: wrap;
   flex: 1 1 500px;
-  max-width: 700px;
+  max-width: 800px;
   color: #f0f9f9;
   gap: 20px;
-    padding-top: 50px;
+    padding-top: 70px;
 }
 
 .footer-info > div {
@@ -1079,21 +1110,23 @@ h2 {
   padding: 40px 0 0 0;
   background: bottom;
   transition: filter 0.3s;
-  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+  /*filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));*/
 }
 
 .map-title {
+  position: relative; /* чтобы z-index работал */
   text-align: center;
   margin-bottom: 24px;
-  color: #646464;
+  color: whitesmoke; /* более контрастный */
   font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.04em;
   transition: filter 0.3s;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-    text-transform: uppercase;
-    z-index: 10;
+  text-transform: uppercase;
+  z-index: 10;
 }
+
 
 
 .map-responsive {

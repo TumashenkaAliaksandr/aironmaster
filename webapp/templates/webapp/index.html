@@ -27,102 +27,54 @@
         {% endfor %}
     </section>
 
+    {% for item in items %}
+        <section id="screw-spiral" class="item-section">
+            <div class="content-wrapper">
+                <h2>{{ item.name }}</h2>
+                <p>{{ item.description }}</p>
+                <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
+            </div>
+
+            <div class="photo-gallery">
+                {% for photo in item.photos.all|slice:"0:8"|batch:4 %}
+                    <div class="photo-row">
+                        {% for p in photo %}
+                            <div class="photo-item">
+                                <img src="{{ p.photo.url }}" alt="{{ p.description }}">
+                                {% if p.description %}
+                                    <div class="photo-description">{{ p.description }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <div class="gradient"></div>
+    {% endfor %}
 
 
-
-    <section id="screw-spiral" class="mb-0">
-    <div class="content-wrapper">
-        <h2>ВИТОК ШНЕКА КОРМОРАЗДАТЧИКА</h2>
-        <p>РСК, ИСРК 12</p>
-        <p>
-            <a href="tel:+375299341462">+37529-934-14-62</a> (A1) <br>
-            <a href="tel:+375298124972">+37529-812-49-72</a> (МТС)
-        </p>
+ <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">
+    <div class="block flex-grow-1" style="min-width: 200px;">
+        <h2>👷🏻‍♂️ ИНЖИНИРИНГОВЫЕ УСЛУГИ</h2>
+        <p>Проектирование оборудования под Ваши нужды.</p>
     </div>
-
-    </section>
-    <section id="gallery" class="mb-5">
-        <div class="photo-row">
-            <img src="{% static 'webapp/img/photo1.jpg' %}" alt="Фото 1"/>
-            <img src="{% static 'webapp/img/photo2.jpg' %}" alt="Фото 2"/>
-            <img src="{% static 'webapp/img/photo3.jpg' %}" alt="Фото 3"/>
-            <img src="{% static 'webapp/img/photo4.jpg' %}" alt="Фото 4"/>
-        </div>
-    </section>
-
-    <section id="reducers-alt" class="mb-5">
-        <div class="content-wrapper">
-            <h2>РЕДУКТОРЫ РДУ 1.5 <br/>ВЕДУЩИЙ И ВЕДОМЫЙ</h2>
-            <p>для разбрасывателя удобрений.</p>
-            <p>
-                <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>
-                <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)
-            </p>
-        </div>
-    </section>
-    <section id="gallery" class="mb-5">
-        <div class="photo-row">
-            <img src="{% static 'webapp/img/photo1.jpg' %}" alt="Фото 1"/>
-            <img src="{% static 'webapp/img/photo2.jpg' %}" alt="Фото 2"/>
-            <img src="{% static 'webapp/img/photo3.jpg' %}" alt="Фото 3"/>
-            <img src="{% static 'webapp/img/photo4.jpg' %}" alt="Фото 4"/>
-        </div>
-    </section>
-
-
-    <section id="bunkers-mixers" class="mb-5">
-        <div class="content-wrapper">
-            <h2>БУНКЕРЫ-СМЕСИТЕЛИ</h2>
-            <p>для сыпучих материалов.</p>
-            <p>
-                <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>
-                <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)
-            </p>
-        </div>
-    </section>
-    <section id="gallery" class="mb-5">
-        <div class="photo-row">
-            <img src="{% static 'webapp/img/photo1.jpg' %}" alt="Фото 1"/>
-            <img src="{% static 'webapp/img/photo2.jpg' %}" alt="Фото 2"/>
-            <img src="{% static 'webapp/img/photo3.jpg' %}" alt="Фото 3"/>
-            <img src="{% static 'webapp/img/photo4.jpg' %}" alt="Фото 4"/>
-        </div>
-    </section>
-
-
-
-    <section id="equipment" class="mb-5">
-        <div class="content-wrapper">
-            <h2>ОБОРУДОВАНИЕ НА ЗАКАЗ</h2>
-            <p>ПОДАТЧИКИ, ЦИКЛОНЫ, ДОЗАТОРЫ</p>
-            <p>
-                <a href="tel:+375299341462">+37529-934-14-62</a> (A1) <br>
-                <a href="tel:+375298124972">+37529-812-49-72</a> (МТС)
-            </p>
-        </div>
-    </section>
-    <section id="gallery" class="mb-5">
-        <div class="photo-row">
-            <img src="{% static 'webapp/img/photo1.jpg' %}" alt="Фото 1"/>
-            <img src="{% static 'webapp/img/photo2.jpg' %}" alt="Фото 2"/>
-            <img src="{% static 'webapp/img/photo3.jpg' %}" alt="Фото 3"/>
-            <img src="{% static 'webapp/img/photo4.jpg' %}" alt="Фото 4"/>
-        </div>
-    </section>
-
-
-
-    <div id="engineering" class="mb-5">
-        <h2>ИНЖИНИРИНГОВЫЕ УСЛУГИ</h2>
-        <p>проектирование оборудования под Ваши нужды.</p>
-        <p>
+    <div class="block flex-grow-1" style="min-width: 200px;">
+        <h2>🧰 ОБОРУДОВАНИЕ НА ЗАКАЗ</h2>
+        <p>ПОДАТЧИКИ, ЦИКЛОНЫ, ДОЗАТОРЫ</p>
+    </div>
+    <div class="block flex-grow-1" style="min-width: 200px;">
+        <p>Наши телефоны ☎️ <br/>
             <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>
             <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)
         </p>
     </div>
-    <section id="contacts" class="mb-5">
+</div>
+
+
+    <section id="contacts" class="mb-0">
         <div class="content-wrapper">
-            <h2>ОБРАТНАЯ СВЯЗЬ</h2>
+            <h2>🗣 ОБРАТНАЯ СВЯЗЬ</h2>
             <p>Вы можете задать свой вопрос или оставить заявку на изготовление оборудования.</p>
 
             <form id="contact-form" action="#" method="POST" novalidate>
@@ -154,7 +106,7 @@
 
     <section id="we-on-map" class="map-section">
         <div class="container">
-            <h3 class="map-title">Мы на карте</h3>
+            <h3 class="map-title">📌 Мы на карте</h3>
             <div class="map-responsive">
                 <iframe
                         frameborder="0"
