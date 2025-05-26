@@ -43,7 +43,29 @@
   }
 
   .photo-banner h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .photo-item {
+    position: relative;
+    width: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    height: 138px!important;
+  }
+
+  .photo-item img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 138px !important;
+    object-fit: cover;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    cursor: pointer;
   }
 
   .photo-banner p {
@@ -111,7 +133,7 @@
 
   .photo-item img {
     /*width: calc((100% - 20px) / 2); !* 2 фото в строке *!*/
-    height: 100px!important;
+    /*height: 100px!important;*/
   }
 
   #screw-spiral h2 {

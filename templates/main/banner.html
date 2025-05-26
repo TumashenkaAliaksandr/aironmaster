@@ -22,18 +22,34 @@
     </section>
 
     <section id="gallery" class="mb-0">
-        {% for row in photose|batch:4 %}
-            <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                {% for item in row %}
-                    <div class="photo-item" style="flex: 1;">
-                        <img src="{{ item.photo.url }}" alt="{{ item.description }}">
+        <div class="row g-3"> <!-- g-3 — отступы между колонками и строками -->
+            {% for item in photose %}
+                <div class="col-6 col-md-3"> <!-- 2 колонки на xs и sm, 4 колонки на md и выше -->
+                    <div class="photo-item">
+                        <img src="{{ item.photo.url }}" alt="{{ item.description }}" class="img-fluid rounded">
                         {% if item.description %}
                             <div class="photo-description">{{ item.description }}</div>
                         {% endif %}
                     </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </section>
+
+
+{#    <section id="gallery" class="mb-0">#}
+{#        {% for row in photose|batch:4 %}#}
+{#            <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">#}
+{#                {% for item in row %}#}
+{#                    <div class="photo-item" style="flex: 1;">#}
+{#                        <img src="{{ item.photo.url }}" alt="{{ item.description }}">#}
+{#                        {% if item.description %}#}
+{#                            <div class="photo-description">{{ item.description }}</div>#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </section>#}
 
 {% endblock %}

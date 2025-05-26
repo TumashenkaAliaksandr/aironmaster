@@ -181,7 +181,8 @@ nav .nav-link.active {
 
 .photo-item {
     position: relative;
-    width: calc((100% - 30px) / 4); /* чтобы совпадало с img */
+    width: auto!important; /* чтобы совпадало с img */
+    height: 196px!important;
     cursor: pointer;
     border-radius: 8px;
     overflow: hidden; /* чтобы описание не выходило за границы */
@@ -199,7 +200,7 @@ nav .nav-link.active {
   height: auto;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
+  /*border-radius: 8px;*/
   vertical-align: middle;
 }
 
