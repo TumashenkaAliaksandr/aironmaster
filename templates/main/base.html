@@ -45,8 +45,16 @@
             </a>
         </div>
 
-        <!-- Меню -->
-        <nav>
+        <!-- Кнопка-бургер (видна на мобилках) -->
+        <button id="burgerBtn" class="burger-btn d-md-none" aria-label="Открыть меню" aria-expanded="false"
+                aria-controls="mobileMenu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+
+        <!-- Меню для десктопа -->
+        <nav class="d-none d-md-block">
             <ul class="nav">
                 <li class="nav-item"><a class="nav-link" href="#screws">Шнеки</a></li>
                 <li class="nav-item"><a class="nav-link" href="#screw-spiral">Виток шнека</a></li>
@@ -57,9 +65,21 @@
                 <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
             </ul>
         </nav>
-
+        <nav id="mobileMenu" class="mobile-menu d-md-none" aria-hidden="true">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="#screws">Шнеки</a></li>
+                <li class="nav-item"><a class="nav-link" href="#screw-spiral">Виток шнека</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reducers">Редукторы</a></li>
+                <li class="nav-item"><a class="nav-link" href="#bunkers-mixers">Бункеры, смесители</a></li>
+                <li class="nav-item"><a class="nav-link" href="#equipment">Оборудование</a></li>
+                <li class="nav-item"><a class="nav-link" href="#engineering">Инженерные услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
     </div>
+
 </header>
+
 
 {% block content %}{% endblock %}
 
@@ -94,24 +114,27 @@
 
             <!-- Контакты справа -->
             <div class="footer-info">
-                <div class="footer-address mb-0">
+                <div class="footer-address mb-2">
                     <h4>📍 Адрес</h4>
                     <p>
                         д. Фариново, ул. Заводская, 6<br/>
                         Полоцкий р-н, Витебская обл., 211654
                     </p>
                 </div>
-                <div class="footer-contacts mb-4">
+                <div class="footer-contacts mb-2">
                     <h4>☎️ Контакты</h4>
                     <p>
-                        +37529-934-14-62 (А1)<br/>
-                        +37529-812-49-72 (МТС)
+                        <a href="tel:+375299341462">+37529-934-14-62 (А1)</a><br/>
+                        <a href="tel:+375298124972">+37529-812-49-72 (МТС)</a>
                     </p>
                 </div>
-                <div class="footer-email mb-4">
+                <div class="footer-email footer-face mb-2">
                     <h4>📧 E-Mail</h4>
                     <div class="email-wrapper">
-                        <p>aironmaster@tut.by</p>
+                        <p><a href="mailto:aironmaster@tut.by">aironmaster@tut.by</a></p>
+                    </div>
+                    <div class="email-wrapper">
+                        <p>Соцсети:</p>
                         <a href="https://www.facebook.com/АиронМастер-989961314515662/" target="_blank"
                            rel="noopener noreferrer" aria-label="Facebook">
                             <img src="{% static 'webapp/img/facebook.png' %}" alt="Facebook"/>

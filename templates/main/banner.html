@@ -26,8 +26,7 @@
             <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
                 {% for item in row %}
                     <div class="photo-item" style="flex: 1;">
-                        <img src="{{ item.photo.url }}" alt="{{ item.description }}"
-                             style="width: 100%; height: auto; object-fit: cover;">
+                        <img src="{{ item.photo.url }}" alt="{{ item.description }}">
                         {% if item.description %}
                             <div class="photo-description">{{ item.description }}</div>
                         {% endif %}

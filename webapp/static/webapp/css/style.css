@@ -48,6 +48,12 @@ header {
     text-transform: capitalize;
 }
 
+.paddings {
+    display: flex !important;
+    flex-basis: auto;
+    padding-left: 55px!important;
+}
+
 /* Контейнер внутри header */
 header .container {
     display: flex;
@@ -174,12 +180,13 @@ nav .nav-link.active {
 }
 
 .photo-item {
-  position: relative;
-  width: calc((100% - 30px) / 4); /* чтобы совпадало с img */
-  cursor: pointer;
-  border-radius: 8px;
-  overflow: hidden; /* чтобы описание не выходило за границы */
-  transition: transform 0.3s ease;
+    position: relative;
+    width: calc((100% - 30px) / 4); /* чтобы совпадало с img */
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden; /* чтобы описание не выходило за границы */
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 .photo-item:hover {
@@ -269,15 +276,19 @@ nav .nav-link.active {
 }
 
 .content-wrapper a[href^="tel:"] {
-  color: white;           /* белый цвет текста */
-  text-decoration: none;  /* убрать подчёркивание */
-  transition: color 0.3s ease;
+    color: whitesmoke;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 .content-wrapper a[href^="tel:"]:hover,
 .content-wrapper a[href^="tel:"]:focus {
-  color: #95e6ff;         /* цвет при наведении */
-  text-decoration: underline;
+  color: #00b7ff;
+  transform: scale(1.05);
+  text-decoration: none;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 .gradient {
@@ -536,15 +547,19 @@ nav .nav-link.active {
 
 /* Кликабельные телефоны */
 #engineering a[href^="tel:"] {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
+    color: whitesmoke;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 #engineering a[href^="tel:"]:hover,
 #engineering a[href^="tel:"]:focus {
-  color: #95e6ff;
-  text-decoration: underline;
+  color: #00b7ff;
+  transform: scale(1.05);
+  text-decoration: none;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 
@@ -586,7 +601,7 @@ nav .nav-link.active {
 
 .photo-row img {
   /*width: calc((100% - 30px) / 4); !* 4 фото в строке с учётом gap *!*/
-  height: auto;
+  height: 200px;
   border-radius: 8px;
   object-fit: cover;
   cursor: pointer;
@@ -840,7 +855,60 @@ nav .nav-link.active {
 }
 
 .nav-link:focus, .nav-link:hover {
-  color: #236dab;
+  color: #008bff;
+}
+.nav-link:focus {
+  color: #008bff;
+}
+
+.burger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 20px;
+  padding: 0;
+  z-index: 1051;
+}
+
+.burger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #000; /* или #fff, в зависимости от дизайна */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.burger-btn.open .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-btn.open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-btn.open .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 60px; /* под шапкой */
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  padding: 1rem 1.5rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1050;
+}
+
+.mobile-menu.show {
+  display: block;
 }
 
 
@@ -1198,19 +1266,39 @@ h2 {
 }
 
 /* Ссылка с иконкой */
-.footer-email a {
+.footer-face a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  background-color: transparent; /* можно добавить цвет, если нужно */
+  background-color: transparent;
+  margin-top: 8px;
+}
+
+.footer-email a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    box-shadow: none;
+    border: 0;
+    background-color: transparent;
+    margin-top: 8px;
+    color: whitesmoke;
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 /* Иконка внутри ссылки */
@@ -1226,11 +1314,27 @@ h2 {
 /* Эффекты при наведении */
 .footer-email a:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(59, 89, 152, 0.7);
-  background-color: #2d4373;
-  border-color: #2d4373;
+  /*box-shadow: 0 4px 12px rgba(59, 89, 152, 0.7);*/
+  /*background-color: #2d4373;*/
+  /*border-color: #2d4373;*/
+    color: whitesmoke;
 }
 
 .footer-email a:hover img {
   filter: brightness(1.2);
+}
+
+.footer-contacts a {
+    color: whitesmoke;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.footer-contacts a:hover, .footer-contacts a:focus {
+  color: #00b7ff;
+  transform: scale(1.05);
+  text-decoration: none;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
 }

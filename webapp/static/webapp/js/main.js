@@ -1,65 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav .nav-link');
+  // --- Активная ссылка меню при скролле ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav .nav-link');
 
-    function onScroll() {
-        const scrollPos = window.scrollY + 150; // поправка для шапки
+  function onScroll() {
+    const scrollPos = window.scrollY + 150; // поправка для шапки
+    let currentSectionId = '';
 
-        let currentSectionId = '';
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentSectionId = section.id;
+      }
+    });
 
-        // Определяем текущую секцию
-        sections.forEach(section => {
-            const top = section.offsetTop;
-            const height = section.offsetHeight;
-
-            if (scrollPos >= top && scrollPos < top + height) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-
-        // Если прокрутка выше первой секции — выбираем первую ссылку
-        if (scrollPos < sections[0].offsetTop) {
-            currentSectionId = sections[0].getAttribute('id');
-        }
-
-        // Обновляем классы active
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + currentSectionId) {
-                link.classList.add('active');
-            }
-        });
+    if (scrollPos < sections[0].offsetTop) {
+      currentSectionId = sections[0].id;
     }
 
-    window.addEventListener('scroll', onScroll);
-    onScroll(); // вызов при загрузке страницы
-});
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + currentSectionId);
+    });
+  }
 
+  window.addEventListener('scroll', onScroll);
+  onScroll(); // вызов при загрузке страницы
 
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollBtn = document.getElementById('scrollToTopBtn');
+  // --- Кнопка "Наверх" ---
+  const scrollBtn = document.getElementById('scrollToTopBtn');
 
-    // Показать кнопку, если прокрутка больше 300px
+  if (scrollBtn) {
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollBtn.classList.add('show');
-        } else {
-            scrollBtn.classList.remove('show');
-        }
+      scrollBtn.classList.toggle('show', window.scrollY > 300);
     });
 
-    // При клике плавно прокрутить наверх
     scrollBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-});
+  }
 
-document.querySelectorAll('nav a').forEach(link => {
+  // --- Плавный скролл по клику на ссылки в nav ---
+  navLinks.forEach(link => {
     link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetElem = document.querySelector(targetId);
+      if (targetElem) {
+        targetElem.scrollIntoView({ behavior: 'smooth' });
+      }
     });
+  });
+
+  // --- Кастомное мобильное меню ---
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (burgerBtn && mobileMenu) {
+    burgerBtn.addEventListener('click', () => {
+      console.log('Burger clicked');
+      const expanded = burgerBtn.getAttribute('aria-expanded') === 'true';
+      burgerBtn.setAttribute('aria-expanded', String(!expanded));
+      burgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('show');
+      mobileMenu.setAttribute('aria-hidden', String(expanded));
+      console.log('Menu shown:', mobileMenu.classList.contains('show'));
+    });
+
+
+
+    mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        burgerBtn.classList.remove('open');
+        burgerBtn.setAttribute('aria-expanded', false);
+        mobileMenu.classList.remove('show');
+        mobileMenu.setAttribute('aria-hidden', true);
+      });
+    });
+  }
 });
