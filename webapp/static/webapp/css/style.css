@@ -1361,4 +1361,178 @@ h2 {
   transform: scale(1.05);
   text-decoration: none;
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}/* Скрываем модалку, когда неактивна */
+.custom-modal.hidden {
+  display: none;
+}
+
+/* Фон модального окна */
+.custom-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Затемнённый оверлей */
+.custom-modal-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+/* Контейнер контента модалки */
+.custom-modal-content {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-sizing: border-box;
+  gap: 20px; /* Отступ между стрелками и изображением */
+}
+
+/* Обёртка для изображения и описания */
+.custom-image-wrapper {
+  max-width: 80vw;
+  max-height: 80vh;
+  position: relative;
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Изображение — фиксированный размер с сохранением пропорций */
+.custom-image-wrapper img {
+  width: 700px;       /* фиксированная ширина */
+  height: 450px;      /* фиксированная высота */
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  object-fit: cover;  /* обрезка по размеру */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Описание под изображением */
+.custom-description {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #1c0073; /* приятный фиолетовый */
+  font-weight: 500;
+  max-width: 700px;
+  word-wrap: break-word;
+}
+
+/* Кнопки управления (закрыть, стрелки) */
+.custom-close, .custom-prev, .custom-next {
+  background: transparent;
+  border: none;
+  font-size: 2.5rem;
+  color: #3c0ed5; /* фиолетовый цвет */
+  cursor: pointer;
+  user-select: none;
+  padding: 0 15px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Закрыть — позиционируем в правом верхнем углу */
+.custom-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 3rem;
+    z-index: 10;
+}
+
+/* Стрелки — фиксированная высота и центрирование */
+.custom-prev, .custom-next {
+  flex-shrink: 0;
+  height: 80px; /* совпадает с высотой изображения */
+  user-select: none;
+}
+
+/* Наведение — цвет темнее */
+.custom-prev:hover, .custom-next:hover, .custom-close:hover {
+  color: #3a27a3;
+}
+
+/* Расположение стрелок слева и справа */
+.custom-prev {
+  order: 0;
+}
+
+.custom-image-wrapper {
+  order: 1;
+}
+
+.custom-next {
+  order: 2;
+}
+/* Скрываем модалку, когда неактивна */
+.custom-modal.hidden {
+  display: none;
+}
+
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+    .custom-modal-content {
+        padding: 10px;
+        height: auto;
+        top: -79px;
+    }
+
+  .custom-close {
+    font-size: 2rem;
+    top: 8px;
+    right: 10px;
+  }
+
+    .custom-next {
+        order: 2;
+        position: absolute;
+        left: 290px;
+        z-index: 10;
+    }
+
+  .custom-image-wrapper img {
+    max-height: 60vh;
+  }
+
+  .custom-description {
+    font-size: 0.9rem;
+  }
+
+  .custom-prev, .custom-next {
+    font-size: 2rem;
+    padding: 5px 10px;
+    margin: 10px 15px 15px;
+  }
+
+    .custom-image-wrapper img {
+        width: 250px; /* фиксированная ширина */
+        height: 250px; /* фиксированная высота */
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 8px;
+        object-fit: cover; /* обрезка по размеру */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        top: 20px;
+        /*margin-bottom: 110px;*/
+        margin-right: 155px;
+        margin-top: 15px;
+
+    }
 }

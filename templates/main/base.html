@@ -152,6 +152,16 @@
   </div>
 
 
+<!-- Кастомное модальное окно -->
+<div id="customModal" class="custom-modal" style="display: none;">
+  <div class="custom-modal-content">
+    <button class="custom-close" aria-label="Закрыть">&times;</button>
+    <button class="custom-prev" aria-label="Предыдущее изображение">&#10094;</button>
+    <img id="customModalImage" src="" alt="" />
+    <button class="custom-next" aria-label="Следующее изображение">&#10095;</button>
+    <div id="customModalDescription" class="custom-description"></div>
+  </div>
+</div>
 
 <button id="scrollToTopBtn" title="Наверх">&#8679;</button>
 
@@ -159,3 +169,4 @@
 <!-- Bootstrap JS (опционально для интерактивности) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{% static 'webapp/js/main.js' %}"></script>
+<script src="{% static 'webapp/js/photo_windows.js' %}"></script>
