@@ -287,6 +287,17 @@ nav .nav-linkss.active {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
+.photo-item-banners {
+    position: relative;
+    width: auto!important; /* чтобы совпадало с img */
+    height: 130px!important;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden; /* чтобы описание не выходило за границы */
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
 @media (min-width: 840px) and (max-width: 848px) {
     .photo-item {
         position: relative;
@@ -300,6 +311,26 @@ nav .nav-linkss.active {
     }
 
     .photo-item img {
+        width: 100%;
+        height: 140px!important;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+        vertical-align: middle;
+    }
+
+    .photo-item-banners {
+        position: relative;
+        width: auto !important;
+        height: 138px !important;
+        cursor: pointer;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    }
+
+    .photo-item-banners img {
         width: 100%;
         height: 140px!important;
         object-fit: cover;
@@ -323,6 +354,69 @@ nav .nav-linkss.active {
   /*border-radius: 8px;*/
   vertical-align: middle;
 }
+
+.photo-item-banners:hover {
+  transform: scale(1.05);
+  z-index: 1; /* чтобы при увеличении фото не перекрывалось соседними */
+}
+
+.photo-item-banners {
+    position: relative;
+    width: auto !important;
+    height: 130px !important;
+    cursor: pointer;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+
+    /* Центрируем содержимое по вертикали и горизонтали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* немного внутреннего отступа */
+    box-sizing: border-box;
+}
+
+.photo-item-banners img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: block;
+    height: 65px !important;
+    object-fit: cover;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin: 0 auto;
+    position: static;
+    left: auto;
+    margin-bottom: 40px;
+
+    /* Чтобы изображение не растягивалось слишком широко */
+    max-width: 100%;
+}
+
+.photo-description-banners {
+    position: absolute;
+    bottom: 10px; /* чуть выше от нижнего края */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: linear-gradient(144deg, #dcdfdc, #dddddd21, #0198d44d);
+    color: #000000;
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    width: auto;
+    text-transform: uppercase;
+    max-width: 90%;
+}
+
 
 /* Описание внутри фото */
 .photo-description {
@@ -694,7 +788,7 @@ nav .nav-linkss.active {
 
 #gallery {
     background: linear-gradient(66deg, #e8f3d6, #8e8ca2); /* светлый градиент */
-    background: linear-gradient(66deg, #e7eedf, #8e8ca2); /* светлый градиент */
+    background: linear-gradient(66deg, #f0f4eb, #8e8ca2); /* светлый градиент */
     padding: 2rem;
     /*border-bottom-left-radius: 12px;*/
     /*border-bottom-right-radius: 12px;*/
