@@ -40,17 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Плавный скролл по клику на ссылки в nav ---
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href');
-      const targetElem = document.querySelector(targetId);
-      if (targetElem) {
-        targetElem.scrollIntoView({ behavior: 'smooth' });
+      const href = link.getAttribute('href');
+
+      if (!href) return;
+
+      // Обрабатываем только ссылки, которые начинаются с #
+      if (href.startsWith('#')) {
+        e.preventDefault();
+
+        const targetId = href.substring(1);
+        const targetElem = document.getElementById(targetId);
+
+        if (targetElem) {
+          targetElem.scrollIntoView({behavior: 'smooth'});
+          history.pushState(null, '', href);
+        }
       }
+      // Для всех остальных ссылок переход происходит как обычно, без preventDefault
     });
   });
+
+
 
   // --- Кастомное мобильное меню ---
   const burgerBtn = document.getElementById('burgerBtn');
@@ -67,14 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Menu shown:', mobileMenu.classList.contains('show'));
     });
 
-
-
     mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         burgerBtn.classList.remove('open');
-        burgerBtn.setAttribute('aria-expanded', false);
+        burgerBtn.setAttribute('aria-expanded', 'false');
         mobileMenu.classList.remove('show');
-        mobileMenu.setAttribute('aria-hidden', true);
+        mobileMenu.setAttribute('aria-hidden', 'true');
       });
     });
   }

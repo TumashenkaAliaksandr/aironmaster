@@ -42,10 +42,12 @@ header {
     top: 0;
     z-index: 1000;
     padding: 0.75rem 0;
+    height: 99px;
 }
 
 .nav {
     text-transform: capitalize;
+    margin-right: 70px;
 }
 
 .paddings {
@@ -91,6 +93,101 @@ nav .nav-link.active {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
     cursor: default; /* чтобы не было эффекта "руки" */
     pointer-events: none; /* запрет клика по активному пункту */
+}
+
+nav .nav-linkss {
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease, filter 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    top: 8px;
+}
+
+/* При наведении */
+nav .nav-linkss:hover {
+    color: #95e6ff;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Активный пункт меню */
+nav .nav-linkss.active {
+    color: #95e6ff;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    cursor: default; /* чтобы не было эффекта "руки" */
+    pointer-events: none; /* запрет клика по активному пункту */
+    position: relative;
+    top: 8px;
+}
+
+.about-company {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+}
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    display: block;
+    left: 70px;
+    position: relative;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.about-description {
+  flex: 4;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.company-name {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.company-text {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #000;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 600px) {
+  .about-company {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .about-image, .about-description {
+      flex: none;
+      margin: 0 33px;
+      display: block;
+      width: 100%;
+  }
+
+    .about-image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 8px;
+        display: block;
+        left: 100px;
+        position: relative;
+    }
+
+  .company-name {
+    font-size: 1.5rem;
+    margin-top: 15px;
+  }
 }
 
 .photo-banner {
@@ -229,20 +326,21 @@ nav .nav-link.active {
 
 /* Описание внутри фото */
 .photo-description {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5rem 0.75rem;
-  background: rgba(0, 0, 0, 0.5); /* полупрозрачный чёрный фон */
-  color: #fff;
-  font-size: 0.9rem;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 0.75rem;
+    background: rgba(0, 0, 0, 0.5); /* полупрозрачный чёрный фон */
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 
@@ -596,7 +694,7 @@ nav .nav-link.active {
 
 #gallery {
     background: linear-gradient(66deg, #e8f3d6, #8e8ca2); /* светлый градиент */
-    background: linear-gradient(66deg, #dee8d0, #8e8ca2); /* светлый градиент */
+    background: linear-gradient(66deg, #e7eedf, #8e8ca2); /* светлый градиент */
     padding: 2rem;
     /*border-bottom-left-radius: 12px;*/
     /*border-bottom-right-radius: 12px;*/
@@ -885,6 +983,13 @@ nav .nav-link.active {
   color: #008bff;
 }
 
+.nav-linkss:focus, .nav-linkss:hover {
+  color: #008bff;
+}
+.nav-linkss:focus {
+  color: #008bff;
+}
+
 .burger-btn {
   background: none;
   border: none;
@@ -1096,7 +1201,7 @@ h2 {
   top: 10px;
   left: 0;
   width: 100%;
-  height: 150px;
+  height: 151px;
   overflow: visible;
   line-height: 0;
   z-index: 1;
@@ -1491,13 +1596,13 @@ h2 {
     .custom-modal-content {
         padding: 10px;
         height: auto;
-        top: -79px;
+        top: 0;
     }
 
   .custom-close {
     font-size: 2rem;
-    top: 8px;
-    right: 10px;
+    top: 0;
+    right: 0;
   }
 
     .custom-next {
@@ -1517,8 +1622,8 @@ h2 {
 
   .custom-prev, .custom-next {
     font-size: 2rem;
-    padding: 5px 10px;
-    margin: 10px 15px 15px;
+    margin-right: 30px;
+    padding-right: 20px;
   }
 
     .custom-image-wrapper img {
@@ -1531,8 +1636,56 @@ h2 {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         top: 20px;
         /*margin-bottom: 110px;*/
-        margin-right: 155px;
+        margin-right: 175px;
         margin-top: 15px;
 
     }
 }
+
+/* Скрываем подменю по умолчанию */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* под основным пунктом */
+  left: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 1000;
+  padding: 5px 0;
+}
+
+/* Стили для ссылок в подменю */
+.dropdown-content li a {
+  padding: 10px 15px;
+  color: #333;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content li a:hover {
+  background-color: #f0e6ff; /* светло-фиолетовый фон при наведении */
+  color: #6a4bcf;
+}
+
+/* Показываем подменю при наведении */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Курсор для выпадающего пункта */
+.dropdown > .dropbtn::after {
+  content: " ▼";
+  font-size: 0.5em;
+  margin-left: 7px;
+  color: #fff;
+  padding-top: 5px;
+  top: 7px;
+  position: absolute;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+

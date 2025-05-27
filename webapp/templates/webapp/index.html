@@ -7,6 +7,20 @@
     <!-- Banner -->
     {% include 'main/banner.html' %}
     <!-- End Banner -->
+    <section id="about" class="about-company">
+        <div class="about-image">
+            <img src="{% static 'webapp/img/airon_about.png' %}" alt="Фото компании">
+        </div>
+        <div class="about-description">
+            <h2 class="company-name">АЙРОНМАСТЕР</h2>
+            <p class="company-text">
+                Компания «Айронмастер» — современное производственное предприятие, специализирующееся на работе со всеми видами конструкционных сталей, включая высокопрочные марки HARDOX и QUARD, а также с полимерами, цветными металлами и их сплавами.
+Мы предлагаем полный цикл услуг: от проектирования и разработки индивидуальных решений до изготовления и внедрения готовых изделий любой сложности.
+            </p>
+        </div>
+    </section>
+    <div class="gradient"></div>
+
 
 
     {% for item in items %}
@@ -50,6 +64,7 @@
         </section>
         <div class="gradient"></div>
     {% endfor %}
+    <div id="contacts-top"></div>
 
     <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">
         <div class="block flex-grow-1" style="min-width: 200px;">
