@@ -179,9 +179,10 @@ nav .nav-linkss.active {
         width: 150px;
         height: 150px;
         border-radius: 8px;
-        display: block;
+        /*display: block;*/
         left: 100px;
         position: relative;
+        display: none;
     }
 
   .company-name {
