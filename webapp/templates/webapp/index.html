@@ -6,8 +6,8 @@
     <!-- Banner -->
     {% include 'main/banner.html' %}
     <!-- End Banner -->
-    <div class="gradient"></div>
-    <section id="about" class="about-company">
+    <div id="about" class="gradient"></div>
+    <section class="about-company">
         <div class="about-image">
             {% if about and about.photo %}
                 <img src="{{ about.photo.url }}" alt="{{ about.name }}">

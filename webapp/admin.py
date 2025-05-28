@@ -3,7 +3,8 @@ from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
-from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About
+from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
+    FinishedProduct
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -96,3 +97,34 @@ class AboutAdmin(admin.ModelAdmin):
         return "Нет фото"
     photo_preview.short_description = "Превью фото"
 
+
+@admin.register(OurService)
+class OurServiceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'photo_preview')
+    search_fields = ('name', 'description')
+    readonly_fields = ('photo_preview',)
+
+    def photo_preview(self, obj):
+        if obj.photo:
+            return format_html(
+                '<img src="{}" style="width: 100px; height: auto; border-radius: 4px;" />',
+                obj.photo.url
+            )
+        return "Нет фото"
+    photo_preview.short_description = "Превью фото"
+
+
+@admin.register(FinishedProduct)
+class FinishedProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'photo_preview')
+    search_fields = ('name', 'description')
+    readonly_fields = ('photo_preview',)
+
+    def photo_preview(self, obj):
+        if obj.photo:
+            return format_html(
+                '<img src="{}" style="width: 100px; height: auto; border-radius: 4px;" />',
+                obj.photo.url
+            )
+        return "Нет фото"
+    photo_preview.short_description = "Превью фото"

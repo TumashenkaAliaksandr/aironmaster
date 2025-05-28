@@ -4,6 +4,23 @@ from django.db import models
 from django.utils.text import slugify
 
 
+
+class OurService(models.Model):
+    name = models.CharField("Название сервиса", max_length=255)
+    description = models.TextField("Описание", blank=True)
+    photo = models.ImageField("Фото", upload_to='service_photos/', blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "🛠️ Наш сервис"
+        verbose_name_plural = "🛠️ Наши сервисы"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+
 class ItemObject(models.Model):
     name = models.CharField("Название", max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
@@ -11,9 +28,19 @@ class ItemObject(models.Model):
     phone1 = models.CharField("Телефон 1", max_length=25)
     phone2 = models.CharField("Телефон 2", max_length=25, blank=True, null=True)
 
+    # Связь с сервисом (каждое изделие относится к одному сервису)
+    service = models.ForeignKey(
+        OurService,
+        on_delete=models.SET_NULL,  # при удалении сервиса поле станет NULL
+        null=True,
+        blank=True,
+        related_name='items',
+        verbose_name="Сервис"
+    )
+
     class Meta:
-        verbose_name = "Изделия"
-        verbose_name_plural = "Изделия"
+        verbose_name = "🎷 Изделия"
+        verbose_name_plural = "🎷 Изделия"
         ordering = ['name']
 
     def __str__(self):
@@ -33,8 +60,6 @@ class ItemObject(models.Model):
         super().save(*args, **kwargs)
 
 
-
-
 class ItemPhoto(models.Model):
     contact_object = models.ForeignKey(
         ItemObject,
@@ -46,8 +71,8 @@ class ItemPhoto(models.Model):
     description = models.CharField("Описание фото", max_length=255, blank=True)
 
     class Meta:
-        verbose_name = "Фото изделия"
-        verbose_name_plural = "Фото изделия"
+        verbose_name = "🖼️ Фото изделия"
+        verbose_name_plural = "🖼️ Фото изделия"
 
     def __str__(self):
         return f"Фото для {self.contact_object.name} ({self.description[:20]})"
@@ -83,8 +108,8 @@ class Banner(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Баннер"
-        verbose_name_plural = "Баннеры"
+        verbose_name = "🌄 Баннер"
+        verbose_name_plural = "🌄 Баннеры"
 
 
 class HadContact(models.Model):
@@ -148,3 +173,17 @@ class About(models.Model):
     class Meta:
         verbose_name = "ℹ️ О компании"
         verbose_name_plural = "ℹ️ О компании"
+
+
+class FinishedProduct(models.Model):
+    name = models.CharField("Название", max_length=255)
+    description = models.TextField("Описание", blank=True)
+    photo = models.ImageField("Фото", upload_to='finished_products/', blank=True, null=True)
+
+    class Meta:
+        verbose_name = "✅ Готовая продукция"
+        verbose_name_plural = "✅ Готовая продукция"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
