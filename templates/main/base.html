@@ -76,11 +76,37 @@
                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">О компании</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-linkss dropbtn">Продукция</a>
+                    <a href="#" class="nav-linkss dropbtn">Готовая Продукция</a>
                     <ul class="dropdown-content">
-                        <li><a href="#service1">Продукция 1</a></li>
-                        <li><a href="#service2">Продукция 2</a></li>
-                        <li><a href="#service3">Продукция 3</a></li>
+                        <li><a href="#service1">Металлоконструкции</a></li>
+                        <li><a href="#service2">Ступеньки и Лестницы</a></li>
+                        <li><a href="#service3">Мангалы</a></li>
+                        <li><a href="#service4">Элементы декора</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-linkss dropbtn">Наши Услуги</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#service1">Лазерная Резка</a></li>
+                        <li><a href="#service2">Гибка</a></li>
+                        <li><a href="#service3">Виброгалтовка</a></li>
+                        <li><a href="#service4">Полимерная покраска</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#contacts-top">Контакты</a></li>
+            </ul>
+        </nav>
+        <nav id="mobileMenu" class="mobile-menu d-md-none" aria-hidden="true">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="#screws">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="#screw-spiral">О компании</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-linkss dropbtn">Готовая Продукция</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#service1">Металлоконструкции</a></li>
+                        <li><a href="#service2">Ступеньки и Лестницы</a></li>
+                        <li><a href="#service3">Мангалы</a></li>
+                        <li><a href="#service4">Элементы декора</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -91,17 +117,6 @@
                         <li><a href="#service3">Услуга 3</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-linkss" href="#">Реализованные проекты</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacts-top">Контакты</a></li>
-            </ul>
-        </nav>
-        <nav id="mobileMenu" class="mobile-menu d-md-none" aria-hidden="true">
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#screws">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="#screw-spiral">О компании</a></li>
-                <li class="nav-item"><a class="nav-link" href="#reducers">Продукция</a></li>
-                <li class="nav-item"><a class="nav-link" href="#bunkers-mixers">Наши Услуги</a></li>
-                <li class="nav-item"><a class="nav-link" href="#engineering">Реализованные проекты</a></li>
                 <li class="nav-item"><a class="nav-link" href="#engineering">Контакты</a></li>
             </ul>
         </nav>

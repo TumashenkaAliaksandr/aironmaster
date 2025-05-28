@@ -288,6 +288,21 @@ nav .nav-linkss.active {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
+.photo-item-mini {
+  position: absolute;
+  top: 77%;           /* по вертикали середина родителя */
+  left: 20px;            /* прижать к левому краю */
+  transform: translateY(-50%);  /* сдвинуть вверх на половину своей высоты для точного центрирования */
+  width: 17% !important;
+  height: 150px !important;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+
 .photo-item-banners {
     position: relative;
     width: auto!important; /* чтобы совпадало с img */
@@ -349,6 +364,20 @@ nav .nav-linkss.active {
 
 .photo-item img {
   width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  /*border-radius: 8px;*/
+  vertical-align: middle;
+}
+
+/*.photo-item-mini:hover {*/
+/*  transform: scale(2.05);*/
+/*  z-index: 1; !* чтобы при увеличении фото не перекрывалось соседними *!*/
+/*}*/
+
+.photo-item-mini img {
+  width: 20%;
   height: auto;
   object-fit: cover;
   display: block;
@@ -1749,6 +1778,7 @@ h2 {
   border-radius: 4px;
   z-index: 1000;
   padding: 5px 0;
+     text-transform: uppercase;
 }
 
 /* Стили для ссылок в подменю */
@@ -1767,6 +1797,7 @@ h2 {
 /* Показываем подменю при наведении */
 .dropdown:hover .dropdown-content {
   display: block;
+    width: 255px;
 }
 
 /* Курсор для выпадающего пункта */
