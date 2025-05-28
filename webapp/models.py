@@ -112,3 +112,26 @@ class ServicesContact(models.Model):
     class Meta:
         verbose_name = "Услуги 👷🏻‍♂️ в Болке Формы - 📞 Телефоны"
         verbose_name_plural = "Услуги 👷🏻‍♂️ в Болке Формы - 📞 Телефоны"
+
+
+class FooterInfo(models.Model):
+    # Адрес
+    address = models.CharField("Адрес", max_length=255)
+
+    # Контакты
+    phone_one = models.CharField("Телефон 1", max_length=20)
+    phone_two = models.CharField("Телефон 2", max_length=20)
+
+    email = models.EmailField("Почта", max_length=254, default='aironmaster@tut.by')
+
+    # Соцсети (ссылки)
+    facebook = models.URLField("Facebook", blank=True)
+    instagram = models.URLField("Instagram", blank=True)
+    vk = models.URLField("ВКонтакте", blank=True)
+
+    def __str__(self):
+        return "Информация для футера"
+
+    class Meta:
+        verbose_name = "Информация футера"
+        verbose_name_plural = "Информация футера"
