@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
-from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo
+from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -83,3 +83,16 @@ class FooterInfoAdmin(admin.ModelAdmin):
         ('phone_one', 'phone_two', 'email'),
         ('facebook', 'instagram', 'vk'),
     )
+
+
+@admin.register(About)
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'photo_preview')
+    readonly_fields = ('photo_preview',)
+
+    def photo_preview(self, obj):
+        if obj.photo:
+            return format_html('<img src="{}" style="width: 100px; height: auto; border-radius: 4px;" />', obj.photo.url)
+        return "Нет фото"
+    photo_preview.short_description = "Превью фото"
+

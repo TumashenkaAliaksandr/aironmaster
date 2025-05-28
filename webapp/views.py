@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from webapp.models import ItemObject, Banner, ServicesContact
+from webapp.models import ItemObject, Banner, ServicesContact, About
 
 
 def index(request):
@@ -10,6 +10,7 @@ def index(request):
 
     # Получаем баннер с id=1
     banner = get_object_or_404(Banner, pk=1)
+    about = About.objects.first()
 
     # Формируем список фото с описаниями из баннера
     photose = []
@@ -29,6 +30,7 @@ def index(request):
         'banner': [banner],   # чтобы можно было итерировать в шаблоне
         'photose': photose,
         'services_info': services_info,
+        'about': about,
     }
     return render(request, 'webapp/index.html', context)
 

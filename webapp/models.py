@@ -133,5 +133,18 @@ class FooterInfo(models.Model):
         return "Информация для футера"
 
     class Meta:
-        verbose_name = "Информация футера"
-        verbose_name_plural = "Информация футера"
+        verbose_name = "🚧 Информация футера"
+        verbose_name_plural = "🚧 Информация футера"
+
+
+class About(models.Model):
+    name = models.CharField("Имя", max_length=100)
+    description = models.TextField("Описание", blank=True)
+    photo = models.ImageField("Фото", upload_to='about_photos/', blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "ℹ️ О компании"
+        verbose_name_plural = "ℹ️ О компании"
