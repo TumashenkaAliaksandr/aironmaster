@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
-from .models import ItemPhoto, ItemObject, Banner
+from .models import ItemPhoto, ItemObject, Banner, HadContact
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -61,3 +61,9 @@ class BannerAdmin(SummernoteModelAdmin):
                 )
         return format_html(''.join(imgs))
     photo_preview.short_description = "Превью фото"
+
+
+@admin.register(HadContact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'email')
+    search_fields = ('name', 'phone', 'email')
