@@ -98,3 +98,17 @@ class HadContact(models.Model):
     class Meta:
         verbose_name = "Шапка - 📞 Телефон и 📧 Почта"
         verbose_name_plural = "Шапка - 📞 Телефон и 📧 Почта"
+
+
+class ServicesContact(models.Model):
+    name = models.CharField("Имя", max_length=100)
+    description = models.TextField("Описание", blank=True)
+    phone_one = models.CharField("Телефон1", max_length=20)
+    phone_two = models.CharField("Телефон2", max_length=20)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Услуги 👷🏻‍♂️ в Болке Формы - 📞 Телефоны"
+        verbose_name_plural = "Услуги 👷🏻‍♂️ в Болке Формы - 📞 Телефоны"

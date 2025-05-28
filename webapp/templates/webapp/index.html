@@ -67,21 +67,42 @@
     <div id="contacts-top"></div>
 
     <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">
-        <div class="block flex-grow-1" style="min-width: 200px;">
-            <h2>👷🏻‍♂️ ИНЖИНИРИНГОВЫЕ УСЛУГИ</h2>
-            <p>Проектирование оборудования под Ваши нужды.</p>
-        </div>
-        <div class="block flex-grow-1" style="min-width: 200px;">
-            <h2>🧰 ОБОРУДОВАНИЕ НА ЗАКАЗ</h2>
-            <p>ПОДАТЧИКИ, ЦИКЛОНЫ, ДОЗАТОРЫ</p>
-        </div>
-        <div class="block flex-grow-1" style="min-width: 200px;">
-            <p>Наши телефоны ☎️ <br/>
-                <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>
-                <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)
-            </p>
-        </div>
+        {% for service in services_info %}
+            <div class="block flex-grow-1" style="min-width: 200px;">
+                <h2>{{ service.name }}</h2>
+                {% if service.description %}
+                    <p>{{ service.description }}</p>
+                {% endif %}
+            </div>
+
+            {% if forloop.last %}
+                <div class="block flex-grow-1" style="min-width: 200px;">
+                    <p>Наши телефоны ☎️ <br/>
+                        <a href="tel:{{ service.phone_one }}">{{ service.phone_one }}</a> (A1) <br/>
+                        <a href="tel:{{ service.phone_two }}">{{ service.phone_two }}</a> (МТС)
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
+
+
+{#    <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">#}
+{#        <div class="block flex-grow-1" style="min-width: 200px;">#}
+{#            <h2>👷🏻‍♂️ ИНЖИНИРИНГОВЫЕ УСЛУГИ</h2>#}
+{#            <p>Проектирование оборудования под Ваши нужды.</p>#}
+{#        </div>#}
+{#        <div class="block flex-grow-1" style="min-width: 200px;">#}
+{#            <h2>🧰 ОБОРУДОВАНИЕ НА ЗАКАЗ</h2>#}
+{#            <p>ПОДАТЧИКИ, ЦИКЛОНЫ, ДОЗАТОРЫ</p>#}
+{#        </div>#}
+{#        <div class="block flex-grow-1" style="min-width: 200px;">#}
+{#            <p>Наши телефоны ☎️ <br/>#}
+{#                <a href="tel:+37529-934-14-62">+37529-934-14-62</a> (A1) <br>#}
+{#                <a href="tel:+37529-812-49-72">+37529-812-49-72</a> (МТС)#}
+{#            </p>#}
+{#        </div>#}
+{#    </div>#}
 
     <section id="contacts" class="mb-0">
         <div class="content-wrapper">

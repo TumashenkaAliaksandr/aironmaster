@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
-from .models import ItemPhoto, ItemObject, Banner, HadContact
+from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -67,3 +67,9 @@ class BannerAdmin(SummernoteModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'email')
     search_fields = ('name', 'phone', 'email')
+
+
+@admin.register(ServicesContact)
+class ServicesContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone_one', 'phone_two')
+    search_fields = ('name', 'phone_one', 'phone_two')

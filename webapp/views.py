@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 
-from webapp.models import ItemObject, Banner
+from webapp.models import ItemObject, Banner, ServicesContact
 
 
 def index(request):
     item = get_object_or_404(ItemObject, pk=1)
     items = ItemObject.objects.prefetch_related('photos').distinct()
+    services_info = ServicesContact.objects.all()
 
     # Получаем баннер с id=1
     banner = get_object_or_404(Banner, pk=1)
@@ -27,6 +28,7 @@ def index(request):
         'photos': photos,
         'banner': [banner],   # чтобы можно было итерировать в шаблоне
         'photose': photose,
+        'services_info': services_info,
     }
     return render(request, 'webapp/index.html', context)
 
