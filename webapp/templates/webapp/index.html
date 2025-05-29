@@ -39,6 +39,22 @@
                         <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>
                     {% endif %}
                 </p>
+                <div class="social-icons-wrapper">
+                    {% for social in footer_info.social_networks.all %}
+                        {% if social.url %}
+                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                               aria-label="{{ social.name }}" class="social-icon">
+                                {% if social.icon %}
+                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                {% else %}
+                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                    {{ social.name }}
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
             </div>
 
             <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
