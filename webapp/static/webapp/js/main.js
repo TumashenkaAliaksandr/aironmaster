@@ -133,4 +133,26 @@ if (burgerBtn && mobileMenu) {
 }
 
 
+  const icons = document.querySelectorAll('.social-icon');
+
+  let isShaking = false;
+
+  function triggerShake() {
+    if (isShaking) return; // предотвращаем наложение анимаций
+    isShaking = true;
+
+    icons.forEach(icon => {
+      icon.classList.add('shake');
+      icon.addEventListener('animationend', () => {
+        icon.classList.remove('shake');
+        isShaking = false;
+      }, { once: true });
+    });
+  }
+
+  // Запускаем подёргивание через 1 секунду после загрузки, затем каждые 10 секунд
+  setTimeout(() => {
+    triggerShake();
+    setInterval(triggerShake, 10000);
+  }, 1000);
 });

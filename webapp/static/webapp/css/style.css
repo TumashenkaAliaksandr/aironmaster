@@ -1893,6 +1893,52 @@ html {
 }
 
 
+/* Появление с эффектом bounce (прыжка) */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Лёгкое подёргивание без изменения opacity */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-3px); }
+  40%, 80% { transform: translateX(3px); }
+}
+
+/*.social-icon {*/
+/*  opacity: 0;*/
+/*  animation-name: bounceIn;*/
+/*  animation-duration: 0.8s;*/
+/*  animation-delay: 0.1s; !* появление через 0.9 секунды *!*/
+/*  animation-fill-mode: forwards; !* сохраняем конечное состояние (видимость) *!*/
+/*  animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);*/
+/*  transition: filter 0.3s ease, box-shadow 0.3s ease;*/
+/*}*/
+
+/* Класс для подёргивания */
+.social-icon.shake {
+  animation-name: pulseGlow !important;
+  animation-duration: 0.3s !important;
+  animation-iteration-count: 3 !important;
+  animation-timing-function: ease-in-out !important;
+  animation-fill-mode: none !important; /* не меняем видимость */
+}
+
+
 
 /* Базовый класс для иконок соцсетей */
 .social-icon {
