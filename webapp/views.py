@@ -34,6 +34,13 @@ def index(request):
     }
     return render(request, 'webapp/index.html', context)
 
+# Словарь соответствия категории из URL и поля модели
+CATEGORY_MAP = {
+    'metal_structures': 'is_metal_structures',
+    'steps_and_stairs': 'is_steps_and_stairs',
+    'grills': 'is_grills',
+    'decor_elements': 'is_decor_elements',
+}
 
 def products(request):
     item = get_object_or_404(ItemObject, pk=1)
@@ -47,6 +54,36 @@ def products(request):
         'photos': photos,
     }
     return render(request, 'webapp/products.html', context=context)
+
+
+def products_by_category(request, category):
+    field_name = CATEGORY_MAP.get(category)
+    if not field_name:
+        # Если категория не найдена, можно вернуть 404 или все изделия
+        items = ItemObject.objects.none()
+    else:
+        # Фильтруем изделия, где соответствующее булево поле True
+        filter_kwargs = {field_name: True}
+        items = ItemObject.objects.filter(**filter_kwargs)
+
+    # Для отображения названия категории на странице
+    category_verbose = {
+        'metal_structures': 'Металлоконструкции',
+        'steps_and_stairs': 'Ступеньки и Лестницы',
+        'grills': 'Мангалы',
+        'decor_elements': 'Элементы декора',
+    }.get(category, '')
+
+    context = {
+        'items': items,
+        'category_name': category_verbose,
+    }
+    return render(request, 'webapp/single_products.html', context)
+
+
+def item_detail(request, slug):
+    item = get_object_or_404(ItemObject, slug=slug)
+    return render(request, 'webapp/single_products.html', {'item': item})
 
 def service_detail(request, slug):
     service = get_object_or_404(OurService, slug=slug)

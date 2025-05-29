@@ -1,13 +1,87 @@
 {% extends 'main/base.html' %}
+{% load custom_filters %}
 {% load static %}
 
 {% block content %}
     <nav aria-label="breadcrumb" class="breadcrumb">
         <ol>
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'items_list' %}">Список изделий</a></li>
-            <li aria-current="page">{{ item.name }}</li>
+            <li><a href="{% url 'products' %}">Готовая Продукция</a></li>
+            <li aria-current="page">{{ category_name }}</li>
         </ol>
     </nav>
-    
+
+    {% if items %}
+        {% for item in items %}
+            <section id="screw-spiral" class="item-section">
+                <div class="content-wrapper">
+                    <h2>{{ item.name }}</h2>
+                    <p>{{ item.description }}</p>
+                    <p>
+                        {% if item.phone1 %}
+                            <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>
+                        {% endif %}
+                        {% if item.phone2 %}
+                            <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>
+                        {% endif %}
+                    </p>
+                    <div class="social-icons-wrapper">
+                        {% for social in footer_info.social_networks.all %}
+                            {% if social.url %}
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                                   aria-label="{{ social.name }}" class="social-icon">
+                                    {% if social.icon %}
+                                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                    {% else %}
+                                        <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                        {{ social.name }}
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
+                    <div class="row g-3">
+                        {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
+                            {% for p in photo_row %}
+                                <div class="col-6 col-md-3">
+                                    <div class="photo-item">
+                                        <img
+                                            src="{{ p.photo.url }}"
+                                            alt="{{ p.description }}"
+                                            class="img-fluid rounded gallery-image"
+                                            style="object-fit: cover; width: 100%; height: auto;"
+                                            data-src="{{ p.photo.url }}"
+                                        >
+                                        {% if p.description %}
+                                            <div class="photo-description">{{ p.description }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            <div class="gradient"></div>
+        {% endfor %}
+    {% else %}
+        <p>Изделия в данной категории отсутствуют.</p>
+    {% endif %}
+
+    <!-- Кастомное модальное окно -->
+    <div id="customModal" class="custom-modal hidden">
+        <div class="custom-modal-overlay"></div>
+        <div class="custom-modal-content">
+            <button class="custom-close" aria-label="Закрыть">&times;</button>
+            <button class="custom-prev" aria-label="Предыдущее изображение">&#10094;</button>
+            <div class="custom-image-wrapper">
+                <img id="customModalImage" src="" alt=""/>
+                <div id="customModalDescription" class="custom-description"></div>
+            </div>
+            <button class="custom-next" aria-label="Следующее изображение">&#10095;</button>
+        </div>
+    </div>
 {% endblock %}
