@@ -21,6 +21,12 @@
     nav .nav-linkss {
         padding: 0.5rem;
         font-size: 1.1rem;
+        top: 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
+        width: 255px;
     }
 
     .contacts {

@@ -1111,7 +1111,7 @@ nav .nav-linkss.active {
   color: #008bff;
 }
 .nav-linkss:focus {
-  color: #008bff;
+  color: #98d0ff;
 }
 
 .burger-btn {
@@ -1768,17 +1768,18 @@ h2 {
 
 /* Скрываем подменю по умолчанию */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%; /* под основным пунктом */
-  left: 0;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  z-index: 1000;
-  padding: 5px 0;
-     text-transform: uppercase;
+    display: none;
+    position: absolute;
+    top: 100%; /* под основным пунктом */
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+    padding: 5px 0;
+    text-transform: uppercase;
+    list-style-type: none;
 }
 
 /* Стили для ссылок в подменю */
@@ -1791,7 +1792,7 @@ h2 {
 
 .dropdown-content li a:hover {
   background-color: #f0e6ff; /* светло-фиолетовый фон при наведении */
-  color: #6a4bcf;
+  color: #0061c6;
 }
 
 /* Показываем подменю при наведении */
@@ -1799,6 +1800,9 @@ h2 {
   display: block;
     width: 255px;
 }
+/*.toggle-checkbox:checked + .dropdown-content {*/
+/*  display: block;*/
+/*}*/
 
 /* Курсор для выпадающего пункта */
 .dropdown > .dropbtn::after {
@@ -1814,4 +1818,75 @@ h2 {
 html {
   scroll-behavior: smooth;
 }
+
+/* Убираем внешние отступы у списков в мобильном меню */
+.mobile-menu ul,
+.mobile-menu li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Отступы между пунктами меню */
+.mobile-menu > ul > li {
+    margin-bottom: 0.5rem; /* вертикальный отступ между пунктами */
+}
+
+/* Ссылки в основном меню и дропдауне */
+.mobile-menu .nav-link,
+.mobile-menu .nav-linkss,
+.mobile-menu .dropdown-content li a {
+    color: #fff;
+    /*font-size: 1.15rem;*/
+    /*padding: 12px 24px; !* одинаковые отступы слева и справа *!*/
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+/* Подменю (дропдаун) */
+.mobile-menu .dropdown-content {
+    display: none;
+    flex-direction: column;
+    background: #073d73;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    position: static;
+    margin: 0; /* убираем левый отступ */
+    padding: 0; /* убираем внутренние отступы, чтобы контролировать через ссылки */
+    overflow: hidden;
+    transition: max-height 0.3s;
+}
+
+/* Активное подменю */
+.mobile-menu .dropdown.open .dropdown-content {
+    display: flex;
+    animation: dropdownFade 0.3s;
+}
+
+/* Ссылки в подменю */
+.mobile-menu .dropdown-content li a {
+    font-size: 1rem;
+    /*padding: 12px 24px; !* такие же отступы, как в основном меню *!*/
+    background: none;
+    border: none;
+}
+
+/* Отступы между пунктами подменю */
+.mobile-menu .dropdown-content li {
+    margin: 0; /* убираем внешние отступы у li */
+}
+
+/* Стрелка у дропдауна */
+.mobile-menu .dropbtn::after {
+    content: '▼';
+    font-size: 0.7em;
+    margin-left: 8px;
+    vertical-align: middle;
+    color: whitesmoke;
+    transition: transform 0.3s;
+    position: relative; /* чтобы не смещать текст */
+    top: 2px; /* чуть опустим стрелку для выравнивания */
+}
+
 

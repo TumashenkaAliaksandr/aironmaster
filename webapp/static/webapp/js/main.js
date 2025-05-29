@@ -66,26 +66,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Кастомное мобильное меню ---
   const burgerBtn = document.getElementById('burgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenu = document.getElementById('mobileMenu');
 
-  if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => {
-      console.log('Burger clicked');
-      const expanded = burgerBtn.getAttribute('aria-expanded') === 'true';
-      burgerBtn.setAttribute('aria-expanded', String(!expanded));
-      burgerBtn.classList.toggle('open');
-      mobileMenu.classList.toggle('show');
-      mobileMenu.setAttribute('aria-hidden', String(expanded));
-      console.log('Menu shown:', mobileMenu.classList.contains('show'));
-    });
+if (burgerBtn && mobileMenu) {
+  // Открытие/закрытие мобильного меню по кнопке
+  burgerBtn.addEventListener('click', () => {
+    const expanded = burgerBtn.getAttribute('aria-expanded') === 'true';
+    burgerBtn.setAttribute('aria-expanded', String(!expanded));
+    burgerBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('show');
+    mobileMenu.setAttribute('aria-hidden', String(expanded));
 
-    mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        burgerBtn.classList.remove('open');
-        burgerBtn.setAttribute('aria-expanded', 'false');
-        mobileMenu.classList.remove('show');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-      });
+    // При открытии меню убираем все открытые дропдауны
+    if (!expanded) {
+      mobileMenu.querySelectorAll('.dropdown.open').forEach(drop => drop.classList.remove('open'));
+    }
+  });
+
+  // Закрытие меню при клике на ссылку
+  mobileMenu.querySelectorAll('a.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
     });
+  });
+
+  // Обработчик клика вне меню и бургера — закрываем меню и дропдауны
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!mobileMenu.contains(target) && !burgerBtn.contains(target)) {
+      closeMobileMenu();
+    }
+  });
+
+  // Функция закрытия меню и дропдаунов
+  function closeMobileMenu() {
+    burgerBtn.classList.remove('open');
+    burgerBtn.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('show');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenu.querySelectorAll('.dropdown.open').forEach(drop => drop.classList.remove('open'));
   }
+}
+
+// --- Дропдауны в мобильном меню ---
+  if (mobileMenu) {
+  mobileMenu.querySelectorAll('.dropdown > .dropbtn').forEach(dropBtn => {
+    dropBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const parentDropdown = this.closest('.dropdown');
+      const isOpen = parentDropdown.classList.contains('open');
+
+      // Закрываем все открытые дропдауны, кроме текущего
+      mobileMenu.querySelectorAll('.dropdown.open').forEach(drop => {
+        if (drop !== parentDropdown) drop.classList.remove('open');
+      });
+
+      // Если текущий открыт — закрываем, иначе открываем
+      if (isOpen) {
+        parentDropdown.classList.remove('open');
+      } else {
+        parentDropdown.classList.add('open');
+      }
+    });
+  });
+}
+
+
 });
