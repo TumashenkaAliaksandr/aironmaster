@@ -79,6 +79,7 @@ nav .nav-link {
     padding: 0.5rem 1rem;
     text-transform: uppercase;
     transition: color 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* При наведении */
@@ -104,6 +105,7 @@ nav .nav-linkss {
     text-decoration: none;
     position: relative;
     top: 8px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* При наведении */
@@ -492,6 +494,7 @@ nav .nav-linkss.active {
 .photo-banner .btn:hover {
   background-position: 100% 0;
   filter: drop-shadow(0 0 10px rgba(155, 48, 255, 0.9));
+    border-color: #7b15d7;
 }
 
 /* Мерцание (пульсация) */
@@ -1792,7 +1795,7 @@ h2 {
 
 .dropdown-content li a:hover {
   background-color: #f0e6ff; /* светло-фиолетовый фон при наведении */
-  color: #0061c6;
+  color: #078acb;
 }
 
 /* Показываем подменю при наведении */

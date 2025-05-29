@@ -191,24 +191,19 @@
                     </div>
                     <div class="email-wrapper">
                         <p>Соцсети:</p>
-                        {% if footer_info.facebook %}
-                            <a href="{{ footer_info.facebook }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="Facebook">
-                                <img src="{% static 'webapp/img/facebook.png' %}" alt="Facebook"/>
-                            </a>
-                        {% endif %}
-                        {% if footer_info.instagram %}
-                            <a href="{{ footer_info.instagram }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="Instagram">
-                                <img src="{% static 'webapp/img/instagram.png' %}" alt="Instagram"/>
-                            </a>
-                        {% endif %}
-                        {% if footer_info.vk %}
-                            <a href="{{ footer_info.vk }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="ВКонтакте">
-                                <img src="{% static 'webapp/img/vk.png' %}" alt="ВКонтакте"/>
-                            </a>
-                        {% endif %}
+                        {% for social in footer_info.social_networks.all %}
+                            {% if social.url %}
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                                   aria-label="{{ social.name }}">
+                                    {% if social.icon %}
+                                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                    {% else %}
+                                        <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                        {{ social.name }}
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    FinishedProduct
+    FinishedProduct, SocialNetwork
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -76,14 +76,21 @@ class ServicesContactAdmin(admin.ModelAdmin):
     search_fields = ('name', 'phone_one', 'phone_two')
 
 
+class SocialNetworkInline(admin.TabularInline):
+    model = SocialNetwork
+    extra = 1  # количество пустых форм для добавления новых соцсетей
+    fields = ('name', 'url', 'icon')
+    readonly_fields = ()
+    show_change_link = True
+
 @admin.register(FooterInfo)
 class FooterInfoAdmin(admin.ModelAdmin):
-    list_display = ('address', 'phone_one', 'phone_two', 'email', 'facebook', 'instagram', 'vk')
+    list_display = ('address', 'phone_one', 'phone_two', 'email')
     fields = (
         'address',
         ('phone_one', 'phone_two', 'email'),
-        ('facebook', 'instagram', 'vk'),
     )
+    inlines = [SocialNetworkInline]
 
 
 @admin.register(About)

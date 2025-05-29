@@ -140,19 +140,10 @@ class ServicesContact(models.Model):
 
 
 class FooterInfo(models.Model):
-    # Адрес
     address = models.CharField("Адрес", max_length=255)
-
-    # Контакты
     phone_one = models.CharField("Телефон 1", max_length=20)
-    phone_two = models.CharField("Телефон 2", max_length=20)
-
+    phone_two = models.CharField("Телефон 2", max_length=20, blank=True)
     email = models.EmailField("Почта", max_length=254, default='aironmaster@tut.by')
-
-    # Соцсети (ссылки)
-    facebook = models.URLField("Facebook", blank=True)
-    instagram = models.URLField("Instagram", blank=True)
-    vk = models.URLField("ВКонтакте", blank=True)
 
     def __str__(self):
         return "Информация для футера"
@@ -160,6 +151,26 @@ class FooterInfo(models.Model):
     class Meta:
         verbose_name = "🚧 Информация футера"
         verbose_name_plural = "🚧 Информация футера"
+
+
+class SocialNetwork(models.Model):
+    footer_info = models.ForeignKey(
+        FooterInfo,
+        on_delete=models.CASCADE,
+        related_name='social_networks',
+        verbose_name="Футер"
+    )
+    name = models.CharField("Название соцсети", max_length=50)
+    url = models.URLField("Ссылка", blank=True)
+    icon = models.ImageField("Иконка", upload_to='social_icons/', blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Социальная сеть"
+        verbose_name_plural = "Социальные сети"
+
+    def __str__(self):
+        return self.name
+
 
 
 class About(models.Model):
