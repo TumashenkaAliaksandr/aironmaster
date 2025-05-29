@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+    <div id="breadcrumps">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li>Контакты</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section id="contacts" class="mb-0">
+        <div class="content-wrapper">
+            <h2>🗣 ОБРАТНАЯ СВЯЗЬ</h2>
+            <p>Вы можете задать свой вопрос или оставить заявку на изготовление оборудования.</p>
+
+            <form id="contact-form" action="#" method="POST" novalidate>
+                <div class="form-row">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" required placeholder="Ваше имя"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+375 (__) ___-__-__"
+                           pattern="^\+?\d{7,15}$"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Почта</label>
+                    <input type="email" id="email" name="email" required placeholder="example@mail.com"/>
+                </div>
+
+                <div class="form-row">
+                    <label for="message">Описание</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Ваше сообщение"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="we-on-map" class="map-section">
+        <div class="container">
+            <h3 class="map-title">📌 Мы на карте</h3>
+            <div class="map-responsive">
+                <iframe
+                        frameborder="0"
+                        style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCy9r70T3NYf3PhvVflTo0_zdif2_IoIYs&q=place_id:ChIJhwABmUWXxEYRz77Xl2-sbR8"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

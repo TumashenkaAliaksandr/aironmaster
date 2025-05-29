@@ -71,4 +71,20 @@
         </section>
         <div class="gradient"></div>
     {% endfor %}
+
+    <!-- Кастомное модальное окно -->
+    <div id="customModal" class="custom-modal hidden">
+        <div class="custom-modal-overlay"></div>
+        <div class="custom-modal-content">
+            <button class="custom-close" aria-label="Закрыть">&times;</button>
+            <button class="custom-prev" aria-label="Предыдущее изображение">&#10094;</button>
+            <div class="custom-image-wrapper">
+                <img id="customModalImage" src="" alt=""/>
+                <div id="customModalDescription" class="custom-description"></div>
+            </div>
+            <button class="custom-next" aria-label="Следующее изображение">&#10095;</button>
+        </div>
+    </div>
+
+
 {% endblock %}

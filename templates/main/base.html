@@ -74,9 +74,9 @@
         <nav class="d-none d-md-block">
             <ul class="nav">
                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">О компании</a></li>
+                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">О компании</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-linkss dropbtn">Готовая Продукция</a>
+                    <a href="{% url 'products' %}" class="nav-linkss dropbtn">Готовая Продукция</a>
                     <ul class="dropdown-content">
                         <li><a href="#service1">Металлоконструкции</a></li>
                         <li><a href="#service2">Ступеньки и Лестницы</a></li>
@@ -84,24 +84,31 @@
                         <li><a href="#service4">Элементы декора</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-linkss dropbtn">Наши Услуги</a>
+                <li class="nav-item dropdown {% if request.resolver_match.url_name == 'service_detail' %}active{% endif %}">
+                    <span class="nav-linkss dropbtn">Наши Услуги</span>
                     <ul class="dropdown-content">
-                        <li><a href="#service1">Лазерная Резка</a></li>
-                        <li><a href="#service2">Гибка</a></li>
-                        <li><a href="#service3">Виброгалтовка</a></li>
-                        <li><a href="#service4">Полимерная покраска</a></li>
+                        {% for service in services %}
+                            <li>
+                                <a href="{% url 'service_detail' slug=service.slug %}"
+                                   class="{% if request.resolver_match.url_name == 'service_detail' and request.resolver_match.kwargs.slug == service.slug %}active{% endif %}">
+                                    {{ service.name }}
+                                </a>
+                            </li>
+                        {% empty %}
+                            <li>Сервисы отсутствуют</li>
+                        {% endfor %}
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#contacts-top">Контакты</a></li>
+
+                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
         <nav id="mobileMenu" class="mobile-menu d-md-none" aria-hidden="true">
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#screws">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="#screw-spiral">О компании</a></li>
+                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>
+                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">О компании</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#" id="toggle"  class="nav-linkss dropbtn toggle-checkbox">Готовая Продукция</a>
+                    <a href="{% url 'products' %}" id="toggle"  class="nav-linkss dropbtn toggle-checkbox">Готовая Продукция</a>
                     <ul class="dropdown-content">
                         <li><a href="#service1">Металлоконструкции</a></li>
                         <li><a href="#service2">Ступеньки и Лестницы</a></li>
@@ -112,13 +119,16 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-linkss dropbtn">Наши Услуги</a>
                     <ul class="dropdown-content">
-                        <li><a href="#service1">Лазерная Резка</a></li>
-                        <li><a href="#service2">Гибка</a></li>
-                        <li><a href="#service3">Виброгалтовка</a></li>
-                        <li><a href="#service4">Полимерная покраска</a></li>
+                        {% for service in services %}
+                            <li>
+                                <a href="{% url 'service_detail' slug=service.slug %}">{{ service.name }}</a>
+                            </li>
+                        {% empty %}
+                            <li>Сервисы отсутствуют</li>
+                        {% endfor %}
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#engineering">Контакты</a></li>
+                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
     </div>

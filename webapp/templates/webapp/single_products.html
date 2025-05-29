@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <nav aria-label="breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'items_list' %}">Список изделий</a></li>
+            <li aria-current="page">{{ item.name }}</li>
+        </ol>
+    </nav>
+    
+{% endblock %}
