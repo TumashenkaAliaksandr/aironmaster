@@ -3,12 +3,54 @@
 {% load static %}
 
 {% block content %}
+    <div id="breadcrumps">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li>Продукция</li>
+            </ol>
+        </nav>
+    </div>
+    <div id="category-burg">
+        <div class="category-burger" id="categoryBurger" aria-label="Меню категорий" role="button" tabindex="0"
+             aria-expanded="false" aria-controls="categoryMenu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <!-- Пример меню категорий -->
+        <nav id="categoryMenu" class="category-menu" hidden>
+            <ul>
+                <li><a href="#">Категория 1</a></li>
+                <li><a href="#">Категория 2</a></li>
+                <li><a href="#">Категория 3</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
     {% for item in items %}
         <section id="screw-spiral" class="item-section">
             <div class="content-wrapper">
                 <h2>{{ item.name }}</h2>
                 <p>{{ item.description }}</p>
                 <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
+                <div class="social-icons-wrapper">
+                    {% for social in footer_info.social_networks.all %}
+                        {% if social.url %}
+                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                               aria-label="{{ social.name }}" class="social-icon">
+                                {% if social.icon %}
+                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                {% else %}
+                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                    {{ social.name }}
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
 
             <div class="photo-gallery">

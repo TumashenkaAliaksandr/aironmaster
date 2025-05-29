@@ -56,6 +56,39 @@ header {
     padding-left: 55px!important;
 }
 
+.breadcrumb {
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
+
+.breadcrumb ol {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li::after {
+    content: "›";
+    margin-left: 0.5rem;
+    color: #666;
+}
+
+.breadcrumb li:last-child::after {
+    content: "";
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
 /* Контейнер внутри header */
 header .container {
     display: flex;
@@ -509,6 +542,89 @@ nav .nav-linkss.active {
   }
 }
 
+#breadcrumps {
+    padding: 2.5rem 1.5rem;
+    background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+    color: #2b409c;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    min-height: 50px;
+    height: 20px;
+}
+
+#category-burg {
+    /*padding: 2.5rem 1.5rem;*/
+    background: linear-gradient(66deg, #f4ffe3, #8e8ca2);
+    color: #2b409c;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    min-height: 50px;
+    height: 20px;
+}
+
+.category-burger {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+    margin-left: 20px;
+    z-index: 10;
+}
+
+.category-burger .bar {
+  height: 4px;
+  background-color: #4a0073;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+    margin-top: 4px;
+}
+
+/* Анимация в крестик при активном состоянии */
+.category-burger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.category-burger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.category-burger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Стили для меню категорий */
+.category-menu {
+    margin-top: 81px;
+    padding-left: 81px;
+    position: absolute;
+}
+
+.category-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-menu li {
+  margin-bottom: 8px;
+}
+
+.category-menu a {
+  text-decoration: none;
+  color: #333;
+}
+
+
 
 #screw-spiral {
     /*width: 100vw; !* секция на всю ширину окна *!*/
@@ -522,6 +638,11 @@ nav .nav-linkss.active {
     align-items: center; /* центрируем по горизонтали */
     justify-content: center; /* центрируем по вертикали, если нужно */
     min-height: 200px; /* можно задать минимальную высоту */
+}
+
+.bg-category {
+    background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+
 }
 
 .content-wrapper a[href^="tel:"] {
