@@ -29,7 +29,7 @@
     {% for item in items %}
         <section id="screw-spiral" class="item-section">
             <div class="content-wrapper">
-                <h2>{{ item.name }}</h2>
+                <h2>{{ item.name|safe }}</h2>
                 <p>{{ item.description }}</p>
                 <p>
                     {% if item.phone1 %}

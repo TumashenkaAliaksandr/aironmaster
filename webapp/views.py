@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from webapp.models import ItemObject, Banner, ServicesContact, About, OurService
+from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage
 
 
 def index(request):
@@ -56,7 +56,8 @@ def products(request):
     return render(request, 'webapp/products.html', context=context)
 
 
-def products_by_category(request, category):
+def products_by_done(request, category):
+    banner = BannerPage.objects.filter(category=category).first()
     field_name = CATEGORY_MAP.get(category)
     if not field_name:
         # Если категория не найдена, можно вернуть 404 или все изделия
@@ -77,6 +78,7 @@ def products_by_category(request, category):
     context = {
         'items': items,
         'category_name': category_verbose,
+        'banner': banner,
     }
     return render(request, 'webapp/single_products.html', context)
 

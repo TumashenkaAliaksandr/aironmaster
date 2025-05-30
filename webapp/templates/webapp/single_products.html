@@ -12,21 +12,33 @@
             </ol>
         </nav>
     </div>
-    <section id="screw-spiral" class="item-section">
-        <h2>Изделия из Металла</h2>
-        <p>Качественные, готовые изделия из металла для различных задач и проектов</p><br/>
+    <section id="screw-spiral" class="item-section"
+             style="background: url('{{ banner.image.url }}') no-repeat center center; background-size: cover; position: relative;">
+        <div style="
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(128, 130, 143, 0.82);
+        pointer-events: none;
+        color: #00b7ff;
+        z-index: 1;
+    "></div>
+
+        <h2 style="position: relative; z-index: 2;">{{ banner.name }}</h2>
+        <p style="position: relative; z-index: 2;">{{ banner.description }}</p><br/>
     </section>
+
+
     <div class="gradient"></div>
     <section id="screw-spiral" class="item-section">
         {% if items %}
             <div class="container">
-                {% for item_row in items|batch:2 %}
-                    <div class="row mb-4">
+                {% for item_row in items|batch:3 %}
+                    <div class="row mb-0">
                         {% for item in item_row %}
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <section id="item-{{ item.id }}" class="item-section">
                                     <div class="content-wrapper">
-                                        <h2>{{ item.name }}</h2>
+                                        <h3 class="fixed-lines">{{ item.name|safe }}</h3>
                                         <p>{{ item.description }}</p>
                                         <p>
                                             {% if item.phone1 %}
@@ -36,7 +48,7 @@
                                                 <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>
                                             {% endif %}
                                         </p>
-                                        <div class="social-icons-wrapper">
+                                        <div class="social-icons-wrapper-two">
                                             {% for social in footer_info.social_networks.all %}
                                                 {% if social.url %}
                                                     <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
@@ -50,26 +62,31 @@
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
-                                    </div>
+                                        <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
+                                            <div class="row g-3">
+                                                {% for photo in item.photos.all|slice:"0:2" %}
+                                                    <div class="col-6">
+                                                        <div class="photo-item-product product">
+                                                            {% if forloop.last %}
+                                                                <!-- Вместо второго фото показываем кнопку -->
+                                                                <div style="display: flex; justify-content: center; margin-top: 70px; position: relative;">
+                                                                   <a href="{% url 'about' %}" class="btn">Подробнее</a>
 
-                                    <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
-                                        <div class="row g-3">
-                                            {% for photo in item.photos.all|slice:"0:2" %}
-                                                <div class="col-6">
-                                                    <div class="photo-item">
-                                                        <img
-                                                                src="{{ photo.photo.url }}"
-                                                                alt="{{ photo.description }}"
-                                                                class="img-fluid rounded gallery-image"
-                                                                style="object-fit: cover; width: 100%; height: auto;"
-                                                                data-src="{{ photo.photo.url }}"
-                                                        >
-                                                        {% if photo.description %}
-                                                            <div class="photo-description">{{ photo.description }}</div>
-                                                        {% endif %}
+                                                                </div>
+                                                            {% else %}
+                                                                <div style="display: flex; justify-content: center; margin-top: 20px; position: relative;">
+                                                                    <img
+                                                                            src="{{ photo.photo.url }}"
+                                                                            alt="{{ photo.description }}"
+                                                                            class="img-fluid rounded gallery-image"
+                                                                            style="object-fit: cover; width: 180px; height: 100px;"
+                                                                            data-src="{{ photo.photo.url }}">
+                                                                </div>
+                                                            {% endif %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            {% endfor %}
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     </div>
                                 </section>

@@ -53,6 +53,15 @@
         padding: 1rem;
     }
 
+    .social-icons-wrapper-two {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        left: 64%!important;
+        position: absolute;
+        top: 61%!important;
+    }
+
     .photo-banner h2 {
         font-size: 1.5rem;
     }
@@ -201,6 +210,10 @@
     .photo-item img {
         /*width: calc((100% - 20px) / 2); !* 2 фото в строке *!*/
         /*height: 100px!important;*/
+    }
+
+    section {
+        padding: 2rem 0!important;
     }
 
     #screw-spiral h2 {

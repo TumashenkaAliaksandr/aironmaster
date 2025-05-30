@@ -203,3 +203,25 @@ class FinishedProduct(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BannerPage(models.Model):
+    CATEGORY_CHOICES = [
+        ('metal_structures', 'Металлоконструкции'),
+        ('steps_and_stairs', 'Ступеньки и Лестницы'),
+        ('grills', 'Мангалы'),
+        ('decor_elements', 'Элементы декора'),
+    ]
+
+    name = models.CharField("Название", max_length=255)
+    description = models.TextField("Описание", blank=True)
+    image = models.ImageField("Фото", upload_to='banners/')
+    category = models.CharField("Категория", max_length=50, choices=CATEGORY_CHOICES, unique=True)
+
+    class Meta:
+        verbose_name = "⛵ Баннер страницы"
+        verbose_name_plural = "⛵ Баннеры страниц"
+        ordering = ['name']
+
+    def __str__(self):
+        return f"{self.get_category_display()} - {self.name}"

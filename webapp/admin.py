@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    FinishedProduct, SocialNetwork
+    FinishedProduct, SocialNetwork, BannerPage
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -135,3 +135,17 @@ class FinishedProductAdmin(admin.ModelAdmin):
             )
         return "Нет фото"
     photo_preview.short_description = "Превью фото"
+
+
+@admin.register(BannerPage)
+class BannerPageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'image_preview')
+    list_filter = ('category',)
+    search_fields = ('name', 'description')
+    readonly_fields = ('image_preview',)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-height: 100px;"/>', obj.image.url)
+        return "-"
+    image_preview.short_description = "Превью изображения"
