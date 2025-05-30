@@ -773,6 +773,12 @@ nav .nav-linkss.active {
   width: 100%;
 }
 
+.gradient-contacts {
+  height: 55px; /* adjust height as needed */
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  width: 100%;
+}
+
 
 #screw-spiral .content-wrapper {
   /* ваши текущие стили */
@@ -883,7 +889,7 @@ nav .nav-linkss.active {
     margin: 0.3rem 0;
     font-size: 1.1rem;
     line-height: 1.4;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
     text-transform: uppercase;
     color: white;
 }
@@ -1399,6 +1405,45 @@ nav .nav-linkss.active {
   z-index: 1;
 }
 
+.we-map {
+  position: relative;
+  /*width: 100vw;      !* на всю ширину экрана *!*/
+  height: 100vh;     /* на всю высоту экрана */
+  background-image: url('../img');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.we-map {
+  position: relative;
+  overflow: hidden;
+}
+
+.we-map::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+    linear-gradient(90deg, #4a0073, #0099d5, #543071), linear-gradient(to bottom, rgba(245, 240, 230, 0) 30%, #eaece6 100%);
+
+  background-blend-mode: screen; /* мягкое смешивание */
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+
 
 /*!* Градиент поверх фото *!*/
 /*#we-on-map::before {*/
@@ -1790,6 +1835,30 @@ h2 {
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
   text-transform: uppercase;
   z-index: 10;
+}
+
+
+.map-phones {
+    margin-top: 15px;
+    color: #333;
+    font-size: 1rem;
+    z-index: 5;
+    top: 70%;
+    position: absolute;
+}
+
+.map-phones p {
+    margin: 5px 0;
+    z-index: 10;
+}
+
+.map-phones a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.map-phones a:hover {
+    text-decoration: underline;
 }
 
 
@@ -2361,4 +2430,64 @@ html {
     background: linear-gradient(135deg, #4a7fff, #3a2a72);
     color: #d0d9ff;
     transform: translateY(1px);
+}
+
+
+.contacts-wrapper {
+  display: flex;
+  gap: 5rem; /* расстояние между картой и формой */
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+    width: 1200px;
+}
+
+.map-responsive-two {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+  height: 53%;
+  overflow: visible;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(4, 174, 199, 0.15);
+}
+
+/* Карта слева */
+.map-container {
+  flex: 1 1 45%;
+  max-width: 600px;
+}
+
+.map-responsive iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Форма справа */
+.contact-form-container {
+  flex: 1 1 45%;
+  max-width: 600px;
+    z-index: 3;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .contacts-wrapper {
+    flex-direction: column;
+  }
+
+  .map-container,
+  .contact-form-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .map-responsive iframe {
+    height: 250px;
+  }
 }
