@@ -57,8 +57,10 @@ header {
 }
 
 .breadcrumb {
-    padding: 10px 0;
+    padding: 15px 0 5px;
     font-size: 0.9rem;
+    margin-left: 13px;
+    text-align: center;
 }
 
 .breadcrumb ol {
@@ -730,6 +732,20 @@ nav .nav-linkss.active {
     min-height: 200px; /* можно задать минимальную высоту */
 }
 
+#screw {
+    /*width: 100vw; !* секция на всю ширину окна *!*/
+    padding: 2.5rem 1.5rem;
+    background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+    color: #e0d9f1;
+    box-sizing: border-box;
+    /*text-align: center; !* центрируем текст *!*/
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* центрируем по горизонтали */
+    justify-content: center; /* центрируем по вертикали, если нужно */
+    min-height: 200px; /* можно задать минимальную высоту */
+}
+
 .bg-category {
     background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
 
@@ -814,6 +830,90 @@ nav .nav-linkss.active {
     text-transform: uppercase;
     color: white;
 }
+
+#screw .content-wrapper {
+  /* ваши текущие стили */
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(144deg, #dce1d9, #9a98a9, #0198d4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+#screw .content-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Внутренний контейнер для ограничения ширины */
+#screw .content-wrapper {
+    max-width: 900px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
+    padding: 1rem 1.5rem;
+    margin-bottom: 30px;
+}
+
+#screw h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: white;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+}
+
+#screw h3 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: white;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+}
+
+#screw p {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    text-transform: uppercase;
+    color: white;
+}
+
+#screw a {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+}
+
+#screw p svg rect.background {
+    fill: white;
+}
+.phone-icon {
+    filter: brightness(0) invert(1) drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+}
+
+
+
+#screw a[href^="tel:"]:hover, .content-wrapper a[href^="tel:"]:focus {
+  color: #00b7ff;
+  transform: scale(1.05);
+  text-decoration: none;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
 
 #reducers-alt {
   width: 100vw; /* секция на всю ширину окна */
@@ -2202,6 +2302,7 @@ html {
   left: 65%;
   position: absolute;
   top: 60%;
+    z-index: 3;
 }
 
 .gray-overlay {

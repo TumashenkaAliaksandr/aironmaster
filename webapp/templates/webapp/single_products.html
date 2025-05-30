@@ -70,7 +70,7 @@
                                                             {% if forloop.last %}
                                                                 <!-- Вместо второго фото показываем кнопку -->
                                                                 <div style="display: flex; justify-content: center; margin-top: 70px; position: relative;">
-                                                                   <a href="{% url 'about' %}" class="btn">Подробнее</a>
+                                                                   <a href="{% url 'item_detail' item.slug %}" class="btn">Подробнее</a>
 
                                                                 </div>
                                                             {% else %}

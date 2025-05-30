@@ -226,6 +226,65 @@
         text-transform: uppercase;
     }
 
+    #screw h2 {
+        margin-bottom: 1rem;
+        font-weight: 700;
+        font-size: 1.3rem;
+        letter-spacing: 0.05em;
+        color: white;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-transform: uppercase;
+    }
+
+    .photo-margin-l {
+        margin-left: 13px;
+    }
+
+    #screw {
+        padding: 2.5rem 1.5rem;
+        background: linear-gradient(66deg, #8e8ca2, #f0f7e6);
+        color: #e0d9f1;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+    }
+
+    #screw h3 {
+        margin-bottom: 1rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 0.05em;
+        color: white;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-transform: uppercase;
+        margin-left: 13px;
+    }
+
+    #screw p {
+        margin: 0.3rem 0;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-transform: uppercase;
+        color: white;
+        margin-left: 13px;
+    }
+
+    .breadcrumb {
+        padding: 15px 0 5px;
+        font-size: 0.9rem;
+        margin-left: 13px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .main-photo-wrapper {
+        border-radius: 0!important;
+    }
+
     #engineering h2 {
         font-weight: 700;
         font-size: 1.3rem;

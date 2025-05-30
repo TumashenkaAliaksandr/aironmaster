@@ -104,3 +104,11 @@ def about(request):
 
 def contacts(request):
     return render(request, 'webapp/contacts.html')
+
+
+def item_detail(request, slug):
+    item = get_object_or_404(ItemObject, slug=slug)
+    context = {
+        'item': item,
+    }
+    return render(request, 'webapp/item_detail.html', context)

@@ -24,6 +24,7 @@ class ItemObject(models.Model):
     name = models.CharField("Название", max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     description = models.TextField("Описание")
+    description_more = models.TextField("Описание", null=True, blank=True)
     phone1 = models.CharField("Телефон 1", max_length=25)
     phone2 = models.CharField("Телефон 2", max_length=25, blank=True, null=True)
 

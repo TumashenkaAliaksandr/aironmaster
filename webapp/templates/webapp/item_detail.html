@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="breadcrumb">
+    <ol>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li aria-current="page">{{ item.name }}</li>
+    </ol>
+</nav>
+<section id="screw" class="item-section">
+<div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+    <!-- Левая часть: главное фото и миниатюры -->
+    <div style="flex: 1 1 400px; max-width: 450px;">
+        <!-- Главное фото -->
+        <div class="main-photo-wrapper" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+            <img id="main-photo" src="{% if item.photos.first %}{{ item.photos.first.photo.url }}{% else %}{% static 'webapp/img/no_images.png' %}{% endif %}"
+                 alt="{{ item.name }}" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        </div>
+
+        <!-- Миниатюры -->
+        {% if item.photos.count > 1 %}
+            <div class="photo-margin-l" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                {% for photo in item.photos.all %}
+                    <img src="{{ photo.photo.url }}" alt="{{ photo.description }}"
+                         class="thumbnail-photo"
+                         style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent;"
+                         data-full="{{ photo.photo.url }}">
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Правая часть: текстовая информация -->
+    <div style="flex: 1 1 400px; max-width: 600px;">
+        <h3>{{ item.name }}</h3>
+
+        <p>{{ item.description }}</p>
+        <p>{{ item.description_more }}</p>
+
+        <p>
+        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
+            {% if item.phone1 %}
+                <a href="tel:{{ item.phone1|cut:' ' }}">{{ item.phone1 }}</a><br>
+            {% endif %}
+        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
+            {% if item.phone2 %}
+                <a href="tel:{{ item.phone2|cut:' ' }}">{{ item.phone2 }}</a>
+            {% endif %}
+        </p>
+    </div>
+</div>
+</section>
+
+{% endblock %}

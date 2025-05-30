@@ -17,7 +17,7 @@ class ItemPhotoInline(admin.TabularInline):
 
 class ItemObjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone1', 'phone2')
-    search_fields = ('name', 'description', 'phone1', 'phone2')
+    search_fields = ('name', 'description', 'description_more', 'phone1', 'phone2')
     inlines = [ItemPhotoInline]
 
 admin.site.register(ItemObject, ItemObjectAdmin)
