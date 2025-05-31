@@ -855,7 +855,7 @@
   }
 
     #contacts-with {
-        width: 311px;
+        width: 311px!important;
         padding: 3rem 1.5rem;
         background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
         box-sizing: border-box;
@@ -893,3 +893,17 @@
   }
 }
 
+@media (max-width: 375px) {
+  #contacts-with {
+      width: 258px!important;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+    box-sizing: border-box;
+    color: #f0f9f9;
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    margin-top: 13px;
+    justify-content: center;
+  }
+}
