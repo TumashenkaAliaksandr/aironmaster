@@ -110,10 +110,10 @@
                 <li class="nav-item dropdown">
                     <a href="{% url 'products' %}" id="toggle"  class="nav-linkss dropbtn toggle-checkbox">Готовая Продукция</a>
                     <ul class="dropdown-content">
-                        <li><a href="#service1">Металлоконструкции</a></li>
-                        <li><a href="#service2">Ступеньки и Лестницы</a></li>
-                        <li><a href="#service3">Мангалы</a></li>
-                        <li><a href="#service4">Элементы декора</a></li>
+                        <li><a href="{% url 'products_by_category' category='metal_structures' %}">Металлоконструкции</a></li>
+                        <li><a href="{% url 'products_by_category' category='steps_and_stairs' %}">Ступеньки и Лестницы</a></li>
+                        <li><a href="{% url 'products_by_category' category='grills' %}">Мангалы</a></li>
+                        <li><a href="{% url 'products_by_category' category='decor_elements' %}">Элементы декора</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

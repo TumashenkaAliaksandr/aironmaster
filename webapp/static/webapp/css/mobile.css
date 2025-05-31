@@ -68,7 +68,8 @@
 
     .photo-item {
         position: relative;
-        width: auto;
+        width: 90% !important;
+        left: 8px;
         cursor: pointer;
         overflow: hidden;
         transition: transform 0.3s ease;
@@ -182,6 +183,12 @@
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
 
+    .gradient-contacts {
+        height: 60px!important;
+        background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+        width: 100%;
+    }
+
     #gallery {
         padding: 1rem;
     }
@@ -201,10 +208,57 @@
     }
 }
 
+
+@media (max-width: 320px) {
+    .map-responsive {
+        position: relative;
+        width: 100%;
+        padding-bottom: 75%;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 32px rgba(4, 174, 199, 0.15);
+        padding-left: 261px!important;
+    }
+}
+
 /* Очень маленькие экраны */
 @media (max-width: 480px) {
     #contacts .content-wrapper {
         padding: 1.5rem 1.5rem;
+    }
+
+    #contacts .content-wrapper {
+        max-width: 700px;
+        width: 100%;
+        border-radius: 12px;
+        padding: 2rem 2.5rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    #screw-spiral {
+        padding: 2.5rem 1.5rem;
+        background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+        color: #e0d9f1;
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+         min-height: 0;
+    }
+
+    .contacts-wrapper {
+        display: flex;
+        gap: 0;
+        flex-wrap: wrap;
+        /* align-items: flex-start; */
+        max-width: 393px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+        width: 393px;
     }
 
     .photo-item img {
@@ -273,12 +327,73 @@
         margin-left: 13px;
     }
 
+    .map-phones {
+        max-width: 100%;
+    }
+
+    /* Заголовки остаются сверху, контакты под ними вертикально */
+    .phones-list,
+    .email-row {
+        display: block; /* убрать flex */
+        gap: 0;
+        margin-bottom: 1rem;
+    }
+
+    /* Каждый телефон и почта — отдельная строка */
+    .phones-list p,
+    .email-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0.3rem 0;
+    }
+
+    /* Уменьшаем отступы между телефонами */
+    .phones-list p + p {
+        margin-top: 0.2rem;
+    }
+
+    .photo-item {
+        position: relative;
+        width: 90% !important;
+        left: 8px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+        height: 138px !important;
+    }
+
+    .gradient-contacts {
+        height: 60px;
+        background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+        width: 100%;
+    }
+
+    .company-text {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        color: #000;
+        margin-left: 13px;
+    }
+      .company-name {
+        font-size: 1.5rem;
+        margin-top: 15px;
+        margin-left: 13px;
+    }
+
     .breadcrumb {
         padding: 15px 0 5px;
         font-size: 0.9rem;
-        margin-left: 13px;
+        /*margin-left: 13px;*/
         text-align: center;
         justify-content: center;
+    }
+
+    .breadcrumb li::after {
+        content: "›";
+        margin-left: 0.25rem;
+        color: #666;
     }
 
     .main-photo-wrapper {
@@ -344,6 +459,59 @@
         overflow: hidden;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
+    #screw-spiral .content-wrapper {
+    max-width: 700px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
+    padding: 1rem 1.5rem;
+    margin-bottom: 30px;
+    }
+
+    .map-phones a[href^="tel:"] {
+        color: whitesmoke;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        font-size: 16px;
+    }
+
+    .map-phones {
+        margin-top: 15px;
+        color: whitesmoke;
+        font-size: 1rem;
+        z-index: 5;
+        position: relative;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-align: justify;
+    }
+
+    .company-text {
+        font-size: 1.3rem;
+        line-height: 1.5;
+        color: #000;
+        margin-left: 13px;
+    }
+      .company-name {
+        font-size: 1.5rem;
+        margin-top: 15px;
+        margin-left: 13px;
+    }
+      #breadcrumps {
+        padding: 0 0;
+        background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+        color: #2b409c;
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
+        min-height: 50px;
+        height: 20px;
+    }
+
 }
 
 /* Мобильное меню и кнопка бургер — применяем для всех экранов <= 767px */
@@ -375,7 +543,7 @@
     }
 
     .mobile-menu li + li {
-        margin-top: 0rem;
+        margin-top: 0;
     }
 
     .mobile-menu a.nav-link {
@@ -460,12 +628,32 @@
     .map-responsive {
         position: relative;
         width: 100%;
-        padding-bottom: 69%;
+        padding-bottom: 75%;
         overflow: hidden;
         border-radius: 16px;
         box-shadow: 0 4px 32px rgba(4, 174, 199, 0.15);
+        padding-left: 355px;
     }
 
+    .map-phones a[href^="tel:"] {
+        color: whitesmoke;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        font-size: 16px;
+    }
+
+    .map-phones {
+        margin-top: 15px;
+        color: whitesmoke;
+        font-size: 1rem;
+        z-index: 5;
+        position: relative;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-align: justify;
+        top: 0;
+    }
     .footer-info {
         display: contents;
         justify-content: space-between;
@@ -476,6 +664,11 @@
         color: #f0f9f9;
         gap: 20px;
         padding-top: 15px;
+    }
+    .breadcrumb li::after {
+        content: "›";
+        margin-left: 0.25rem;
+        color: #666;
     }
 
 
@@ -509,6 +702,20 @@
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
         transition: filter 0.3s;
         right: 70px;
+    }
+
+    #breadcrumps {
+        padding: 0 0;
+        background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+        color: #2b409c;
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
+        min-height: 50px;
+        height: 20px;
     }
 
     .burger-line {

@@ -11,7 +11,6 @@
             </ol>
         </nav>
     </div>
-
     <section id="screw-spiral" class="item-section"
          style="background: url('{% static "webapp/img/contacts_bg.jpg" %}') no-repeat center center; background-size: cover; position: relative;">
 
@@ -29,7 +28,8 @@
 
     <div class="gradient-contacts"></div>
 
-    <section id="contacts" class="mb-5 we-map">
+    <section id="we-on-map" class="map-section">
+    <div class="container">
         <div class="contacts-wrapper">
             <!-- Карта слева -->
             <div class="map-container">
@@ -45,15 +45,35 @@
                     ></iframe>
                 </div>
 
-                <!-- Новый блок с телефонами -->
                 <div class="map-phones">
-                    <p><img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/> <a href="tel:+375291234567">+375 (29) 123-45-67</a></p>
-                    <p><img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/> <a href="tel:+375331234567">+375 (33) 123-45-67</a></p>
+                    <p class="section-title">Наши телефоны:</p>
+                    <div class="phones-list">
+                        <p>
+                            <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
+                                 height="16" class="phone-icon"/>
+                            <a href="tel:+375291234567">+375 (29) 123-45-67</a>
+                        </p>
+                        <p>
+                            <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
+                                 height="16" class="phone-icon"/>
+                            <a href="tel:+375331234567">+375 (33) 123-45-67</a>
+                        </p>
+                    </div>
+
+                    <p class="section-title">Почта:</p>
+                    <div class="email-row">
+                        <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16"
+                             class="email-icon"/>
+                        <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">
+                            {{ had_contact.email }}
+                        </a>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Обратная связь справа -->
-            <div class="contact-form-container">
+            <div id="contacts-with" class="contact-form-container">
                 <div class="content-wrapper">
                     <h2>🗣 ОБРАТНАЯ СВЯЗЬ</h2>
                     <p>Вы можете задать свой вопрос или оставить заявку на изготовление оборудования.</p>
@@ -83,10 +103,10 @@
                         <button type="submit" class="btn-submit">Отправить</button>
                     </form>
                 </div>
+                </div>
             </div>
         </div>
     </section>
-
 
 
 {% endblock %}
