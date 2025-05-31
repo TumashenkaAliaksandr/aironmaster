@@ -184,7 +184,7 @@
     }
 
     .gradient-contacts {
-        height: 60px!important;
+        height: 15px!important;
         background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
         width: 100%;
     }
@@ -218,6 +218,33 @@
         border-radius: 16px;
         box-shadow: 0 4px 32px rgba(4, 174, 199, 0.15);
         padding-left: 261px!important;
+    }
+
+    .breadcrumb ol {
+        list-style: none;
+        display: block ruby!important;
+        gap: 0.5rem;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .breadcrumb ol {
+        list-style: none;
+        display: ruby!important;
+        gap: 0.5rem;
+        padding: 0;
+        margin: 0;
+    }
+    .breadcrumb {
+        margin-left: 0;
+    }
+
+    .gradient {
+        height: 27px!important;
+        background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
+        width: 100%;
     }
 }
 
@@ -267,7 +294,16 @@
     }
 
     section {
-        padding: 2rem 0!important;
+        padding: 1rem 0!important;
+    }
+    #contacts {
+        margin-top: -1px;
+    }
+
+    .gradient {
+        height: 17px;
+        background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
+        width: 100%;
     }
 
     #screw-spiral h2 {
@@ -278,6 +314,65 @@
         color: white;
         filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
         text-transform: uppercase;
+    }
+
+    #screw-spiral h3 {
+        margin-bottom: 1rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        letter-spacing: 0.05em;
+        color: white;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-transform: uppercase;
+    }
+
+    .photo-item-product {
+        position: relative;
+        width: 100%; /* лучше контролировать ширину через родителя */
+        height: 140px !important; /* фиксированная высота */
+        cursor: pointer;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* вертикальное центрирование содержимого */
+        align-items: center; /* горизонтальное центрирование */
+        box-sizing: border-box;
+        padding: 0;
+        left: 5px;
+    }
+
+    .product .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(270deg, #0297d3, #480576, #911bff);
+        background-size: auto;
+        background-size: auto;
+        background-size: 600% 600%;
+        color: white;
+        padding: 0.75rem 0.9rem;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        filter: drop-shadow(0 0 5px rgb(36, 78, 165));
+        transition: background-position 3s ease, filter 0.3s ease;
+        animation: pulseGlow 3s ease-in-out infinite;
+        cursor: pointer;
+        user-select: none;
+        width: 115px;
+    }
+
+    .social-icons-wrapper-two {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        left: 64% !important;
+        position: absolute;
+        top: 61% !important;
     }
 
     #screw h2 {
@@ -362,6 +457,7 @@
         transition: transform 0.3s ease;
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
         height: 138px !important;
+        margin-top: 10px;
     }
 
     .gradient-contacts {
@@ -384,8 +480,8 @@
 
     .breadcrumb {
         padding: 15px 0 5px;
-        font-size: 0.9rem;
-        /*margin-left: 13px;*/
+        font-size: 0.79rem;
+        margin-left: 5px;
         text-align: center;
         justify-content: center;
     }
@@ -465,7 +561,7 @@
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
     padding: 1rem 1.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     }
 
     .map-phones a[href^="tel:"] {
@@ -475,6 +571,15 @@
         text-decoration: none;
         filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
         font-size: 16px;
+    }
+
+    #screw-spiral p {
+        margin: 0.3rem 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-transform: uppercase;
+        color: white;
     }
 
     .map-phones {
@@ -739,3 +844,52 @@
     }
 
 }
+@media (max-width: 390px) {
+  .social-icons-wrapper-two {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    left: 64% !important;
+    position: absolute;
+    top: 61% !important;
+  }
+
+    #contacts-with {
+        width: 311px;
+        padding: 3rem 1.5rem;
+        background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+        box-sizing: border-box;
+        color: #f0f9f9;
+        text-align: center;
+        display: flex;
+        border-radius: 10px;
+        margin-top: 13px;
+        justify-content: center;
+    }
+
+    .map-responsive {
+        position: relative;
+        width: 100%;
+        padding-bottom: 75%;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 32px rgba(4, 174, 199, 0.15);
+        padding-left: 314px;
+    }
+    .gradient {
+        height: 30px!important;
+        background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
+        width: 100%;
+    }
+}
+@media (max-width: 390px) {
+  .social-icons-wrapper-two {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    left: 64% !important;
+    position: absolute;
+    top: 61% !important;
+  }
+}
+

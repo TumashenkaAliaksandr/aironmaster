@@ -65,7 +65,7 @@ header {
 
 .breadcrumb ol {
     list-style: none;
-    display: flex;
+    display: ruby;
     gap: 0.5rem;
     padding: 0;
     margin: 0;
@@ -1060,7 +1060,7 @@ nav .nav-linkss.active {
 
 
 #engineering {
-  width: 100vw;
+  /*width: 100vw;*/
   padding: 3rem 1.5rem;
   background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
   box-sizing: border-box;
@@ -1261,7 +1261,7 @@ nav .nav-linkss.active {
     text-align: center;
     display: flex;
     border-radius: 10px;
-    margin-top: 13px;
+    margin-top: 5px;
     justify-content: center;
 }
 
