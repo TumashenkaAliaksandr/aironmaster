@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /search/
+Disallow: /*?*  # запретить индексацию URL с параметрами (фильтры, сортировка и т.п.)
+
+Allow: /
+
+Sitemap: https://www.yoursite.com/sitemap.xml

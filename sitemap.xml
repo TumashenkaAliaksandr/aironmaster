@@ -1,0 +1,16 @@
+{#<?xml version="1.0" encoding="UTF-8"?>#}
+{#<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">#}
+{#  <url>#}
+{#    <loc>https://www.yoursite.com/</loc>#}
+{#    <lastmod>2025-06-01</lastmod>#}
+{#    <changefreq>weekly</changefreq>#}
+{#    <priority>1.0</priority>#}
+{#  </url>#}
+{#  <url>#}
+{#    <loc>https://www.yoursite.com/about/</loc>#}
+{#    <lastmod>2025-05-20</lastmod>#}
+{#    <changefreq>monthly</changefreq>#}
+{#    <priority>0.8</priority>#}
+{#  </url>#}
+{#  <!-- Добавьте другие URL вашего сайта -->#}
+{#</urlset>#}
