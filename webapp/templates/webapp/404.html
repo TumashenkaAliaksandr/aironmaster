@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="breadcrumb">
+    <ol>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li aria-current="page">404 Страница не найдена</li>
+    </ol>
+</nav>
+
+<div class="not-found-container" style="text-align: center; padding: 4rem 1rem;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem;">404</h1>
+    <h2 style="margin-bottom: 1rem;">Страница не найдена</h2>
+    <p style="margin-bottom: 2rem;">Извините, страница, которую вы ищете, не существует или была удалена.</p>
+    <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную</a>
+</div>
+{% endblock %}
