@@ -68,6 +68,23 @@
                             {{ had_contact.email }}
                         </a>
                     </div>
+                    <div class="icons-row">
+                     <div class="section-title">Соцсети:
+                    {% for social in footer_info.social_networks.all %}
+                            {% if social.url %}
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                                   aria-label="{{ social.name }}">
+                                    {% if social.icon %}
+                                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                    {% else %}
+                                        <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                        {{ social.name }}
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
                 </div>
 
             </div>

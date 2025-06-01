@@ -1071,6 +1071,12 @@ nav .nav-linkss.active {
     margin-right: 5px;
 }
 
+.social-icon-contact {
+    width: 16px;
+    height: 16px;
+    filter: none;
+}
+
 
 
 #engineering {
@@ -1956,10 +1962,43 @@ h2 {
 }
 
 .map-phones img {
-    filter: brightness(0) invert(1) drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    /*filter: brightness(0) invert(1) drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));*/
     width: 16px;
     height: 16px;
 }
+
+.map-phones a {
+  text-decoration: none;
+}
+
+.social-icons-cont img {
+     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    width: 25px;
+    height: 25px;
+}
+
+.email-row img {
+    color: whitesmoke!important;
+    filter: brightness(0) invert(1) drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.icons-row img {
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    width: 25px;
+    height: 25px;
+    margin: 0 5px; /* горизонтальные отступы слева и справа */
+    box-sizing: content-box; /* чтобы margin не влиял на размер */
+    vertical-align: middle; /* выравнивание по центру по вертикали */
+}
+
+.icons-row img:hover {
+    transform: scale(1.1);
+    /* box-shadow: 0 4px 12px rgba(59, 89, 152, 0.7); */
+    /* background-color: #2d4373; */
+    /* border-color: #2d4373; */
+    color: whitesmoke;
+}
+
 
 
 .map-responsive {
