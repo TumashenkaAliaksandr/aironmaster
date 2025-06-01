@@ -124,7 +124,7 @@ def products_by_done(request, category):
     return render(request, 'webapp/single_products.html', context)
 
 
-def item_detail(request, slug):
+def item_details(request, slug):
     item = get_object_or_404(ItemObject, slug=slug)
     return render(request, 'webapp/single_products.html', {'item': item})
 
@@ -144,7 +144,41 @@ def about(request):
     return render(request, 'webapp/about.html', context=context)
 
 def contacts(request):
-    return render(request, 'webapp/contacts.html')
+    error_message = None
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            subject = 'Новое сообщение с контактов сайта'
+            context_email = {
+                'name': cd['name'],
+                'phone': cd['phone'],
+                'email': cd['email'],
+                'message': cd['message'],
+            }
+            html_content = render_to_string('webapp/email_template.html', context_email)
+            text_content = f"""
+            Имя: {cd['name']}
+            Телефон: {cd['phone']}
+            Email: {cd['email']}
+            Сообщение:
+            {cd['message']}
+            """
+            try:
+                email = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+            except (smtplib.SMTPException, BadHeaderError):
+                error_message = "Ошибка при отправке письма. Пожалуйста, попробуйте позже."
+            else:
+                return render(request, 'webapp/contact_success.html')
+    else:
+        form = ContactForm()
+
+    return render(request, 'webapp/contacts.html', {
+        'form': form,
+        'error_message': error_message,
+    })
 
 
 def item_detail(request, slug):
