@@ -1,18 +1,55 @@
-from django.shortcuts import render, get_object_or_404
+import smtplib
 
+from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
+from django.shortcuts import render, get_object_or_404
+from django.template.loader import render_to_string
+
+from aironmaster import settings
+from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage
 
 
 def index(request):
+    error_message = None
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            subject = 'Новое сообщение с сайта'
+            context_email = {
+                'name': cd['name'],
+                'phone': cd['phone'],
+                'email': cd['email'],
+                'message': cd['message'],
+            }
+            # Рендерим HTML письмо из шаблона
+            html_content = render_to_string('webapp/email_template.html', context_email)
+            # Текстовая версия письма (на случай, если клиент не поддерживает HTML)
+            text_content = f"""
+            Имя: {cd['name']}
+            Телефон: {cd['phone']}
+            Email: {cd['email']}
+            Сообщение:
+            {cd['message']}
+            """
+            try:
+                email = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+            except (smtplib.SMTPException, BadHeaderError):
+                error_message = "Ошибка при отправке письма. Пожалуйста, попробуйте позже."
+            else:
+                return render(request, 'webapp/contact_success.html')
+    else:
+        form = ContactForm()
+
     item = get_object_or_404(ItemObject, pk=1)
     items = ItemObject.objects.prefetch_related('photos').distinct()
     services_info = ServicesContact.objects.all()
 
-    # Получаем баннер с id=1
     banner = get_object_or_404(Banner, pk=1)
     about = About.objects.first()
 
-    # Формируем список фото с описаниями из баннера
     photose = []
     for i in range(1, 5):
         photo = getattr(banner, f'photo{i}')
@@ -20,19 +57,21 @@ def index(request):
         if photo:
             photose.append({'photo': photo, 'description': description})
 
-    # Получаем фотографии для item (ItemObject)
     photos = item.photos.all()
 
     context = {
+        'form': form,
+        'error_message': error_message,
         'item': item,
         'items': items,
         'photos': photos,
-        'banner': [banner],   # чтобы можно было итерировать в шаблоне
+        'banner': [banner],
         'photose': photose,
         'services_info': services_info,
         'about': about,
     }
     return render(request, 'webapp/index.html', context)
+
 
 # Словарь соответствия категории из URL и поля модели
 CATEGORY_MAP = {
