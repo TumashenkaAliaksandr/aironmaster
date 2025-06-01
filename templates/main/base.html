@@ -75,15 +75,42 @@
             <ul class="nav">
                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>
                 <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">О компании</a></li>
-                <li class="nav-item dropdown">
-                    <a href="{% url 'products' %}" class="nav-linkss dropbtn">Готовая Продукция</a>
-                    <ul class="dropdown-content">
-                        <li><a href="{% url 'products_by_category' category='metal_structures' %}">Металлоконструкции</a></li>
-                        <li><a href="{% url 'products_by_category' category='steps_and_stairs' %}">Ступеньки и Лестницы</a></li>
-                        <li><a href="{% url 'products_by_category' category='grills' %}">Мангалы</a></li>
-                        <li><a href="{% url 'products_by_category' category='decor_elements' %}">Элементы декора</a></li>
-                    </ul>
-                </li>
+               <li class="nav-item dropdown">
+                   <a href="{% url 'products' %}" class="nav-linkss dropbtn">Готовая Продукция</a>
+                   <ul class="dropdown-content dropdown-icon">
+                       <li>
+                           <a href="{% url 'products_by_category' category='metal_structures' %}">
+                               <img src="{% static 'webapp/icons/aironmaster-metal.png' %}" alt="Металлоконструкции"
+                                    class="dropdown-icon"/> Металлоконструкции
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'products_by_category' category='procladki' %}">
+                               <img src="{% static 'webapp/icons/aironmaster_procladki.png' %}" alt="Прокладки"
+                                    class="dropdown-icon"/> Прокладки
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'products_by_category' category='steps_and_stairs' %}">
+                               <img src="{% static 'webapp/icons/aironmaster-next-level.png' %}" alt="Ступеньки и Лестницы"
+                                    class="dropdown-icon"/> Ступеньки и Лестницы
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'products_by_category' category='grills' %}">
+                               <img src="{% static 'webapp/icons/aironmaster-grill.png' %}" alt="Мангалы" class="dropdown-icon"/>
+                               Мангалы
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'products_by_category' category='decor_elements' %}">
+                               <img src="{% static 'webapp/icons/aironmaster-decorelements.png' %}" alt="Элементы декора"
+                                    class="dropdown-icon"/> Элементы декора
+                           </a>
+                       </li>
+                   </ul>
+               </li>
+
                 <li class="nav-item dropdown {% if request.resolver_match.url_name == 'service_detail' %}active{% endif %}">
                     <span class="nav-linkss dropbtn">Наши Услуги</span>
                     <ul class="dropdown-content">
@@ -103,6 +130,7 @@
                 <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
+
         <nav id="mobileMenu" class="mobile-menu d-md-none" aria-hidden="true">
             <ul class="nav flex-column">
                 <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>

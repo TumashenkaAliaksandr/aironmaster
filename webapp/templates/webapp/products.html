@@ -32,41 +32,57 @@
 
     {% for item in items %}
         <section id="screw-spiral" class="item-section">
-            <div class="content-wrapper">
-                <h2>{{ item.name }}</h2>
-                <p>{{ item.description }}</p>
-                <p>{{ item.phone1 }}<br>{{ item.phone2 }}</p>
-                <div class="social-icons-wrapper">
-                    {% for social in footer_info.social_networks.all %}
-                        {% if social.url %}
-                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="{{ social.name }}" class="social-icon">
-                                {% if social.icon %}
-                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
-                                {% else %}
-                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
-                                    {{ social.name }}
-                                {% endif %}
-                            </a>
+            <div class="container">
+                <div class="content-wrapper">
+                    <h2>{{ item.name|safe }}</h2>
+                    <p>{{ item.description }}</p>
+                    <p>
+                        {% if item.phone1 %}
+                            <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>
                         {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="photo-gallery">
-                {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
-                    <div class="photo-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                        {% for p in photo_row %}
-                            <div class="photo-item" style="flex: 1;">
-                                <img src="{{ p.photo.url }}" alt="{{ p.description }}"
-                                     style="width: 100%; height: auto; object-fit: cover;">
-                                {% if p.description %}
-                                    <div class="photo-description">{{ p.description }}</div>
-                                {% endif %}
-                            </div>
+                        {% if item.phone2 %}
+                            <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>
+                        {% endif %}
+                    </p>
+                    <div class="social-icons-wrapper">
+                        {% for social in footer_info.social_networks.all %}
+                            {% if social.url %}
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                                   aria-label="{{ social.name }}" class="social-icon">
+                                    {% if social.icon %}
+                                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                    {% else %}
+                                        <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                        {{ social.name }}
+                                    {% endif %}
+                                </a>
+                            {% endif %}
                         {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
+
+                <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
+                    <div class="row g-3">
+                        {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
+                            {% for p in photo_row %}
+                                <div class="col-6 col-md-3">
+                                    <div class="photo-item">
+                                        <img
+                                                src="{{ p.photo.url }}"
+                                                alt="{{ p.description }}"
+                                                class="img-fluid rounded gallery-image"
+                                                style="object-fit: cover; width: 100%; height: auto;"
+                                                data-src="{{ p.photo.url }}"
+                                        >
+                                        {% if p.description %}
+                                            <div class="photo-description">{{ p.description }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </section>
         <div class="gradient"></div>

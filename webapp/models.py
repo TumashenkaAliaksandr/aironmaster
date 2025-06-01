@@ -40,6 +40,7 @@ class ItemObject(models.Model):
 
     # Новые булевые поля (галочки)
     is_metal_structures = models.BooleanField("Металлоконструкции", default=False)
+    is_prokladki_mtgr = models.BooleanField("Прокладки", default=False)
     is_steps_and_stairs = models.BooleanField("Ступеньки и Лестницы", default=False)
     is_grills = models.BooleanField("Мангалы", default=False)
     is_decor_elements = models.BooleanField("Элементы декора", default=False)
@@ -209,6 +210,7 @@ class FinishedProduct(models.Model):
 class BannerPage(models.Model):
     CATEGORY_CHOICES = [
         ('metal_structures', 'Металлоконструкции'),
+        ('procladki', 'Прокладки'),
         ('steps_and_stairs', 'Ступеньки и Лестницы'),
         ('grills', 'Мангалы'),
         ('decor_elements', 'Элементы декора'),

@@ -37,6 +37,7 @@ def index(request):
 # Словарь соответствия категории из URL и поля модели
 CATEGORY_MAP = {
     'metal_structures': 'is_metal_structures',
+    'procladki': 'is_prokladki_mtgr',
     'steps_and_stairs': 'is_steps_and_stairs',
     'grills': 'is_grills',
     'decor_elements': 'is_decor_elements',
@@ -70,6 +71,7 @@ def products_by_done(request, category):
     # Для отображения названия категории на странице
     category_verbose = {
         'metal_structures': 'Металлоконструкции',
+        'procladki': 'Прокладки',
         'steps_and_stairs': 'Ступеньки и Лестницы',
         'grills': 'Мангалы',
         'decor_elements': 'Элементы декора',

@@ -1058,6 +1058,20 @@ nav .nav-linkss.active {
   text-decoration: underline;
 }
 
+.dropdown-content li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 5px;
+}
+
+
 
 #engineering {
   /*width: 100vw;*/
@@ -2263,10 +2277,11 @@ h2 {
 
 /* Стили для ссылок в подменю */
 .dropdown-content li a {
-  padding: 10px 15px;
-  color: #333;
-  display: block;
-  text-decoration: none;
+    padding: 10px 15px;
+    color: #333;
+    display: block;
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
 }
 
 .dropdown-content li a:hover {
