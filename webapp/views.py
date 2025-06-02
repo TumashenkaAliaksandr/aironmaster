@@ -1,6 +1,7 @@
 import smtplib
 
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
@@ -204,11 +205,30 @@ def contacts(request):
 
 def item_detail(request, slug):
     item = get_object_or_404(ItemObject, slug=slug)
+    photos = item.photos.all()
+
+    # Формируем фильтр по категориям (булевым полям)
+    category_filter = Q()
+    if item.is_metal_structures:
+        category_filter |= Q(is_metal_structures=True)
+    if item.is_prokladki_mtgr:
+        category_filter |= Q(is_prokladki_mtgr=True)
+    if item.is_steps_and_stairs:
+        category_filter |= Q(is_steps_and_stairs=True)
+    if item.is_grills:
+        category_filter |= Q(is_grills=True)
+    if item.is_decor_elements:
+        category_filter |= Q(is_decor_elements=True)
+
+    # Получаем похожие изделия из тех же категорий, исключая текущее
+    items = ItemObject.objects.filter(category_filter).exclude(id=item.id).prefetch_related('photos').distinct()
+
     context = {
         'item': item,
+        'items': items,
+        'photos': photos,
     }
     return render(request, 'webapp/item_detail.html', context)
-
 
 def sitemap_view(request):
 

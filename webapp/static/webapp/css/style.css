@@ -636,7 +636,7 @@ nav .nav-linkss.active {
 
 
 #breadcrumps {
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
     color: #2b409c;
     box-sizing: border-box;
@@ -646,7 +646,7 @@ nav .nav-linkss.active {
     align-items: baseline;
     justify-content: center;
     min-height: 50px;
-    height: 20px;
+    height: 15px;
 }
 
 #category-burg {
@@ -726,7 +726,7 @@ nav .nav-linkss.active {
     color: #e0d9f1;
     box-sizing: border-box;
     text-align: center; /* центрируем текст */
-    display: flex;
+    display: inherit;
     flex-direction: column;
     align-items: center; /* центрируем по горизонтали */
     justify-content: center; /* центрируем по вертикали, если нужно */
@@ -2678,7 +2678,7 @@ html {
 }
 
 .btn-form {
-    background: #0198d4;
+    background: #0198d4!important;
     color: #fff;
     border-radius: 8px;
     padding: 0.7rem 2rem;
@@ -2692,6 +2692,18 @@ html {
     width: 25%; /* кнопка на всю ширину */
     box-sizing: border-box;
     text-align: center;
+}
+
+.btn-form:hover,
+.btn-form:focus {
+    background: #026ea4;
+    color: #fff !important; /* цвет текста при наведении */
+    outline: none;
+
+    /* Эффект "дымки" — мягкое свечение */
+    box-shadow:
+        0 0 8px 2px rgba(2, 110, 164, 0.7),
+        0 0 20px 6px rgba(2, 110, 164, 0.4);
 }
 
 .modal-content {
@@ -2872,4 +2884,111 @@ html {
         right: 10px;
         font-size: 1.5rem;
     }
+}
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /*background: linear-gradient(135deg, #e0f0fc 0%, #c2e0f8 100%);*/
+  border-radius: 16px;
+  /*box-shadow: 0 4px 20px rgba(1, 152, 212, 0.15);*/
+  overflow-x: hidden;
+}
+
+.category-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(1, 152, 212, 0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #000; /* фон на случай отсутствия фото */
+}
+
+.category-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.3s ease;
+}
+
+.category-item:hover .category-image {
+  transform: scale(1.05);
+}
+
+.category-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  word-wrap: break-word;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  /*border: 2px solid #fff;*/
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+  user-select: none;
+  text-align: center;
+  min-width: 100px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #fff;
+  color: #0198d4;
+  outline: none;
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 15px;
+  }
 }

@@ -53,5 +53,36 @@
 </div>
 </section>
     <div class="gradient"></div>
+    <section id="screw-spiral" class="item-section">
+        <h2>📌 Похожие Изделия</h2>
+
+        {% if items %}
+            <div class="category-grid">
+                {% for item in items %}
+                    <div class="category-item">
+                        {% with first_photo=item.photos.all|first %}
+                            {% if first_photo %}
+                                <img src="{{ first_photo.photo.url }}"
+                                     alt="{{ first_photo.description|default:item.name }}" class="category-image"/>
+                            {% else %}
+                                <!-- Если фото нет, можно показать заглушку -->
+                                <img src="{% static 'webapp/img/no_images.png' %}" alt="Нет изображения"
+                                     class="category-image"/>
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="category-content">
+                            <div class="item-name">{{ item.name }}</div>
+                            <a href="{% url 'item_detail' item.slug %}" class="btn">Подробнее</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Изделия в данной категории отсутствуют.</p>
+        {% endif %}
+    </section>
+    <div class="gradient"></div>
+
 
 {% endblock %}

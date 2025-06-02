@@ -269,11 +269,34 @@
         color: #e0d9f1;
         box-sizing: border-box;
         text-align: center;
-        display: flex;
+        display: inherit;
         flex-direction: column;
         align-items: center;
         justify-content: center;
          min-height: 0;
+    }
+
+    .category-item {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(1, 152, 212, 0.4);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background: #000;
+        height: 300px;
+    }
+
+    .item-name {
+        font-size: 18px;
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        word-wrap: break-word;
     }
 
     .contacts-wrapper {
