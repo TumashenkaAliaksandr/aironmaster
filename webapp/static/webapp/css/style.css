@@ -2634,34 +2634,49 @@ html {
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
-    padding: 1.8rem 2rem; /* уменьшили padding сверху/снизу с 2.5rem до 1.8rem */
+    padding: 1.8rem 2rem;
     margin: 2rem auto;
     max-width: 950px;
+    width: 90%; /* адаптивная ширина */
+    box-sizing: border-box; /* padding учитывается в ширине */
+    overflow-wrap: break-word; /* перенос слов, если нужно */
 }
+
 .order-form-title {
     font-size: 1.7rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin: 10px 0 1.5rem;
     color: #0198d4;
     text-align: center;
 }
+
 .form-group label {
     font-weight: 500;
     color: #2d2d2d;
     margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
 }
+
 .form-control {
     border-radius: 8px;
     border: 1px solid #d0d0d0;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     margin-bottom: 0.7rem;
+    width: 100%; /* занимает всю ширину контейнера */
+    box-sizing: border-box;
     transition: border-color 0.2s;
+    word-break: break-word; /* перенос длинных слов */
+    max-width: 835px;
 }
+
 .form-control:focus {
     border-color: #0198d4;
     box-shadow: 0 0 0 2px rgba(1, 152, 212, 0.15);
+    outline: none;
 }
+
 .btn-form {
     background: #0198d4;
     color: #fff;
@@ -2671,15 +2686,112 @@ html {
     font-weight: 600;
     border: none;
     transition: background 0.2s;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: inline-block;
+    width: 25%; /* кнопка на всю ширину */
+    box-sizing: border-box;
+    text-align: center;
 }
-.btn-form:hover {
-    background: #026ea4;
+
+.modal-content {
+    background: mintcream;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
+    padding: 1.8rem 2rem;
+    max-width: 915px;
+    width: 90%;
+    position: relative;
+    animation: slideIn 0.3s;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* ограничиваем высоту окна */
 }
-@media (max-width: 991px) {
-    .order-form-container {
-        padding: 1.2rem 0.5rem;
+
+.modal-body {
+    overflow-y: auto; /* включаем вертикальную прокрутку */
+    -webkit-overflow-scrolling: touch; /* плавная прокрутка на iOS */
+    flex-grow: 1; /* занимает всё доступное пространство */
+    padding: inherit;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 95%;
+        padding: 1.2rem 1rem;
+        border-radius: 10px;
+    }
+
+    .btn-form {
+        background: #0198d4;
+        color: #fff;
+        border-radius: 8px;
+        padding: 0.7rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        transition: background 0.2s;
+        margin-bottom: 5px;
+        cursor: pointer;
+        display: inline-block;
+        width: 50%;
+        box-sizing: border-box;
+        text-align: center;
     }
 }
+
+
+.btn-form:hover,
+.btn-form:focus {
+    background: #026ea4;
+    outline: none;
+}
+
+/* Медиазапросы для планшетов и мобильных */
+@media (max-width: 991px) {
+    .order-form-container {
+        padding: 1.2rem 1rem;
+        max-width: 600px;
+        margin: 1.5rem auto;
+    }
+    .order-form-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .btn-form {
+        padding: 0.7rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .order-form-container {
+        padding: 1rem 0.8rem;
+        max-width: 100%;
+        margin: 1rem auto;
+        border-radius: 10px;
+        /* Добавляем вертикальную прокрутку, если форма очень высокая */
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    .order-form-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    .form-control {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .btn-form {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Модальное окно */
+
 .modal-overlay {
     display: none;
     position: fixed;
@@ -2704,12 +2816,15 @@ html {
     background: mintcream;
     border-radius: 14px;
     box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
-    padding: 1.8rem 2rem; /* уменьшили padding сверху/снизу с 2.5rem до 1.8rem */
+    padding: 1.8rem 2rem;
     max-width: 915px;
-    width: 100%;
+    width: 90%;
     position: relative;
     animation: slideIn 0.3s;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
 }
+
 @keyframes slideIn {
     from { transform: translateY(60px); opacity: 0; }
     to   { transform: translateY(0); opacity: 1; }
@@ -2717,13 +2832,44 @@ html {
 
 .modal-close {
     position: absolute;
-    top: 18px;
-    right: 28px;
+    top: 0;
+    right: 10px;
     font-size: 2rem;
     color: #0198d4;
     cursor: pointer;
     transition: color 0.2s;
+    user-select: none;
 }
-.modal-close:hover {
+
+.modal-close:hover,
+.modal-close:focus {
     color: #ff5252;
+    outline: none;
+}
+
+/* Медиазапросы для модального окна */
+
+@media (max-width: 991px) {
+    .modal-content {
+        max-width: 600px;
+        padding: 1.5rem 1.5rem;
+    }
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 95%;
+        padding: 1.2rem 1rem;
+        border-radius: 10px;
+    }
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+    }
 }

@@ -1,10 +1,20 @@
-document.getElementById('open-order-form').onclick = function() {
-    document.getElementById('order-modal').classList.add('active');
+const modal = document.getElementById('order-modal');
+const openBtn = document.getElementById('open-order-form');
+const closeBtn = document.getElementById('close-order-form');
+
+openBtn.onclick = function() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Запрет прокрутки страницы
 };
-document.getElementById('close-order-form').onclick = function() {
-    document.getElementById('order-modal').classList.remove('active');
+
+closeBtn.onclick = function() {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Восстановление прокрутки страницы
 };
-// Закрытие по клику вне формы
-document.getElementById('order-modal').onclick = function(e) {
-    if (e.target === this) this.classList.remove('active');
+
+modal.onclick = function(e) {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Восстановление прокрутки страницы
+    }
 };

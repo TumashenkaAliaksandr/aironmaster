@@ -5,9 +5,11 @@
 <div id="order-modal" class="modal-overlay">
     <div class="modal-content">
         <span class="modal-close" id="close-order-form">&times;</span>
+        <div class="modal-body">
         <div class="order-form-title">ФОРМА ЗАКАЗА ШНЕКОВ</div>
         <form method="post" action="#">
             {% csrf_token %}
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <div class="row">
                 <div class="col-md-3 form-group">
                     <label for="id_type">💡 Тип</label>
@@ -124,5 +126,6 @@
                 <button type="submit" name="order_submit" class="btn btn-form">ОТПРАВИТЬ</button>
             </div>
         </form>
+        </div>
     </div>
 </div>
