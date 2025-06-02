@@ -1,0 +1,31 @@
+<html>
+  <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+    <div style="max-width: 650px; margin: auto; background: beige; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+      <h2 style="color: #333;">🗣 Новый заказ шнека с сайта</h2>
+      <br>
+      <p><strong>Тип:</strong> {{ type }}</p>
+      <p><strong>Напряжение:</strong> {{ voltage }}</p>
+      <p><strong>Привод:</strong> {{ drive }}</p>
+      <p><strong>Материал:</strong> {{ material }}</p>
+      <p><strong>Производительность:</strong> {{ performance }}</p>
+      <p><strong>Характеристика груза:</strong> {{ cargo }}</p>
+      <p><strong>Масса:</strong> {{ weight }}</p>
+      <p><strong>Диаметр винта:</strong> {{ diameter }}</p>
+      <p><strong>Длина габаритная:</strong> {{ length }}</p>
+      <p><strong>Высота начальная:</strong> {{ height_start }}</p>
+      <p><strong>Высота конечная:</strong> {{ height_end }}</p>
+      <p><strong>Скорость:</strong> {{ speed }}</p>
+      <p><strong>Редуктор, тип, мощность:</strong> {{ reductor }}</p>
+      <p><strong>Регулировка по высоте:</strong> {{ height_regulation }}</p>
+      <p><strong>Количество (шт.):</strong> {{ quantity }}</p>
+      <hr>
+      <p><strong>Имя:</strong> {{ name }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Телефон:</strong> {{ phone }}</p>
+      <p><strong>Дополнительная информация:</strong></p>
+      <p>{{ message|linebreaks }}</p>
+      <hr>
+      <p>Это письмо отправлено с сайта <a href="https://ваш-сайт.ру">https://ваш-сайт.ру</a></p>
+    </div>
+  </body>
+</html>

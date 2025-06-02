@@ -43,3 +43,46 @@ class ContactForm(forms.Form):
     )
 
 
+
+class OrderForm(forms.Form):
+    type = forms.ChoiceField(label='Тип', choices=[
+        ('', 'не выбрано'),
+        ('труба', 'труба'),
+        ('желоб', 'желоб'),
+        ('другой', 'другой'),
+    ], required=True)
+    voltage = forms.ChoiceField(label='Напряжение', choices=[
+        ('', 'не выбрано'),
+        ('220', '220'),
+        ('330', '330'),
+    ], required=False)
+    drive = forms.ChoiceField(label='Привод', choices=[
+        ('', 'не выбрано'),
+        ('справа', 'справа'),
+        ('слева', 'слева'),
+        ('другое', 'другое'),
+    ], required=False)
+    material = forms.ChoiceField(label='Материал', choices=[
+        ('', 'не выбрано'),
+        ('сталь', 'сталь'),
+        ('оцинковка', 'оцинковка'),
+        ('нержавейка', 'нержавейка'),
+        ('алюминий', 'алюминий'),
+    ], required=False)
+    performance = forms.CharField(label='Производительность', required=False)
+    cargo = forms.CharField(label='Характеристика груза', required=False)
+    weight = forms.CharField(label='Масса', required=False)
+    diameter = forms.CharField(label='Диаметр винта', required=False)
+    length = forms.CharField(label='Длина габаритная', required=False)
+    height_start = forms.CharField(label='Высота начальная', required=False)
+    height_end = forms.CharField(label='Высота конечная', required=False)
+    speed = forms.CharField(label='Скорость', required=False)
+    reductor = forms.CharField(label='Редуктор, тип, мощность', required=False)
+    height_regulation = forms.CharField(label='Регулировка по высоте', required=False)
+    quantity = forms.CharField(label='Количество (шт.)', required=False)
+    name = forms.CharField(label='Имя', required=True)
+    email = forms.EmailField(label='Email', required=True)
+    phone = forms.CharField(label='Телефон', required=False)
+    message = forms.CharField(label='Дополнительная информация', widget=forms.Textarea, required=False)
+
+

@@ -2630,3 +2630,100 @@ html {
     height: 250px;
   }
 }
+
+.order-form-container {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
+    padding: 2.5rem 2rem;
+    margin: 2rem auto;
+    max-width: 950px;
+}
+.order-form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #0198d4;
+    text-align: center;
+}
+.form-group label {
+    font-weight: 500;
+    color: #2d2d2d;
+}
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    transition: border-color 0.2s;
+}
+.form-control:focus {
+    border-color: #0198d4;
+    box-shadow: 0 0 0 2px rgba(1, 152, 212, 0.15);
+}
+.btn-form {
+    background: #0198d4;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    transition: background 0.2s;
+}
+.btn-form:hover {
+    background: #026ea4;
+}
+@media (max-width: 991px) {
+    .order-form-container {
+        padding: 1.2rem 0.5rem;
+    }
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
+    padding: 2.5rem 2rem;
+    max-width: 900px;
+    width: 100%;
+    position: relative;
+    animation: slideIn 0.3s;
+}
+@keyframes slideIn {
+    from { transform: translateY(60px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 18px;
+    right: 28px;
+    font-size: 2rem;
+    color: #0198d4;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.modal-close:hover {
+    color: #ff5252;
+}

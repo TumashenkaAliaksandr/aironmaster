@@ -24,6 +24,7 @@
     </section>
     <div class="gradient"></div>
 
+    {% include 'webapp/snek_form.html' %}
 
 
     {% for item in items %}
@@ -140,7 +141,7 @@
                         {{ form.message }}
                     </div>
 
-                    <button type="submit" class="btn-submit">Отправить</button>
+                    <button type="submit" name="contact_submit" class="btn btn-submit">Отправить</button>
                 </form>
             </div>
         </div>
