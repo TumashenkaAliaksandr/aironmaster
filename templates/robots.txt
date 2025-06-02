@@ -9,4 +9,4 @@ Disallow: /*?*  # запретить индексацию URL с парамет�
 
 Allow: /
 
-Sitemap: https://www.yoursite.com/sitemap.xml
+Sitemap: {{ sitemap_url }}

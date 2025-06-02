@@ -1,8 +1,11 @@
 import smtplib
 
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
+from django.urls import reverse
+from django.utils import timezone
 
 from aironmaster import settings
 from webapp.forms import ContactForm
@@ -205,3 +208,61 @@ def item_detail(request, slug):
         'item': item,
     }
     return render(request, 'webapp/item_detail.html', context)
+
+
+def sitemap_view(request):
+
+    # Для продакшена (глобального хоста) используйте фиксированный URL:
+    base_url = 'https://aironmaster.by'  # <=== раскомментируйте этот URL при деплое
+    # base_url = request.build_absolute_uri('/').rstrip('/')  # <=== закомментируйте этот при деплое
+
+    urls = [
+        {'location': base_url + reverse('index'), 'lastmod': timezone.now().date()},
+        {'location': base_url + reverse('about'), 'lastmod': timezone.now().date()},
+        {'location': base_url + reverse('products'), 'lastmod': timezone.now().date()},
+        {'location': base_url + reverse('single-services'), 'lastmod': timezone.now().date()},
+        {'location': base_url + reverse('contacts'), 'lastmod': timezone.now().date()},
+        {'location': base_url + reverse('sitemap'), 'lastmod': timezone.now().date()},
+    ]
+
+    categories = ['metal_structures', 'procladki', 'steps_and_stairs', 'grills', 'decor_elements']
+
+    item_slugs = ItemObject.objects.filter(slug__isnull=False).values_list('slug', flat=True)
+    service_slugs = OurService.objects.filter(slug__isnull=False).values_list('slug', flat=True)
+
+    for category in categories:
+        url = base_url + reverse('products_by_category', kwargs={'category': category})
+        urls.append({'location': url, 'lastmod': timezone.now().date()})
+
+    for slug in item_slugs:
+        url = base_url + reverse('item_detail', kwargs={'slug': slug})
+        urls.append({'location': url, 'lastmod': timezone.now().date()})
+
+    for slug in service_slugs:
+        url = base_url + reverse('service_detail', kwargs={'slug': slug})
+        urls.append({'location': url, 'lastmod': timezone.now().date()})
+
+    xml_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+
+    for url in urls:
+        xml_content += '  <url>\n'
+        xml_content += f'    <loc>{url["location"]}</loc>\n'
+        xml_content += f'    <lastmod>{url["lastmod"].isoformat()}</lastmod>\n'
+        xml_content += '    <changefreq>weekly</changefreq>\n'
+        xml_content += '    <priority>0.8</priority>\n'
+        xml_content += '  </url>\n'
+
+    xml_content += '</urlset>'
+
+    return HttpResponse(xml_content, content_type='application/xml')
+
+
+
+
+def robots_txt(request):
+    # sitemap_url = request.build_absolute_uri('/sitemap.xml')  # для локали
+    sitemap_url = "https://aironmaster.by/sitemap.xml"  # для продакшена
+
+    content = render_to_string("robots.txt", {"sitemap_url": sitemap_url})
+    return HttpResponse(content, content_type="text/plain")
