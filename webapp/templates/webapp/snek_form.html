@@ -1,6 +1,6 @@
 {% load static %}
 
-<button id="open-order-form" class="btn btn-form">Заказать шнек</button>
+{#<button id="open-order-form" class="btn btn-form">Заказать шнек</button>#}
 
 <div id="order-modal" class="modal-overlay">
     <div class="modal-content">
@@ -10,7 +10,7 @@
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-3 form-group">
-                    <label for="id_type">Тип</label>
+                    <label for="id_type">💡 Тип</label>
                     <select class="form-control" id="id_type" name="type" required>
                         <option value="">не выбрано</option>
                         <option value="труба">труба</option>
@@ -19,7 +19,7 @@
                     </select>
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_voltage">Напряжение</label>
+                    <label for="id_voltage">⚡ Напряжение</label>
                     <select class="form-control" id="id_voltage" name="voltage">
                         <option value="">не выбрано</option>
                         <option value="220">220</option>
@@ -27,7 +27,7 @@
                     </select>
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_drive">Привод</label>
+                    <label for="id_drive">⚙️ Привод</label>
                     <select class="form-control" id="id_drive" name="drive">
                         <option value="">не выбрано</option>
                         <option value="справа">справа</option>
@@ -36,7 +36,7 @@
                     </select>
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_material">Материал</label>
+                    <label for="id_material">♻️ Материал</label>
                     <select class="form-control" id="id_material" name="material">
                         <option value="">не выбрано</option>
                         <option value="сталь">сталь</option>
@@ -49,74 +49,74 @@
 
             <div class="row">
                 <div class="col-md-3 form-group">
-                    <label for="id_performance">Производительность</label>
+                    <label for="id_performance">🚀 Производительность</label>
                     <input type="text" class="form-control" id="id_performance" name="performance">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_cargo">Характеристика груза</label>
+                    <label for="id_cargo">📦 Характеристика груза</label>
                     <input type="text" class="form-control" id="id_cargo" name="cargo">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_weight">Масса</label>
+                    <label for="id_weight">💪 Масса</label>
                     <input type="text" class="form-control" id="id_weight" name="weight">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_diameter">Диаметр винта</label>
+                    <label for="id_diameter">📐 Диаметр винта</label>
                     <input type="text" class="form-control" id="id_diameter" name="diameter">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-3 form-group">
-                    <label for="id_length">Длина габаритная</label>
+                    <label for="id_length">📏 Длина габаритная</label>
                     <input type="text" class="form-control" id="id_length" name="length">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_height_start">Высота начальная</label>
+                    <label for="id_height_start">↕️ Высота начальная</label>
                     <input type="text" class="form-control" id="id_height_start" name="height_start">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_height_end">Высота конечная</label>
+                    <label for="id_height_end">🆙 Высота конечная</label>
                     <input type="text" class="form-control" id="id_height_end" name="height_end">
                 </div>
                 <div class="col-md-3 form-group">
-                    <label for="id_speed">Скорость</label>
+                    <label for="id_speed">⏱️ Скорость</label>
                     <input type="text" class="form-control" id="id_speed" name="speed">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4 form-group">
-                    <label for="id_reductor">Редуктор, тип, мощность</label>
+                    <label for="id_reductor">🔩 Редуктор, тип, мощность</label>
                     <input type="text" class="form-control" id="id_reductor" name="reductor">
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="id_height_regulation">Регулировка по высоте</label>
+                    <label for="id_height_regulation">🔧 Регулировка по высоте</label>
                     <input type="text" class="form-control" id="id_height_regulation" name="height_regulation">
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="id_quantity">Количество (шт.)</label>
+                    <label for="id_quantity">⚖️ Количество (шт.)</label>
                     <input type="text" class="form-control" id="id_quantity" name="quantity">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4 form-group">
-                    <label for="id_name">Имя</label>
+                    <label for="id_name">🗣 Имя</label>
                     <input type="text" class="form-control" id="id_name" name="name" required>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="id_email">Email</label>
+                    <label for="id_email">📧 Email</label>
                     <input type="email" class="form-control" id="id_email" name="email" required>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="id_phone">Телефон</label>
+                    <label for="id_phone">☎️ Телефон</label>
                     <input type="tel" class="form-control" id="id_phone" name="phone">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="id_message">Дополнительная информация</label>
+                <label for="id_message">📝 Дополнительная информация</label>
                 <textarea class="form-control" id="id_message" name="message" rows="5"></textarea>
             </div>
 

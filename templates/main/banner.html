@@ -16,7 +16,8 @@
                         <a href="tel:{{ main_banner.phone2|cut:" " }}">{{ main_banner.phone2 }}</a>
                     {% endif %}
                 </p>
-                <a href="{% url 'about' %}" class="btn">Подробнее</a>
+{#                <a href="{% url 'about' %}" class="btn">Подробнее</a>#}
+            <button id="open-order-form" class="btn">Заказать шнек</button>
             </div>
         {% endfor %}
     </section>

@@ -183,7 +183,7 @@ nav .nav-linkss.active {
 
 .about-description {
   flex: 4;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
 }
 
 .company-name {
@@ -318,7 +318,7 @@ nav .nav-linkss.active {
 .photo-item {
     position: relative;
     width: auto!important; /* чтобы совпадало с img */
-    height: 196px!important;
+    /*height: 196px!important;*/
     cursor: pointer;
     border-radius: 8px;
     overflow: hidden; /* чтобы описание не выходило за границы */
@@ -2630,17 +2630,16 @@ html {
     height: 250px;
   }
 }
-
 .order-form-container {
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
-    padding: 2.5rem 2rem;
+    padding: 1.8rem 2rem; /* уменьшили padding сверху/снизу с 2.5rem до 1.8rem */
     margin: 2rem auto;
     max-width: 950px;
 }
 .order-form-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #0198d4;
@@ -2649,6 +2648,7 @@ html {
 .form-group label {
     font-weight: 500;
     color: #2d2d2d;
+    margin-bottom: 5px;
 }
 .form-control {
     border-radius: 8px;
@@ -2701,11 +2701,11 @@ html {
 }
 
 .modal-content {
-    background: #fff;
+    background: mintcream;
     border-radius: 14px;
     box-shadow: 0 8px 32px rgba(1, 152, 212, 0.12);
-    padding: 2.5rem 2rem;
-    max-width: 900px;
+    padding: 1.8rem 2rem; /* уменьшили padding сверху/снизу с 2.5rem до 1.8rem */
+    max-width: 915px;
     width: 100%;
     position: relative;
     animation: slideIn 0.3s;
