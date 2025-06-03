@@ -1668,7 +1668,8 @@ h2 {
     background: linear-gradient(90deg, #0099d5, #650898, #0099d5);
     color: white;
     border: none;
-    padding: 4px 18px;
+    /*padding: 4px;*/
+    /*padding-right: 5px;*/
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
