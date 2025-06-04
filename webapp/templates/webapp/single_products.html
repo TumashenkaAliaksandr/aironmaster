@@ -3,15 +3,13 @@
 {% load static %}
 
 {% block content %}
-    <div id="breadcrumps">
-        <nav aria-label="breadcrumb" class="breadcrumb">
+        <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
             <ol>
                 <li><a href="{% url 'index' %}">Главная</a></li>
                 <li><a href="{% url 'products' %}">Готовая Продукция</a></li>
                 <li aria-current="page">{{ category_name }}</li>
             </ol>
         </nav>
-    </div>
     <section id="screw-spiral" class="item-section"
              style="background: url('{{ banner.image.url }}') no-repeat center center; background-size: cover; position: relative;">
         <div style="

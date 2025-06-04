@@ -1,10 +1,28 @@
-/* Общие стили */
 body {
     font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #ecf7d8;
     margin: 0;
     padding: 0;
+
+    /* Запретить горизонтальную прокрутку */
+    overflow-x: hidden;
+
+    /* Рекомендуется добавить, чтобы body занимал всю высоту */
+    min-height: 100vh;
+    box-sizing: border-box;
 }
+
+
+/* Устанавливаем box-sizing для всех элементов */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Запретить горизонтальную прокрутку для html */
+html {
+    overflow-x: hidden;
+}
+
 
 .border-bottom {
   border-bottom: none !important;
@@ -60,20 +78,22 @@ header {
     padding: 15px 0 5px;
     font-size: 0.9rem;
     margin-left: 13px;
-    text-align: center;
+    /*text-align: center;*/
+    text-transform: uppercase;
+    margin-bottom: 0;
 }
 
 .breadcrumb ol {
     list-style: none;
-    display: ruby;
-    gap: 0.5rem;
+    display: flex;
+    gap: 0.4rem;
     padding: 0;
     margin: 0;
 }
 
 .breadcrumb li::after {
     content: "›";
-    margin-left: 0.25rem;
+    margin-left: 0.23rem;
     color: #666;
 }
 
@@ -635,19 +655,32 @@ nav .nav-linkss.active {
 }
 
 
-#breadcrumps {
-    padding: 1.5rem 1.5rem;
+.breadcrumps {
+    padding: 1.3rem 1.3rem;
     background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
     color: #2b409c;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: center;
-    min-height: 50px;
-    height: 15px;
+    /*box-sizing: border-box;*/
+    /*text-align: center;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: baseline;*/
+    /*justify-content: center;*/
+    /*min-height: 50px;*/
+    /*height: 15px;*/
 }
+#breadcrumps {
+        padding: 0 0;
+        background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
+        color: #2b409c;
+        box-sizing: border-box;
+        text-align: center;
+        display: list-item;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
+        min-height: 50px;
+        height: 20px;
+    }
 
 #category-burg {
     /*padding: 2.5rem 1.5rem;*/
@@ -1418,7 +1451,7 @@ nav .nav-linkss.active {
 #we-on-map {
   position: relative;
   /*width: 100vw;      !* на всю ширину экрана *!*/
-  height: 100vh;     /* на всю высоту экрана */
+  /*height: 100vh;     !* на всю высоту экрана *!*/
   background-image: url('../img');
   background-size: cover;
   background-position: center;
@@ -1668,8 +1701,7 @@ h2 {
     background: linear-gradient(90deg, #0099d5, #650898, #0099d5);
     color: white;
     border: none;
-    /*padding: 4px;*/
-    /*padding-right: 5px;*/
+    /* padding: 4px 14px; */
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;

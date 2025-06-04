@@ -3,14 +3,12 @@
 {% load static %}
 
 {% block content %}
-    <div id="breadcrumps">
-        <nav aria-label="breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li>Контакты</li>
-            </ol>
-        </nav>
-    </div>
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page">Контакты</li>
+        </ol>
+    </nav>
     <section id="screw-spiral" class="item-section"
          style="background: url('{% static "webapp/img/contacts_bg.jpg" %}') no-repeat center center; background-size: cover; position: relative;">
 

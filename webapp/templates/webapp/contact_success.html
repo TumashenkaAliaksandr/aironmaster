@@ -3,14 +3,12 @@
 {% load static %}
 
 {% block content %}
-    <div id="breadcrumps">
-        <nav aria-label="breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li>Ваше письмо отправлено!</li>
-            </ol>
-        </nav>
-    </div>
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page">Ваше письмо отправлено!</li>
+        </ol>
+    </nav>
     <div class="container" style="padding: 2rem 0; text-align: center;">
         <h2>Спасибо!</h2>
         <p>Ваше сообщение успешно отправлено. Мы свяжемся с вами в ближайшее время.</p>

@@ -3,14 +3,12 @@
 {% load static %}
 
 {% block content %}
-    <div id="breadcrumps">
-        <nav aria-label="breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li>Продукция</li>
-            </ol>
-        </nav>
-    </div>
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page">Продукция</li>
+        </ol>
+    </nav>
     <div id="category-burg">
         <div class="category-burger" id="categoryBurger" aria-label="Меню категорий" role="button" tabindex="0"
              aria-expanded="false" aria-controls="categoryMenu">

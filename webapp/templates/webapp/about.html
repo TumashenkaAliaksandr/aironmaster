@@ -3,14 +3,12 @@
 {% load static %}
 
 {% block content %}
-    <div id="breadcrumps">
-        <nav aria-label="breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li>О нас</li>
-            </ol>
-        </nav>
-    </div>
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page"> О нас</li>
+        </ol>
+    </nav>
 
     <section class="about-company">
         <div class="about-image">
