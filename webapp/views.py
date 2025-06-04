@@ -166,6 +166,7 @@ def about(request):
     return render(request, 'webapp/about.html', context=context)
 
 def contacts(request):
+    services_info = ServicesContact.objects.all()
     error_message = None
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -200,6 +201,7 @@ def contacts(request):
     return render(request, 'webapp/contacts.html', {
         'form': form,
         'error_message': error_message,
+        'services_info': services_info,
     })
 
 

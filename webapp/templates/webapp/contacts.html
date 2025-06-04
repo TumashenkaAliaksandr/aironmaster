@@ -47,15 +47,21 @@
                     <p class="section-title">Наши телефоны:</p>
                     <div class="phones-list">
                         <p>
+                        {% if footer_info.phone_one %}
                             <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
                                  height="16" class="phone-icon"/>
-                            <a href="tel:+375291234567">+375 (29) 123-45-67</a>
-                        </p>
-                        <p>
+                            <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>
+                        {% else %}
+                            Телефон 1 не указан<br/>
+                        {% endif %}
+                        {% if footer_info.phone_two %}
                             <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
                                  height="16" class="phone-icon"/>
-                            <a href="tel:+375331234567">+375 (33) 123-45-67</a>
-                        </p>
+                            <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>
+                        {% else %}
+                            Телефон 2 не указан
+                        {% endif %}
+                    </p>
                     </div>
 
                     <p class="section-title">Почта:</p>
