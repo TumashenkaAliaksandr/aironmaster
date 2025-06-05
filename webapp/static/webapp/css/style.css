@@ -3119,6 +3119,16 @@ html {
         padding: 20px;
         background: linear-gradient(66deg, #edf4e7, #8e8ca2);
     }
+
+    .custom-image-wrapper img {
+        width: 450px;
+        height: 350px;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .about-container {

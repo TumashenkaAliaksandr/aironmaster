@@ -115,11 +115,11 @@
 
                 <li class="nav-item dropdown {% if request.resolver_match.url_name == 'service_detail' %}active{% endif %}">
                     <span class="nav-linkss dropbtn">Наши Услуги</span>
-                    <ul class="dropdown-content">
+                    <ul class="dropdown-content dropdown-icon">
                         {% for service in services %}
                             <li>
                                 <a href="{% url 'service_detail' slug=service.slug %}"
-                                   class="{% if request.resolver_match.url_name == 'service_detail' and request.resolver_match.kwargs.slug == service.slug %}active{% endif %}">
+                                   class="{% if request.resolver_match.url_name == 'service_detail' and request.resolver_match.kwargs.slug == service.slug %}active{% endif %}"><img src="{{ service.photo.url }}" alt="" class="dropdown-icon"/>
                                     {{ service.name }}
                                 </a>
                             </li>
