@@ -2289,14 +2289,14 @@ h2 {
 
   .custom-close {
     font-size: 2rem;
-    top: 0;
+    top: -13px;
     right: 0;
   }
 
     .custom-next {
         order: 2;
         position: absolute;
-        left: 290px;
+        left: 296px;
         z-index: 10;
     }
 
@@ -2308,14 +2308,16 @@ h2 {
     font-size: 0.9rem;
   }
 
-  .custom-prev, .custom-next {
-    font-size: 2rem;
-    margin-right: 30px;
-    padding-right: 20px;
-  }
+    .custom-prev, .custom-next {
+        font-size: 2rem;
+        margin-right: 30px;
+        padding-right: 5px;
+        z-index: 10;
+        position: absolute;
+    }
 
     .custom-image-wrapper img {
-        width: 250px; /* фиксированная ширина */
+        /*width: 250px; !* фиксированная ширина *!*/
         height: 250px; /* фиксированная высота */
         max-width: 100%;
         max-height: 100%;
@@ -2324,7 +2326,7 @@ h2 {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         top: 20px;
         /*margin-bottom: 110px;*/
-        margin-right: 175px;
+        /*margin-right: 175px;*/
         margin-top: 15px;
 
     }
