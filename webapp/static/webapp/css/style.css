@@ -196,7 +196,7 @@ nav .nav-linkss.active {
     height: 150px;
     border-radius: 8px;
     display: block;
-    left: 70px;
+    left: 0;
     position: relative;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
 }
@@ -227,7 +227,7 @@ nav .nav-linkss.active {
 
   .about-image, .about-description {
       flex: none;
-      margin: 0 33px;
+      /*margin: 0 33px;*/
       display: block;
       width: 100%;
   }
@@ -1152,7 +1152,7 @@ nav .nav-linkss.active {
 
 #engineering h2 {
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
     letter-spacing: 0.05em;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -3026,4 +3026,132 @@ html {
     max-width: 100%;
     padding: 15px;
   }
+}
+
+
+@media (max-width: 768px) {
+    .about-image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 8px;
+        display: block;
+        left: 70px;
+        position: initial;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    }
+    .photo-description-banners {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: linear-gradient(144deg, #dcdfdc, #dddddd21, #0198d44d);
+    color: #000000;
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    width: auto;
+    text-transform: uppercase;
+    max-width: 100%;
+  }
+
+    #engineering h2 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.05em;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        color: white;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    }
+
+    .nav {
+        text-transform: capitalize;
+        margin-right: 0;
+    }
+    .about-company {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+    }
+}
+
+@media (max-width: 375px) {
+    .about-image img {
+        display: none!important;
+    }
+
+    .about-company {
+        display: flex !important;
+        align-items: center;
+        gap: 20px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .about-image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 8px;
+        /*display: block;*/
+        left: 0;
+        /*position: relative;*/
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+        display: none;
+    }
+
+    .about-company {
+        display: grid;
+        gap: 20px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+    }
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start; /* Выровнять по верхнему краю */
+    gap: 20px; /* Отступ между колонками */
+}
+
+.about-image {
+    flex: 0 0 200px; /* Фиксированная ширина для фото, не растягивается */
+    max-width: 200px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* По желанию, для красоты */
+}
+
+.about-description {
+    flex: 1; /* Занимает всё оставшееся пространство */
+}
+
+/* Адаптив для маленьких экранов */
+@media (max-width: 600px) {
+    .about-container {
+        flex-direction: column;
+    }
+    .about-image {
+        flex: none;
+        max-width: 30%;
+        margin: 0 auto 15px auto;
+        display: none;
+    }
 }

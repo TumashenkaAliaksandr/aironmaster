@@ -8,18 +8,20 @@
     <!-- End Banner -->
     <div id="about" class="gradient"></div>
     <section class="about-company">
-        <div class="about-image">
-            {% if about and about.photo %}
-                <img src="{{ about.photo.url }}" alt="{{ about.name }}">
-            {% else %}
-                <img src="{% static 'webapp/img/airon_about.png' %}" alt="Фото компании">
-            {% endif %}
-        </div>
-        <div class="about-description">
-            <h2 class="company-name">{{ about.name|default:"АЙРОНМАСТЕР" }}</h2>
-            <p class="company-text">
-                {{ about.description|default:"Компания «Айронмастер» — современное производственное предприятие, специализирующееся на работе со всеми видами конструкционных сталей, включая высокопрочные марки HARDOX и QUARD, а также с полимерами, цветными металлами и их сплавами. Мы предлагаем полный цикл услуг: от проектирования и разработки индивидуальных решений до изготовления и внедрения готовых изделий любой сложности." }}
-            </p>
+        <div class="container about-container">
+            <div class="about-image">
+                {% if about and about.photo %}
+                    <img src="{{ about.photo.url }}" alt="{{ about.name }}">
+                {% else %}
+                    <img src="{% static 'webapp/img/airon_about.png' %}" alt="Фото компании">
+                {% endif %}
+            </div>
+            <div class="about-description">
+                <h2 class="company-name">{{ about.name|default:"АЙРОНМАСТЕР" }}</h2>
+                <p class="company-text">
+                    {{ about.description|default:"Компания «Айронмастер» — современное производственное предприятие, специализирующееся на работе со всеми видами конструкционных сталей, включая высокопрочные марки HARDOX и QUARD, а также с полимерами, цветными металлами и их сплавами. Мы предлагаем полный цикл услуг: от проектирования и разработки индивидуальных решений до изготовления и внедрения готовых изделий любой сложности." }}
+                </p>
+            </div>
         </div>
     </section>
     <div class="gradient"></div>

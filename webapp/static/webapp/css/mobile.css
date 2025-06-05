@@ -971,6 +971,9 @@
         margin-top: 13px;
         justify-content: center;
     }
+    .about-image img {
+        display: none;
+    }
 }
 
 @media (max-width: 844px) and (orientation: landscape) {
