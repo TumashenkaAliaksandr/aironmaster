@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    FinishedProduct, SocialNetwork, BannerPage
+    FinishedProduct, SocialNetwork, BannerPage, ServicePhoto
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -105,11 +105,24 @@ class AboutAdmin(admin.ModelAdmin):
     photo_preview.short_description = "Превью фото"
 
 
+class ServicePhotoInline(admin.TabularInline):
+    model = ServicePhoto
+    extra = 1  # сколько пустых форм для добавления новых фото показывать
+    readonly_fields = ('image_preview',)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="width: 100px; height: auto; border-radius: 4px;" />', obj.image.url)
+        return "Нет фото"
+    image_preview.short_description = "Превью фото"
+
+
 @admin.register(OurService)
 class OurServiceAdmin(admin.ModelAdmin):
     list_display = ('name', 'photo_preview')
     search_fields = ('name', 'description')
     readonly_fields = ('photo_preview',)
+    inlines = [ServicePhotoInline]
 
     def photo_preview(self, obj):
         if obj.photo:

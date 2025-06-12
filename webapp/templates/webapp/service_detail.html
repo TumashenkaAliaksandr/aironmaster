@@ -26,5 +26,23 @@
             </ul>
         </nav>
     </div>
+    <div class="service-detail-container">
+        <h1 class="service-title">{{ service.name }}</h1>
+        <div class="service-photos-row">
+            {% for photo in photos|slice:":3" %}
+                <div class="service-photo-wrapper">
+                    <img src="{{ photo.image.url }}" alt="{{ service.name }} фото {{ forloop.counter }}"
+                         class="service-photo">
+                </div>
+            {% empty %}
+                <div class="service-photo-wrapper">
+                    <img src="{% static 'webapp/img/no_images.png' %}" alt="Нет фото" class="service-photo">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="service-description">
+            {{ service.description }}
+        </div>
+    </div>
 
 {% endblock %}

@@ -9,5 +9,14 @@
             <li aria-current="page">{{ item.name }}</li>
         </ol>
     </nav>
-    
+
+    <div class="item-detail-container">
+        <h1 class="item-title">{{ item.name }}</h1>
+        <p class="item-description">{{ item.description }}</p>
+        <div class="item-photos">
+            {% for photo in item.photos|slice:":4" %}
+                <img src="{{ photo.url }}" alt="{{ item.name }} photo {{ forloop.counter }}" class="item-photo" />
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

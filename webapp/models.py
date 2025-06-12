@@ -18,6 +18,11 @@ class OurService(models.Model):
     def __str__(self):
         return self.name
 
+class ServicePhoto(models.Model):
+    service = models.ForeignKey(OurService, related_name='photos', on_delete=models.CASCADE)
+    image = models.ImageField("Фото", upload_to='service_photos/')
+
+
 
 
 class ItemObject(models.Model):

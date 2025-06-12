@@ -35,7 +35,7 @@ class ContactForm(forms.Form):
     )
     email = forms.EmailField(
         label='Почта',
-        widget=forms.EmailInput(attrs={'placeholder': 'example@mail.com', 'required': True})
+        widget=forms.EmailInput(attrs={'placeholder': 'aironmaster@tut.by', 'required': True})
     )
     message = forms.CharField(
         label='Описание',
