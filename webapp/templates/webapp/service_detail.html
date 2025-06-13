@@ -9,23 +9,6 @@
                 <li aria-current="page">{{ service.name }}</li>
             </ol>
         </nav>
-    <div id="category-burg">
-        <div class="category-burger" id="categoryBurger" aria-label="Меню категорий" role="button" tabindex="0"
-             aria-expanded="false" aria-controls="categoryMenu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <!-- Пример меню категорий -->
-        <nav id="categoryMenu" class="category-menu" hidden>
-            <ul>
-                <li><a href="#">Категория 1</a></li>
-                <li><a href="#">Категория 2</a></li>
-                <li><a href="#">Категория 3</a></li>
-            </ul>
-        </nav>
-    </div>
     <div class="service-detail-container">
         <h1 class="service-title">{{ service.name }}</h1>
         <div class="service-photos-row">
@@ -41,7 +24,54 @@
             {% endfor %}
         </div>
         <div class="service-description">
-            {{ service.description }}
+            {{ service.description|safe }}
+        </div>
+        <div class="service-phones">
+            <p class="section-title section-title-color">Наши телефоны:</p>
+            <div class="phones-list">
+                <p>
+                    {% if footer_info.phone_one %}
+                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
+                             height="16" class="phone-icon"/>
+                        <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>
+                    {% else %}
+                        Телефон 1 не указан<br/>
+                    {% endif %}
+                    {% if footer_info.phone_two %}
+                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
+                             height="16" class="phone-icon"/>
+                        <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>
+                    {% else %}
+                        Телефон 2 не указан
+                    {% endif %}
+                </p>
+            </div>
+
+            <p class="section-title section-title-color">Почта:</p>
+            <div class="email-row">
+                <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16"
+                     class="email-icon"/>
+                <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">
+                    {{ had_contact.email }}
+                </a>
+            </div>
+            <div class="icons-row">
+                <div class="section-title section-title-color">Соцсети:
+                    {% for social in footer_info.social_networks.all %}
+                        {% if social.url %}
+                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                               aria-label="{{ social.name }}">
+                                {% if social.icon %}
+                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                {% else %}
+                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                                    {{ social.name }}
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from .models import Banner
+from .models import Banner, OurService
 
 
 class BannerForm(forms.ModelForm):
@@ -15,8 +15,6 @@ class BannerForm(forms.ModelForm):
             'photo4_description': forms.TextInput(attrs={'size': 40}),
         }
 
-
-from django import forms
 
 class ContactForm(forms.Form):
     name = forms.CharField(
@@ -86,3 +84,10 @@ class OrderForm(forms.Form):
     message = forms.CharField(label='Дополнительная информация', widget=forms.Textarea, required=False)
 
 
+class OurServiceForm(forms.ModelForm):
+    class Meta:
+        model = OurService
+        fields = '__all__'
+        widgets = {
+            'description': SummernoteWidget(),
+        }
