@@ -592,6 +592,7 @@ nav .nav-linkss.active {
     animation: pulseGlow 3s ease-in-out infinite;
     cursor: pointer;
     user-select: none;
+    border-color: #7818cf;
 }
 
 
@@ -626,6 +627,7 @@ nav .nav-linkss.active {
     padding: 0.75rem 1.5rem;
     text-decoration: none;
     border-radius: 5px;
+    border-color: #8a1af2;
     font-weight: 600;
     filter: drop-shadow(0 0 5px rgb(36, 78, 165));
     transition: background-position 3s ease, filter 0.3s ease;
@@ -1402,7 +1404,7 @@ nav .nav-linkss.active {
 .btn-submit {
   align-self: center;
   padding: 0.75rem 2.5rem;
-  background: linear-gradient(90deg, #0099d5, #4a0073);
+  background: linear-gradient(90deg, #0099d5, #4a0073)!important;
   border: none;
   border-radius: 30px;
   color: white;
@@ -1420,6 +1422,30 @@ nav .nav-linkss.active {
   box-shadow: 0 6px 20px rgba(74, 7, 115, 0.8);
   outline: none;
 }
+
+.btn-submit-two {
+    align-self: center;
+    padding: 0.75rem 2.5rem;
+    background: linear-gradient(90deg, #c0c0c0, #414243) !important;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgb(197 205 208 / 60%);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+.btn-submit-two:hover,
+.btn-submit-two:focus {
+  background: linear-gradient(90deg, #4a0073, #0099d5);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 80%);
+  outline: none;
+    color: #862103 !important;
+}
+
 
 /* Стили для блока контактов, интегрированные из ваших стилей */
 .contacts {
@@ -2988,26 +3014,28 @@ html {
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
-  /*border: 2px solid #fff;*/
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  white-space: nowrap;
-  user-select: none;
-  text-align: center;
-  min-width: 100px;
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    /*border: 2px solid #fff;*/
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+    user-select: none;
+    text-align: center;
+    min-width: 100px;
+    background: darkgray;
+    border-color: darkgray;
 }
 
 .btn:hover,
 .btn:focus {
   background-color: #fff;
-  color: #0198d4;
+  color: whitesmoke;
   outline: none;
 }
 
@@ -3171,7 +3199,7 @@ html {
     max-width: 900px;
     margin: 30px auto;
     padding: 0 15px;
-    color: var(--fg, #fff);
+    color: var(#fff);
 }
 
 .service-title {
@@ -3209,7 +3237,7 @@ html {
 .service-description {
     text-align: center;
     font-size: 1.1rem;
-    color: var(--fg, #ccc);
+    color: var(#ccc);
     margin-top: 20px;
 }
 
