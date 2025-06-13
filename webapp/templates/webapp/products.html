@@ -20,9 +20,15 @@
         <!-- Пример меню категорий -->
         <nav id="categoryMenu" class="category-menu" hidden>
             <ul>
-                <li><a href="#">Категория 1</a></li>
-                <li><a href="#">Категория 2</a></li>
-                <li><a href="#">Категория 3</a></li>
+                <li><a href="{% url 'products' %}" {% if not selected_category %}class="active"{% endif %}>Все</a></li>
+                {% for slug, name in categories.items %}
+                    <li>
+                        <a href="{% url 'products' %}?category={{ slug }}"
+                           {% if selected_category == slug %}class="active"{% endif %}>
+                            {{ name }}
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </nav>
     </div>

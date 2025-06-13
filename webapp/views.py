@@ -105,17 +105,41 @@ CATEGORY_MAP = {
 }
 
 def products(request):
-    item = get_object_or_404(ItemObject, pk=1)
+    CATEGORY_MAP = {
+        'metal_structures': 'is_metal_structures',
+        'procladki': 'is_prokladki_mtgr',
+        'steps_and_stairs': 'is_steps_and_stairs',
+        'grills': 'is_grills',
+        'decor_elements': 'is_decor_elements',
+    }
+
+    selected_category = request.GET.get('category')
+
     items = ItemObject.objects.prefetch_related('photos').distinct()
-    # Получаем фотографии для item (ItemObject)
+
+    if selected_category in CATEGORY_MAP:
+        filter_field = CATEGORY_MAP[selected_category]
+        filter_kwargs = {filter_field: True}
+        items = items.filter(**filter_kwargs)
+
+    item = get_object_or_404(ItemObject, pk=1)
     photos = item.photos.all()
 
     context = {
         'item': item,
         'items': items,
         'photos': photos,
+        'categories': {
+            'metal_structures': 'Металлоконструкции',
+            'procladki': 'Прокладки',
+            'steps_and_stairs': 'Ступени и лестницы',
+            'grills': 'Решётки',
+            'decor_elements': 'Декоративные элементы',
+        },
+        'selected_category': selected_category,
     }
     return render(request, 'webapp/products.html', context=context)
+
 
 
 def products_by_done(request, category):

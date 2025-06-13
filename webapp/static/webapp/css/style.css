@@ -730,26 +730,66 @@ nav .nav-linkss.active {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Стили для меню категорий */
+/* Меню категорий */
 .category-menu {
-    margin-top: 81px;
-    padding-left: 81px;
     position: absolute;
+    top: 190px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 0;
+    left: 60px;
+    width: 250px;
 }
 
+/* Скрываем меню по умолчанию */
+.category-menu[hidden] {
+    display: none;
+}
+
+/* Список категорий */
 .category-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.category-menu li {
-  margin-bottom: 8px;
+.category-menu ul li {
+    margin: 0;
+    text-align: left;
 }
 
-.category-menu a {
-  text-decoration: none;
-  color: #333;
+.category-menu ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+/* Ховер и активный пункт */
+.category-menu ul li a:hover,
+.category-menu ul li a.active {
+    background: linear-gradient(90deg, #52a5ff, #0099d5, #3f0e66);
+    color: #fff;
+    border-left-color: #0056b3;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 600px) {
+    #category-burg {
+        width: 100%;
+    }
+    .category-menu {
+        width: 65%;
+        top: 190px;
+        left: 60px;
+        border-radius: 0;
+    }
 }
 
 
@@ -2052,7 +2092,7 @@ h2 {
 /*}*/
 
 .service-phones a[href^="tel:"] {
-    color: whitesmoke;
+    color: #fff;
     transition: color 0.3s ease, transform 0.3s ease;
     display: inline-block;
     text-decoration: none;
@@ -2063,7 +2103,7 @@ h2 {
     color: #00b7ff;
     transform: scale(1.05);
     text-decoration: none;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.7));
 }
 
 .service-phones a:focus {
@@ -2393,6 +2433,16 @@ h2 {
         padding-right: 5px;
         z-index: 10;
         position: absolute;
+    }
+
+    .service-phones {
+        margin-top: 15px;
+        color: whitesmoke;
+        font-size: 0.95rem;
+        z-index: 5;
+        position: relative;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        text-align: justify;
     }
 
     .custom-image-wrapper img {
