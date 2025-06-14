@@ -198,18 +198,18 @@ class About(models.Model):
         verbose_name_plural = "ℹ️ О компании"
 
 
-class FinishedProduct(models.Model):
-    name = models.CharField("Название", max_length=255)
-    description = models.TextField("Описание", blank=True)
-    photo = models.ImageField("Фото", upload_to='finished_products/', blank=True, null=True)
-
-    class Meta:
-        verbose_name = "✅ Готовая продукция"
-        verbose_name_plural = "✅ Готовая продукция"
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
+# class FinishedProduct(models.Model):
+#     name = models.CharField("Название", max_length=255)
+#     description = models.TextField("Описание", blank=True)
+#     photo = models.ImageField("Фото", upload_to='finished_products/', blank=True, null=True)
+#
+#     class Meta:
+#         verbose_name = "✅ Готовая продукция"
+#         verbose_name_plural = "✅ Готовая продукция"
+#         ordering = ['name']
+#
+#     def __str__(self):
+#         return self.name
 
 
 class BannerPage(models.Model):
