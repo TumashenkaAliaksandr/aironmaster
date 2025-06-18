@@ -1871,6 +1871,7 @@ h2 {
   width: auto;
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
   transition: filter 0.3s ease;
+    margin-top: 5px;
 }
 
 .footer-logo img:hover {
