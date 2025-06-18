@@ -200,11 +200,16 @@
     .footer-logo img {
         height: 60px;
         margin-bottom: 20px;
+        margin-top: 5px;
     }
 
     .photo-row img {
         /*width: calc((100% - 20px) / 2)!important; !* 2 фото в строке *!*/
         height: 100px !important;
+    }
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 100%!important;
     }
 }
 
