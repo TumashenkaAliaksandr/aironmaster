@@ -36,8 +36,12 @@ def handle_order_form(request):
             html_content = render_to_string('webapp/email/order_email.html', context_email)
             text_content = '\n'.join([f"{key}: {value}" for key, value in context_email.items()])
             try:
-                email = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL,
-                                               [settings.DEFAULT_FROM_EMAIL])
+                email = EmailMultiAlternatives(
+                    subject,
+                    text_content,
+                    'Aironmaster <tumashenkaaliaksandr@gmail.com>',
+                    ['aironmaster@tut.by', 'Badminton500@inbox.lv']
+                )
                 email.attach_alternative(html_content, "text/html")
                 email.send()
             except (smtplib.SMTPException, BadHeaderError):

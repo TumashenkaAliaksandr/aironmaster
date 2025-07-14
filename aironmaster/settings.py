@@ -134,9 +134,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tumashenkaaliaksandr@gmail.com'         # Ваш email
-EMAIL_HOST_PASSWORD = 'mnnvxqqktaadapmh '      # Пароль или app password
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')    # Пароль или app password
+print(f"EMAIL_HOST_USER: '{EMAIL_HOST_USER}'")
+print(f"EMAIL_HOST_PASSWORD: '{EMAIL_HOST_PASSWORD}'")

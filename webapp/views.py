@@ -13,6 +13,7 @@ from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage
 from webapp.utils import handle_order_form
 
+from django.conf import settings
 
 def index(request):
     order_form, order_error, order_success = handle_order_form(request)
@@ -33,17 +34,23 @@ def index(request):
                     'message': cd['message'],
                 }
                 html_content = render_to_string('webapp/email_template.html', context_email)
-                text_content = f"""
-                Имя: {cd['name']}
-                Телефон: {cd['phone']}
-                Email: {cd['email']}
-                Сообщение:
-                {cd['message']}
-                """
+                text_content = (
+                    f"Имя: {cd['name']}\n"
+                    f"Телефон: {cd['phone']}\n"
+                    f"Email: {cd['email']}\n"
+                    f"Сообщение:\n{cd['message']}"
+                )
                 try:
-                    email = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
+                    # Отправляем на ваш email (можно добавить еще адреса в список)
+                    email = EmailMultiAlternatives(
+                        subject,
+                        text_content,
+                        'Aironmaster <tumashenkaaliaksandr@gmail.com>',
+                        ['aironmaster@tut.by', 'Badminton500@inbox.lv']
+                    )
                     email.attach_alternative(html_content, "text/html")
                     email.send()
+
                 except (smtplib.SMTPException, BadHeaderError):
                     error_message = "Ошибка при отправке письма. Пожалуйста, попробуйте позже."
                 else:
@@ -214,7 +221,12 @@ def contacts(request):
             {cd['message']}
             """
             try:
-                email = EmailMultiAlternatives(subject, text_content, settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
+                email = EmailMultiAlternatives(
+                    subject,
+                    text_content,
+                    'Aironmaster <tumashenkaaliaksandr@gmail.com>',
+                    ['aironmaster@tut.by', 'Badminton500@inbox.lv']
+                )
                 email.attach_alternative(html_content, "text/html")
                 email.send()
             except (smtplib.SMTPException, BadHeaderError):
