@@ -15,6 +15,7 @@ urlpatterns = [
     path('single-services/', views.single_services, name='single-services'),
     path('item/<slug:slug>/', views.item_details, name='item_details'),
     path('contacts/', views.contacts, name='contacts'),
+    path('advertisement/', views.advertisement, name='advertisement'),
     path("robots.txt", robots_txt, name="robots_txt"),
     path('sitemap.xml', sitemap_view, name='sitemap'),
 

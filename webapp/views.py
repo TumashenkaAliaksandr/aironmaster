@@ -270,6 +270,11 @@ def item_detail(request, slug):
     }
     return render(request, 'webapp/item_detail.html', context)
 
+
+def advertisement (request):
+    """ Advertisement page """
+    return render(request, 'webapp/advertisement.html')
+
 def sitemap_view(request):
 
     # Для продакшена (глобального хоста) используйте фиксированный URL:
