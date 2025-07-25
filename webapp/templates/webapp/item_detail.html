@@ -16,7 +16,7 @@
         <!-- Главное фото -->
         <div class="main-photo-wrapper" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
             <img id="main-photo" src="{% if item.photos.first %}{{ item.photos.first.photo.url }}{% else %}{% static 'webapp/img/no_images.png' %}{% endif %}"
-                 alt="{{ item.name }}" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                 alt="{{ item.name }}" style="width: 100%; height: auto; display: block; object-fit: contain;">
         </div>
 
         <!-- Миниатюры -->
@@ -83,6 +83,32 @@
         {% endif %}
     </section>
     <div class="gradient"></div>
+
+    <!-- Модальное окно -->
+    <div id="customModal" class="custom-modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="custom-modal-overlay"></div>
+        <div class="custom-modal-content" role="document" tabindex="0" style="position: relative;">
+            <button class="custom-close" aria-label="Закрыть"
+                    style="position: absolute; top: 10px; right: 15px; font-size: 2rem; background: none; border: none; cursor: pointer;">
+                &times;
+            </button>
+            <button class="custom-prev" aria-label="Предыдущее изображение"
+                    style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); font-size: 2rem; background: none; border: none; cursor: pointer;">
+                &#10094;
+            </button>
+            <div class="custom-image-wrapper" style="text-align:center; max-width: 90vw; max-height: 80vh;">
+                <img id="customModalImage" src="" alt=""
+                     style="max-width: 85%; max-height: 85%; border-radius: 8px; user-select: none;"/>
+                <div id="customModalDescription" class="custom-description"
+                     style="margin-top: 8px; color: #333; font-size: 1rem;"></div>
+            </div>
+            <button class="custom-next" aria-label="Следующее изображение"
+                    style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); font-size: 2rem; background: none; border: none; cursor: pointer;">
+                &#10095;
+            </button>
+        </div>
+    </div>
+
 
 
 {% endblock %}
