@@ -28,64 +28,128 @@
 
     {% include 'webapp/snek_form.html' %}
 
+    <section id="items-slider" class="item-section">
+        <div class="container">
+            <h2 class="items"><a href="{% url 'products' %}">Наша продукция</a></h2>
+
+            <div class="swiper second-product-slider">
+                <div class="swiper-wrapper">
+                    {% for item in items %}
+                        <div class="product-card swiper-slide" role="group"
+                             aria-label="{{ forloop.counter }} / {{ items|length }}">
+                            <div class="product-image">
+                                {% if item.photos.first %}
+                                    <img src="{{ item.photos.first.photo.url }}" class="img-fluid"
+                                         alt="{{ item.name }}">
+                                {% else %}
+                                    <img src="{% static 'webapp/img/no_images.png' %}" class="img-fluid"
+                                         alt="Нет изображения">
+                                {% endif %}
+
+                                <div class="badge-container">
+                                    {# Пример бейджей, можно на основе логики из item #}
+                                    {% if item.is_main %}
+                                        <span class="product-badge badge-new">New</span>
+                                    {% endif %}
+                                    {# Добавьте здесь другие бейджи, например SALE, STAR и т.п. #}
+                                </div>
+
+                                <div class="img-btn-container">
+                                    <span class="wish-btn" title="Добавить в избранное">💖</span>
+                                </div>
+                            </div>
+
+                            <div class="card-body p-2">
+                                <a href="{% url 'item_detail' item.slug %}" target="_blank"
+                                   class="text-decoration-none">
+                                    <h4 class="product-name fw-semibold" title="{{ item.name }}">{{ item.name }}</h4>
+                                </a>
+
+                                <ul class="attributes-card mt-auto">
+                                    {# Если у вас есть связанные бренды/категории, замените заглушки #}
+                                    <li><a href="#" class="text-decoration-none">Aironmaster</a></li>
+                                    <li><a href="#" class="text-decoration-none">Изделия из металла</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+                <!-- Навигация -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- Пагинация -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <a href="{% url 'products' %}">
+                <button class="btn">Посмотреть все</button>
+            </a>
+
+
+        </div>
+    </section>
+
+    <div class="gradient"></div>
 
     {% for item in items %}
         <section id="screw-spiral" class="item-section">
-        <div class="container">
-            <div class="content-wrapper">
-                <h2>{{ item.name|safe }}</h2>
-                <p>{{ item.description }}</p>
-                <p>
-                    {% if item.phone1 %}
-                        <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>
-                    {% endif %}
-                    {% if item.phone2 %}
-                        <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>
-                    {% endif %}
-                </p>
-                <div class="social-icons-wrapper">
-                    {% for social in footer_info.social_networks.all %}
-                        {% if social.url %}
-                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="{{ social.name }}" class="social-icon">
-                                {% if social.icon %}
-                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
-                                {% else %}
-                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
-                                    {{ social.name }}
-                                {% endif %}
-                            </a>
+            <div class="container">
+                <div class="content-wrapper">
+                    <h2>{{ item.name|safe }}</h2>
+                    <p>{{ item.description }}</p>
+                    <p>
+                        {% if item.phone1 %}
+                            <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>
                         {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
-                <div class="row g-3">
-                    {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
-                        {% for p in photo_row %}
-                            <div class="col-6 col-md-3">
-                                <div class="photo-item">
-                                    <img
-                                            src="{{ p.photo.url }}"
-                                            alt="{{ p.description }}"
-                                            class="img-fluid rounded gallery-image"
-                                            style="object-fit: cover; width: 100%; height: auto;"
-                                            data-src="{{ p.photo.url }}"
-                                    >
-                                    {% if p.description %}
-                                        <div class="photo-description">{{ p.description }}</div>
+                        {% if item.phone2 %}
+                            <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>
+                        {% endif %}
+                    </p>
+                    <div class="social-icons-wrapper">
+                        {% for social in footer_info.social_networks.all %}
+                            {% if social.url %}
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                                   aria-label="{{ social.name }}" class="social-icon">
+                                    {% if social.icon %}
+                                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                                    {% else %}
+                                        {{ social.name }}
                                     {% endif %}
-                                </div>
-                            </div>
+                                </a>
+                            {% endif %}
                         {% endfor %}
-                    {% endfor %}
+                    </div>
+                </div>
+
+                <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">
+                    <div class="row g-3">
+                        {% for photo_row in item.photos.all|slice:"0:8"|batch:4 %}
+                            {% for p in photo_row %}
+                                <div class="col-6 col-md-3">
+                                    <div class="photo-item">
+                                        <img
+                                                src="{{ p.photo.url }}"
+                                                alt="{{ p.description|default:'' }}"
+                                                class="img-fluid rounded gallery-image"
+                                                style="object-fit: cover; width: 100%; height: auto;"
+                                                data-src="{{ p.photo.url }}"
+                                        >
+                                        {% if p.description %}
+                                            <div class="photo-description">{{ p.description }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
         </section>
         <div class="gradient"></div>
     {% endfor %}
+
     <div id="contacts-top"></div>
 
     <div id="engineering" class="d-flex justify-content-between flex-wrap gap-3">

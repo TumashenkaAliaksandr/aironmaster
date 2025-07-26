@@ -69,7 +69,7 @@ def index(request):
 
     # Остальной код для контекста
     item = get_object_or_404(ItemObject, pk=1)
-    items = ItemObject.objects.prefetch_related('photos').distinct()
+    items = ItemObject.objects.filter(is_main=True).prefetch_related('photos').distinct()
     services_info = ServicesContact.objects.all()
     banner = get_object_or_404(Banner, pk=1)
     about = About.objects.first()

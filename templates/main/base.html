@@ -1,27 +1,38 @@
 {% load static %}
 
 
-
 <head>
     {% block head %}
-    <meta charset="UTF-8" />
-        <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(79472485, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/79472485" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="yandex-verification" content="d69267b265ea97d6" />
-    <title>АЙРОНМАСТЕР </title>
+        <meta charset="UTF-8"/>
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript"> (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(79472485, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
+        <noscript>
+            <div><img src="https://mc.yandex.ru/watch/79472485" style="position:absolute; left:-9999px;" alt=""/></div>
+        </noscript> <!-- /Yandex.Metrika counter -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="yandex-verification" content="d69267b265ea97d6"/>
+        <title>АЙРОНМАСТЕР </title>
         <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'webapp/img/a_favicon.png' %}">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'webapp/img/a_favicon.png' %}">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
-    <!-- Основные стили -->
-    <link rel="stylesheet" href="{% static 'webapp/css/style.css' %}"/>
-    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,700&display=swap" rel="stylesheet">
+        <!-- Основные стили -->
+        <link rel="stylesheet" href="{% static 'webapp/css/style.css' %}"/>
+        <link href="https://fonts.googleapis.com/css?family=Exo+2:400,700&display=swap" rel="stylesheet">
 
 
         <!-- Мобильные стили -->
-    <link rel="stylesheet" href="{% static 'webapp/css/mobile.css' %}" media="(max-width: 767px)" />
+        <link rel="stylesheet" href="{% static 'webapp/css/mobile.css' %}" media="(max-width: 767px)"/>
     {% endblock %}
 </head>
 
@@ -75,43 +86,50 @@
         <!-- Меню для десктопа -->
         <nav class="d-none d-md-block">
             <ul class="nav nav-land">
-               <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>
-                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">О компании</a></li>
-               <li class="nav-item dropdown">
-                   <a href="{% url 'products' %}" class="nav-linkss dropbtn">Готовая Продукция</a>
-                   <ul class="dropdown-content dropdown-icon">
-                       <li>
-                           <a href="{% url 'products_by_category' category='metal_structures' %}">
-                               <img src="{% static 'webapp/icons/aironmaster-metal.png' %}" alt="Металлоконструкции"
-                                    class="dropdown-icon"/> Металлоконструкции
-                           </a>
-                       </li>
-                       <li>
-                           <a href="{% url 'products_by_category' category='procladki' %}">
-                               <img src="{% static 'webapp/icons/aironmaster_procladki.png' %}" alt="Прокладки"
-                                    class="dropdown-icon"/> Прокладки
-                           </a>
-                       </li>
-                       <li>
-                           <a href="{% url 'products_by_category' category='steps_and_stairs' %}">
-                               <img src="{% static 'webapp/icons/aironmaster-next-level.png' %}" alt="Ступеньки и Лестницы"
-                                    class="dropdown-icon"/> Ступеньки и Лестницы
-                           </a>
-                       </li>
-                       <li>
-                           <a href="{% url 'products_by_category' category='grills' %}">
-                               <img src="{% static 'webapp/icons/aironmaster-grill.png' %}" alt="Мангалы" class="dropdown-icon"/>
-                               Мангалы
-                           </a>
-                       </li>
-                       <li>
-                           <a href="{% url 'products_by_category' category='decor_elements' %}">
-                               <img src="{% static 'webapp/icons/aironmaster-decorelements.png' %}" alt="Элементы декора"
-                                    class="dropdown-icon"/> Элементы декора
-                           </a>
-                       </li>
-                   </ul>
-               </li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}"
+                        href="{% url 'index' %}">Главная</a></li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                        href="{% url 'about' %}">О компании</a></li>
+                <li class="nav-item dropdown">
+                    <a href="{% url 'products' %}" class="nav-linkss dropbtn">Готовая Продукция</a>
+                    <ul class="dropdown-content dropdown-icon">
+                        <li>
+                            <a href="{% url 'products_by_category' category='metal_structures' %}">
+                                <img src="{% static 'webapp/icons/aironmaster-metal.png' %}" alt="Металлоконструкции"
+                                     class="dropdown-icon"/> Металлоконструкции
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'products_by_category' category='procladki' %}">
+                                <img src="{% static 'webapp/icons/aironmaster_procladki.png' %}" alt="Прокладки"
+                                     class="dropdown-icon"/> Прокладки
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'products_by_category' category='steps_and_stairs' %}">
+                                <img src="{% static 'webapp/icons/aironmaster-next-level.png' %}"
+                                     alt="Ступеньки и Лестницы"
+                                     class="dropdown-icon"/> Ступеньки и Лестницы
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'products_by_category' category='grills' %}">
+                                <img src="{% static 'webapp/icons/aironmaster-grill.png' %}" alt="Мангалы"
+                                     class="dropdown-icon"/>
+                                Мангалы
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'products_by_category' category='decor_elements' %}">
+                                <img src="{% static 'webapp/icons/aironmaster-decorelements.png' %}"
+                                     alt="Элементы декора"
+                                     class="dropdown-icon"/> Элементы декора
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item dropdown {% if request.resolver_match.url_name == 'service_detail' %}active{% endif %}">
                     <span class="nav-linkss dropbtn">Наши Услуги</span>
@@ -119,7 +137,8 @@
                         {% for service in services %}
                             <li>
                                 <a href="{% url 'service_detail' slug=service.slug %}"
-                                   class="{% if request.resolver_match.url_name == 'service_detail' and request.resolver_match.kwargs.slug == service.slug %}active{% endif %}"><img src="{{ service.photo.url }}" alt="" class="dropdown-icon"/>
+                                   class="{% if request.resolver_match.url_name == 'service_detail' and request.resolver_match.kwargs.slug == service.slug %}active{% endif %}"><img
+                                        src="{{ service.photo.url }}" alt="" class="dropdown-icon"/>
                                     {{ service.name }}
                                 </a>
                             </li>
@@ -129,22 +148,33 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Контакты</a></li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}"
+                        href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
 
         <nav id="mobileMenu" class="mobile-menu d-md-none" aria-hidden="true">
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Главная</a></li>
-                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">О компании</a></li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'index' %}active{% endif %}"
+                        href="{% url 'index' %}">Главная</a></li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                        href="{% url 'about' %}">О компании</a></li>
                 <li class="nav-item dropdown">
-                    <a href="{% url 'products' %}" id="toggle"  class="nav-linkss dropbtn toggle-checkbox">Готовая Продукция</a>
+                    <a href="{% url 'products' %}" id="toggle" class="nav-linkss dropbtn toggle-checkbox">Готовая
+                        Продукция</a>
                     <ul class="dropdown-content">
-                        <li><a href="{% url 'products_by_category' category='metal_structures' %}">Металлоконструкции</a></li>
-                        <li><a href="{% url 'products_by_category' category='steps_and_stairs' %}">Ступеньки и Лестницы</a></li>
+                        <li>
+                            <a href="{% url 'products_by_category' category='metal_structures' %}">Металлоконструкции</a>
+                        </li>
+                        <li><a href="{% url 'products_by_category' category='steps_and_stairs' %}">Ступеньки и
+                            Лестницы</a></li>
                         <li><a href="{% url 'products_by_category' category='grills' %}">Мангалы</a></li>
-                        <li><a href="{% url 'products_by_category' category='decor_elements' %}">Элементы декора</a></li>
-                        <li><a href="{% url 'products'%}">Все</a></li>
+                        <li><a href="{% url 'products_by_category' category='decor_elements' %}">Элементы декора</a>
+                        </li>
+                        <li><a href="{% url 'products' %}">Все</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -159,7 +189,9 @@
                         {% endfor %}
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'contacts' %}">Контакты</a></li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                        href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
     </div>
@@ -170,7 +202,7 @@
 {% block content %}{% endblock %}
 
 <footer class="footer">
-  <!-- Волнообразный SVG -->
+    <!-- Волнообразный SVG -->
     <div class="footer-wave">
         <svg viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -180,7 +212,8 @@
                     <stop offset="100%" stop-color="#543071"/>
                 </linearGradient>
             </defs>
-            <path fill="url(#footerWaveGradient)" fill-opacity="1" d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,138.7C1200,128,1320,96,1380,80L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"/>
+            <path fill="url(#footerWaveGradient)" fill-opacity="1"
+                  d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,122.7C840,139,960,149,1080,138.7C1200,128,1320,96,1380,80L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"/>
         </svg>
     </div>
 
@@ -253,21 +286,21 @@
     </div>
 </footer>
 
-    <!-- Копирайт -->
-  <div class="footer-copyright">
+<!-- Копирайт -->
+<div class="footer-copyright">
     <p>© 2025 Aironmaster. Все права защищены. Design Phoenix 2025</p>
-  </div>
+</div>
 
 
 <!-- Кастомное модальное окно -->
 <div id="customModal" class="custom-modal" style="display: none;">
-  <div class="custom-modal-content">
-    <button class="custom-close" aria-label="Закрыть">&times;</button>
-    <button class="custom-prev" aria-label="Предыдущее изображение">&#10094;</button>
-    <img id="customModalImage" src="" alt="" />
-    <button class="custom-next" aria-label="Следующее изображение">&#10095;</button>
-    <div id="customModalDescription" class="custom-description"></div>
-  </div>
+    <div class="custom-modal-content">
+        <button class="custom-close" aria-label="Закрыть">&times;</button>
+        <button class="custom-prev" aria-label="Предыдущее изображение">&#10094;</button>
+        <img id="customModalImage" src="" alt=""/>
+        <button class="custom-next" aria-label="Следующее изображение">&#10095;</button>
+        <div id="customModalDescription" class="custom-description"></div>
+    </div>
 </div>
 
 <button id="scrollToTopBtn" title="Наверх">&#8679;</button>
@@ -275,8 +308,10 @@
 
 <!-- Bootstrap JS (опционально для интерактивности) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="{% static 'webapp/js/main.js' %}"></script>
 <script src="{% static 'webapp/js/photo_windows.js' %}"></script>
 <script src="{% static 'webapp/js/category_burger.js' %}"></script>
 <script src="{% static 'webapp/js/item-datail.js' %}"></script>
 <script src="{% static 'webapp/js/snek-form.js' %}"></script>
+<script src="{% static 'webapp/js/swiper_product_slider.js' %}"></script>

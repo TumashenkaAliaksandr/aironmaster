@@ -3418,3 +3418,321 @@ html {
   user-select: none;
 }
 
+/* Контейнер слайдера */
+.item-section {
+    background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+}
+
+.second-product-slider {
+  padding: 10px 0;
+  position: relative;
+}
+
+.items h2 {
+    text-align: center;       /* Центрирует текст внутри заголовка */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.items h2 a {
+    display: inline-block; /* Чтобы ссылка занимала ровно размер текста */
+    text-decoration: none;
+    text-transform: uppercase;
+    color: inherit; /* Наследовать цвет заголовка */
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    font-size: 1.8rem;
+}
+
+/* Для ссылок внутри блока .items, если нужны отдельные стили */
+.items a {
+    display: inline-block;
+    text-align: center;
+    margin: 20px auto; /* Центрирует ссылку, если она блочная */
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    font-size: 1.8rem;
+}
+
+
+
+/* Слайды */
+/* Обязательная фиксация минимальной и максимальной высоты для карточки / контейнера и её частей */
+
+/* Ограничиваем высоту карточки, фиксируем ширину */
+.swiper-slide {
+    width: calc((100% - 60px) / 4); /* 4 слайда с учетом 20px отступа между ними (3 промежутка по 20px => 60) */
+    background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(90, 63, 153, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+
+    /* Добавлено */
+    min-height: 250px; /* Пример фиксированной минимальной высоты, подберите под ваш макет */
+    max-height: 200px; /* Можно ограничить, чтобы карточки не растягивались */
+}
+
+/* Картинка с фиксированной высотой */
+.product-image img.img-fluid {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    border-radius: 8px 8px 0 0;
+    flex-shrink: 0; /* чтобы картинка не сжималась */
+}
+
+/* Заголовок и другие блоки сохраняют перенос текста */
+.product-name {
+  font-weight: 600;
+  color: #5a3f99;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: normal;      /* *Разрешаем* перенос строк */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Для удобства расположения кнопки "Select" внизу */
+/*.add-to-cart {*/
+/*  margin-top: auto; !* Кнопка всегда ниже контента *!*/
+/*  font-size: 1rem;*/
+/*  padding: 10px 0;*/
+/*  border-radius: 6px;*/
+/*  font-weight: 600;*/
+/*}*/
+
+/* Чтобы контейнер с атрибутами не растягивался */
+.attributes-card {
+  flex-shrink: 0;
+}
+
+/* Контейнер с ценами */
+.price {
+  flex-shrink: 0;
+}
+
+/* Обеспечиваем корректную работу swiper */
+.swiper-wrapper {
+  align-items: flex-start; /* Выровнять слайды по верхнему краю */
+    max-height: 250px;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+/* Для адаптивности */
+@media (max-width: 767px) {
+  .swiper-slide {
+    width: 80vw;
+    min-height: auto;
+    max-height: none;
+  }
+  .card-body {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+
+.swiper-slide:hover {
+  box-shadow: 0 6px 20px rgba(90, 63, 153, 0.2);
+}
+
+/* Изображение товара */
+.product-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image img.img-fluid {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  display: block;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Бейджи */
+.badge-container {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.product-badge {
+  background-color: #5a3f99;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.badge-new {
+  background-color: #007bff;
+}
+
+.badge-sale {
+  background-color: #dc3545;
+}
+
+.badge-star {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.badge-hot {
+  background-color: #fd5724;
+}
+
+.badge-out-of-stock {
+  background-color: #6c757d;
+}
+
+/* Кнопки в изображении */
+.img-btn-container {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+  font-size: 1.25rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Тело карточки */
+.card-body {
+  padding: 12px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Название товара */
+.product-name {
+  font-weight: 600;
+  color: #5a3f99;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*white-space: nowrap;*/
+}
+
+/* Атрибуты товара */
+.attributes-card {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.attributes-card li {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.attributes-card li a {
+  color: #777;
+  text-decoration: none;
+}
+
+.attributes-card li a:hover {
+  text-decoration: underline;
+}
+
+/* Цены */
+.price {
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.price .currency-symbol {
+  margin-right: 2px;
+}
+
+.price .original-price {
+  text-decoration: line-through;
+  color: #dc3545;
+  margin-left: 8px;
+}
+
+/* Кнопка */
+/*.add-to-cart {*/
+/*  margin-top: auto;*/
+/*  font-size: 1rem;*/
+/*  padding: 10px 0;*/
+/*  border-radius: 6px;*/
+/*  font-weight: 600;*/
+/*    width: 200px!important;*/
+/*}*/
+
+/* Навигационные кнопки */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #5a3f99;
+  width: 40px;
+  height: 40px;
+  top: 45%;
+  border-radius: 50%;
+  background: rgba(90, 63, 153, 0.1);
+  transition: background-color 0.3s;
+  box-shadow: 0 0 6px rgba(90, 63, 153, 0.2);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(90, 63, 153, 0.3);
+}
+
+/* Пагинация */
+.swiper-pagination-bullet {
+  background: #bbb;
+  opacity: 1;
+  transition: background-color 0.3s;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #5a3f99;
+}
+
+/* Адаптив */
+@media (max-width: 767px) {
+  .swiper-slide {
+    width: 80vw; /* слайды под мобильные экраны */
+  }
+
+  .product-image img.img-fluid {
+    height: 200px;
+  }
+}

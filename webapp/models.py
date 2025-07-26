@@ -49,6 +49,7 @@ class ItemObject(models.Model):
     is_steps_and_stairs = models.BooleanField("Ступеньки и Лестницы", default=False)
     is_grills = models.BooleanField("Мангалы", default=False)
     is_decor_elements = models.BooleanField("Элементы декора", default=False)
+    is_main = models.BooleanField("На главную", default=False)
 
     class Meta:
         verbose_name = "🎷 Изделия"
