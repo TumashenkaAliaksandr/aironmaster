@@ -3525,7 +3525,7 @@ html {
 /* Обеспечиваем корректную работу swiper */
 .swiper-wrapper {
   align-items: flex-start; /* Выровнять слайды по верхнему краю */
-    max-height: 250px;
+    max-height: 275px;
 }
 
 .swiper-wrapper {
