@@ -49,7 +49,7 @@
                                 <div class="badge-container">
                                     {# Пример бейджей, можно на основе логики из item #}
                                     {% if item.is_main %}
-                                        <span class="product-badge badge-new">New</span>
+                                        <span class="product-badge badge-new">Новое</span>
                                     {% endif %}
                                     {# Добавьте здесь другие бейджи, например SALE, STAR и т.п. #}
                                 </div>
@@ -84,7 +84,7 @@
                 <div class="swiper-pagination"></div>
             </div>
             <a href="{% url 'products' %}">
-                <button class="btn">Посмотреть все</button>
+                <button class="btn-all-product">Посмотреть все</button>
             </a>
 
 
@@ -134,8 +134,7 @@
                                                 alt="{{ p.description|default:'' }}"
                                                 class="img-fluid rounded gallery-image"
                                                 style="object-fit: cover; width: 100%; height: auto;"
-                                                data-src="{{ p.photo.url }}"
-                                        >
+                                                data-src="{{ p.photo.url }}">
                                         {% if p.description %}
                                             <div class="photo-description">{{ p.description }}</div>
                                         {% endif %}

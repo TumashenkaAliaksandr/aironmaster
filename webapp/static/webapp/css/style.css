@@ -2903,6 +2903,33 @@ html {
         0 0 20px 6px rgba(2, 110, 164, 0.4);
 }
 
+
+.btn-all-product {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(270deg, #0297d3, #480576, #911bff);
+    background-size: auto;
+    background-size: 600% 600%;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    filter: drop-shadow(0 0 5px rgb(36, 78, 165));
+    transition: background-position 3s ease, filter 0.3s ease;
+    animation: pulseGlow 3s ease-in-out infinite;
+    cursor: pointer;
+    user-select: none;
+    border-color: #7818cf;
+}
+
+.btn-all-product:hover {
+    background-position: 100% 0;
+    filter: drop-shadow(0 0 10px rgba(155, 48, 255, 0.9));
+    border-color: #0297d3;
+}
+
 .modal-content {
     background: mintcream;
     border-radius: 14px;
@@ -3538,18 +3565,6 @@ html {
     box-sizing: content-box;
 }
 
-/* Для адаптивности */
-@media (max-width: 767px) {
-  .swiper-slide {
-    width: 80vw;
-    min-height: auto;
-    max-height: none;
-  }
-  .card-body {
-    max-height: none;
-    overflow-y: visible;
-  }
-}
 
 
 .swiper-slide:hover {
@@ -3635,14 +3650,14 @@ html {
 
 /* Название товара */
 .product-name {
-  font-weight: 600;
-  color: #5a3f99;
-  margin-bottom: 8px;
-  font-size: 0.88rem;
-  line-height: 1.1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /*white-space: nowrap;*/
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500 !important;
+    color: #291950;
+    /*white-space: nowrap;*/
 }
 
 /* Атрибуты товара */
@@ -3734,5 +3749,17 @@ html {
 
   .product-image img.img-fluid {
     height: 200px;
+  }
+}
+/* Для адаптивности */
+@media (max-width: 767px) {
+  .swiper-slide {
+    width: 80vw;
+    min-height: auto;
+    max-height: none;
+  }
+  .card-body {
+    max-height: none;
+    overflow-y: visible;
   }
 }
