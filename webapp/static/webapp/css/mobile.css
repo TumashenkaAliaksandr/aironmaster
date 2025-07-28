@@ -665,6 +665,19 @@
         color: white;
     }
 
+    .owl-theme .owl-nav [class*=owl-] {
+        color: #FFF;
+        font-size: 14px;
+        margin: 5px;
+        padding: 4px 7px;
+        background: #D6D6D6;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 50px;
+        /* padding-top: 30px; */
+        /* margin-top: 60px; */
+    }
+
     .map-phones {
         margin-top: 15px;
         color: whitesmoke;
@@ -700,6 +713,11 @@
         justify-content: center;
         min-height: 50px;
         height: 20px;
+    }
+
+    .owl-dots {
+        margin-top: 10px;
+        margin-bottom: 21px;
     }
 
 }

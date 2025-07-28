@@ -28,68 +28,58 @@
 
     {% include 'webapp/snek_form.html' %}
 
-    <section id="items-slider" class="item-section">
+    <section id="items-slider" class="item-section-bg">
         <div class="container">
-            <h2 class="items"><a href="{% url 'products' %}">Наша продукция</a></h2>
+            <h2 class="product-block-name"><a href="{% url 'products' %}">Наша продукция</a></h2>
 
-            <div class="swiper second-product-slider">
-                <div class="swiper-wrapper">
-                    {% for item in items %}
-                        <div class="product-card swiper-slide" role="group"
-                             aria-label="{{ forloop.counter }} / {{ items|length }}">
-                            <div class="product-image">
-                                {% if item.photos.first %}
-                                    <img src="{{ item.photos.first.photo.url }}" class="img-fluid"
-                                         alt="{{ item.name }}">
-                                {% else %}
-                                    <img src="{% static 'webapp/img/no_images.png' %}" class="img-fluid"
-                                         alt="Нет изображения">
+            <!-- Контейнер Owl Carousel -->
+            <div class="second-product-slider owl-carousel owl-theme">
+                {% for item in items %}
+                    <div class="product-card item" role="group"
+                         aria-label="{{ forloop.counter }} / {{ items|length }}">
+                        <div class="product-image">
+                            {% if item.photos.first %}
+                                <img src="{{ item.photos.first.photo.url }}" class="img-fluid"
+                                     alt="{{ item.name }}">
+                            {% else %}
+                                <img src="{% static 'webapp/img/no_images.png' %}" class="img-fluid"
+                                     alt="Нет изображения">
+                            {% endif %}
+
+                            <div class="badge-container">
+                                {% if item.is_main %}
+                                    <span class="product-badge badge-new">Новое</span>
                                 {% endif %}
-
-                                <div class="badge-container">
-                                    {# Пример бейджей, можно на основе логики из item #}
-                                    {% if item.is_main %}
-                                        <span class="product-badge badge-new">Новое</span>
-                                    {% endif %}
-                                    {# Добавьте здесь другие бейджи, например SALE, STAR и т.п. #}
-                                </div>
-
-                                <div class="img-btn-container">
-                                    <span class="wish-btn" title="Добавить в избранное">💖</span>
-                                </div>
+                                {# Добавьте сюда другие бейджи, если нужно #}
                             </div>
 
-                            <div class="card-body p-2">
-                                <a href="{% url 'item_detail' item.slug %}" target="_blank"
-                                   class="text-decoration-none">
-                                    <h4 class="product-name fw-semibold" title="{{ item.name }}">{{ item.name }}</h4>
-                                </a>
-
-                                <ul class="attributes-card mt-auto">
-                                    {# Если у вас есть связанные бренды/категории, замените заглушки #}
-                                    <li><a href="#" class="text-decoration-none">Aironmaster</a></li>
-                                    <li><a href="#" class="text-decoration-none">Изделия из металла</a></li>
-                                </ul>
-                            </div>
+{#                            <div class="img-btn-container">#}
+{#                                <span class="wish-btn" title="Добавить в избранное">💖</span>#}
+{#                            </div>#}
                         </div>
-                    {% endfor %}
-                </div>
 
+                        <div class="card-body p-2">
+                            <a href="{% url 'item_detail' item.slug %}" target="_blank"
+                               class="text-decoration-none">
+                                <h4 class="product-name fw-semibold" title="{{ item.name }}">{{ item.name }}</h4>
+                            </a>
 
-                <!-- Навигация -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- Пагинация -->
-                <div class="swiper-pagination"></div>
+                            <ul class="attributes-card mt-auto">
+                                <li><a href="#" class="text-decoration-none">Aironmaster</a></li>
+                                <li><a href="#" class="text-decoration-none">Изделия из металла</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
+
             <a href="{% url 'products' %}">
                 <button class="btn-all-product">Посмотреть все</button>
             </a>
 
-
         </div>
     </section>
+
 
     <div class="gradient"></div>
 
