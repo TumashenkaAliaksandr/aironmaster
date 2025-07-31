@@ -7,6 +7,111 @@
     {% include 'main/banner.html' %}
     <!-- End Banner -->
     <div id="about" class="gradient"></div>
+    <section class="custom-metal-bg">
+        <div class="custom-container">
+            <!-- Основной блок с металлообработкой -->
+            <div class="custom-metal-block">
+                <h1 class="custom-title">Металлообработка</h1>
+                <div class="custom-row">
+                    <div class="custom-card">
+                        <a href="{% url 'service_detail' slug='laser-cutting' %}">
+                            <img src="{% static 'webapp/img/aironmaster_lazer.png' %}"
+                                 alt="услуги лазерной резки металлическая лазерная резка лазерная резка деталей"/>
+                        </a>
+                        <div class="custom-caption">Лазерная резка листового металла</div>
+                    </div>
+                    <div class="custom-card">
+                        <a href="{% url 'service_detail' slug='bending' %}">
+                            <img src="{% static 'webapp/img/aironmaster_gibka.png' %}"
+                                 alt="Гибка металла"/>
+                        </a>
+                        <div class="custom-caption">Гибка металла</div>
+                    </div>
+                    <div class="custom-card">
+                        <a href="{% url 'service_detail' slug='vibratory-trowel' %}">
+                            <img src="{% static 'webapp/img/aironmaster_vibrogoltovka_IFfETZG.jpeg' %}"
+                                 alt="Лазерная резка труб и профилей"/>
+                        </a>
+                        <div class="custom-caption">Виброголтовка</div>
+                    </div>
+                </div>
+                <div class="custom-row">
+                    <div class="custom-card">
+                        <a href="{% url 'service_detail' slug='vibratory-trowel' %}">
+                            <img src="{% static 'webapp/img/aironmaster_svarka.png' %}"
+                                 alt="Сварочные работы"/>
+                        </a>
+                        <div class="custom-caption">Сварочные работы</div>
+                    </div>
+                    <div class="custom-card">
+                        <a href="{% url 'service_detail' slug='vibratory-trowel' %}">
+                            <img src="{% static 'webapp/img/aironmaster_truby.png' %}"
+                                 alt="Изготовление металлоконструкций"/>
+                        </a>
+                        <div class="custom-caption">Изготовление металлоконструкций</div>
+                    </div>
+                    <div class="custom-card">
+                        <a href="{% url 'service_detail' slug='polymer-painting' %}">
+                            <img src="{% static 'webapp/img/aironmaster_pokraska.png' %}"
+                                 alt="Полимерная покраска"/>
+                        </a>
+                        <div class="custom-caption">Полимерная покраска</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сайдбар справа -->
+            <aside class="custom-sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">🚩 Навигация</h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="{% url 'products_by_category' category='procladki' %}">
+                            <img src="{% static 'webapp/icons/aironmaster_procladki.png' %}" alt="Прокладки"
+                                 class="dropdown-icon"/> Прокладки
+                        </a></li>
+                        <li><a href="{% url 'products_by_category' category='steps_and_stairs' %}">
+                            <img src="{% static 'webapp/icons/aironmaster-next-level.png' %}"
+                                 alt="Ступеньки и Лестницы"
+                                 class="dropdown-icon"/> Ступеньки и Лестницы
+                        </a></li>
+                        <li><a href="{% url 'products_by_category' category='grills' %}">
+                            <img src="{% static 'webapp/icons/aironmaster-grill.png' %}" alt="Мангалы"
+                                 class="dropdown-icon"/>
+                            Мангалы
+                        </a></li>
+                        <li><a href="{% url 'products_by_category' category='decor_elements' %}">
+                            <img src="{% static 'webapp/icons/aironmaster-decorelements.png' %}"
+                                 alt="Элементы декора"
+                                 class="dropdown-icon"/> Элементы декора
+                        </a></li>
+                    </ul>
+                </div>
+                {% for service in services_info %}
+                    {% if forloop.last %}
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-title"> ☎️ Телефоны:</h3>
+                            <p><a href="tel:{{ service.phone_one }}">{{ service.phone_one }}</a> (A1)</p>
+                            <p><a href="tel:{{ service.phone_two }}">{{ service.phone_two }}</a> (МТС)</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">📢 Реклама</h3>
+                </div>
+
+                <div class="order-discount">
+                    <a src="{% url 'advertisement' %}" alt="Реклама">🛒 Оформи заказ с сайта и получи скидку 🏷️</a>
+                </div>
+
+            </aside>
+        </div>
+    </section>
+    <div class="gradient"></div>
+
+    {% include 'webapp/snek_form.html' %}
+
+
     <section class="about-company">
         <div class="container about-container">
             <div class="about-image">
@@ -24,9 +129,8 @@
             </div>
         </div>
     </section>
-    <div class="gradient"></div>
 
-    {% include 'webapp/snek_form.html' %}
+    <div class="gradient"></div>
 
     <section id="items-slider" class="item-section-bg">
         <div class="container">

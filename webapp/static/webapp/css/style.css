@@ -3643,3 +3643,307 @@ html {
         height: 200px;
     }
 }
+
+.custom-metal-bg {
+  background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+  padding: 20px;
+}
+
+.custom-container {
+  max-width: 1400px;
+  margin: 40px auto;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Основной блок контента */
+.custom-metal-block {
+  flex: 1 1 0%; /* Занимает все доступное место */
+  background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
+  border-radius: 18px;
+  padding: 36px 24px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.10);
+  box-sizing: border-box;
+}
+
+/* Ваши стили заголовка и карточек */
+.custom-title {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 36px;
+  color: #222;
+  text-transform: uppercase;
+}
+
+.custom-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.custom-card {
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  overflow: hidden;
+  width: 290px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .2s;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+}
+
+.custom-card img {
+    display: block;
+    width: 290px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px 14px 0 0;
+}
+
+.custom-caption {
+  padding: 15px 8px;
+  text-align: center;
+  font-size: 1.01rem;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Сайдбар справа */
+.custom-sidebar {
+  width: 300px;
+  background: linear-gradient(90deg,  #cfdef3 60%, #ccced1 100%);
+  border-radius: 18px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Виджеты сайдбара */
+.sidebar-widget {
+  margin-bottom: 32px;
+}
+
+.sidebar-widget img {
+  width: 10px;
+    height: 10px;
+    padding: 5px 5px 5px;
+}
+
+.sidebar-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 5px;
+}
+
+.sidebar-menu a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.sidebar-menu a:hover {
+  color: #222;
+}
+
+.sidebar-widget a {
+  color: #1d12c9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.sidebar-widget a:hover {
+    color: #00b7ff;
+    transform: scale(1.05);
+    text-decoration: none;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.order-discount {
+  position: relative;
+  background: linear-gradient(45deg, #fefcea, #f1da36, #f7b733, #f12036);
+  color: #222;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+  padding: 20px 25px;
+  margin: 20px 0 17px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: visible;
+
+  /* Плавный переход цвета при наведении */
+  transition: background 0.4s ease;
+}
+
+/* Эффект рваного края с псевдоэлементом */
+.order-discount::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -15px;
+  width: 25px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 5px,
+    #f7b733 5px,
+    #f7b733 10px
+  );
+  border-radius: 12px 0 0 12px;
+  z-index: 1;
+}
+
+.order-discount::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -15px;
+  width: 25px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    #f7b733 5px,
+    #f7b733 10px
+  );
+  border-radius: 0 12px 12px 0;
+  z-index: 1;
+}
+
+/* При наведении подсвечиваем фон */
+.order-discount:hover {
+  background: linear-gradient(45deg, #fefcea, #f1da36, #f7d733, #f14d36);
+  cursor: pointer;
+}
+
+
+/* Общий стиль для иконок в сайдбаре */
+.custom-sidebar .dropdown-icon {
+  width: 24px;          /* фиксированная ширина иконки */
+  height: 24px;         /* фиксированная высота иконки */
+  object-fit: contain;  /* сохраняет пропорции и масштабирует */
+  vertical-align: middle; /* выравнивание по вертикали с текстом */
+  margin-right: 8px;     /* небольшой отступ справа от иконки */
+  border-radius: 4px;    /* если хотите скруглить края иконок */
+  transition: filter 0.3s ease; /* плавное изменение стиля при наведении */
+}
+
+/* Стиль ссылок в меню сайдбара, чтобы иконка и текст были на одной линии */
+.custom-sidebar .sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Эффект при наведении на ссылку */
+.custom-sidebar .sidebar-menu a:hover {
+  background-color: #d0d4e7;
+  color: #222;
+}
+
+/* При наведении сделаем иконку чуть ярче */
+.custom-sidebar .sidebar-menu a:hover .dropdown-icon {
+  filter: brightness(1.2);
+}
+
+/* Чтобы текст не слипался с иконкой, делаем маленький отступ для текста */
+.custom-sidebar .sidebar-menu a .dropdown-icon + span {
+  margin-left: 4px;
+}
+
+/* Если хотите, чтобы иконки были чуть крупнее на больших экранах */
+@media (min-width: 1024px) {
+  .custom-sidebar .dropdown-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+
+/* Адаптивность */
+
+/* При ширине до 1200px sidebar сжимается */
+@media (max-width: 1200px) {
+  .custom-sidebar {
+    width: 250px;
+    padding: 20px 16px;
+  }
+}
+
+/* При ширине до 950px блоки становятся вертикальными */
+@media (max-width: 950px) {
+  .custom-container {
+    flex-direction: column;
+  }
+  .custom-sidebar {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .custom-metal-block {
+    max-width: 100%;
+  }
+}
+
+/* Сохраняем ваши медиа-запросы для карточек */
+
+@media (max-width: 1050px) {
+  .custom-metal-block {
+    padding: 18px 5px;
+  }
+  .custom-row {
+    gap: 18px;
+  }
+  .custom-card {
+    width: 220px;
+  }
+  .custom-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 735px) {
+  .custom-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .custom-card {
+    width: 95%;
+    margin-bottom: 18px;
+  }
+}
