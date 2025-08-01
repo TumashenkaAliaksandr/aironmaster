@@ -3715,12 +3715,13 @@ html {
 }
 
 .custom-caption {
-  padding: 15px 8px;
-  text-align: center;
-  font-size: 1.01rem;
-  color: #333;
-  font-weight: 500;
-  margin: 0;
+    padding: 15px 8px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: #333;
+    font-weight: 500;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 /* Сайдбар справа */
@@ -3914,9 +3915,11 @@ html {
   .custom-sidebar {
     width: 100%;
     margin-top: 30px;
+      display: none;
   }
   .custom-metal-block {
     max-width: 100%;
+      width: 100%;
   }
 }
 
