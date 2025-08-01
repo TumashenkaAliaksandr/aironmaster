@@ -3950,3 +3950,94 @@ html {
     margin-bottom: 18px;
   }
 }
+
+.news-carousel {
+    max-width: 1100px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+.news-carousel__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.news-carousel__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.news-carousel__viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+
+.news-carousel__slide {
+    flex: 0 0 25%; /* Каждый слайд занимает 25% ширины контейнера */
+    max-width: 275px; /* Чтобы уместилось 4 слайда при 1100px */
+    box-sizing: border-box;
+    padding: 10px;
+    background: #f9f9f9;
+    margin: 0 5px;
+    border-radius: 13px;
+    box-shadow: 0 4px 7px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.news-carousel__nav:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+.news-carousel__viewport {
+    overflow: hidden;
+    width: 100%;
+    padding-left: 15px;   /* отступ слева */
+    padding-right: 15px;  /* отступ справа */
+    box-sizing: content-box; /* чтобы padding учитывалось */
+}
+
+.news-carousel__track {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    margin-left: -5px;   /* компенсирует outer margin у слайдов */
+    margin-right: -5px;  /* компенсирует outer margin у слайдов */
+}
+
+.news-carousel__slide {
+    flex: 0 0 25%; /* 4 слайда */
+    max-width: 275px; /* фиксированная ширина для 1100px */
+    box-sizing: border-box;
+    padding: 10px;
+    background: #f9f9f9;
+    margin: 0 10px;   /* увеличили промежуток между слайдами, было 5px */
+    border-radius: 13px;
+    box-shadow: 0 4px 7px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.news-carousel__nav {
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color:  #5224a4;
+    cursor: pointer;
+    padding: 0 12px;  /* увеличили кнопки */
+    user-select: none;
+    z-index: 10;
+    position: relative;
+}
+
+.news-carousel__nav--prev {
+    left: 5px;  /* сдвинули внутрь, чтобы не заслоняли край слайда */
+}
+
+.news-carousel__nav--next {
+    right: 5px; /* сдвинули внутрь */
+}
+
