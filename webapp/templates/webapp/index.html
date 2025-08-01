@@ -186,26 +186,64 @@
 
     <div class="gradient"></div>
 
-    <section class="news-carousel">
-        <h2 class="news-carousel__title">Новости</h2>
+    <section class="item-section-bg">
+        <div class="news-carousel">
+            <h2 class="news-carousel__title">Новости</h2>
 
-        <div class="news-carousel__wrapper">
-            <button class="news-carousel__nav news-carousel__nav--prev" aria-label="Назад">&#10094;</button>
-            <div class="news-carousel__viewport">
-                <div class="news-carousel__track">
-                    <!-- Начальные 4 слайда + дубли (см. JS) -->
-                    <article class="news-carousel__slide">Новость 1</article>
-                    <article class="news-carousel__slide">Новость 2</article>
-                    <article class="news-carousel__slide">Новость 3</article>
-                    <article class="news-carousel__slide">Новость 4</article>
-                    <article class="news-carousel__slide">Новость 5</article>
-                    <article class="news-carousel__slide">Новость 6</article>
-                    <!-- и т.д. ... -->
+            <div class="news-carousel__wrapper">
+                <button class="news-carousel__nav news-carousel__nav--prev" aria-label="Назад">&#10094;</button>
+                <div class="news-carousel__viewport">
+                    <div class="news-carousel__track">
+                        <article class="news-carousel__slide">
+                            <a href="/news/1" class="news-carousel__link-wrapper">
+                                <img src="{% static 'webapp/img/aironmaster_lazer.png' %}" alt="Новость 1"
+                                     class="news-carousel__image"/>
+                                <h3 class="news-carousel__headline">Лазерная резка что и как</h3>
+                            </a>
+                            <p class="news-carousel__excerpt">Лазерную резку можно применять при работе с большинством металлов,
+                                в том числе сталью, алюминием, медью.</p>
+                            <time datetime="2025-08-01" class="news-carousel__date">1 августа 2025    &ensp;&ensp;🔘</time>
+                        </article>
+
+                        <article class="news-carousel__slide">
+                            <a href="/news/2" class="news-carousel__link-wrapper">
+                                <img src="https://via.placeholder.com/320x180" alt="Новость 2"
+                                     class="news-carousel__image"/>
+                                <h3 class="news-carousel__headline">Заголовок новости 2</h3>
+                            </a>
+                            <p class="news-carousel__excerpt">Краткий обзор второй новости для привлечения внимания.</p>
+                            <time datetime="2025-07-30" class="news-carousel__date">30 июля 2025</time>
+                        </article>
+
+                        <article class="news-carousel__slide">
+                            <a href="/news/3" class="news-carousel__link-wrapper">
+                                <img src="https://via.placeholder.com/320x180" alt="Новость 3"
+                                     class="news-carousel__image"/>
+                                <h3 class="news-carousel__headline">Заголовок новости 3</h3>
+                            </a>
+                            <p class="news-carousel__excerpt">Краткое описание третьей новости, небольшое
+                                содержание.</p>
+                            <time datetime="2025-07-28" class="news-carousel__date">28 июля 2025</time>
+                        </article>
+
+                        <article class="news-carousel__slide">
+                            <a href="/news/4" class="news-carousel__link-wrapper">
+                                <img src="https://via.placeholder.com/320x180" alt="Новость 4"
+                                     class="news-carousel__image"/>
+                                <h3 class="news-carousel__headline">Заголовок новости 4</h3>
+                            </a>
+                            <p class="news-carousel__excerpt">Короткий анонс новости 4 с привлекательным текстом.</p>
+                            <time datetime="2025-07-25" class="news-carousel__date">25 июля 2025</time>
+                        </article>
+
+                        <!-- Добавляй столько новостей, сколько нужно -->
+                    </div>
                 </div>
+                <button class="news-carousel__nav news-carousel__nav--next" aria-label="Вперёд">&#10095;</button>
             </div>
-            <button class="news-carousel__nav news-carousel__nav--next" aria-label="Вперёд">&#10095;</button>
         </div>
     </section>
+
 
     <div class="gradient"></div>
 

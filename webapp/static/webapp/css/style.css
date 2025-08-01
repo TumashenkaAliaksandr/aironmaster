@@ -3954,39 +3954,86 @@ html {
 .news-carousel {
     max-width: 1100px;
     margin: 40px auto;
-    font-family: Arial, sans-serif;
     color: #222;
+    background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
+    border-radius: 13px;
 }
 
 .news-carousel__title {
     font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-weight: 500;
+    margin-bottom: 40px;
     text-align: center;
+    text-transform: uppercase;
+    padding-top: 40px;
 }
 
 .news-carousel__wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    padding-bottom: 50px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.10);
 }
 
 .news-carousel__viewport {
     overflow: hidden;
     width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: content-box;
 }
 
+.news-carousel__track {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    margin-left: -7px;  /* зависит от margin слайда */
+    margin-right: -7px;
+}
 
 .news-carousel__slide {
-    flex: 0 0 25%; /* Каждый слайд занимает 25% ширины контейнера */
-    max-width: 275px; /* Чтобы уместилось 4 слайда при 1100px */
+    flex: 0 0 calc(25% - 14px); /* 25% минус двойной margin */
     box-sizing: border-box;
     padding: 10px;
-    background: #f9f9f9;
-    margin: 0 5px;
+    background: #f9ffeb94;
+    margin: 0 7px;           /* сократили margin с 10px до 7px */
     border-radius: 13px;
     box-shadow: 0 4px 7px rgba(0,0,0,0.1);
     text-align: center;
+    /* Убрал max-width или задал max-width: none; чтоб не ограничивать */
+}
+
+.news-carousel__slide a {
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #494646;
+    text-decoration: none;
+}
+
+.news-carousel__slide  h3{
+    position: absolute;
+    top: 40px;
+    color: whitesmoke;
+    font-size: 0.9rem;
+    width: 212px;
+    background: #00000082;
+}
+
+.news-carousel__slide p {
+    position: absolute;
+    top: 65px;
+    color: whitesmoke;
+    font-size: 16px;
+    width: 212px;
+    background: #00000082;
+}
+
+.news-carousel__image {
+    width: 100%;
+    height: 200px;
+    border-radius: 13px;
+    margin-bottom: 7px;
 }
 
 .news-carousel__nav:disabled {
@@ -3999,26 +4046,6 @@ html {
     padding-left: 15px;   /* отступ слева */
     padding-right: 15px;  /* отступ справа */
     box-sizing: content-box; /* чтобы padding учитывалось */
-}
-
-.news-carousel__track {
-    display: flex;
-    transition: transform 0.5s ease;
-    will-change: transform;
-    margin-left: -5px;   /* компенсирует outer margin у слайдов */
-    margin-right: -5px;  /* компенсирует outer margin у слайдов */
-}
-
-.news-carousel__slide {
-    flex: 0 0 25%; /* 4 слайда */
-    max-width: 275px; /* фиксированная ширина для 1100px */
-    box-sizing: border-box;
-    padding: 10px;
-    background: #f9f9f9;
-    margin: 0 10px;   /* увеличили промежуток между слайдами, было 5px */
-    border-radius: 13px;
-    box-shadow: 0 4px 7px rgba(0,0,0,0.1);
-    text-align: center;
 }
 
 .news-carousel__nav {
