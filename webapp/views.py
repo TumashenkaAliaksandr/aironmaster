@@ -10,13 +10,14 @@ from django.utils import timezone
 
 from aironmaster import settings
 from webapp.forms import ContactForm
-from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage
+from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News
 from webapp.utils import handle_order_form
 
 from django.conf import settings
 
 def index(request):
     order_form, order_error, order_success = handle_order_form(request)
+    news_list = News.objects.all()[:10]
 
     error_message = None
     contact_success = False
@@ -94,6 +95,7 @@ def index(request):
         'photose': photose,
         'services_info': services_info,
         'about': about,
+        'news_list': news_list,
     }
 
     if contact_success:
@@ -269,6 +271,15 @@ def item_detail(request, slug):
         'photos': photos,
     }
     return render(request, 'webapp/item_detail.html', context)
+
+
+def news_list(request):
+    news_list = News.objects.all()[:10]  # Можно менять количество
+    return render(request, 'webapp/news_list.html', {'news_list': news_list})
+
+def news_detail(request, slug):
+    news = get_object_or_404(News, slug=slug)
+    return render(request, 'webapp/news_detail.html', {'news': news})
 
 
 def advertisement (request):

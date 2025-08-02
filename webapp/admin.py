@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm, OurServiceForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    SocialNetwork, BannerPage, ServicePhoto
+    SocialNetwork, BannerPage, ServicePhoto, News
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -163,3 +163,12 @@ class BannerPageAdmin(admin.ModelAdmin):
             return format_html('<img src="{}" style="max-height: 100px;"/>', obj.image.url)
         return "-"
     image_preview.short_description = "Превью изображения"
+
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug', 'date', 'is_main')
+    prepopulated_fields = {'slug': ('name',)}  # Автоматическое заполнение слага в админке
+    search_fields = ('name', 'description', 'news_text')
+    list_filter = ('is_main', 'date')
+    ordering = ('-date',)

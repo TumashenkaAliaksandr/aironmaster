@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<article class="news-detail">
+    <h1>{{ news.name }}</h1>
+    <time datetime="{{ news.date|date:'Y-m-d' }}">{{ news.date|date:"j F Y" }}</time>
+    <img src="{{ news.photo.url }}" alt="{{ news.name }}" class="news-detail__image"/>
+    <div class="news-detail__text">
+        {{ news.news_text|linebreaks }}
+    </div>
+</article>
+{% endblock %}

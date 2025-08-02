@@ -1,0 +1,32 @@
+{% load static %}
+<section class="item-section-bg">
+    <div class="news-carousel">
+        <h2 class="news-carousel__title">Новости</h2>
+
+        <div class="news-carousel__wrapper">
+            <button class="news-carousel__nav news-carousel__nav--prev" aria-label="Назад">&#10094;</button>
+            <div class="news-carousel__viewport">
+                <div class="news-carousel__track">
+                    {% for news in news_list %}
+                    <article class="news-carousel__slide">
+                        <a href="{{ news.get_absolute_url }}" class="news-carousel__link-wrapper">
+                            <img src="{{ news.photo.url }}" alt="{{ news.name }}" class="news-carousel__image"/>
+                            <h3 class="news-carousel__headline">{{ news.name }}</h3>
+                        </a>
+                        <p class="news-carousel__excerpt">{{ news.description }}</p>
+                        <time datetime="{{ news.date|date:'Y-m-d' }}" class="news-carousel__date">
+                            {{ news.date|date:"j F Y" }} &ensp;&ensp;&ensp;📰
+                        </time>
+                        <div class="news-carousel__more">
+                            <a href="{{ news.get_absolute_url }}" class="news-carousel__more-link">Узнать больше..</a>
+                        </div>
+                    </article>
+                    {% empty %}
+                    <p>Новостей пока нет.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="news-carousel__nav news-carousel__nav--next" aria-label="Вперёд">&#10095;</button>
+        </div>
+    </div>
+</section>

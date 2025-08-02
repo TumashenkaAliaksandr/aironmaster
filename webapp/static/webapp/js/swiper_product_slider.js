@@ -1,13 +1,14 @@
 $(document).ready(function() {
     $('.second-product-slider').owlCarousel({
-        loop: true,                   // Бесконечный цикл
-        nav: true,                    // Стрелки вперед/назад
-        dots: true,                   // Пагинация (точки)
-        autoplay: true,               // Автозапуск
-        autoplayTimeout: 3000,        // Интервал прокрутки в мс
-        autoplayHoverPause: false,    // Не останавливать при наведении
-        margin: 20,                   // Отступ между слайдами
-        navText: ['<span class="arrow-left">&#10094;</span>', '<span class="arrow-right">&#10095;</span>'], // Можно свои стрелки, или иконки
+        loop: true,
+        nav: true,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        margin: 19,
+        navText: ['<span class="arrow-left">&#10094;</span>', '<span class="arrow-right">&#10095;</span>'],
+        autoWidth: false,  // Отключаем автоопределение ширины
         responsive: {
             0: {
                 items: 1,
@@ -27,4 +28,5 @@ $(document).ready(function() {
             }
         }
     });
+    owl.trigger('refresh.owl.carousel');
 });

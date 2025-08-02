@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -234,3 +235,31 @@ class BannerPage(models.Model):
 
     def __str__(self):
         return f"{self.get_category_display()} - {self.name}"
+
+
+class News(models.Model):
+    name = models.CharField('Название', max_length=255, unique=True)
+    slug = models.SlugField('Слаг', max_length=255, unique=True, blank=True)
+    description = models.TextField('Краткое описание')
+    news_text = models.TextField('Основной текст новости')  # Новое поле "текст новости"
+    date = models.DateField('Дата публикации')
+    photo = models.ImageField('Фото новости', upload_to='news_photos/')
+    is_main = models.BooleanField('Главная новость', default=False)
+
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
+        ordering = ['-date']
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # Автоматическая генерация слага из имени, если не задан
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        # URL с использованием slug вместо pk
+        return reverse('news_detail', kwargs={'slug': self.slug})
