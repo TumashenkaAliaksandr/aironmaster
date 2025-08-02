@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     track.appendChild(clone);
   }
 
-  // Теперь пересчитаем слайды (включая клоны)
+  // Пересчитываем все слайды
   const allSlides = Array.from(track.children);
 
-  // Получаем реальные размеры слайда (ширина + margin)
   function getSlideWidth(slide) {
     const style = window.getComputedStyle(slide);
     const width = slide.getBoundingClientRect().width;
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return width + marginLeft + marginRight;
   }
 
-  const slideWidth = getSlideWidth(allSlides[0]);
+  const slideWidth = getSlideWidth(allSlides[0]);  // учитывается width + marginLeft + marginRight
   const totalSlides = allSlides.length;
 
   let currentIndex = 0;
@@ -37,22 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
     track.style.transition = 'transform 0.5s ease';
 
     if (index >= totalSlides - slidesToShow) {
-      // Сдвигаемся до cloned слайдов
+      // Сдвиг к клонам
       currentIndex = index;
       track.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
 
-      // После завершения перехода сбрасываем в начало без анимации
+      // После перехода сброс в начало без анимации
       track.addEventListener('transitionend', onTransitionEndLoop);
     } else if (index < 0) {
-      // Если нужен сдвиг назад в начало (можно доработать с клонами в начало)
+      // Можно доработать прокрутку назад (пока просто сбрасываем)
       currentIndex = 0;
       track.style.transition = 'none';
-      track.style.transform = 'translateX(0px)';
+      track.style.transform = 'translateX(0)';
       isTransitioning = false;
     } else {
       currentIndex = index;
       track.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
-      // Снимаем флаг после окончания анимации
       track.addEventListener('transitionend', onTransitionEndSimple);
     }
   }
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function onTransitionEndLoop() {
     track.style.transition = 'none';
     currentIndex = 0;
-    track.style.transform = `translateX(0px)`;
+    track.style.transform = 'translateX(0)';
     track.removeEventListener('transitionend', onTransitionEndLoop);
     isTransitioning = false;
   }
@@ -78,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moveToIndex(currentIndex + 1);
   });
 
-  // Автоматическая прокрутка
+  // Автопролистка
   let autoSlideInterval = setInterval(() => {
     moveToIndex(currentIndex + 1);
   }, 3000);
