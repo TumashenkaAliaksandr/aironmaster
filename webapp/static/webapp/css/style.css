@@ -65,7 +65,7 @@ header {
 
 .nav {
     text-transform: capitalize;
-    margin-right: 120px;
+    margin-right: 0;
 }
 
 .paddings {
@@ -2208,6 +2208,22 @@ h2 {
   gap: 12px; /* расстояние между почтой и иконкой */
   color: #f0f9f9;
 }
+
+.social-wrapper {
+    display: flex;
+    align-items: center;
+    /*gap: 7px;*/
+}
+
+.social-wrapper img {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin-top: 20px;
+    position: relative;
+    margin-left: 10px;
+}
+
 
 /* Текст почты */
 .footer-email p {

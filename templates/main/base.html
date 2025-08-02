@@ -151,6 +151,9 @@
                         {% endfor %}
                     </ul>
                 </li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'news_list' %}active{% endif %}"
+                        href="{% url 'news_list' %}">Новости</a></li>
 
                 <li class="nav-item"><a
                         class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}"
@@ -194,11 +197,30 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a
-                        class="nav-linkss {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                        class="nav-linkss {% if request.resolver_match.url_name == 'news_list' %}active{% endif %}"
+                        href="{% url 'news_list' %}">Новости</a></li>
+                <li class="nav-item"><a
+                        class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}"
                         href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
+    <div class="social-wrapper">
+        {% for social in footer_info.social_networks.all %}
+            {% if social.url %}
+                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                   aria-label="{{ social.name }}">
+                    {% if social.icon %}
+                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                    {% else %}
+                        <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                        {{ social.name }}
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
     </div>
+    </div>
+
 
 </header>
 
