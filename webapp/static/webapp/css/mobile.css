@@ -725,6 +725,19 @@
         margin-left: 13px;
     }
 
+    #searchForm {
+        display: block; /* показываем форму */
+        position: absolute; /* позиционирование относительно родителя */
+        top: 100%; /* сразу под кнопкой или контейнером */
+        left: 0;
+        background: white;
+        border-radius: 13px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        z-index: 100;
+        width: 210px;
+    }
+
     #breadcrumps {
         padding: 0 0;
         background: linear-gradient(66deg, #f0f7e6, #8e8ca2);

@@ -4249,6 +4249,46 @@ html {
   margin-left: 20px; /* отступ слева от соцсетей */
 }
 
+/* Контейнер с результатами поиска */
+#searchResults {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    border-radius: 0 0 4px 4px;
+    display: none;
+    font-size: 14px;
+    border-radius: 7px;
+}
+
+/* Чтобы позиционировался относительно контейнера */
+.search-container {
+    position: relative;      /* обязательно, чтобы позиционирование абсолютное работало как надо */
+}
+
+/* Стили для ссылок внутри результатов */
+#searchResults a.search-result-item {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+/* Подсветка результата при наведении */
+#searchResults a.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
+
 .search-icon {
   background: transparent;
   border: none;

@@ -2,11 +2,12 @@ import smtplib
 
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import timezone
+from django.views.decorators.http import require_GET
 
 from aironmaster import settings
 from webapp.forms import ContactForm
@@ -342,3 +343,61 @@ def robots_txt(request):
 
     content = render_to_string("robots.txt", {"sitemap_url": sitemap_url})
     return HttpResponse(content, content_type="text/plain")
+
+
+@require_GET
+def ajax_search(request):
+    query = request.GET.get('q', '').strip()
+    results = []
+
+    if query:
+        # Поиск по сервисам
+        services = OurService.objects.filter(
+            Q(name__icontains=query) | Q(description__icontains=query)
+        ).distinct()[:10]
+
+        for service in services:
+            url = getattr(service, 'get_absolute_url', None)
+            results.append({
+                'type': 'service',
+                'title': service.name,
+                'url': url() if callable(url) else f"/service/{service.slug}/",
+                'description': (service.description[:197] + '...') if service.description and len(service.description) > 200 else (service.description or ''),
+            })
+
+        # Поиск по изделиям
+        items = ItemObject.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(description_more__icontains=query) |
+            Q(phone1__icontains=query) |
+            Q(phone2__icontains=query) |
+            Q(service__name__icontains=query)
+        ).distinct()[:10]
+
+        for item in items:
+            url = getattr(item, 'get_absolute_url', None)
+            results.append({
+                'type': 'item',
+                'title': item.name,
+                'url': url() if callable(url) else f"/item/{item.slug}/",
+                'description': (item.description[:197] + '...') if item.description and len(item.description) > 200 else (item.description or ''),
+            })
+
+        # Поиск по новостям
+        news_results = News.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(news_text__icontains=query)
+        ).order_by('-date')[:10]
+
+        for news in news_results:
+            url = getattr(news, 'get_absolute_url', None)
+            results.append({
+                'type': 'news',
+                'title': news.name,
+                'url': url() if callable(url) else f"/news/{news.slug}/",
+                'description': (news.description[:197] + '...') if news.description and len(news.description) > 200 else (news.description or ''),
+            })
+
+    return JsonResponse({'results': results})

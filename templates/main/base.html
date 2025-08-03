@@ -219,8 +219,8 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="search-container">
-            <button id="searchToggle" class="search-icon" aria-label="Поиск">
+        <div class="search-container" style="position: relative;">
+            <button id="searchToggle" class="search-icon" aria-label="Поиск" type="button">
                 <!-- Иконка лупы SVG -->
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -229,9 +229,12 @@
                 </svg>
             </button>
             <form id="searchForm" action="/search/" method="GET" style="display:none;">
-                <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск"/>
+                <input type="text" id="searchInput" name="q" placeholder="Поиск..." aria-label="Поиск"
+                       autocomplete="off"/>
             </form>
+            <div id="searchResults"></div>
         </div>
+
 
     </div>
 </header>
