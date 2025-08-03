@@ -204,24 +204,36 @@
                         href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
         </nav>
-    <div class="social-wrapper">
-        {% for social in footer_info.social_networks.all %}
-            {% if social.url %}
-                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
-                   aria-label="{{ social.name }}">
-                    {% if social.icon %}
-                        <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
-                    {% else %}
-                        <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
-                        {{ social.name }}
-                    {% endif %}
-                </a>
-            {% endif %}
-        {% endfor %}
-    </div>
-    </div>
+        <div class="social-wrapper social-wrapper-haider">
+            {% for social in footer_info.social_networks.all %}
+                {% if social.url %}
+                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                       aria-label="{{ social.name }}">
+                        {% if social.icon %}
+                            <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                        {% else %}
+                            <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                            {{ social.name }}
+                        {% endif %}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="search-container">
+            <button id="searchToggle" class="search-icon" aria-label="Поиск">
+                <!-- Иконка лупы SVG -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+            <form id="searchForm" action="/search/" method="GET" style="display:none;">
+                <input type="text" name="q" placeholder="Поиск..." aria-label="Поиск"/>
+            </form>
+        </div>
 
-
+    </div>
 </header>
 
 
@@ -343,3 +355,4 @@
 <script src="{% static 'webapp/js/snek-form.js' %}"></script>
 <script src="{% static 'webapp/js/swiper_product_slider.js' %}"></script>
 <script src="{% static 'webapp/js/news_slider.js' %}"></script>
+<script src="{% static 'webapp/js/search_menu.js' %}"></script>
