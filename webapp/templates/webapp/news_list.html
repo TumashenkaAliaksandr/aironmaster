@@ -1,32 +1,44 @@
+{% extends 'main/base.html' %}
 {% load static %}
-<section class="item-section-bg">
-    <div class="news-carousel">
-        <h2 class="news-carousel__title">Новости</h2>
 
-        <div class="news-carousel__wrapper">
-            <button class="news-carousel__nav news-carousel__nav--prev" aria-label="Назад">&#10094;</button>
-            <div class="news-carousel__viewport">
-                <div class="news-carousel__track">
-                    {% for news in news_list %}
-                    <article class="news-carousel__slide">
-                        <a href="{{ news.get_absolute_url }}" class="news-carousel__link-wrapper">
-                            <img src="{{ news.photo.url }}" alt="{{ news.name }}" class="news-carousel__image"/>
-                            <h3 class="news-carousel__headline">{{ news.name }}</h3>
+
+{% block content %}
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page"> Новости</li>
+        </ol>
+    </nav>
+    <section class="item-section-bg">
+        <main class="container">
+            <h1 class="news-page__title">Новости IronMaster</h1>
+
+            <section class="news-list">
+                <!-- Пример новости -->
+                {% for news in news_list %}
+                    <article class="news-item">
+                        <a href="{% url 'news_detail' slug=news.slug %}" class="news-item__link">
+                            <img src="{{ news.photo.url }}" alt="{{ news.name }}" class="news-item__image"/>
                         </a>
-                        <p class="news-carousel__excerpt">{{ news.description }}</p>
-                        <time datetime="{{ news.date|date:'Y-m-d' }}" class="news-carousel__date">
-                            {{ news.date|date:"j F Y" }} &ensp;&ensp;&ensp;📰
-                        </time>
-                        <div class="news-carousel__more">
-                            <a href="{{ news.get_absolute_url }}" class="news-carousel__more-link">Узнать больше..</a>
+
+                        <div class="news-item__content">
+                            <a href="{% url 'news_detail' slug=news.slug %}" class="news-item__headline-link">
+                                <h2 class="news-item__headline">{{ news.name }}</h2>
+                            </a>
+
+                            <time datetime="{{ news.date|date:'Y-m-d' }}" class="news-item__date">
+                                {{ news.date|date:"j F Y" }} &ensp;&ensp;&ensp;📰
+                            </time>
+
+                            <p class="news-item__excerpt">{{ news.description }}</p>
+
+                            <a href="{% url 'news_detail' slug=news.slug %}" class="news-item__more-link">Узнать
+                                больше..</a>
                         </div>
                     </article>
-                    {% empty %}
-                    <p>Новостей пока нет.</p>
-                    {% endfor %}
-                </div>
-            </div>
-            <button class="news-carousel__nav news-carousel__nav--next" aria-label="Вперёд">&#10095;</button>
-        </div>
-    </div>
-</section>
+                {% endfor %}
+
+            </section>
+        </main>
+    </section>
+{% endblock %}
