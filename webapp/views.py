@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_GET
+from django.core.paginator import Paginator
 
 from aironmaster import settings
 from webapp.forms import ContactForm
@@ -275,9 +276,17 @@ def item_detail(request, slug):
 
 
 def news_list(request):
-    news_list = News.objects.all()[:10]  # Можно менять количество
-    return render(request, 'webapp/news_list.html', {'news_list': news_list})
+    news_queryset = News.objects.all().order_by('-date')
+    paginator = Paginator(news_queryset, 10)
 
+    page_number = request.GET.get('page') or 1
+    page_obj = paginator.get_page(page_number)
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        html = render_to_string('webapp/news_items.html', {'news_list': page_obj.object_list})
+        return JsonResponse({'html': html, 'has_next': page_obj.has_next()})
+
+    return render(request, 'webapp/news_list.html', {'news_list': page_obj.object_list, 'page_obj': page_obj})
 def news_detail(request, slug):
     news = get_object_or_404(News, slug=slug)
     return render(request, 'webapp/news_detail.html', {'news': news})

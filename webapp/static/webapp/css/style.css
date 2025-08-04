@@ -3544,7 +3544,7 @@ html {
 }
 
 .attributes-card li {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #555;
 }
 
@@ -4402,7 +4402,7 @@ html {
 .news-item {
     display: flex;
     flex-direction: row;
-    background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
+    background: linear-gradient(90deg, #fdfdfe 0%, #cfdef3 100%);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgb(0 0 0 / 0.05);
     overflow: hidden;

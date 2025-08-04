@@ -9,12 +9,12 @@
             <li aria-current="page"> Новости</li>
         </ol>
     </nav>
+
     <section class="item-section-bg">
         <main class="container">
             <h1 class="news-page__title">Новости IronMaster</h1>
 
-            <section class="news-list">
-                <!-- Пример новости -->
+            <section class="news-list" id="news-list">
                 {% for news in news_list %}
                     <article class="news-item">
                         <a href="{% url 'news_detail' slug=news.slug %}" class="news-item__link">
@@ -37,8 +37,14 @@
                         </div>
                     </article>
                 {% endfor %}
-
             </section>
+
+            <div id="loading" style="text-align:center; padding: 15px; display:none;">
+                <em>Загрузка...</em>
+            </div>
         </main>
     </section>
+
+<script src="{% static 'js/news_infinite_scroll.js' %}"></script>
+
 {% endblock %}
