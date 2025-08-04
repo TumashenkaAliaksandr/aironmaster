@@ -4266,6 +4266,7 @@ html {
     display: none;
     font-size: 14px;
     border-radius: 7px;
+    margin-top: 60px;
 }
 
 /* Чтобы позиционировался относительно контейнера */
@@ -4312,7 +4313,7 @@ html {
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: 8px;
+  margin-top: 18px;
   background: white;
   border-radius: 13px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);

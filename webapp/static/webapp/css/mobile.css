@@ -728,14 +728,79 @@
     #searchForm {
         display: block; /* показываем форму */
         position: absolute; /* позиционирование относительно родителя */
-        top: 100%; /* сразу под кнопкой или контейнером */
+        top: 0;
         left: 0;
         background: white;
         border-radius: 13px;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         overflow: hidden;
         z-index: 100;
-        width: 210px;
+        width: 202px;
+        margin-top: -75px;
+    }
+
+    #searchResults {
+        position: absolute;
+        top: 0;
+        left: -93px;
+        width: 300px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-top: none;
+        max-height: 300px;
+        overflow-y: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        border-radius: 0 0 4px 4px;
+        display: none;
+        font-size: 14px;
+        border-radius: 7px;
+    }
+
+    .news-carousel__slide {
+        flex: 0 0 calc(100% - 40px); /* учитываем отступы по бокам */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #f9ffeb94;
+        margin: 0 20px 10px; /* боковые margin для отступов между слайдами */
+        border-radius: 13px;
+        box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    }
+
+    .news-carousel__slide h3 {
+        position: absolute;
+        top: 40px;
+        color: whitesmoke;
+        font-size: 1.1rem;
+        width: 255px;
+        background: #354c6c57;
+        align-items: center;
+        text-align: center;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        height: 30px;
+        padding-top: 5px;
+    }
+
+    .news-carousel__slide p {
+        position: absolute;
+        top: 113px;
+        color: whitesmoke;
+        font-size: 15px;
+        width: 255px;
+        background: #000000a3;
+        text-align: left;
+        padding: 5px;
+        overflow: hidden;
+    }
+
+    .news-carousel {
+        max-width: 1300px;
+        margin: 40px auto;
+        color: #222;
+        background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
+        border-radius: inherit;
     }
 
     #breadcrumps {
