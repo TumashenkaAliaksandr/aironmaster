@@ -36,10 +36,10 @@ class BannerAdmin(SummernoteModelAdmin):
         }),
         ('Фотографии', {
             'fields': (
-                ('photo1', 'photo1_description'),
-                ('photo2', 'photo2_description'),
-                ('photo3', 'photo3_description'),
-                ('photo4', 'photo4_description'),
+                ('photo1', 'photo1_description', 'photo1_link'),
+                ('photo2', 'photo2_description', 'photo2_link'),
+                ('photo3', 'photo3_description', 'photo3_link'),
+                ('photo4', 'photo4_description', 'photo4_link'),
             ),
         }),
     )

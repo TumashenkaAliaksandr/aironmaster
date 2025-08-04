@@ -23,20 +23,31 @@
     </section>
 
     <section id="gallery" class="mb-0">
-        <div class="row g-3 justify-content-center"> <!-- g-3 — отступы между колонками и строками -->
-        <h4>✔️ Предоставляем услуги:</h4>
+        <div class="row g-3 justify-content-center">
+            <h4>✔️ Предоставляем услуги:</h4>
             {% for item in photose %}
-                <div class="col-6 col-md-2 text-center"> <!-- 2 колонки на xs и sm, 4 колонки на md и выше -->
+                <div class="col-6 col-md-2 text-center">
                     <div class="photo-item-banners">
-                        <img src="{{ item.photo.url }}" alt="{{ item.description }}" class="img-fluid rounded">
-                        {% if item.description %}
-                            <div class="photo-description-banners">{{ item.description }}</div>
+                        {% if item.link %}
+                            <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer"
+                               class="d-block text-decoration-none">
+                                <img src="{{ item.photo_url }}" alt="{{ item.description }}" class="img-fluid rounded">
+                                {% if item.description %}
+                                    <div class="photo-description-banners">{{ item.description }}</div>
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <img src="{{ item.photo_url }}" alt="{{ item.description }}" class="img-fluid rounded">
+                            {% if item.description %}
+                                <div class="photo-description-banners">{{ item.description }}</div>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>
             {% endfor %}
         </div>
     </section>
+
 
 
 {#    <section id="gallery" class="mb-0">#}

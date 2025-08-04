@@ -3823,6 +3823,7 @@ html {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: visible;
+    text-decoration: none;
 
   /* Плавный переход цвета при наведении */
   transition: background 0.4s ease;
@@ -4153,7 +4154,7 @@ html {
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 12px;
-    color: #838383;
+    color: #4d4b4b;
     text-transform: uppercase;
     text-align: center;
     padding-top: 40px;

@@ -80,8 +80,14 @@ def index(request):
     for i in range(1, 5):
         photo = getattr(banner, f'photo{i}')
         description = getattr(banner, f'photo{i}_description')
-        if photo:
-            photose.append({'photo': photo, 'description': description})
+        link = getattr(banner, f'photo{i}_link', '')
+        if photo and hasattr(photo, 'url'):
+            photose.append({
+                'photo_url': photo.url,
+                'description': description,
+                'link': link,
+            })
+
     photos = item.photos.all()
 
     context = {

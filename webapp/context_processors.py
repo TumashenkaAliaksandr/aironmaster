@@ -1,4 +1,4 @@
-from .models import HadContact, FooterInfo, OurService
+from .models import HadContact, FooterInfo, OurService, Banner
 
 
 def had_contact_info(request):
@@ -10,3 +10,26 @@ def had_contact_info(request):
         'footer_info': footer_info,
         'services': services,  # Добавляем сервисы в контекст
     }
+
+
+
+def banners_photos(request):
+    photose = []
+    try:
+        banner = Banner.objects.get(pk=1)  # или фильтр по нужному условию
+        for i in range(1, 5):
+            photo = getattr(banner, f'photo{i}')
+            description = getattr(banner, f'photo{i}_description')
+            link = getattr(banner, f'photo{i}_link', '')  # ссылка, если есть
+            if photo:
+                photose.append({
+                    'photo': photo,
+                    'description': description,
+                    'link': link,
+                })
+    except Banner.DoesNotExist:
+        photose = []
+    return {
+        'photose': photose
+    }
+
