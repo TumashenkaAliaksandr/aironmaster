@@ -287,9 +287,11 @@ def news_list(request):
         return JsonResponse({'html': html, 'has_next': page_obj.has_next()})
 
     return render(request, 'webapp/news_list.html', {'news_list': page_obj.object_list, 'page_obj': page_obj})
+
 def news_detail(request, slug):
     news = get_object_or_404(News, slug=slug)
-    return render(request, 'webapp/news_detail.html', {'news': news})
+    news_list = News.objects.all()[:10]
+    return render(request, 'webapp/news_detail.html', {'news': news, 'news_list': news_list})
 
 
 def advertisement (request):

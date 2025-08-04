@@ -3686,7 +3686,7 @@ html {
   flex: 1 1 0%; /* Занимает все доступное место */
   background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
   border-radius: 18px;
-  padding: 36px 24px;
+  padding: 30px 24px;
   box-shadow: 0 4px 30px rgba(0,0,0,0.10);
   box-sizing: border-box;
 }
@@ -3696,7 +3696,7 @@ html {
   font-size: 1.8rem;
   text-align: center;
   font-weight: 500;
-  margin-bottom: 36px;
+  margin-bottom: 10px;
   color: #222;
   text-transform: uppercase;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
@@ -4140,24 +4140,23 @@ html {
 }
 
 .news-detail {
-    max-width: 900px;
+    max-width: 1350px;
     margin: 40px auto;
     padding: 0 20px;
-    font-family: 'Arial', sans-serif;
     color: #222;
-    background-color: #fff;
+    background-color: #f3ffdd;
     border-radius: 13px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .news-detail h1 {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 12px;
-    color: #5224a4;
+    color: #838383;
     text-transform: uppercase;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .news-detail time {
@@ -4171,7 +4170,7 @@ html {
 
 .news-detail__image {
     width: 100%;
-    max-height: 450px;
+    max-height: 400px;
     object-fit: cover;
     border-radius: 13px;
     margin-bottom: 35px;
@@ -4181,7 +4180,7 @@ html {
 
 .news-detail__image:hover,
 .news-detail__image:focus {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .news-detail__text {
@@ -4202,7 +4201,7 @@ html {
     }
 
     .news-detail h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .news-detail__image {
@@ -4523,3 +4522,15 @@ html {
         margin-bottom: 30px;
     }
 }
+
+.news-separator {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #e4eade, #503575);
+    margin: 30px auto; /* автоотступы слева и справа для центрирования */
+    width: 50%;
+    opacity: 0.5;
+}
+
+
+
