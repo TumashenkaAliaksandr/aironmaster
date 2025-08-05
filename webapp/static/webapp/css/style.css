@@ -4724,3 +4724,49 @@ tbody, td, tfoot, th, thead, tr {
     padding: 5px !important;
   }
 }
+/* Список преимуществ в одну строку */
+.advantages-list.horizontal-list {
+  list-style: none;       /* Убираем маркеры */
+  padding: 0;
+  margin: 0;
+  display: flex;          /* Горизонтальный ряд */
+  gap: 40px;              /* Отступы между пунктами */
+  justify-content: center; /* Центрируем весь блок по горизонтали */
+}
+
+/* Каждый пункт - вертикальный flex с центровкой */
+.advantage-item {
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение: иконка сверху, текст снизу */
+  align-items: center;    /* Центрируем по горизонтали */
+  max-width: 175px;       /* Ограничиваем ширину, чтобы текст не был слишком растянут */
+  text-align: center;     /* Выравнивание текста по центру */
+    margin-top: 21px;
+}
+
+/* Стили для иконок */
+.advantage-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;    /* Отступ снизу для пространства между иконкой и текстом */
+  flex-shrink: 0;
+}
+
+/* Текст под иконкой */
+.advantage-text {
+  font-size: 0.9rem;
+  color: #34495e;
+  line-height: 1.3;
+}
+
+/* Адаптивность - на узких экранах пунктам разрешаем перенос */
+@media (max-width: 768px) {
+  .advantages-list.horizontal-list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .advantage-item {
+    max-width: 100%;
+  }
+}
