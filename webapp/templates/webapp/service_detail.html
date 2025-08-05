@@ -232,7 +232,7 @@
         <p class="section-title section-title-color">Почта:</p>
         <div class="email-row">
             <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16" class="email-icon"/>
-            <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">{{ had_contact.email }}</a>
+            <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none">{{ had_contact.email }}</a>
         </div>
 
         <div class="icons-row">
