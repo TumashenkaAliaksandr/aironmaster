@@ -1,78 +1,243 @@
+{#{% extends 'main/base.html' %}#}
+{#{% load custom_filters %}#}
+{#{% load static %}#}
+{##}
+{#{% block content %}#}
+{#        <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">#}
+{#            <ol>#}
+{#                <li><a href="{% url 'index' %}">Главная</a></li>#}
+{#                <li aria-current="page">{{ service.name }}</li>#}
+{#            </ol>#}
+{#        </nav>#}
+{#    <div class="service-detail-container">#}
+{#        <h1 class="service-title">{{ service.name }}</h1>#}
+{#        <div class="service-photos-row">#}
+{#            {% for photo in photos|slice:":3" %}#}
+{#                <div class="service-photo-wrapper">#}
+{#                    <img src="{{ photo.image.url }}" alt="{{ service.name }} фото {{ forloop.counter }}"#}
+{#                         class="service-photo">#}
+{#                </div>#}
+{#            {% empty %}#}
+{#                <div class="service-photo-wrapper">#}
+{#                    <img src="{% static 'webapp/img/no_images.png' %}" alt="Нет фото" class="service-photo">#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <div class="service-description">#}
+{#            {{ service.description|safe }}#}
+{#        </div>#}
+{#        <div class="service-phones">#}
+{#            <p class="section-title section-title-color">Наши телефоны:</p>#}
+{#            <div class="phones-list">#}
+{#                <p>#}
+{#                    {% if footer_info.phone_one %}#}
+{#                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"#}
+{#                             height="16" class="phone-icon"/>#}
+{#                        <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>#}
+{#                    {% else %}#}
+{#                        Телефон 1 не указан<br/>#}
+{#                    {% endif %}#}
+{#                    {% if footer_info.phone_two %}#}
+{#                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"#}
+{#                             height="16" class="phone-icon"/>#}
+{#                        <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>#}
+{#                    {% else %}#}
+{#                        Телефон 2 не указан#}
+{#                    {% endif %}#}
+{#                </p>#}
+{#            </div>#}
+{##}
+{#            <p class="section-title section-title-color">Почта:</p>#}
+{#            <div class="email-row">#}
+{#                <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16"#}
+{#                     class="email-icon"/>#}
+{#                <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">#}
+{#                    {{ had_contact.email }}#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="icons-row">#}
+{#                <div class="section-title section-title-color">Соцсети:#}
+{#                    {% for social in footer_info.social_networks.all %}#}
+{#                        {% if social.url %}#}
+{#                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"#}
+{#                               aria-label="{{ social.name }}">#}
+{#                                {% if social.icon %}#}
+{#                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>#}
+{#                                {% else %}#}
+{#                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->#}
+{#                                    {{ social.name }}#}
+{#                                {% endif %}#}
+{#                            </a>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
+
 {% extends 'main/base.html' %}
 {% load custom_filters %}
 {% load static %}
 
+
 {% block content %}
-        <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
-            <ol>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li aria-current="page">{{ service.name }}</li>
-            </ol>
-        </nav>
-    <div class="service-detail-container">
-        <h1 class="service-title">{{ service.name }}</h1>
-        <div class="service-photos-row">
-            {% for photo in photos|slice:":3" %}
-                <div class="service-photo-wrapper">
-                    <img src="{{ photo.image.url }}" alt="{{ service.name }} фото {{ forloop.counter }}"
-                         class="service-photo">
+<nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+    <ol>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li aria-current="page">{{ service.name }}</li>
+    </ol>
+</nav>
+<section class="custom-service-bg">
+<div class="service-detail-container">
+    <h1 class="service-title">{{ service.name }}</h1>
+
+    <!-- Слайдер изображений -->
+    <section class="slider-section">
+        <h2 class="section-title">Фотографии наших работ</h2>
+        <div class="slider slider-photos" id="photoSlider">
+            {% for photo in photos %}
+                <div class="slide">
+                    <img src="{{ photo.image.url }}" alt="{{ service.name }} фото {{ forloop.counter }}" />
                 </div>
             {% empty %}
-                <div class="service-photo-wrapper">
-                    <img src="{% static 'webapp/img/no_images.png' %}" alt="Нет фото" class="service-photo">
+                <div class="slide">
+                    <img src="{% static 'webapp/img/no_images.png' %}" alt="Нет фото" />
                 </div>
             {% endfor %}
         </div>
-        <div class="service-description">
-            {{ service.description|safe }}
-        </div>
-        <div class="service-phones">
-            <p class="section-title section-title-color">Наши телефоны:</p>
-            <div class="phones-list">
-                <p>
-                    {% if footer_info.phone_one %}
-                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
-                             height="16" class="phone-icon"/>
-                        <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>
-                    {% else %}
-                        Телефон 1 не указан<br/>
-                    {% endif %}
-                    {% if footer_info.phone_two %}
-                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"
-                             height="16" class="phone-icon"/>
-                        <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>
-                    {% else %}
-                        Телефон 2 не указан
-                    {% endif %}
-                </p>
-            </div>
+    </section>
 
-            <p class="section-title section-title-color">Почта:</p>
-            <div class="email-row">
-                <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16"
-                     class="email-icon"/>
-                <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">
-                    {{ had_contact.email }}
-                </a>
-            </div>
-            <div class="icons-row">
-                <div class="section-title section-title-color">Соцсети:
-                    {% for social in footer_info.social_networks.all %}
-                        {% if social.url %}
-                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
-                               aria-label="{{ social.name }}">
-                                {% if social.icon %}
-                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
-                                {% else %}
-                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
-                                    {{ social.name }}
-                                {% endif %}
-                            </a>
-                        {% endif %}
-                    {% endfor %}
+    <!-- Слайдер видео -->
+    {% if videos.exists %}
+    <section class="slider-section">
+        <h2 class="section-title">Видео о процессе гибки</h2>
+        <div class="slider slider-videos" id="videoSlider">
+            {% for video in videos %}
+                <div class="slide">
+                    <video controls preload="metadata" width="100%" height="auto">
+                        <source src="{{ video.url }}" type="video/mp4" />
+                        Ваш браузер не поддерживает видео.
+                    </video>
                 </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Описание услуги -->
+    <section class="service-description">
+        <h2 class="section-title">Описание услуги</h2>
+        <p>
+            Компания «Айронмастер» предлагает качественные услуги гибки металла в Минске. Мы выполняем как ручную, так и механическую гибку листового, трубного и профильного металла, обеспечивая точность и надежность результатов. Толщина обрабатываемого металла — от 0.5 до 3 мм, максимальная длина листа — до 3 метров.
+        </p>
+        <p>
+            Наша команда инженеров тщательно разрабатывает проект гибки исходя из ваших чертежей и технических требований. Мы можем выполнить:
+        </p>
+        <ul>
+            <li>Продольное искривление — без нагрева, для создания плавных изгибов.</li>
+            <li>Поперечную гибку с необходимым радиусом и формированием бортиков.</li>
+        </ul>
+        <p>
+            При гибке мы не используем сварку, что исключает появление слабых соединений и повышает прочность изделия. Высокоточное оборудование обеспечивает соответствие геометрии детали вашим требованиям. Мы гарантируем качество и оперативность выполнения заказа.
+        </p>
+    </section>
+
+    <!-- Технология -->
+    <section class="technology-section">
+        <h2 class="section-title">Технология гибки металла</h2>
+        <ul>
+            <li>Весь процесс происходит без сварки, важные элементы конструкции выполнены монолитно.</li>
+            <li>Обработка металла прессом сохраняет прочностные характеристики.</li>
+            <li>Производство идет с высокой скоростью и точностью.</li>
+            <li>Цена услуги оптимизирована за счет специализации на гибочных станках.</li>
+        </ul>
+    </section>
+
+    <!-- Таблица стоимости -->
+    <section class="price-section">
+        <h2 class="section-title">Стоимость услуги гибки метала</h2>
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Толщина металла, мм</th>
+                    <th>Стоимость 1 гиба, BYN (без НДС)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>от 0,7</td></tr>
+                <tr><td>1,5</td><td>от 0,8</td></tr>
+                <tr><td>2</td><td>от 1,0</td></tr>
+                <tr><td>3</td><td>от 1,2</td></tr>
+                <tr><td>4</td><td>от 2,1</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="advantages-section">
+        <h2 class="section-title">Наши преимущества</h2>
+        <ul>
+            <li>Доставка по всей Беларуси и в страны-соседи.</li>
+            <li>Соответствие ГОСТ и сертификаты качества на продукцию.</li>
+            <li>Опытные сотрудники и профессиональный подход.</li>
+            <li>Выполнение заказа «под ключ» — от проекта до поставки.</li>
+            <li>Гарантия 12 месяцев с последующим обслуживанием.</li>
+        </ul>
+    </section>
+
+    <!-- Контакты -->
+    <div class="service-phones">
+        <p class="section-title section-title-color">Наши телефоны:</p>
+        <div class="phones-list">
+            <p>
+                {% if footer_info.phone_one %}
+                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
+                    <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>
+                {% else %}
+                    Телефон 1 не указан<br/>
+                {% endif %}
+                {% if footer_info.phone_two %}
+                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
+                    <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>
+                {% else %}
+                    Телефон 2 не указан
+                {% endif %}
+            </p>
+        </div>
+
+        <p class="section-title section-title-color">Почта:</p>
+        <div class="email-row">
+            <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16" class="email-icon"/>
+            <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">{{ had_contact.email }}</a>
+        </div>
+
+        <div class="icons-row">
+            <div class="section-title section-title-color">Соцсети:
+                {% for social in footer_info.social_networks.all %}
+                    {% if social.url %}
+                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
+                            {% if social.icon %}
+                                <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                            {% else %}
+                                {{ social.name }}
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
+</div>
+</section>
+{% endblock %}
 
+{% block extra_scripts %}
+  <!-- Подключаем JS слайдера -->
+  <script>
+    // Инициализация двух слайдеров на странице
+    new SimpleSlider('#photoSlider');
+    new SimpleSlider('#videoSlider', { pauseOnHover: true });
+  </script>
 {% endblock %}

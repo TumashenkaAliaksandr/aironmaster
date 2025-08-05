@@ -1992,8 +1992,8 @@ h2 {
 }
 
 .section-title-color {
-    color: whitesmoke!important; /* или нужный цвет */
-    filter: drop-shadow(2px 1px 0px rgba(0,0,0,0.7));
+    color: #5f5f5f !important; /* или нужный цвет */
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 
 }
 
@@ -2102,7 +2102,7 @@ h2 {
     position: relative;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
     text-align: justify;
-    background: #97ad6e78;
+    background: #edefe978;
     padding: 10px;
     border-radius: 7px;
 }
@@ -3398,8 +3398,10 @@ html {
 .service-title {
     text-align: center;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 .service-photos-row {
@@ -3668,6 +3670,11 @@ html {
 
 .custom-metal-bg {
   background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+  padding: 20px;
+}
+
+.custom-service-bg {
+  background: linear-gradient(83deg, #fdfff9, #bababa);
   padding: 20px;
 }
 
@@ -4539,3 +4546,181 @@ html {
 
 
 
+/* Общие стили контейнеров */
+.service-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  color: #222;
+}
+
+/* Заголовки секций */
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  border-bottom: 2px solid #cacaca;
+  padding-bottom: 5px;
+    font-weight: 500;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+}
+
+/* Секция с описанием */
+.service-description p,
+.technology-section ul,
+.advantages-section ul {
+  font-size: 1rem;
+  line-height: 1.5em;
+  margin-bottom: 15px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+}
+
+.technology-section ul,
+.advantages-section ul {
+  padding-left: 20px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+}
+
+.service-description ul {
+  padding-left: 20px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+}
+
+/* Таблица цены */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.price-table th,
+.price-table td {
+  border: 1px solid #c9cccd;
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.price-table th {
+  background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
+  color: #5c5c5c;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: #60a0ff!important;
+    border-style: solid;
+    border-width: 0;
+}
+
+.price-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Слайдер */
+.slider-section {
+  margin-bottom: 40px;
+}
+
+/* Контейнер слайдера с горизонтальной прокруткой по 2 слайда в строке */
+.slider-inner-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* Каждый слайд занимает примерно половину ширины контейнера слайдера */
+.slider .slide {
+  flex: 0 0 48%; /* 2 слайда в ряд с отступами */
+  box-sizing: border-box;
+  margin-right: 4%; /* Отступ справа, кроме последнего в ряду */
+  border-radius: 12px;
+  background: #f7f7f7;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+/* Убираем правый отступ у каждого второго слайда */
+.slider .slide:nth-child(2n) {
+  margin-right: 0;
+}
+
+/* Стили для изображений и видео внутри слайдов */
+.slider .slide img,
+.slider .slide video {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* При наведении легкое увеличение */
+.slider .slide:hover {
+  transform: scale(1.04);
+}
+
+/* Адаптивность - на мобильных показываем 1 слайд */
+@media (max-width: 768px) {
+  .slider .slide {
+    flex: 0 0 100%;
+    margin-right: 0;
+    padding: 5px;
+  }
+}
+
+/* Контакты */
+.service-phones {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #edefe978;
+}
+
+.phone-icon, .email-icon {
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.phones-list p {
+  margin: 0 0 10px 0;
+}
+
+.email-row {
+  margin-bottom: 15px;
+}
+
+.icons-row a img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+
+  .price-table th,
+  .price-table td {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .service-description p,
+  .technology-section ul,
+  .advantages-section ul {
+    font-size: 0.9rem;
+  }
+
+  /* Слайдер — 1 слайд в строке для мобильных */
+  .slider-inner-wrapper {
+    transition: none;
+  }
+
+  .slider .slide {
+    flex: 0 0 100% !important;
+    padding: 5px !important;
+  }
+}
