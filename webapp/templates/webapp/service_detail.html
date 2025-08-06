@@ -53,69 +53,36 @@
             <!-- Описание услуги -->
             <section class="service-description">
                 <h2 class="section-title">Описание услуги</h2>
-                <p>
-                    Компания «Айронмастер» предлагает качественные услуги гибки металла. Мы выполняем как
-                    ручную, так и механическую гибку листового, трубного и профильного металла, обеспечивая точность и
-                    надежность результатов. Толщина обрабатываемого металла — от 0.5 до 3 мм, максимальная длина листа —
-                    до 3 метров.
-                </p>
-                <p>
-                    Наша команда инженеров тщательно разрабатывает проект гибки исходя из ваших чертежей и технических
-                    требований. Мы можем выполнить:
-                </p>
-                <ul>
-                    <li>✔️ Продольное искривление — без нагрева, для создания плавных изгибов.</li>
-                    <li>✔️ Поперечную гибку с необходимым радиусом и формированием бортиков.</li>
-                </ul>
-                <p>
-                    При гибке мы не используем сварку, что исключает появление слабых соединений и повышает прочность
-                    изделия. Высокоточное оборудование обеспечивает соответствие геометрии детали вашим требованиям. Мы
-                    гарантируем качество и оперативность выполнения заказа.
-                </p>
+                {{ service.description|safe }}
             </section>
 
             <!-- Технология -->
             <section class="technology-section">
-                <h2 class="section-title">Технология гибки металла</h2>
-                <ul>
-                    <li>✔️ Весь процесс происходит без сварки, важные элементы конструкции выполнены монолитно.</li>
-                    <li>✔️ Обработка металла прессом сохраняет прочностные характеристики.</li>
-                    <li>✔️ Производство идет с высокой скоростью и точностью.</li>
-                    <li>✔️ Цена услуги оптимизирована за счет специализации на гибочных станках.</li>
-                </ul>
+                <h2 class="section-title">Технология</h2>
+                {{ service.technology|safe }}
             </section>
 
             <!-- Таблица стоимости -->
             <section class="price-section">
-                <h2 class="section-title">Стоимость услуги гибки метала</h2>
+                <h2 class="section-title">Стоимость услуги</h2>
                 <table class="price-table">
                     <thead>
                     <tr>
                         <th>Толщина металла, мм</th>
-                        <th>Стоимость 1 гиба, BYN (без НДС)</th>
+                        <th>Стоимость BYN (без НДС)</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>от 0,7</td>
-                    </tr>
-                    <tr>
-                        <td>1,5</td>
-                        <td>от 0,8</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>от 1,0</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>от 1,2</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>от 2,1</td>
-                    </tr>
+                    {% for price in service.prices.all %}
+                        <tr>
+                            <td>{{ price.thickness }}</td>
+                            <td>{{ price.cost }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="2">Информация о стоимости отсутствует.</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </section>
@@ -124,36 +91,15 @@
             <section class="advantages-section">
                 <h2 class="section-title">Наши преимущества</h2>
                 <ul class="advantages-list horizontal-list">
-                    <li class="advantage-item">
-                        <img src="{% static 'webapp/icons/delivery-truck-box-delivery-svgrepo-com.svg' %}"
-                             alt="Доставка" class="advantage-icon" width="40"
-                             height="40"/>
-                        <span>Доставка по всей Беларуси и в страны-соседи.</span>
-                    </li>
-                    <li class="advantage-item">
-                        <img src="{% static 'webapp/icons/medal-svgrepo-com.svg' %}" alt="Сертификат ГОСТ"
-                             class="advantage-icon"
-                             width="40" height="40"/>
-                        <span>Соответствие ГОСТ и сертификаты качества на продукцию.</span>
-                    </li>
-                    <li class="advantage-item">
-                        <img src="{% static 'webapp/icons/worker-architecture-svgrepo-com.svg' %}"
-                             alt="Опытные сотрудники"
-                             class="advantage-icon" width="40" height="40"/>
-                        <span>Опытные сотрудники и профессиональный подход.</span>
-                    </li>
-                    <li class="advantage-item">
-                        <img src="{% static 'webapp/icons/key-5-svgrepo-com.svg' %}" alt="Под ключ"
-                             class="advantage-icon" width="40"
-                             height="40"/>
-                        <span>Выполнение заказа «под ключ» — от проекта до поставки.</span>
-                    </li>
-                    <li class="advantage-item">
-                        <img src="{% static 'webapp/icons/shield-antivirus-svgrepo-com.svg' %}" alt="Гарантия"
-                             class="advantage-icon" width="40"
-                             height="40"/>
-                        <span>Гарантия 12 месяцев с последующим обслуживанием.</span>
-                    </li>
+                    {% for adv in service.advantages.all %}
+                        <li class="advantage-item">
+                            <img src="{{ adv.icon.url }}" alt="{{ adv.text }}" class="advantage-icon" width="40"
+                                 height="40"/>
+                            <span>{{ adv.text }}</span>
+                        </li>
+                    {% empty %}
+                        <li>Преимущества пока не добавлены.</li>
+                    {% endfor %}
                 </ul>
             </section>
 

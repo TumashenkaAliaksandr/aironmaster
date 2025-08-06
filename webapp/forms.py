@@ -90,4 +90,5 @@ class OurServiceForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'description': SummernoteWidget(),
+            'technology': SummernoteWidget(),
         }

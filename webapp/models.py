@@ -8,6 +8,7 @@ from django.utils.text import slugify
 class OurService(models.Model):
     name = models.CharField("Название сервиса", max_length=255)
     description = models.TextField("Описание", blank=True)
+    technology = models.TextField("Технология гибки металла", blank=True)
     photo = models.ImageField("Фото", upload_to='service_photos/', blank=True, null=True)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
 
@@ -24,6 +25,30 @@ class ServicePhoto(models.Model):
     image = models.ImageField("Фото", upload_to='service_photos/')
 
 
+class ServicePrice(models.Model):
+    service = models.ForeignKey(OurService, related_name='prices', on_delete=models.CASCADE)
+    thickness = models.DecimalField("Толщина металла, мм", max_digits=5, decimal_places=2)
+    cost = models.CharField("Стоимость", max_length=50)  # строковое поле для фразы "от 0,7", "от 1,0" и т.п.
+
+    class Meta:
+        verbose_name = "Стоимость услуги"
+        verbose_name_plural = "Стоимость услуг"
+        ordering = ['thickness']
+
+    def __str__(self):
+        return f"{self.thickness} мм - {self.cost}"
+
+class ServiceAdvantage(models.Model):
+    service = models.ForeignKey(OurService, related_name='advantages', on_delete=models.CASCADE)
+    icon = models.FileField("Иконка преимущества", upload_to='service_advantages_icons/')
+    text = models.CharField("Текст преимущества", max_length=255)
+
+    class Meta:
+        verbose_name = "Преимущество"
+        verbose_name_plural = "Преимущества"
+
+    def __str__(self):
+        return self.text
 
 
 class ItemObject(models.Model):
