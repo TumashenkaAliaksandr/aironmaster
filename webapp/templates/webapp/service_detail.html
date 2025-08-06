@@ -1,82 +1,3 @@
-{#{% extends 'main/base.html' %}#}
-{#{% load custom_filters %}#}
-{#{% load static %}#}
-{##}
-{#{% block content %}#}
-{#        <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">#}
-{#            <ol>#}
-{#                <li><a href="{% url 'index' %}">Главная</a></li>#}
-{#                <li aria-current="page">{{ service.name }}</li>#}
-{#            </ol>#}
-{#        </nav>#}
-{#    <div class="service-detail-container">#}
-{#        <h1 class="service-title">{{ service.name }}</h1>#}
-{#        <div class="service-photos-row">#}
-{#            {% for photo in photos|slice:":3" %}#}
-{#                <div class="service-photo-wrapper">#}
-{#                    <img src="{{ photo.image.url }}" alt="{{ service.name }} фото {{ forloop.counter }}"#}
-{#                         class="service-photo">#}
-{#                </div>#}
-{#            {% empty %}#}
-{#                <div class="service-photo-wrapper">#}
-{#                    <img src="{% static 'webapp/img/no_images.png' %}" alt="Нет фото" class="service-photo">#}
-{#                </div>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#        <div class="service-description">#}
-{#            {{ service.description|safe }}#}
-{#        </div>#}
-{#        <div class="service-phones">#}
-{#            <p class="section-title section-title-color">Наши телефоны:</p>#}
-{#            <div class="phones-list">#}
-{#                <p>#}
-{#                    {% if footer_info.phone_one %}#}
-{#                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"#}
-{#                             height="16" class="phone-icon"/>#}
-{#                        <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>#}
-{#                    {% else %}#}
-{#                        Телефон 1 не указан<br/>#}
-{#                    {% endif %}#}
-{#                    {% if footer_info.phone_two %}#}
-{#                        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16"#}
-{#                             height="16" class="phone-icon"/>#}
-{#                        <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>#}
-{#                    {% else %}#}
-{#                        Телефон 2 не указан#}
-{#                    {% endif %}#}
-{#                </p>#}
-{#            </div>#}
-{##}
-{#            <p class="section-title section-title-color">Почта:</p>#}
-{#            <div class="email-row">#}
-{#                <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16"#}
-{#                     class="email-icon"/>#}
-{#                <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none text-white">#}
-{#                    {{ had_contact.email }}#}
-{#                </a>#}
-{#            </div>#}
-{#            <div class="icons-row">#}
-{#                <div class="section-title section-title-color">Соцсети:#}
-{#                    {% for social in footer_info.social_networks.all %}#}
-{#                        {% if social.url %}#}
-{#                            <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"#}
-{#                               aria-label="{{ social.name }}">#}
-{#                                {% if social.icon %}#}
-{#                                    <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>#}
-{#                                {% else %}#}
-{#                                    <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->#}
-{#                                    {{ social.name }}#}
-{#                                {% endif %}#}
-{#                            </a>#}
-{#                        {% endif %}#}
-{#                    {% endfor %}#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#{% endblock %}#}
-
 {% extends 'main/base.html' %}
 {% load custom_filters %}
 {% load static %}
@@ -175,7 +96,6 @@
         </table>
     </section>
 
-
     <!-- Преимущества -->
     <section class="advantages-section">
         <h2 class="section-title">Наши преимущества</h2>
@@ -208,51 +128,101 @@
         </ul>
     </section>
 
-
     <!-- Контакты -->
-    <div class="service-phones">
-        <p class="section-title section-title-color">Наши телефоны:</p>
-        <div class="phones-list">
-            <p>
-                {% if footer_info.phone_one %}
-                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
-                    <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>
-                {% else %}
-                    Телефон 1 не указан<br/>
-                {% endif %}
-                {% if footer_info.phone_two %}
-                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
-                    <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>
-                {% else %}
-                    Телефон 2 не указан
-                {% endif %}
-            </p>
+{#    <div class="service-phones">#}
+{#        <p class="section-title section-title-color">Наши телефоны:</p>#}
+{#        <div class="phones-list">#}
+{#            <p>#}
+{#                {% if footer_info.phone_one %}#}
+{#                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>#}
+{#                    <a href="tel:{{ footer_info.phone_one }}">{{ footer_info.phone_one }}</a>#}
+{#                {% else %}#}
+{#                    Телефон 1 не указан<br/>#}
+{#                {% endif %}#}
+{#                {% if footer_info.phone_two %}#}
+{#                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>#}
+{#                    <a href="tel:{{ footer_info.phone_two }}">{{ footer_info.phone_two }}</a>#}
+{#                {% else %}#}
+{#                    Телефон 2 не указан#}
+{#                {% endif %}#}
+{#            </p>#}
+{#        </div>#}
+{##}
+{#        <p class="section-title section-title-color">Почта:</p>#}
+{#        <div class="email-row">#}
+{#            <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16" class="email-icon"/>#}
+{#            <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none">{{ had_contact.email }}</a>#}
+{#        </div>#}
+{##}
+{#        <div class="icons-row">#}
+{#            <div class="section-title section-title-color">Соцсети:#}
+{#                {% for social in footer_info.social_networks.all %}#}
+{#                    {% if social.url %}#}
+{#                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">#}
+{#                            {% if social.icon %}#}
+{#                                <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>#}
+{#                            {% else %}#}
+{#                                {{ social.name }}#}
+{#                            {% endif %}#}
+{#                        </a>#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+</div>
+</section>
+<!-- Другие услуги компании -->
+    <section class="custom-service-bg">
+    <div class="services-inline-bg service-inline-container">
+    <h2 class="section-title-services">Другие услуги компании</h2>
+    <div class="services-inline-row">
+        <div class="service-mini-card">
+            <a href="{% url 'service_detail' slug='laser-cutting' %}">
+                <img src="{% static 'webapp/img/aironmaster_lazer.png' %}" alt="Лазерная резка"
+                     class="service-mini-img"/>
+            </a>
+            <div class="service-mini-caption">Лазерная резка</div>
         </div>
-
-        <p class="section-title section-title-color">Почта:</p>
-        <div class="email-row">
-            <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16" class="email-icon"/>
-            <a href="mailto:{{ had_contact.email|default:'' }}" class="text-decoration-none">{{ had_contact.email }}</a>
+        <div class="service-mini-card">
+            <a href="{% url 'service_detail' slug='bending' %}">
+                <img src="{% static 'webapp/img/aironmaster_gibka.png' %}" alt="Гибка"
+                     class="service-mini-img"/>
+            </a>
+            <div class="service-mini-caption">Гибка металла</div>
         </div>
-
-        <div class="icons-row">
-            <div class="section-title section-title-color">Соцсети:
-                {% for social in footer_info.social_networks.all %}
-                    {% if social.url %}
-                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
-                            {% if social.icon %}
-                                <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
-                            {% else %}
-                                {{ social.name }}
-                            {% endif %}
-                        </a>
-                    {% endif %}
-                {% endfor %}
-            </div>
+        <div class="service-mini-card">
+            <a href="{% url 'service_detail' slug='vibratory-trowel' %}">
+                <img src="{% static 'webapp/img/aironmaster_vibrogoltovka_IFfETZG.jpeg' %}"
+                     alt="Виброголтовка" class="service-mini-img"/>
+            </a>
+            <div class="service-mini-caption">Виброголтовка</div>
+        </div>
+        <div class="service-mini-card">
+            <a href="{% url 'service_detail' slug='welding' %}">
+                <img src="{% static 'webapp/img/aironmaster_svarka.png' %}" alt="Сварочные работы"
+                     class="service-mini-img"/>
+            </a>
+            <div class="service-mini-caption">Сварка</div>
+        </div>
+        <div class="service-mini-card">
+            <a href="{% url 'service_detail' slug='metal-constructions' %}">
+                <img src="{% static 'webapp/img/aironmaster_truby.png' %}" alt="Металлоконструкции"
+                     class="service-mini-img"/>
+            </a>
+            <div class="service-mini-caption">Металлоконструкции</div>
+        </div>
+        <div class="service-mini-card">
+            <a href="{% url 'service_detail' slug='polymer-painting' %}">
+                <img src="{% static 'webapp/img/aironmaster_pokraska.png' %}" alt="Полимерная покраска"
+                     class="service-mini-img"/>
+            </a>
+            <div class="service-mini-caption">Покраска</div>
         </div>
     </div>
 </div>
-</section>
+    </section>
+
 {% endblock %}
 
 {% block extra_scripts %}

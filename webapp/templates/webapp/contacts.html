@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="map-phones">
-                    <p class="section-title">Наши телефоны:</p>
+                    <p class="section-title-contact">Наши телефоны:</p>
                     <div class="phones-list">
                         <p>
                         {% if footer_info.phone_one %}
@@ -64,7 +64,7 @@
                     </p>
                     </div>
 
-                    <p class="section-title">Почта:</p>
+                    <p class="section-title-contact">Почта:</p>
                     <div class="email-row">
                         <img src="{% static 'webapp/icons/envelope-solid.svg' %}" alt="Почта" width="16" height="16"
                              class="email-icon"/>
@@ -73,7 +73,7 @@
                         </a>
                     </div>
                     <div class="icons-row">
-                     <div class="section-title">Соцсети:
+                     <div class="section-title-contact">Соцсети:
                     {% for social in footer_info.social_networks.all %}
                             {% if social.url %}
                                 <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
