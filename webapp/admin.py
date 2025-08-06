@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm, OurServiceForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage
+    SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -126,13 +126,18 @@ class ServiceAdvantageInline(admin.TabularInline):
     extra = 1
 
 
+class ServiceVideoInline(admin.TabularInline):
+    model = ServiceVideo
+    extra = 1
+    fields = ('video', 'title')
+
 @admin.register(OurService)
 class OurServiceAdmin(admin.ModelAdmin):
     form = OurServiceForm
     list_display = ('name', 'photo_preview')
     search_fields = ('name', 'description')
     readonly_fields = ('photo_preview',)
-    inlines = [ServicePhotoInline, ServicePriceInline, ServiceAdvantageInline]
+    inlines = [ServicePhotoInline, ServiceVideoInline, ServicePriceInline, ServiceAdvantageInline]
 
     def photo_preview(self, obj):
         if obj.photo:

@@ -24,6 +24,10 @@ class ServicePhoto(models.Model):
     service = models.ForeignKey(OurService, related_name='photos', on_delete=models.CASCADE)
     image = models.ImageField("Фото", upload_to='service_photos/')
 
+class ServiceVideo(models.Model):
+    service = models.ForeignKey(OurService, related_name='videos', on_delete=models.CASCADE)
+    video = models.FileField("Видео", upload_to='service_videos/')
+    title = models.CharField("Название видео", max_length=255, blank=True)
 
 class ServicePrice(models.Model):
     service = models.ForeignKey(OurService, related_name='prices', on_delete=models.CASCADE)
