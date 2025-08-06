@@ -4621,11 +4621,13 @@ font-size: 1.8rem;
 .advantages-section ul {
   padding-left: 20px;
     filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    list-style: none;
 }
 
 .service-description ul {
   padding-left: 20px;
     filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    list-style: none;
 }
 
 /* Таблица цены */
@@ -4650,7 +4652,7 @@ font-size: 1.8rem;
 }
 
 tbody, td, tfoot, th, thead, tr {
-    border-color: #60a0ff!important;
+    border-color: #818a98!important;
     border-style: solid;
     border-width: 0;
 }
@@ -4658,57 +4660,63 @@ tbody, td, tfoot, th, thead, tr {
 .price-table tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-
-/* Слайдер */
-.slider-section {
-  margin-bottom: 40px;
+/* Контейнер слайдера */
+#photoSlider {
+  overflow: hidden;
+  position: relative;
+  max-width: 700px; /* или ваша максимальная ширина */
+  margin: 0 auto;
 }
 
-/* Контейнер слайдера с горизонтальной прокруткой по 2 слайда в строке */
+/* Обертка слайдов - flex в ряд */
 .slider-inner-wrapper {
   display: flex;
+  flex-wrap: nowrap; /* запрещаем перенос слайдов */
   transition: transform 0.5s ease;
+  will-change: transform;
 }
 
-/* Каждый слайд занимает примерно половину ширины контейнера слайдера */
-.slider .slide {
-  flex: 0 0 48%; /* 2 слайда в ряд с отступами */
+/* Слайды — по 2 в ряд, с отступами */
+.slider-inner-wrapper .slide {
+  flex: 0 0 31.33%; /* ширина каждого слайда */
   box-sizing: border-box;
-  margin-right: 4%; /* Отступ справа, кроме последнего в ряду */
+  margin-right: 3%!important; /* горизонтальный отступ, кроме последнего */
   border-radius: 12px;
   background: #f7f7f7;
   padding: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease;
 }
 
 /* Убираем правый отступ у каждого второго слайда */
-.slider .slide:nth-child(2n) {
+.slider-inner-wrapper .slide:nth-child(3n) {
   margin-right: 0;
 }
 
-/* Стили для изображений и видео внутри слайдов */
-.slider .slide img,
-.slider .slide video {
-  width: 200px;
+/* Картинки внутри слайда растягиваем по ширине и сохраняем пропорции */
+.slider-inner-wrapper .slide img {
+  width: 100%;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  display: block;
+    cursor: pointer;
 }
 
-/* При наведении легкое увеличение */
-.slider .slide:hover {
+/* При наведении небольшой масштаб для эффекта */
+.slider-inner-wrapper .slide:hover {
   transform: scale(1.04);
 }
 
-/* Адаптивность - на мобильных показываем 1 слайд */
+/* Адаптив — на узких экранах 1 слайд в ряд */
 @media (max-width: 768px) {
-  .slider .slide {
+  .slider-inner-wrapper .slide {
     flex: 0 0 100%;
     margin-right: 0;
     padding: 5px;
   }
 }
+
 
 /* Контакты */
 .service-phones {
@@ -4946,4 +4954,61 @@ tbody, td, tfoot, th, thead, tr {
         width: 80px;
         height: 80px;
     }
+}
+
+
+#imageModal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+
+  /* Убираем дублирование display. flex нужно ставить при открытии через JS */
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* Кнопки навигации - стрелки слева и справа */
+#imageModal .modal-nav {
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  font-size: 24px;
+  user-select: none;
+  align-self: center;
+  transition: background-color 0.3s ease;
+  /* Кнопки тоже скрыты с контейнером, когда display: none; */
+}
+
+#modalPrev {
+  margin-right: 20px;
+}
+
+#modalNext {
+  margin-left: 20px;
+}
+
+#imageModal .modal-nav:hover {
+  background: rgba(255,255,255,1);
+}
+
+/* Изображение в модальном окне */
+#imageModal .modal-image {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+  user-select: none;
+  pointer-events: none; /* чтобы клики проходили через картинку */
+  flex-shrink: 0;
 }

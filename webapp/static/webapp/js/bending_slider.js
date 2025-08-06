@@ -1,115 +1,152 @@
-/*!
- * Простой js слайдер для двух слайдов в строке,
- * с циклической прокруткой и овальной каруселью.
- * Не требует jQuery.
- */
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('photoSlider');
+    if (!slider) return;
 
-class SimpleSlider {
-  constructor(selector, options = {}) {
-    this.container = document.querySelector(selector);
-    if (!this.container) {
-      console.warn(`SimpleSlider: контейнер ${selector} не найден`);
-      return;
+    const wrapper = slider.querySelector('.slider-inner-wrapper');
+    const slides = wrapper.children;
+
+    let slidesToShow = window.innerWidth < 768 ? 1 : 3; // адаптив: 1 на мобиле, 3 на десктопе
+    let currentIndex = 0;
+    let slideWidth = 0; // ширина слайда вместе с margin
+    let totalSlides = slides.length;
+
+    // Получаем кнопки переключения слайдов из слайдера (предполагаем, что они есть в DOM)
+    const prevBtn = slider.querySelector('.slider-prev');
+    const nextBtn = slider.querySelector('.slider-next');
+
+    // Получаем кнопки навигации внутри модального окна
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalPrevBtn = modal.querySelector('#modalPrev');
+    const modalNextBtn = modal.querySelector('#modalNext');
+
+    // Индекс текущего фото в модальном окне
+    let modalCurrentIndex = 0;
+
+    function calculateSlideWidth() {
+        if (slides.length === 0) return 0;
+        const style = getComputedStyle(slides[0]);
+        const width = slides[0].getBoundingClientRect().width;
+        const marginLeft = parseFloat(style.marginLeft) || 0;
+        const marginRight = parseFloat(style.marginRight) || 0;
+        return width + marginLeft + marginRight;
     }
-    this.slides = this.container.children;
-    this.totalSlides = this.slides.length;
-    this.currentIndex = 0;
-    this.options = Object.assign({
-      slidesToShow: 2,
-      slideWidth: 50,       // в процентах, 2 слайда => 50%
-      transitionDuration: 500,
-      autoPlay: true,
-      autoPlayInterval: 3000,
-      loop: true,
-      pauseOnHover: false,
-    }, options);
 
-    this.init();
-  }
-
-  init() {
-    // Устанавливаем стили контейнера
-    this.container.style.display = 'flex';
-    this.container.style.overflow = 'hidden';
-    this.container.style.position = 'relative';
-
-    // Оболочка для слайдов
-    this.innerWrapper = document.createElement('div');
-    this.innerWrapper.classList.add('slider-inner-wrapper');
-    this.innerWrapper.style.display = 'flex';
-    this.innerWrapper.style.width = `${(this.totalSlides / this.options.slidesToShow) * 100}%`;
-    this.innerWrapper.style.transition = `transform ${this.options.transitionDuration}ms ease`;
-
-    // Переносим слайды внутрь wrapper
-    while (this.container.firstChild) {
-      this.innerWrapper.appendChild(this.container.firstChild);
+    function updateSlider() {
+        const translateX = -currentIndex * slideWidth;
+        wrapper.style.transform = `translateX(${translateX}px)`;
     }
-    this.container.appendChild(this.innerWrapper);
 
-    // Установка ширины каждого слайда
-    Array.from(this.slides).forEach(slide => {
-      slide.style.flex = `0 0 ${this.options.slideWidth}%`;
-      slide.style.boxSizing = 'border-box';
-      slide.style.padding = '10px';  // отступы между слайдами
-      slide.style.transition = 'transform 0.5s ease';
-      slide.style.borderRadius = '12px'; // овал по краям
-      slide.style.background = '#f7f7f7';
-      slide.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+    function nextSlide() {
+        if (currentIndex >= totalSlides - slidesToShow) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        updateSlider();
+    }
+
+    function prevSlide() {
+        if (currentIndex <= 0) {
+            currentIndex = totalSlides - slidesToShow;
+        } else {
+            currentIndex--;
+        }
+        updateSlider();
+    }
+
+    // Навигация в модальном окне
+    function showModalImage(index) {
+        if (index < 0) {
+            modalCurrentIndex = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            modalCurrentIndex = 0;
+        } else {
+            modalCurrentIndex = index;
+        }
+
+        const imgSrc = slides[modalCurrentIndex].querySelector('img').src;
+        const imgAlt = slides[modalCurrentIndex].querySelector('img').alt || '';
+        modalImg.src = imgSrc;
+        modalImg.alt = imgAlt;
+    }
+
+    if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showModalImage(modalCurrentIndex - 1);
+        });
+    }
+    if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showModalImage(modalCurrentIndex + 1);
+        });
+    }
+
+    // Открываем модалку по клику на миниатюру и назначаем текущий индекс
+    slider.querySelectorAll('.slide img').forEach((img, idx) => {
+        img.addEventListener('click', (e) => {
+            modalCurrentIndex = idx;
+            showModalImage(modalCurrentIndex);
+            modal.style.display = 'flex';
+        });
     });
 
-    if (this.options.autoPlay) {
-      this.startAutoPlay();
-    }
-    if (this.options.pauseOnHover) {
-      this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
-      this.container.addEventListener('mouseleave', () => this.startAutoPlay());
-    }
-  }
-
-  startAutoPlay() {
-    this.stopAutoPlay();
-    this.autoPlayTimer = setInterval(() => {
-      this.next();
-    }, this.options.autoPlayInterval);
-  }
-
-  stopAutoPlay() {
-    if (this.autoPlayTimer) {
-      clearInterval(this.autoPlayTimer);
-    }
-  }
-
-  next() {
-    this.currentIndex++;
-    if (this.currentIndex > this.totalSlides - this.options.slidesToShow) {
-      if (this.options.loop) this.currentIndex = 0;
-      else this.currentIndex = this.totalSlides - this.options.slidesToShow;
-    }
-    this.update();
-  }
-
-  prev() {
-    this.currentIndex--;
-    if (this.currentIndex < 0) {
-      if (this.options.loop) this.currentIndex = this.totalSlides - this.options.slidesToShow;
-      else this.currentIndex = 0;
-    }
-    this.update();
-  }
-
-  update() {
-    const translateX = -(this.currentIndex * this.options.slideWidth);
-    this.innerWrapper.style.transform = `translateX(${translateX}%)`;
-
-    // Добавим эффект овала при прокрутке - немного уменьшаем масштаб центральных слайдов
-    Array.from(this.slides).forEach((slide, i) => {
-      // выделяем видимые слайды
-      if (i >= this.currentIndex && i < this.currentIndex + this.options.slidesToShow) {
-        slide.style.transform = 'scale(1)';
-      } else {
-        slide.style.transform = 'scale(0.85)';
-        slide.style.filter = 'brightness(0.85)';
-      }
+    // Закрытие модалки по клику вне изображения
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            modalImg.src = '';
+            modalImg.alt = '';
+        }
     });
-  }
-}
+
+    // Закрытие по клавише ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+            modalImg.src = '';
+            modalImg.alt = '';
+        }
+    });
+
+    // Автопрокрутка слайдера с паузой
+    let autoPlayInterval = null;
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, 3000);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+
+    slider.addEventListener('mouseenter', stopAutoPlay);
+    slider.addEventListener('mouseleave', startAutoPlay);
+
+    function init() {
+        slidesToShow = window.innerWidth < 768 ? 1 : 3;
+        currentIndex = 0;
+
+        wrapper.style.transition = 'none';
+        wrapper.style.transform = 'translateX(0)';
+
+        slideWidth = calculateSlideWidth();
+
+        setTimeout(() => {
+            wrapper.style.transition = 'transform 0.5s ease';
+        }, 50);
+
+        updateSlider();
+        startAutoPlay();
+    }
+
+    window.addEventListener('resize', init);
+
+    init();
+});
