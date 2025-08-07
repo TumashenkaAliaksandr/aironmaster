@@ -57,6 +57,7 @@ class ServiceAdvantage(models.Model):
 
 class ItemObject(models.Model):
     name = models.CharField("Название", max_length=255)
+    mission = models.CharField("Предназначение", max_length=255, blank=True, null=True)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
     description = models.TextField("Описание")
     description_more = models.TextField("Описание", null=True, blank=True)

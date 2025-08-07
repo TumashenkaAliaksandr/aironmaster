@@ -47,7 +47,7 @@
                                 <section id="item-{{ item.id }}" class="item-section">
                                     <div class="content-wrapper">
                                         <h3 class="fixed-lines">{{ item.name|safe }}</h3>
-                                        <p>{{ item.description }}</p>
+                                        <p>{{ item.mission }}</p>
                                         <p>
                                             {% if item.phone1 %}
                                                 <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>
@@ -77,18 +77,17 @@
                                                         <div class="photo-item-product product">
                                                             {% if forloop.last %}
                                                                 <!-- Вместо второго фото показываем кнопку -->
-                                                                <div style="display: flex; justify-content: center; margin-top: 70px; position: relative;">
+                                                                <div style="display: flex; justify-content: center; margin-top: 50px; position: relative;">
                                                                     <a href="{% url 'item_detail' item.slug %}"
                                                                        class="btn">Подробнее</a>
 
                                                                 </div>
                                                             {% else %}
-                                                                <div style="display: flex; justify-content: center; margin-top: 20px; position: relative;">
+                                                                <div>
                                                                     <img
                                                                             src="{{ photo.photo.url }}"
                                                                             alt="{{ photo.description }}"
                                                                             class="img-fluid rounded gallery-image"
-                                                                            style="object-fit: cover; width: 180px; height: 100px;"
                                                                             data-src="{{ photo.photo.url }}">
                                                                 </div>
                                                             {% endif %}
