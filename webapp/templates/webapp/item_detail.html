@@ -2,57 +2,73 @@
 {% load static %}
 
 {% block content %}
-<nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
-    <ol>
-        <li><a href="{% url 'index' %}">Главная</a></li>
-        <li aria-current="page">{{ item.name }}</li>
-    </ol>
-</nav>
-    <div class="gradient"></div>
-<section id="screw" class="item-section">
-<div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
-    <!-- Левая часть: главное фото и миниатюры -->
-    <div style="flex: 1 1 400px; max-width: 450px;">
-        <!-- Главное фото -->
-        <div class="main-photo-wrapper" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-            <img id="main-photo" src="{% if item.photos.first %}{{ item.photos.first.photo.url }}{% else %}{% static 'webapp/img/no_images.png' %}{% endif %}"
-                 alt="{{ item.name }}" style="width: 100%; height: auto; display: block; object-fit: contain;">
-        </div>
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page">{{ item.name }}</li>
+        </ol>
+    </nav>
+    <div class="gradient-brcr"></div>
+    <section id="screw" class="item-section">
+        <div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+            <!-- Левая часть: главное фото и миниатюры -->
+            <div style="flex: 1 1 600px; max-width: 600px;">
+                <!-- Главное фото -->
+                <div class="main-photo-wrapper" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                    <img id="main-photo" src="
+                            {% if item.photos.first %}{{ item.photos.first.photo.url }}{% else %}{% static 'webapp/img/no_images.png' %}{% endif %}"
+                         alt="{{ item.name }}" style="width: 100%; height: auto; display: block; object-fit: contain;">
+                </div>
 
-        <!-- Миниатюры -->
-        {% if item.photos.count > 1 %}
-            <div class="photo-margin-l" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
-                {% for photo in item.photos.all %}
-                    <img src="{{ photo.photo.url }}" alt="{{ photo.description }}"
-                         class="thumbnail-photo"
-                         style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent;"
-                         data-full="{{ photo.photo.url }}">
-                {% endfor %}
+                <!-- Миниатюры -->
+                {% if item.photos.count > 1 %}
+                    <div class="photo-margin-l" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                        {% for photo in item.photos.all %}
+                            <img src="{{ photo.photo.url }}" alt="{{ photo.description }}"
+                                 class="thumbnail-photo"
+                                 style="width: 142px; height: 100px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent;"
+                                 data-full="{{ photo.photo.url }}">
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
-        {% endif %}
-    </div>
 
-    <!-- Правая часть: текстовая информация -->
-    <div style="flex: 1 1 400px; max-width: 600px;">
-        <h3>{{ item.name }}</h3>
+            <!-- Правая часть: текстовая информация -->
+            <div style="flex: 1 1 700px; max-width: 700px;">
+                <h3>{{ item.name }}</h3>
 
-        <p>{{ item.description }}</p>
-        <p>{{ item.description_more }}</p>
+                <p>{{ item.description|safe }}</p>
+                {#        <p>{{ item.description_more }}</p>#}
 
-        <p>
-        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
-            {% if item.phone1 %}
-                <a href="tel:{{ item.phone1|cut:' ' }}">{{ item.phone1 }}</a><br>
-            {% endif %}
-        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>
-            {% if item.phone2 %}
-                <a href="tel:{{ item.phone2|cut:' ' }}">{{ item.phone2 }}</a>
-            {% endif %}
-        </p>
-    </div>
-</div>
-</section>
-    <div class="gradient"></div>
+                {#        <p>#}
+                {#        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>#}
+                {#            {% if item.phone1 %}#}
+                {#                <a href="tel:{{ item.phone1|cut:' ' }}">{{ item.phone1 }}</a><br>#}
+                {#            {% endif %}#}
+                {#        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>#}
+                {#            {% if item.phone2 %}#}
+                {#                <a href="tel:{{ item.phone2|cut:' ' }}">{{ item.phone2 }}</a>#}
+                {#            {% endif %}#}
+                {#        </p>#}
+            </div>
+        </div>
+        <div class="screw-margin-li">
+            <p>{{ item.description_more|safe }}</p>
+            <p>
+                <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16"
+                     class="phone-icon"/>
+                {% if item.phone1 %}
+                    <a href="tel:{{ item.phone1|cut:' ' }}">{{ item.phone1 }}</a><br>
+                {% endif %}
+                <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16"
+                     class="phone-icon"/>
+                {% if item.phone2 %}
+                    <a href="tel:{{ item.phone2|cut:' ' }}">{{ item.phone2 }}</a>
+                {% endif %}
+            </p>
+        </div>
+    </section>
+    <div class="gradient-product-detail"></div>
     <section id="screw-spiral" class="item-section">
         <h2>📌 Похожие Изделия</h2>
 
@@ -82,7 +98,7 @@
             <p>Изделия в данной категории отсутствуют.</p>
         {% endif %}
     </section>
-    <div class="gradient"></div>
+    <div class="gradient-product-detail"></div>
 
     <!-- Модальное окно -->
     <div id="customModal" class="custom-modal hidden" aria-hidden="true" role="dialog" aria-modal="true">

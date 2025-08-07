@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
-from .forms import BannerForm, OurServiceForm
+from .forms import BannerForm, OurServiceForm, ItemObjectForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
     SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo
 
@@ -16,6 +16,7 @@ class ItemPhotoInline(admin.TabularInline):
     readonly_fields = ()
 
 class ItemObjectAdmin(admin.ModelAdmin):
+    form = ItemObjectForm
     list_display = ('name', 'phone1', 'phone2')
     search_fields = ('name', 'description', 'description_more', 'phone1', 'phone2')
     inlines = [ItemPhotoInline]
