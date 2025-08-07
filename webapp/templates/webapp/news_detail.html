@@ -9,15 +9,18 @@
             <li aria-current="page">{{ news.name }}</li>
         </ol>
     </nav>
-    <article class="news-detail">
-        <h1>{{ news.name }}</h1>
-        <hr class="news-separator" aria-hidden="true"/>
-        <time datetime="{{ news.date|date:'Y-m-d' }}">{{ news.date|date:"j F Y" }}</time>
-        <img src="{{ news.photo.url }}" alt="{{ news.name }}" class="news-detail__image"/>
-        <div class="news-detail__text">
-            {{ news.news_text|linebreaks }}
-        </div>
-    </article>
+    <section class="item-section-bg">
+        <article class="news-detail">
+            <h1>{{ news.name }}</h1>
+            <hr class="news-separator" aria-hidden="true"/>
+            <time datetime="{{ news.date|date:'Y-m-d' }}">{{ news.date|date:"j F Y" }}</time>
+            <img src="{{ news.photo.url }}" alt="{{ news.name }}" class="news-detail__image"/>
+            <div class="news-detail__text">
+                {{ news.news_text|linebreaks }}
+            </div>
+        </article>
+    </section>
+    <div class="gradient"></div>
     <section class="item-section-bg">
         <div class="news-carousel">
             <h2 class="news-carousel__title">Ещё Новости Aironmaster</h2>

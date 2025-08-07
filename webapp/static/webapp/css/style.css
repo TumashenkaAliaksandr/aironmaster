@@ -89,6 +89,7 @@ header {
     gap: 0.4rem;
     padding: 0;
     margin: 0;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 .breadcrumb li::after {
@@ -4302,7 +4303,7 @@ font-size: 1.8rem;
     margin: 40px auto;
     padding: 0 20px;
     color: #222;
-    background-color: #f3ffdd;
+    background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
     border-radius: 13px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
@@ -4315,6 +4316,7 @@ font-size: 1.8rem;
     text-transform: uppercase;
     text-align: center;
     padding-top: 40px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 .news-detail time {
@@ -4354,6 +4356,7 @@ font-size: 1.8rem;
 
 .news-detail__text p {
     margin-bottom: 1.3em;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 @media (max-width: 768px) {
@@ -4548,7 +4551,7 @@ font-size: 1.8rem;
     margin-bottom: 50px;
     margin-top: 40px;
     text-transform: uppercase;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 /* Список новостей */
@@ -4640,6 +4643,7 @@ font-size: 1.8rem;
     line-height: 1.5;
     color: #555;
     flex-grow: 1;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 /* Ссылка «Узнать больше..» */
@@ -4651,6 +4655,7 @@ font-size: 1.8rem;
     text-decoration: none;
     margin-top: 20px;
     transition: color 0.3s ease;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
 }
 
 .news-item__more-link:hover,
