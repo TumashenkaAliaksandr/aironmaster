@@ -834,6 +834,44 @@ nav .nav-linkss.active {
     min-height: 200px; /* можно задать минимальную высоту */
 }
 
+#screw-img {
+    /* Секция с фоном на всю ширину */
+    padding: 2.5rem 1.5rem;
+    color: #e0d9f1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* центрируем по горизонтали */
+    justify-content: center; /* центрируем по вертикали */
+    min-height: 200px; /* минимальная высота */
+
+    /* Добавляем фон с фотографией */
+    background-image: url('../img/contacts.jpeg'); /* укажите здесь правильный путь к фото */
+    background-repeat: no-repeat; /* не повторять фон */
+    background-position: center center; /* центрировать изображение */
+    background-size: cover; /* масштабировать изображение, чтобы покрыть весь блок */
+    /* Опционально: фиксировать фон при скролле */
+    /* background-attachment: fixed; */
+}
+
+#screw-img {
+    position: relative;
+    /* остальные свойства как выше */
+    background-image: linear-gradient(rgb(243 243 243 / 99%), rgb(208 208 218 / 92%)), url(../img/steal_banner.jpg);
+}
+
+#screw-img p {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #313131;
+    /* background: #d1d1d12e; */
+    border-radius: 7px;
+    padding: 0 10px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
+}
+
+
 .screw-margin-li li {
     margin-left: 30px!important;
 }
@@ -917,9 +955,9 @@ nav .nav-linkss.active {
     font-weight: 700;
     font-size: 1.5rem;
     letter-spacing: 0.05em;
-    color: white;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    color: #313131;
     text-transform: uppercase;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
 }
 
 #screw-spiral h3 {
@@ -1401,6 +1439,54 @@ nav .nav-linkss.active {
     margin-top: 5px;
     justify-content: center;
 }
+#contacts-with-item {
+    /*width: 100vw;*/
+    padding: 2rem 1.5rem;
+    background: linear-gradient(66deg, #ffffff, #cbcbd3);
+    box-sizing: border-box;
+    color: #f0f9f9;
+    text-align: center;
+    display: flex;
+    border-radius: 10px;
+    margin-top: 5px;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+#contacts-with-item h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    color: #313131;
+    text-transform: uppercase;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
+}
+
+.form-row-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row-item label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #313131;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
+}
+
+.form-row-item input, .form-row-item textarea {
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    border: 1.5px solid #c4c3c6;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    resize: vertical;
+}
+
 
 #contacts .content-wrapper {
     max-width: 700px;
