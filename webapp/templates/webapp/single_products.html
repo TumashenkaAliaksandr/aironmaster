@@ -33,7 +33,7 @@
                 {% for item_row in items|batch:3 %}
                     <div class="row mb-0">
                         {% for item in item_row %}
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <section id="item-{{ item.id }}" class="item-section">
                                     <div class="content-wrapper">
                                         <h3 class="fixed-lines">{{ item.name|safe }}</h3>

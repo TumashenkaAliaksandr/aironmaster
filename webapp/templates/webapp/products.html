@@ -40,10 +40,10 @@
             <hr class="news-separator" aria-hidden="true"/>
         {% if items %}
             <div class="container">
-                {% for item_row in items|batch:3 %}
+                {% for item_row in items|batch:4 %}
                     <div class="row mb-0">
                         {% for item in item_row %}
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <section id="item-{{ item.id }}" class="item-section">
                                     <div class="content-wrapper">
                                         <h3 class="fixed-lines">{{ item.name|safe }}</h3>
@@ -77,7 +77,7 @@
                                                         <div class="photo-item-product product">
                                                             {% if forloop.last %}
                                                                 <!-- Вместо второго фото показываем кнопку -->
-                                                                <div style="display: flex; justify-content: center; margin-top: 50px; position: relative;">
+                                                                <div style="display: flex; justify-content: center; margin-top: 45px; height: 45px; position: relative;">
                                                                     <a href="{% url 'item_detail' item.slug %}"
                                                                        class="btn">Подробнее</a>
 

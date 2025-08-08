@@ -383,8 +383,8 @@ nav .nav-linkss.active {
     max-height: 100%;
     object-fit: cover;
     border-radius: 6px;
-    height: 100px;
-    width: 300px;
+    height: 90px;
+    width: 100px;
 }
 
 .photo-item-product img{
@@ -409,7 +409,7 @@ nav .nav-linkss.active {
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 4.5em;           /* высота 3 строк (примерно 3 * 1.5em line-height) */
-  line-height: 1.5em;          /* задайте нужный line-height */
+  line-height: 1.3em;          /* задайте нужный line-height */
   word-break: break-word;      /* чтобы переносить длинные слова */
 }
 
@@ -637,7 +637,7 @@ nav .nav-linkss.active {
 
 .product .btn {
     display: inline-flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     background: linear-gradient(270deg, #0297d3, #480576, #911bff);
     background-size: auto;
@@ -882,6 +882,13 @@ nav .nav-linkss.active {
 .screw-margin-li li {
     margin-left: 30px!important;
 }
+
+.screw-margin {
+    margin-left: 30px!important;
+    max-width: 1380px;
+    margin-top: 40px;
+}
+
 .bg-category {
     background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
 
@@ -948,16 +955,16 @@ nav .nav-linkss.active {
 
 /* Внутренний контейнер для ограничения ширины */
 #screw-spiral .content-wrapper {
-    max-width: 700px;
+    max-width: 300px;
     width: 100%;
-    height: 350px;          /* фиксированная высота */
+    height: 300px;          /* фиксированная высота */
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
     padding: 1rem 1.5rem;
     position: relative;
     margin: 0 auto 30px auto;
 
-    display: flex;          /* flex контейнер */
+    display: grid;          /* flex контейнер */
     flex-direction: column; /* расположение по вертикали */
     justify-content: space-between; /* равномерное распределение по высоте */
     align-items: stretch;   /* растянуть элементы по ширине */
@@ -980,19 +987,19 @@ nav .nav-linkss.active {
 }
 
 #screw-spiral h3 {
-    margin-bottom: 1rem;
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.02em;
     color: white;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
     text-transform: uppercase;
 }
 
 #screw-spiral p {
-    margin: 0.3rem 0;
-    font-size: 1.1rem;
-    line-height: 1.4;
+    /*margin: 0.3rem 0;*/
+    font-size: 14px;
+    line-height: 1.3;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
     text-transform: uppercase;
     color: white;
@@ -2844,13 +2851,13 @@ html {
   display: flex; /* используем flexbox для выравнивания */
   justify-content: center; /* выравниваем по центру горизонтально */
   align-items: center; /* выравниваем по центру вертикально */
-  width: 32px; /* задаём небольшую ширину */
-  height: 32px; /* задаём небольшую высоту */
+  width: 30px; /* задаём небольшую ширину */
+  height: 30px; /* задаём небольшую высоту */
   border-radius: 50%; /* делаем иконку круглой */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* добавляем небольшую тень */
   transition: all 0.3s ease; /* плавная анимация для hover эффектов */
   filter: grayscale(80%); /* делаем иконки серыми */
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /* Hover эффект: убираем фильтр и немного увеличиваем */
@@ -2876,11 +2883,11 @@ html {
 
 .social-icons-wrapper-two {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
-    left: 59%;
+    left: 54%;
     position: absolute;
-    top: 60%;
+    top: 58%;
     z-index: 3;
 }
 
