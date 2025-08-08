@@ -10,7 +10,7 @@
     </nav>
     <div class="gradient-brcr"></div>
     <section id="screw" class="item-section">
-        <div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+        <div class="my-flex-container">
             <!-- Левая часть: главное фото и миниатюры -->
             <div style="flex: 1 1 600px; max-width: 600px;">
                 <!-- Главное фото -->
@@ -51,8 +51,7 @@
                 {#            {% endif %}#}
                 {#        </p>#}
             </div>
-        </div>
-        <div class="screw-margin screw-margin-li">
+
             <p>{{ item.description_more|safe }}</p>
             <p>
                 <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16"

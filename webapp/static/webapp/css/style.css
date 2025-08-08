@@ -889,6 +889,14 @@ nav .nav-linkss.active {
     margin-top: 40px;
 }
 
+.screw-margin-desc-two p {
+    position: relative;
+    right: 15px;
+    margin-right: 0 !important;
+    bottom: 22px;
+
+}
+
 .bg-category {
     background: linear-gradient(66deg, #f0f7e6, #8e8ca2);
 
@@ -1083,9 +1091,18 @@ nav .nav-linkss.active {
     color: #2e326d;
     text-decoration: none;
     filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.9));
-    background: #e1e1e1;
+    /*background: #e1e1e1;*/
     border-radius: 13px;
 }
+
+.my-flex-container {
+    display: flex;
+    gap: 18px;
+    margin-left: 50px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
 
 #screw p svg rect.background {
     fill: white;
@@ -3826,7 +3843,7 @@ html {
 }
 
 .custom-advanced-bg {
-  background: linear-gradient(66deg, #edf4e7, #c1b8c6);
+  background: linear-gradient(66deg, #edf4e7, #bdc0c5);
   padding: 20px;
 }
 
@@ -4310,7 +4327,7 @@ font-size: 1.8rem;
     margin: 40px auto;
     padding: 0 20px;
     color: #222;
-    background: linear-gradient(90deg, #ccced1 0%, #cfdef3 100%);
+    background: linear-gradient(90deg, #e2e2e4 0%, #cfdef3 100%);
     border-radius: 13px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
@@ -4355,7 +4372,7 @@ font-size: 1.8rem;
 }
 
 .news-detail__text {
-    font-size: 1.1rem;
+    font-size: 1.22rem;
     line-height: 1.7;
     color: #333;
     white-space: pre-line; /* для корректного отображения переносов из linebreaks */
@@ -4938,10 +4955,20 @@ tbody, td, tfoot, th, thead, tr {
     margin-top: 21px;
 }
 
+.advantages__title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        padding-top: 30px;
+        filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
+    }
+
 /* Стили для иконок */
 .advantage-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   margin-bottom: 10px;    /* Отступ снизу для пространства между иконкой и текстом */
   flex-shrink: 0;
 }
