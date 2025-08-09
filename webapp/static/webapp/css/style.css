@@ -5230,3 +5230,109 @@ tbody, td, tfoot, th, thead, tr {
   pointer-events: none; /* чтобы клики проходили через картинку */
   flex-shrink: 0;
 }
+
+.laser-cutting-ad {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.laser-cutting-ad h1 {
+    font-size: 2.5em;
+    color: #222;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.laser-cutting-ad p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ad-features ul {
+    list-style: inside disc;
+    margin-bottom: 25px;
+    padding-left: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.ad-features ul li {
+    margin-bottom: 8px;
+}
+
+.ad-examples {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ad-item {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    width: 420px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ad-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.ad-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+.ad-item h2 {
+    font-size: 1.4em;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.ad-item p {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.btn.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 950px) {
+    .ad-examples {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ad-item {
+        width: 90%;
+    }
+}

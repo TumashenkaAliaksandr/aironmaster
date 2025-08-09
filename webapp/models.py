@@ -81,6 +81,8 @@ class ItemObject(models.Model):
     is_grills = models.BooleanField("Мангалы", default=False)
     is_decor_elements = models.BooleanField("Элементы декора", default=False)
     is_main = models.BooleanField("На главную", default=False)
+    is_stok = models.BooleanField("На складе", default=False)
+    is_promotions = models.BooleanField("В акцию", default=False)
 
     class Meta:
         verbose_name = "🎷 Изделия"
