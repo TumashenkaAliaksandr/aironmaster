@@ -9,12 +9,14 @@
         </ol>
     </nav>
     <div class="gradient-brcr"></div>
+
     <section id="screw" class="item-section">
         <div class="my-flex-container">
             <!-- Левая часть: главное фото и миниатюры -->
-            <div style="flex: 1 1 600px; max-width: 600px;">
+            <div class="screw-title-mobile" style="flex: 1 1 600px; max-width: 600px;">
+            <h2>{{ item.name }}</h2>
                 <!-- Главное фото -->
-                <div class="main-photo-wrapper" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+                <div class="main-photo-wrapper photo-container-product">
                     <img id="main-photo" src="
                             {% if item.photos.first %}{{ item.photos.first.photo.url }}{% else %}{% static 'webapp/img/no_images.png' %}{% endif %}"
                          alt="{{ item.name }}" style="width: 100%; height: auto; display: block; object-fit: contain;">
@@ -25,8 +27,7 @@
                     <div class="photo-margin-l" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
                         {% for photo in item.photos.all %}
                             <img src="{{ photo.photo.url }}" alt="{{ photo.description }}"
-                                 class="thumbnail-photo"
-                                 style="width: 142px; height: 100px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent;"
+                                 class="thumbnail-photo custom-image-miniature-style"
                                  data-full="{{ photo.photo.url }}">
                         {% endfor %}
                     </div>
@@ -40,16 +41,18 @@
                 <p>{{ item.description|safe }}</p>
                 {#        <p>{{ item.description_more }}</p>#}
 
-                {#        <p>#}
-                {#        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>#}
-                {#            {% if item.phone1 %}#}
-                {#                <a href="tel:{{ item.phone1|cut:' ' }}">{{ item.phone1 }}</a><br>#}
-                {#            {% endif %}#}
-                {#        <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16" class="phone-icon"/>#}
-                {#            {% if item.phone2 %}#}
-                {#                <a href="tel:{{ item.phone2|cut:' ' }}">{{ item.phone2 }}</a>#}
-                {#            {% endif %}#}
-                {#        </p>#}
+                <p>
+                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16"
+                         class="phone-icon"/>
+                    {% if item.phone1 %}
+                        <a href="tel:{{ item.phone1|cut:' ' }}">{{ item.phone1 }}</a><br>
+                    {% endif %}
+                    <img src="{% static 'webapp/icons/phone-volume-solid.svg' %}" alt="Телефон" width="16" height="16"
+                         class="phone-icon"/>
+                    {% if item.phone2 %}
+                        <a href="tel:{{ item.phone2|cut:' ' }}">{{ item.phone2 }}</a>
+                    {% endif %}
+                </p>
             </div>
 
             <p>{{ item.description_more|safe }}</p>
