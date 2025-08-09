@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from .forms import BannerForm, OurServiceForm, ItemObjectForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo
+    SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -187,3 +187,20 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description', 'news_text')
     list_filter = ('is_main', 'date')
     ordering = ('-date',)
+
+
+@admin.register(Advertisement)
+class AdvertisementAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title', 'description', 'advantages')
+    list_per_page = 20
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'description', 'image')
+        }),
+        ('Дополнительные данные', {
+            'fields': ('advantages', 'additional_description'),
+            'classes': ('collapse',),
+        }),
+    )

@@ -298,3 +298,18 @@ class News(models.Model):
     def get_absolute_url(self):
         # URL с использованием slug вместо pk
         return reverse('news_detail', kwargs={'slug': self.slug})
+
+
+class Advertisement(models.Model):
+    title = models.CharField("Название", max_length=200)
+    description = models.TextField("Описание")
+    image = models.ImageField("Фото", upload_to='ads/')
+    advantages = models.TextField("Преимущества", blank=True, help_text="Опишите основные преимущества")
+    additional_description = models.TextField("Дополнительное описание", blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Реклама"
+        verbose_name_plural = "Рекламы"
