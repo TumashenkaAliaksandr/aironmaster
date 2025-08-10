@@ -12,7 +12,7 @@ from django.core.paginator import Paginator
 
 from aironmaster import settings
 from webapp.forms import ContactForm
-from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News
+from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement
 from webapp.utils import handle_order_form
 
 from django.conf import settings
@@ -386,9 +386,22 @@ def news_detail(request, slug):
     return render(request, 'webapp/news_detail.html', {'news': news, 'news_list': news_list})
 
 
-def advertisement (request):
+def advertisement(request):
     """ Advertisement page """
-    return render(request, 'webapp/advertisement.html')
+    # Можно взять конкретное объявление, например с id=1,
+    # либо первое в базе (если у вас всего одно)
+    advertisement = get_object_or_404(Advertisement, id=1)  # измените id под ваш случай
+
+    # Формируем ads для динамической рекламы из других объявлений, например, кроме текущего
+    ads = Advertisement.objects.exclude(id=advertisement.id)
+
+    context = {
+        'advertisement': advertisement,
+        'ads': ads,
+    }
+
+    return render(request, 'webapp/advertisement.html', context=context)
+
 
 def sitemap_view(request):
 

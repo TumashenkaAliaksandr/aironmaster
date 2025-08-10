@@ -942,6 +942,10 @@ nav .nav-linkss.active {
   width: 100%;
 }
 
+.advertisement-bg {
+    background: linear-gradient(144deg, #cacaca, #ffffff, #cacaca);
+}
+
 
 #screw-spiral .content-wrapper {
   /* ваши текущие стили */
@@ -3882,7 +3886,7 @@ html {
 
 .custom-service-bg {
   background: linear-gradient(83deg, #fdfff9, #bababa);
-  padding: 20px;
+  padding: 21px;
 }
 
 .custom-container {
@@ -5232,11 +5236,13 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 .laser-cutting-ad {
-    max-width: 900px;
+    max-width: 1250px;
     margin: 20px auto;
     padding: 15px;
-    font-family: 'Arial', sans-serif;
     color: #333;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
+    text-transform: uppercase;
+    font-size: 1rem;
 }
 
 .laser-cutting-ad h1 {
@@ -5254,14 +5260,15 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 .ad-features ul {
-    list-style: inside disc;
     margin-bottom: 25px;
-    padding-left: 0;
-    max-width: 600px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     color: #555;
     font-size: 1.1em;
+    list-style: none;
+    padding: 15px;
+    border-radius: 7px;
 }
 
 .ad-features ul li {

@@ -6,52 +6,78 @@
     <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
         <ol>
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li aria-current="page">Реклама</li>
+            <li>Реклама</li>
         </ol>
     </nav>
 
-    <section class="laser-cutting-ad">
-        <h1>Профессиональная лазерная резка</h1>
-        <p>Предлагаем высокоточное и качественное выполнение услуг лазерной резки материалов: фанера, МДФ, акрил, пластик и др. Используем современное оборудование для создания рекламных изделий, сувениров, вывесок и декоративных элементов.</p>
+    <section class="advertisement-bg">
+        <div class="laser-cutting-ad">
+            <h1>Профессиональная лазерная резка по металлу</h1>
+            <p>Предлагаем высокоточное и качественное выполнение услуг лазерной резки металла: сталь, алюминий, медь и
+                другие металлы. Используем современное оборудование для создания прочных и точных изделий, рекламных
+                конструкций, металлических элементов декора и сувениров.</p>
 
-        <div class="ad-features">
-            <ul>
-                <li>Высокая точность и качество резки</li>
-                <li>Работа с широким спектром материалов</li>
-                <li>Изготовление наружной рекламы, вывесок, табличек</li>
-                <li>Индивидуальный подход к каждому заказу</li>
-                <li>Гибкие цены в зависимости от объема и материала</li>
-            </ul>
-        </div>
-
-        <div class="ad-examples">
-            <article class="ad-item">
-                <img src="{% static 'ads/laser_cutting_example1.jpg' %}" alt="Пример лазерной резки рекламной вывески" class="ad-image">
-                <h2>Рекламные вывески и таблички</h2>
-                <p>Изготовление рекламных вывесок и табличек с уникальным дизайном под ваш бренд.</p>
-                <a href="{% url 'contacts' %}" class="btn btn-primary">Заказать консультацию</a>
-            </article>
-
-            <article class="ad-item">
-                <img src="{% static 'ads/laser_cutting_example2.jpg' %}" alt="Лазерная резка сувениров" class="ad-image">
-                <h2>Фигурная резка сувениров</h2>
-                <p>Создание оригинальных сувениров и подарков с помощью лазерной резки и гравировки.</p>
-                <a href="{% url 'contacts' %}" class="btn btn-primary">Узнать больше</a>
-            </article>
-        </div>
-
-        {% if ads %}
-            <div class="dynamic-ads">
-                {% for ad in ads %}
-                    <article class="ad-item">
-                        <img src="{{ ad.image_url }}" alt="{{ ad.title }}" class="ad-image">
-                        <h2>{{ ad.title }}</h2>
-                        <p>{{ ad.description }}</p>
-                        <a href="{{ ad.link }}" target="_blank" class="btn btn-primary">Подробнее</a>
-                    </article>
-                {% endfor %}
+            <div class="ad-features">
+                <ul>
+                    <li>✔️ Высокая точность и чистота реза по металлу</li>
+                    <li>✔️ Работа с различными видами металлов</li>
+                    <li>✔️ Изготовление металлической наружной рекламы, вывесок, табличек</li>
+                    <li>✔️ Индивидуальный подход к каждому заказу</li>
+                    <li>✔️ Гибкие цены в зависимости от сложности и объема</li>
+                </ul>
             </div>
-        {% endif %}
+
+            <!-- Видео -->
+            <section class="videos-section">
+                <h2 class="section-title">Видео по сервису</h2>
+                <div class="videos-wrapper">
+                    {% for video in advertisement.videos.all %}
+                        <video width="320" height="240" controls>
+                            <source src="{{ video.video.url }}" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                        {% if video.title %}
+                            <p>{{ video.title }}</p>
+                        {% endif %}
+                    {% empty %}
+                        <p>Видео отсутствуют.</p>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <div class="ad-examples">
+                <article class="ad-item">
+                    <img src="{% static 'ads/laser_cutting_example1.jpg' %}"
+                         alt="Пример лазерной резки металлической рекламной вывески" class="ad-image">
+                    <h2>Металлические рекламные вывески и таблички</h2>
+                    <p>Изготовление прочных, долговечных вывесок и табличек с уникальным дизайном под ваш бренд.</p>
+                    <a href="{% url 'contacts' %}" class="btn btn-primary">Заказать консультацию</a>
+                </article>
+
+                <article class="ad-item">
+                    <img src="{% static 'ads/laser_cutting_example2.jpg' %}"
+                         alt="Лазерная резка металлических сувениров"
+                         class="ad-image">
+                    <h2>Фигурная резка металлических сувениров</h2>
+                    <p>Создание оригинальных и долговечных металлических сувениров и подарков с помощью лазерной резки и
+                        гравировки.</p>
+                    <a href="{% url 'contacts' %}" class="btn btn-primary">Узнать больше</a>
+                </article>
+            </div>
+
+            {% if ads %}
+                <div class="dynamic-ads">
+                    {% for ad in ads %}
+                        <article class="ad-item">
+                            <img src="{{ ad.image.url }}" alt="{{ ad.title }}" class="ad-image">
+                            <h2>{{ ad.title }}</h2>
+                            <p>{{ ad.description }}</p>
+                            <a href="{% url 'contacts' %}" class="btn btn-primary">Подробнее</a>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </section>
 
 {% endblock %}

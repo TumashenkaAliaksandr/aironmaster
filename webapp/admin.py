@@ -2,9 +2,10 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
-from .forms import BannerForm, OurServiceForm, ItemObjectForm
+from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
-    SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement
+    SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement, \
+    AdvertisementVideo
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -189,18 +190,32 @@ class NewsAdmin(admin.ModelAdmin):
     ordering = ('-date',)
 
 
+class AdvertisementVideoInline(admin.TabularInline):
+    model = AdvertisementVideo
+    extra = 1  # количество пустых форм для добавления видео
+
+
 @admin.register(Advertisement)
 class AdvertisementAdmin(admin.ModelAdmin):
+    form = AdvertisementForm  # если вы используете кастомную форму, иначе уберите эту строку
     list_display = ('title',)
     search_fields = ('title', 'description', 'advantages')
     list_per_page = 20
 
     fieldsets = (
         (None, {
-            'fields': ('title', 'description', 'image')
+            'fields': ('title', 'description', 'image')  # удалено 'video'
         }),
         ('Дополнительные данные', {
             'fields': ('advantages', 'additional_description'),
             'classes': ('collapse',),
         }),
     )
+
+    inlines = [AdvertisementVideoInline]  # подключаем inline с видео
+
+@admin.register(AdvertisementVideo)
+class AdvertisementVideoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'advertisement')
+    search_fields = ('title', 'advertisement__title')
+

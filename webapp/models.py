@@ -312,4 +312,13 @@ class Advertisement(models.Model):
 
     class Meta:
         verbose_name = "Реклама"
-        verbose_name_plural = "Рекламы"
+        verbose_name_plural = "Реклама"
+
+class AdvertisementVideo(models.Model):
+    advertisement = models.ForeignKey(Advertisement, related_name='videos', on_delete=models.CASCADE)
+    title = models.CharField("Название видео", max_length=200, blank=True)
+    video = models.FileField("Видео", upload_to='service_videos/')
+
+    def __str__(self):
+        return self.title or f"Видео для {self.advertisement.title}"
+
