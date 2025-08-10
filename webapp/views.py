@@ -194,7 +194,53 @@ def item_details(request, slug):
 def service_detail(request, slug):
     service = get_object_or_404(OurService, slug=slug)
     photos = service.photos.all()  # related_name='photos'
-    return render(request, 'webapp/service_detail.html', {'service': service, 'photos': photos})
+
+    services_info = ServicesContact.objects.all()
+    error_message = None
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            subject = 'Новое сообщение с контактов сайта'
+            context_email = {
+                'name': cd['name'],
+                'phone': cd['phone'],
+                'email': cd['email'],
+                'message': cd['message'],
+            }
+            html_content = render_to_string('webapp/email_template.html', context_email)
+            text_content = f"""
+                    Имя: {cd['name']}
+                    Телефон: {cd['phone']}
+                    Email: {cd['email']}
+                    Сообщение:
+                    {cd['message']}
+                    """
+            try:
+                email = EmailMultiAlternatives(
+                    subject,
+                    text_content,
+                    'Aironmaster <tumashenkaaliaksandr@gmail.com>',
+                    ['aironmaster@tut.by', 'Badminton500@inbox.lv']
+                )
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+            except (smtplib.SMTPException, BadHeaderError):
+                error_message = "Ошибка при отправке письма. Пожалуйста, попробуйте позже."
+            else:
+                return render(request, 'webapp/contact_success.html')
+    else:
+        form = ContactForm()
+
+    context = {
+        'service': service,
+        'photos': photos,
+        'error_message': error_message,
+        'services_info': services_info,
+        'form': form,
+    }
+
+    return render(request, 'webapp/service_detail.html', context=context)
 
 
 def single_services(request):
