@@ -677,7 +677,7 @@ nav .nav-linkss.active {
 
 
 .breadcrumps {
-    padding: 1.3rem 1.3rem;
+    padding: 1.1rem 1.1rem;
     background: linear-gradient(66deg, #f0f7e6, #acabbc);
     color: #2b409c;
     /*box-sizing: border-box;*/
@@ -922,6 +922,15 @@ nav .nav-linkss.active {
   height: 25px; /* adjust height as needed */
   background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
   width: 100%;
+}
+
+.gradient-advertisement {
+    height: 4px;
+    border-bottom: 2px solid #cacaca;
+    width: 100%;
+    margin-bottom: 13px;
+    margin-top: 21px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.44));
 }
 
 .gradient-brcr {
