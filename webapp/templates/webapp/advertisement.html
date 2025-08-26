@@ -13,8 +13,7 @@
     <section class="advertisement-bg">
         <div class="laser-cutting-ad">
         <div class="header-with-icon" style="display: flex; align-items: center; gap: 15px;">
-            <img src="{% static 'webapp/icons/certified-svgrepo-com.svg' %}" alt="Лазерная резка по металлу" width="60"
-                 height="60"/>
+            <img src="{% static 'webapp/icons/certified-svgrepo-com.svg' %}" alt="Лазерная резка по металлу" class="size-icon"/>
             <h1 style="margin: 0;">Профессиональная лазерная резка металла</h1>
         </div>
         <div class="gradient-advertisement"></div>
@@ -49,26 +48,76 @@
                     {% endfor %}
                 </div>
             </section>
-
+        <div class="margin-button-top">
+            <h2 class="section-title">Наши работы</h2>
+        </div>
             <div class="ad-examples">
                 <article class="ad-item">
-                    <img src="{% static 'ads/laser_cutting_example1.jpg' %}"
-                         alt="Пример лазерной резки металлической рекламной вывески" class="ad-image">
-                    <h2>Металлические рекламные вывески и таблички</h2>
-                    <p>Изготовление прочных, долговечных вывесок и табличек с уникальным дизайном под ваш бренд.</p>
-                    <a href="{% url 'contacts' %}" class="btn btn-primary">Заказать консультацию</a>
+                    <img src="{% static 'webapp/img/airon_mangal_three.jpg' %}"
+                         alt="Пример металлического мангала с лазерной резкой" class="ad-image">
+                    <h2>Металлические мангалы с лазерной резкой</h2>
+                    <p>Изготовление прочных и долговечных мангалов с использованием современных технологий лазерной
+                        резки металла. Предлагаем модели разных конструкций: стационарные, разборные и мобильные,
+                        выполненные из жаропрочной стали с индивидуальным дизайном.</p>
+                    <ul class="ad-features-list">
+                        <li>✔️ Высокая точность и чистота реза</li>
+                        <li>✔️ Исключает дтформацию металла</li>
+                        <li>✔️ Работа с жаропрочными металлами</li>
+                        <li>✔️ Индивидуальный подход</li>
+                    </ul>
+                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
                 </article>
-
                 <article class="ad-item">
-                    <img src="{% static 'ads/laser_cutting_example2.jpg' %}"
+                    <img src="{% static 'webapp/img/aironmaster_laser.png' %}"
                          alt="Лазерная резка металлических сувениров"
                          class="ad-image">
-                    <h2>Фигурная резка металлических сувениров</h2>
-                    <p>Создание оригинальных и долговечных металлических сувениров и подарков с помощью лазерной резки и
-                        гравировки.</p>
-                    <a href="{% url 'contacts' %}" class="btn btn-primary">Узнать больше</a>
+                    <h2>Фигурная резка металла Лазером</h2>
+                    <p>Создаём качественные металлические изделия с высокой точностью резки и минимальным тепловым
+                        воздействием, что сохраняет прочность материала. Работаем со сталью, алюминием, латунью и
+                        другими металлами, применяя индивидуальный подход к каждому заказу.</p>
+                    <ul class="ad-features-list">
+                        <li>✔️ Лазерная резка любой сложности</li>
+                        <li>✔️ Исключает деформацию металла</li>
+                        <li>✔️ Широкий выбор материалов</li>
+                        <li>✔️ Изготовление уникальных дизайнов</li>
+                    </ul>
+                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
+
+                </article>
+                <article class="ad-item">
+                    <img src="{% static 'webapp/img/airon_mangal_three.jpg' %}"
+                         alt="Пример металлического мангала с лазерной резкой" class="ad-image">
+                    <h2>Металлические мангалы с лазерной резкой</h2>
+                    <p>Изготовление прочных и долговечных мангалов с использованием современных технологий лазерной
+                        резки металла. Предлагаем модели разных конструкций: стационарные, разборные и мобильные,
+                        выполненные из жаропрочной стали с индивидуальным дизайном.</p>
+                    <ul class="ad-features-list">
+                        <li>✔️ Высокая точность и чистота реза</li>
+                        <li>✔️ Исключает дтформацию металла</li>
+                        <li>✔️ Работа с жаропрочными металлами</li>
+                        <li>✔️ Индивидуальный подход</li>
+                    </ul>
+                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
+                </article>
+                <article class="ad-item">
+                    <img src="{% static 'webapp/img/aironmaster_laser.png' %}"
+                         alt="Лазерная резка металлических сувениров"
+                         class="ad-image">
+                    <h2>Фигурная резка металла Лазером</h2>
+                    <p>Создаём качественные металлические изделия с высокой точностью резки и минимальным тепловым
+                        воздействием, что сохраняет прочность материала. Работаем со сталью, алюминием, латунью и
+                        другими металлами, применяя индивидуальный подход к каждому заказу.</p>
+                    <ul class="ad-features-list">
+                        <li>✔️ Лазерная резка любой сложности</li>
+                        <li>✔️ Сохранение структуры металла</li>
+                        <li>✔️ Широкий выбор материалов</li>
+                        <li>✔️ Изготовление уникальных дизайнов</li>
+                    </ul>
+                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
+
                 </article>
             </div>
+
 
             {% if ads %}
                 <div class="dynamic-ads">
