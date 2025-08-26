@@ -5474,6 +5474,23 @@ tbody, td, tfoot, th, thead, tr {
         margin-bottom: 15px;
     }
 
+    .advantage-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 175px;
+        text-align: center;
+        margin-top: 21px;
+        font-size: 16px;
+    }
+
+    .advantage-icon {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+    }
+
     .ad-features ul {
         margin-bottom: 25px;
         max-width: 800px;
