@@ -133,6 +133,91 @@
             {% endif %}
         </div>
     </section>
+    <section class="advertisement-bg">
+        <div class="laser-cutting-ad">
+            <div class="header-with-icon" style="display: flex; align-items: center; gap: 15px;">
+                {% if advertisement.image %}
+                    <img src="{{ advertisement.image.url }}" alt="{{ advertisement.title }}" class="size-icon"/>
+                {% else %}
+                    <img src="{% static 'webapp/icons/certified-svgrepo-com.svg' %}" alt="Лазерная резка по металлу"
+                         class="size-icon"/>
+                {% endif %}
+                <h1 style="margin: 0;">{{ advertisement.title }}</h1>
+            </div>
+
+            <div class="gradient-advertisement"></div>
+
+            <p>{{ advertisement.description }}</p>
+
+            <div class="ad-features">
+                <ul>
+                    {% for advantage in advertisement.advantages|linebreaksbr|safe|splitlines %}
+                        <li>✔️ {{ advantage }}</li>
+                    {% empty %}
+                        <li>✔️ Высокая точность и чистота реза по металлу</li>
+                        <li>✔️ Работа с различными видами металлов</li>
+                        <li>✔️ Изготовление металлической наружной рекламы, вывесок, табличек</li>
+                        <li>✔️ Индивидуальный подход к каждому заказу</li>
+                        <li>✔️ Гибкие цены в зависимости от сложности и объема</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Видео -->
+            <section class="videos-section">
+                <h2 class="section-title">Видео по сервису</h2>
+                <div class="videos-wrapper">
+                    {% if advertisement.videos.all %}
+                        {% for video in advertisement.videos.all %}
+                            <video width="320" height="240" controls>
+                                <source src="{{ video.video.url }}" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            {% if video.title %}
+                                <p>{{ video.title }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p>Видео отсутствуют.</p>
+                    {% endif %}
+                </div>
+            </section>
+
+            <div class="margin-button-top">
+                <h2 class="section-title">Наши работы</h2>
+            </div>
+
+            <div class="ad-examples">
+                {% for work in works %}
+                    <article class="ad-item">
+                        <img src="{{ work.image.url }}" alt="{{ work.title }}" class="ad-image">
+                        <h2>{{ work.title }}</h2>
+                        <p>{{ work.description }}</p>
+                        <ul class="ad-features-list">
+                            {% for feature in work.features %}
+                                <li>✔️ {{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
+                    </article>
+                {% endfor %}
+            </div>
+
+            {% if ads %}
+                <div class="dynamic-ads">
+                    {% for ad in ads %}
+                        <article class="ad-item">
+                            <img src="{{ ad.image.url }}" alt="{{ ad.title }}" class="ad-image">
+                            <h2>{{ ad.title }}</h2>
+                            <p>{{ ad.description }}</p>
+                            <a href="{% url 'contacts' %}" class="btn btn-primary">Подробнее</a>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
     <div class="gradient-product-detail"></div>
     <!-- Обратная связь справа -->
     <section id="screw-img">
