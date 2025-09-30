@@ -212,7 +212,7 @@ nav .nav-linkss.active {
     margin-bottom: 10px;
     font-size: 1.8rem;
     color: #333;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.55));
 }
 
 .product-block-name a {
@@ -221,7 +221,7 @@ nav .nav-linkss.active {
     color: #333;
     text-decoration: none;
     text-transform: uppercase;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.55));
 }
 
 .company-text {
@@ -3633,7 +3633,7 @@ html {
     font-weight: 500;
     margin-bottom: 20px;
     text-transform: uppercase;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.55));
 }
 
 .service-photos-row {
@@ -3981,7 +3981,7 @@ html {
     margin-bottom: 10px;
     color: #3e3d3d;
     text-transform: uppercase;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.55));
 }
 
 .custom-row {
@@ -4022,7 +4022,7 @@ html {
 .custom-caption {
     padding: 15px 8px;
     text-align: center;
-    font-size: 0.88rem;
+    /*font-size: 0.88rem;*/
     color: #333;
     font-weight: 500;
     margin: 0;
@@ -4247,7 +4247,7 @@ html {
     }
 
     .custom-title {
-        font-size: 1.4rem;
+        font-size: 1.44rem;
     }
 }
 
@@ -4489,7 +4489,7 @@ html {
 
 .news-detail__text p {
     margin-bottom: 1.3em;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.44));
 }
 
 @media (max-width: 768px) {
@@ -4508,7 +4508,7 @@ html {
     }
 
     .news-detail__text {
-        font-size: 1rem;
+        font-size: 1.3rem;
         line-height: 1.5;
     }
 }
@@ -4849,7 +4849,7 @@ html {
     border-bottom: 2px solid #cacaca;
     padding-bottom: 5px;
     font-weight: 500;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.77));
 }
 
 .section-title-contact {
@@ -4882,19 +4882,19 @@ html {
     font-size: 1.3rem;
     line-height: 1.5em;
     margin-bottom: 15px;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.44));
 }
 
 .technology-section ul,
 .advantages-section ul {
     padding-left: 20px;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.44));
     list-style: none;
 }
 
 .service-description ul {
     padding-left: 20px;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.44));
     list-style: none;
 }
 
@@ -5031,7 +5031,7 @@ tbody, td, tfoot, th, thead, tr {
     .service-description p,
     .technology-section ul,
     .advantages-section ul {
-        font-size: 0.9rem;
+        font-size: 1.4rem;
     }
 
     /* Слайдер — 1 слайд в строке для мобильных */
@@ -5060,7 +5060,7 @@ tbody, td, tfoot, th, thead, tr {
     display: flex;
     flex-direction: column; /* Вертикальное расположение: иконка сверху, текст снизу */
     align-items: center; /* Центрируем по горизонтали */
-    max-width: 175px; /* Ограничиваем ширину, чтобы текст не был слишком растянут */
+    max-width: 225px; /* Ограничиваем ширину, чтобы текст не был слишком растянут */
     text-align: center; /* Выравнивание текста по центру */
     margin-top: 21px;
 }
