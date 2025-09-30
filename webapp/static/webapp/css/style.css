@@ -2233,7 +2233,7 @@ h2 {
 .map-phones {
     margin-top: 15px;
     color: whitesmoke;
-    font-size: 1rem;
+    font-size: 1.2rem;
     z-index: 5;
     top: 158px;
     position: relative;
@@ -4484,7 +4484,7 @@ html {
     font-size: 1.22rem;
     line-height: 1.7;
     color: #333;
-    white-space: pre-line; /* для корректного отображения переносов из linebreaks */
+    /*white-space: pre-line; !* для корректного отображения переносов из linebreaks *!*/
 }
 
 .news-detail__text p {
@@ -4879,7 +4879,7 @@ html {
 .service-description p,
 .technology-section ul,
 .advantages-section ul {
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.5em;
     margin-bottom: 15px;
     filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
