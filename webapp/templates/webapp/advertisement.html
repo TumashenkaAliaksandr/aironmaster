@@ -12,136 +12,9 @@
 
     <section class="advertisement-bg">
         <div class="laser-cutting-ad">
-        <div class="header-with-icon" style="display: flex; align-items: center; gap: 15px;">
-            <img src="{% static 'webapp/icons/certified-svgrepo-com.svg' %}" alt="Лазерная резка по металлу" class="size-icon"/>
-            <h1 style="margin: 0;">Профессиональная лазерная резка металла</h1>
-        </div>
-        <div class="gradient-advertisement"></div>
-                    <p>Предлагаем высокоточное и качественное выполнение услуг лазерной резки металла: сталь, алюминий, медь и
-                другие металлы. Используем современное оборудование для создания прочных и точных изделий, рекламных
-                конструкций, металлических элементов декора и сувениров.</p>
-
-            <div class="ad-features">
-                <ul>
-                    <li>✔️ Высокая точность и чистота реза по металлу</li>
-                    <li>✔️ Работа с различными видами металлов</li>
-                    <li>✔️ Изготовление металлической наружной рекламы, вывесок, табличек</li>
-                    <li>✔️ Индивидуальный подход к каждому заказу</li>
-                    <li>✔️ Гибкие цены в зависимости от сложности и объема</li>
-                </ul>
-            </div>
-
-            <!-- Видео -->
-            <section class="videos-section">
-                <h2 class="section-title">Видео по сервису</h2>
-                <div class="videos-wrapper">
-                    {% for video in advertisement.videos.all %}
-                        <video width="320" height="240" controls>
-                            <source src="{{ video.video.url }}" type="video/mp4">
-                            Ваш браузер не поддерживает видео.
-                        </video>
-                        {% if video.title %}
-                            <p>{{ video.title }}</p>
-                        {% endif %}
-                    {% empty %}
-                        <p>Видео отсутствуют.</p>
-                    {% endfor %}
-                </div>
-            </section>
-        <div class="margin-button-top">
-            <h2 class="section-title">Наши работы</h2>
-        </div>
-            <div class="ad-examples">
-                <article class="ad-item">
-                    <img src="{% static 'webapp/img/airon_mangal_three.jpg' %}"
-                         alt="Пример металлического мангала с лазерной резкой" class="ad-image">
-                    <h2>Металлические мангалы с лазерной резкой</h2>
-                    <p>Изготовление прочных и долговечных мангалов с использованием современных технологий лазерной
-                        резки металла. Предлагаем модели разных конструкций: стационарные, разборные и мобильные,
-                        выполненные из жаропрочной стали с индивидуальным дизайном.</p>
-                    <ul class="ad-features-list">
-                        <li>✔️ Высокая точность и чистота реза</li>
-                        <li>✔️ Исключает дтформацию металла</li>
-                        <li>✔️ Работа с жаропрочными металлами</li>
-                        <li>✔️ Индивидуальный подход</li>
-                    </ul>
-                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
-                </article>
-                <article class="ad-item">
-                    <img src="{% static 'webapp/img/aironmaster_laser.png' %}"
-                         alt="Лазерная резка металлических сувениров"
-                         class="ad-image">
-                    <h2>Фигурная резка металла Лазером</h2>
-                    <p>Создаём качественные металлические изделия с высокой точностью резки и минимальным тепловым
-                        воздействием, что сохраняет прочность материала. Работаем со сталью, алюминием, латунью и
-                        другими металлами, применяя индивидуальный подход к каждому заказу.</p>
-                    <ul class="ad-features-list">
-                        <li>✔️ Лазерная резка любой сложности</li>
-                        <li>✔️ Исключает деформацию металла</li>
-                        <li>✔️ Широкий выбор материалов</li>
-                        <li>✔️ Изготовление уникальных дизайнов</li>
-                    </ul>
-                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
-
-                </article>
-                <article class="ad-item">
-                    <img src="{% static 'webapp/img/airon_mangal_three.jpg' %}"
-                         alt="Пример металлического мангала с лазерной резкой" class="ad-image">
-                    <h2>Металлические мангалы с лазерной резкой</h2>
-                    <p>Изготовление прочных и долговечных мангалов с использованием современных технологий лазерной
-                        резки металла. Предлагаем модели разных конструкций: стационарные, разборные и мобильные,
-                        выполненные из жаропрочной стали с индивидуальным дизайном.</p>
-                    <ul class="ad-features-list">
-                        <li>✔️ Высокая точность и чистота реза</li>
-                        <li>✔️ Исключает дтформацию металла</li>
-                        <li>✔️ Работа с жаропрочными металлами</li>
-                        <li>✔️ Индивидуальный подход</li>
-                    </ul>
-                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
-                </article>
-                <article class="ad-item">
-                    <img src="{% static 'webapp/img/aironmaster_laser.png' %}"
-                         alt="Лазерная резка металлических сувениров"
-                         class="ad-image">
-                    <h2>Фигурная резка металла Лазером</h2>
-                    <p>Создаём качественные металлические изделия с высокой точностью резки и минимальным тепловым
-                        воздействием, что сохраняет прочность материала. Работаем со сталью, алюминием, латунью и
-                        другими металлами, применяя индивидуальный подход к каждому заказу.</p>
-                    <ul class="ad-features-list">
-                        <li>✔️ Лазерная резка любой сложности</li>
-                        <li>✔️ Сохранение структуры металла</li>
-                        <li>✔️ Широкий выбор материалов</li>
-                        <li>✔️ Изготовление уникальных дизайнов</li>
-                    </ul>
-                    <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
-
-                </article>
-            </div>
-
-
-            {% if ads %}
-                <div class="dynamic-ads">
-                    {% for ad in ads %}
-                        <article class="ad-item">
-                            <img src="{{ ad.image.url }}" alt="{{ ad.title }}" class="ad-image">
-                            <h2>{{ ad.title }}</h2>
-                            <p>{{ ad.description }}</p>
-                            <a href="{% url 'contacts' %}" class="btn btn-primary">Подробнее</a>
-                        </article>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </section>
-    <section class="advertisement-bg">
-        <div class="laser-cutting-ad">
             <div class="header-with-icon" style="display: flex; align-items: center; gap: 15px;">
-                {% if advertisement.image %}
-                    <img src="{{ advertisement.image.url }}" alt="{{ advertisement.title }}" class="size-icon"/>
-                {% else %}
-                    <img src="{% static 'webapp/icons/certified-svgrepo-com.svg' %}" alt="Лазерная резка по металлу"
+                    <img src="{% static 'webapp/icons/laser-warning-svgrepo-com.svg' %}" alt="Лазерная резка по металлу"
                          class="size-icon"/>
-                {% endif %}
                 <h1 style="margin: 0;">{{ advertisement.title }}</h1>
             </div>
 
@@ -152,7 +25,7 @@
             <div class="ad-features">
                 <ul>
                     {% for advantage in advertisement.advantages|linebreaksbr|safe|splitlines %}
-                        <li>✔️ {{ advantage }}</li>
+                        <li>{{ advantage|safe }}</li>
                     {% empty %}
                         <li>✔️ Высокая точность и чистота реза по металлу</li>
                         <li>✔️ Работа с различными видами металлов</li>
@@ -187,16 +60,22 @@
                 <h2 class="section-title">Наши работы</h2>
             </div>
 
+            <div class="header-with-icon" style="display: flex; align-items: center; gap: 15px;">
+                <img src="{% static 'webapp/icons/sale-discount-svgrepo-com.svg' %}" alt="Лазерная резка по металлу"
+                     class="size-icon"/>
+                <p style="margin: 0;">Оформи заявку с сайта и получи скиду!</p>
+            </div>
+
             <div class="ad-examples">
                 {% for work in works %}
                     <article class="ad-item">
-                        <img src="{{ work.image.url }}" alt="{{ work.title }}" class="ad-image">
+                        {% if work.photo %}
+                            <img src="{{ work.photo.url }}" alt="{{ work.title }}" class="ad-image">
+                        {% endif %}
                         <h2>{{ work.title }}</h2>
-                        <p>{{ work.description }}</p>
+                        <p>{{ work.description|safe }}</p>
                         <ul class="ad-features-list">
-                            {% for feature in work.features %}
-                                <li>✔️ {{ feature }}</li>
-                            {% endfor %}
+                            <li>{{ work.characteristics|safe }}</li>
                         </ul>
                         <a href="#contacts-with-item" class="margin-button-top btn-all-product">Оставить заявку</a>
                     </article>

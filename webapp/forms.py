@@ -1,6 +1,6 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from .models import Banner, OurService, ItemObject, Advertisement
+from .models import Banner, OurService, ItemObject, Advertisement, OurWorks
 
 
 class BannerForm(forms.ModelForm):
@@ -115,3 +115,12 @@ class AdvertisementForm(forms.ModelForm):
             'advantages': SummernoteWidget(),
         }
 
+
+class CharaForm(forms.ModelForm):
+    class Meta:
+        model = OurWorks
+        fields = '__all__'
+        widgets = {
+            'description': SummernoteWidget(),
+            'characteristics': SummernoteWidget(),
+        }

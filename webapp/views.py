@@ -12,7 +12,8 @@ from django.core.paginator import Paginator
 
 from aironmaster import settings
 from webapp.forms import ContactForm
-from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement
+from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement, \
+    OurWorks
 from webapp.utils import handle_order_form
 
 from django.conf import settings
@@ -248,9 +249,16 @@ def single_services(request):
 
 def about(request):
     about = About.objects.first()
+    advertisement = get_object_or_404(Advertisement, id=1)  # измените id под ваш случай
+    works = OurWorks.objects.all()
+    # Формируем ads для динамической рекламы из других объявлений, например, кроме текущего
+    ads = Advertisement.objects.exclude(id=advertisement.id)
 
     context = {
         'about': about,
+        'works': works,
+        'ads': ads,
+        'advertisement': advertisement,
     }
     return render(request, 'webapp/about.html', context=context)
 
@@ -391,7 +399,7 @@ def advertisement(request):
     # Можно взять конкретное объявление, например с id=1,
     # либо первое в базе (если у вас всего одно)
     advertisement = get_object_or_404(Advertisement, id=1)  # измените id под ваш случай
-
+    works = OurWorks.objects.all()
     # Формируем ads для динамической рекламы из других объявлений, например, кроме текущего
     ads = Advertisement.objects.exclude(id=advertisement.id)
 
@@ -436,6 +444,7 @@ def advertisement(request):
         'ads': ads,
         'error_message': error_message,
         'form': form,
+        'works': works,
     }
 
     return render(request, 'webapp/advertisement.html', context=context)

@@ -322,3 +322,15 @@ class AdvertisementVideo(models.Model):
     def __str__(self):
         return self.title or f"Видео для {self.advertisement.title}"
 
+class OurWorks(models.Model):
+    title = models.CharField("Имя", max_length=200, blank=True)
+    description = models.TextField("Описание")
+    characteristics = models.TextField("Характеристики", null=True, blank=True, default=" ")
+    photo = models.ImageField("Фото", upload_to='our_works/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Наши работы"
+        verbose_name_plural = "Наша работа"

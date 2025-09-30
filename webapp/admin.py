@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
-from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm
+from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm, CharaForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
     SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement, \
-    AdvertisementVideo
+    AdvertisementVideo, OurWorks
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -218,4 +218,11 @@ class AdvertisementAdmin(admin.ModelAdmin):
 class AdvertisementVideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'advertisement')
     search_fields = ('title', 'advertisement__title')
+
+@admin.register(OurWorks)
+class OurWorksAdmin(admin.ModelAdmin):
+    form = CharaForm
+    list_display = ('title', 'characteristics', 'description', 'photo')
+    search_fields = ('title', 'description')
+
 
