@@ -8,7 +8,7 @@ from django.utils.text import slugify
 class OurService(models.Model):
     name = models.CharField("Название сервиса", max_length=255)
     description = models.TextField("Описание", blank=True)
-    technology = models.TextField("Технология гибки металла", blank=True)
+    technology = models.TextField("Технология", blank=True)
     photo = models.ImageField("Фото", upload_to='service_photos/', blank=True, null=True)
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
 

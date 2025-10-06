@@ -265,7 +265,7 @@ nav .nav-linkss.active {
 .photo-banner {
     /*width: 100vw;*/
     min-height: 400px;
-    background: url('../img/aironmaster_shnek.gif') center/cover no-repeat;
+    background: url('../img/aironmaster-lazer.gif') center/cover no-repeat;
     color: white;
     position: relative;
     display: flex;
@@ -3950,7 +3950,7 @@ html {
 
 .custom-service-bg {
     background: linear-gradient(83deg, #fdfff9, #bababa);
-    padding: 21px;
+    padding: 22px;
 }
 
 .custom-container {
@@ -4839,6 +4839,7 @@ html {
     margin: 0 auto;
     padding: 15px;
     color: #222;
+    font-size: 20px;
 }
 
 /* Заголовки секций */
