@@ -31,16 +31,18 @@ class ServiceVideo(models.Model):
 
 class ServicePrice(models.Model):
     service = models.ForeignKey(OurService, related_name='prices', on_delete=models.CASCADE)
+    metal_type = models.CharField("Тип металла", max_length=100, default="Сталь")  # новое поле для типа металла
     thickness = models.DecimalField("Толщина металла, мм", max_digits=5, decimal_places=2)
     cost = models.CharField("Стоимость", max_length=50)  # строковое поле для фразы "от 0,7", "от 1,0" и т.п.
 
     class Meta:
         verbose_name = "Стоимость услуги"
         verbose_name_plural = "Стоимость услуг"
-        ordering = ['thickness']
+        ordering = ['metal_type', 'thickness']  # сортируем сначала по металлу, потом по толщине
 
     def __str__(self):
-        return f"{self.thickness} мм - {self.cost}"
+        return f"{self.metal_type} - {self.thickness} мм - {self.cost}"
+
 
 class ServiceAdvantage(models.Model):
     service = models.ForeignKey(OurService, related_name='advantages', on_delete=models.CASCADE)

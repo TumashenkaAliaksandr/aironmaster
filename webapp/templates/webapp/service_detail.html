@@ -62,12 +62,14 @@
                 {{ service.technology|safe }}
             </section>
 
+
             <!-- Таблица стоимости -->
             <section class="price-section">
                 <h2 class="section-title">Стоимость услуги</h2>
                 <table class="price-table">
                     <thead>
                     <tr>
+                        <th>Тип металла</th>
                         <th>Толщина металла, мм</th>
                         <th>Стоимость BYN (без НДС)</th>
                     </tr>
@@ -75,17 +77,25 @@
                     <tbody>
                     {% for price in service.prices.all %}
                         <tr>
+                            <td>
+                                {% if price.metal_type %}
+                                    {{ price.metal_type }}
+                                {% else %}
+                                    &mdash;
+                                {% endif %}
+                            </td>
                             <td>{{ price.thickness }}</td>
                             <td>{{ price.cost }}</td>
                         </tr>
                     {% empty %}
                         <tr>
-                            <td colspan="2">Информация о стоимости отсутствует.</td>
+                            <td colspan="3">Информация о стоимости отсутствует.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </section>
+
 
             <!-- Преимущества -->
             <section class="advantages-section">
