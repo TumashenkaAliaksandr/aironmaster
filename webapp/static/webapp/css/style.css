@@ -1008,7 +1008,7 @@ nav .nav-linkss.active {
     letter-spacing: 0.05em;
     color: #313131;
     text-transform: uppercase;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.4));
 }
 
 #screw-spiral h3 {
@@ -2747,7 +2747,7 @@ h2 {
     color: #333;
     display: block;
     text-decoration: none;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.1));
 }
 
 .dropdown-content li a:hover {
