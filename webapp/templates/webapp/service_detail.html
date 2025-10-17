@@ -96,7 +96,10 @@
                 </table>
             </section>
 
-            <div class="processed-metals-wrapper" style="display: flex; gap: 20px; overflow-x: auto;">
+            <div class="processing-metal-section">
+                <p class="section-metal-title">Обрабатываемый металл</p>
+            </div>
+            <div class="processed-metals-wrapper" style="display: flex; gap: 20px; overflow-x: auto; margin-bottom: 22px">
                 {% for metal in metals %}
                     <div class="metal-item" style="flex: 0 0 auto; text-align: center;">
                         {% if metal.photo %}

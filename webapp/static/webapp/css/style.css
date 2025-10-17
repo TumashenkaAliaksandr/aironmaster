@@ -4853,6 +4853,43 @@ html {
     filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.77));
 }
 
+.about-text-banner p{
+    font-size: 18px;
+    margin-left: 44px;
+    text-align: left;
+    padding: 4px;
+    background: #8b8b8bbd;
+    width: 1100px;
+    border-radius: 4px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+
+.about-text-banner h2 {
+    background: #8b8b8bbd;
+    margin-left: 44px;
+    text-align: left;
+    padding: 4px;
+    width: 744px;
+    border-radius: 4px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #e2e8df;
+}
+
+.section-metal-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #cacaca;
+    padding-bottom: 5px;
+    font-weight: 500;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.77));
+}
+
 .section-title-contact {
     font-size: 1.3rem;
     margin-bottom: 15px;
@@ -5078,8 +5115,8 @@ tbody, td, tfoot, th, thead, tr {
 
 /* Стили для иконок */
 .advantage-icon {
-    width: 44px;
-    height: 44px;
+    width: 54px;
+    height: 54px;
     margin-bottom: 10px; /* Отступ снизу для пространства между иконкой и текстом */
     flex-shrink: 0;
 }
