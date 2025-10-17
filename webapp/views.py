@@ -13,7 +13,7 @@ from django.core.paginator import Paginator
 from aironmaster import settings
 from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement, \
-    OurWorks
+    OurWorks, ProcessedMetal
 from webapp.utils import handle_order_form
 
 from django.conf import settings
@@ -195,7 +195,7 @@ def item_details(request, slug):
 def service_detail(request, slug):
     service = get_object_or_404(OurService, slug=slug)
     photos = service.photos.all()  # related_name='photos'
-
+    metals = ProcessedMetal.objects.all()[:5]
     services_info = ServicesContact.objects.all()
     error_message = None
     if request.method == 'POST':
@@ -239,6 +239,7 @@ def service_detail(request, slug):
         'error_message': error_message,
         'services_info': services_info,
         'form': form,
+        'metals': metals,
     }
 
     return render(request, 'webapp/service_detail.html', context=context)
@@ -246,6 +247,7 @@ def service_detail(request, slug):
 
 def single_services(request):
     return render(request, 'webapp/single_services.html')
+
 
 def about(request):
     about = About.objects.first()

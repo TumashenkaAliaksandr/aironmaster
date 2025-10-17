@@ -336,3 +336,15 @@ class OurWorks(models.Model):
     class Meta:
         verbose_name = "Наши работы"
         verbose_name_plural = "Наша работа"
+
+
+class ProcessedMetal(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Hазвание металла")
+    photo = models.ImageField(upload_to='metal_photos/', verbose_name="Фото металла", blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Обрабатываемый металл"
+        verbose_name_plural = "Обрабатываемые металлы"
+
+    def __str__(self):
+        return self.name

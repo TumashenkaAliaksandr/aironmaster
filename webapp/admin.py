@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm, CharaForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
     SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement, \
-    AdvertisementVideo, OurWorks
+    AdvertisementVideo, OurWorks, ProcessedMetal
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -225,4 +225,8 @@ class OurWorksAdmin(admin.ModelAdmin):
     list_display = ('title', 'characteristics', 'description', 'photo')
     search_fields = ('title', 'description')
 
+
+@admin.register(ProcessedMetal)
+class ProcessedMetalAdmin(admin.ModelAdmin):
+    list_display = ('name', 'photo')
 

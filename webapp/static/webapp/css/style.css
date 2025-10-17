@@ -4272,7 +4272,7 @@ html {
     text-transform: uppercase;
     padding-top: 40px;
     /*filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));*/
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.68));
 }
 
 .news-carousel {
@@ -5329,6 +5329,7 @@ tbody, td, tfoot, th, thead, tr {
     color: #222;
     text-align: center;
     margin-bottom: 15px;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.68));
 }
 
 .laser-cutting-ad p {

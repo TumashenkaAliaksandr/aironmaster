@@ -96,6 +96,23 @@
                 </table>
             </section>
 
+            <div class="processed-metals-wrapper" style="display: flex; gap: 20px; overflow-x: auto;">
+                {% for metal in metals %}
+                    <div class="metal-item" style="flex: 0 0 auto; text-align: center;">
+                        {% if metal.photo %}
+                            <img src="{{ metal.photo.url }}" alt="{{ metal.name }}"
+                                 style="width: 120px; height: auto; border-radius: 8px;">
+                        {% else %}
+                            <div style="width: 120px; height: 100px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                                [translate:Нет фото]
+                            </div>
+                        {% endif %}
+                        <div style="margin-top: 8px;">{{ metal.name }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
 
             <!-- Преимущества -->
             <section class="advantages-section">
