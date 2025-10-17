@@ -9,19 +9,23 @@
             <li aria-current="page">Контакты</li>
         </ol>
     </nav>
-    <section id="screw-spiral" class="item-section"
-         style="background: url('{% static "webapp/img/contacts.jpeg" %}') no-repeat center center; background-size: cover; position: relative;">
-
-        <div style="
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-color: rgba(128, 130, 143, 0.82);
-        pointer-events: none;
-        color: #00b7ff;
-        z-index: 1;">
+    <section class="item-section"
+             style="background: url('{% static "webapp/img/aironmaster_phones.png" %}') no-repeat center center fixed;
+                     background-size: cover;
+                     min-height: 150px!important;
+                     position: relative;">
+        <div class="about-text-banner banner-content" style="position: relative; z-index: 2; color: #00b7ff;">
+            <h2>✆ Контакты</h2>
+            <p>✓ Мы ценим каждого клиента. Свяжитесь с нами любым удобным способом!</p>
         </div>
-
-        <h2 style="position: relative; z-index: 2;">КОНТАКТЫ</h2>
+        <div style="
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(144deg, rgb(102 9 225 / 44%), rgba(255, 255, 255, 0.2), rgb(102 9 225 / 44%));
+            pointer-events: none;
+            color: #00b7ff;
+            z-index: 1;">
+        </div>
     </section>
 
     <div class="gradient-contacts"></div>
