@@ -141,6 +141,37 @@
         max-height: 56px;
     }
 
+    .about-text-banner p {
+        font-size: 15px;
+        margin-left: 8px;
+        text-align: left;
+        background: #8b8b8bbd;
+        width: auto;
+        border-radius: 4px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        color: whitesmoke;
+        text-transform: uppercase;
+        overflow: hidden;
+        display: flex;
+        margin-right: 8px;
+        padding: 6px;
+    }
+
+    .about-text-banner h2 {
+        background: #8b8b8bbd;
+        margin-left: 8px;
+        text-align: left;
+        padding: 4px;
+        border-radius: 4px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #e2e8df;
+        margin-right: 8px;
+        display: flex;
+        font-size: 16px;
+    }
+
     .photo-description-banners {
         position: absolute;
         bottom: 10px; /* чуть выше от нижнего края */
