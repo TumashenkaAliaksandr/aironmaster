@@ -2153,7 +2153,7 @@ h2 {
 
 
 .map-phones {
-    max-width: 400px; /* можно настроить ширину */
+    max-width: 444px; /* можно настроить ширину */
 }
 
 .section-title {
@@ -2174,6 +2174,11 @@ h2 {
     display: flex;
     gap: 20px; /* расстояние между телефонами */
     margin-bottom: 1rem;
+    background: linear-gradient(18deg, #b77cd6, #8db6c6, #ccd7dd);
+    padding: 4px;
+    border-radius: 6px;
+    padding-left: 8px;
+    align-items: center;
 }
 
 .phones-list p {
@@ -2192,7 +2197,7 @@ h2 {
 
 .email-row a {
     color: #5a5353;
-    filter: drop-shadow(2px 1px 0px rgba(69, 64, 64, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(69, 64, 64, 0.55));
 }
 
 /*.phone-icon,*/
@@ -2233,7 +2238,7 @@ h2 {
 .map-phones {
     margin-top: 15px;
     color: whitesmoke;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     z-index: 5;
     top: 158px;
     position: relative;
@@ -4860,10 +4865,11 @@ html {
     padding: 4px;
     background: #8b8b8bbd;
     width: 1110px;
-    border-radius: 4px;
+    border-radius: 5px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
     color: whitesmoke;
     text-transform: uppercase;
+    padding-left: 8px;
 }
 
 
@@ -4873,11 +4879,40 @@ html {
     text-align: left;
     padding: 4px;
     width: 777px;
-    border-radius: 4px;
+    border-radius: 5px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
     font-weight: 600;
     color: #e2e8df;
+    padding-left: 8px;
+}
+
+.contact-text-banner h2 {
+    background: #2253a87d;
+    margin-left: 44px;
+    text-align: left;
+    padding: 4px;
+    width: 777px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #e2e8df;
+    padding-left: 8px;
+}
+
+.contact-text-banner p{
+    font-size: 18px;
+    margin-left: 44px;
+    text-align: left;
+    padding: 4px;
+    background: #2253a87d;
+    width: 1110px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    color: whitesmoke;
+    text-transform: uppercase;
+    padding-left: 8px;
 }
 
 .section-metal-title {
@@ -5037,12 +5072,16 @@ tbody, td, tfoot, th, thead, tr {
     margin-right: 6px;
 }
 
-.phones-list p {
-    margin: 0 0 10px 0;
-}
+/*.phones-list p {*/
+/*    margin: 0 0 10px 0;*/
+/*}*/
 
 .email-row {
     margin-bottom: 21px;
+    background: linear-gradient(18deg, #b77cd6, #8db6c6, #ccd7dd);
+    padding: 4px;
+    border-radius: 6px;
+    padding-left: 8px;
 }
 
 .icons-row a img {

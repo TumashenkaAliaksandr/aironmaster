@@ -659,6 +659,7 @@
         display: block; /* убрать flex */
         gap: 0;
         margin-bottom: 1rem;
+        background: linear-gradient(18deg, #440f7d, #0a9cd6, #4f2989);
     }
 
     /* Каждый телефон и почта — отдельная строка */
@@ -667,7 +668,50 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        margin: 0.3rem 0;
+        /*margin: 0.3rem 0;*/
+    }
+
+    .contact-text-banner h2 {
+        background: #2253a87d;
+        margin-left: 13px;
+        text-align: left;
+        padding: 4px;
+        width: 196px;
+        border-radius: 5px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #e2e8df;
+        padding-left: 8px;
+        font-size: 20px;
+        display: none;
+    }
+
+    .contact-text-banner p {
+        font-size: 16px;
+        margin-left: 13px;
+        text-align: left;
+        padding: 4px;
+        background: #2253a87d;
+        width: 1110px;
+        border-radius: 5px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        color: whitesmoke;
+        text-transform: uppercase;
+        padding-left: 8px;
+        width: 388px;
+        margin-right: 13px;
+    }
+
+    .section-title-contact {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: #ecedff;
+        border-bottom: 2px solid #cacaca;
+        padding-bottom: 5px;
+        font-weight: 500;
+        filter: drop-shadow(2px 1px 0px rgba(44, 44, 44, 0.5));
+        text-transform: uppercase;
     }
 
     /* Уменьшаем отступы между телефонами */
