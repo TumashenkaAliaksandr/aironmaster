@@ -6,12 +6,13 @@
     <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
         <ol>
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li aria-current="page">Контакты</li>
+{#            <li aria-current="page">Контакты</li>#}
         </ol>
     </nav>
     <section class="item-section"
-             style="background: url('{% static "webapp/img/contacts.jpeg" %}') no-repeat center center fixed;
+             style="background: url('{% static "webapp/img/contacts.jpeg" %}') no-repeat center top fixed;
                      background-size: cover;
+                     background-position: center -70px;
                      min-height: 150px!important;
                      position: relative;">
         <div class="contact-text-banner banner-content" style="position: relative; z-index: 2; color: #00b7ff;">

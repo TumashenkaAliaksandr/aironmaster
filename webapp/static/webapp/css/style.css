@@ -680,7 +680,7 @@ nav .nav-linkss.active {
 
 
 .breadcrumps {
-    padding: 1.1rem 1.1rem;
+    padding: 0.4rem 1.1rem;
     background: linear-gradient(66deg, #f0f7e6, #acabbc);
     color: #2b409c;
     /*box-sizing: border-box;*/
@@ -2263,7 +2263,7 @@ h2 {
     color: #00b7ff;
     transform: scale(1.05);
     text-decoration: none;
-    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
 }
 
 .map-phones a:focus {
@@ -4885,6 +4885,7 @@ html {
     font-weight: 600;
     color: #e2e8df;
     padding-left: 8px;
+    font-size: 24px;
 }
 
 .contact-text-banner h2 {
@@ -4899,6 +4900,7 @@ html {
     font-weight: 600;
     color: #e2e8df;
     padding-left: 8px;
+    font-size: 24px;
 }
 
 .contact-text-banner p{
@@ -5038,7 +5040,7 @@ tbody, td, tfoot, th, thead, tr {
 /* Картинки внутри слайда растягиваем по ширине и сохраняем пропорции */
 .slider-inner-wrapper .slide img {
     width: 100%;
-    height: auto;
+    height: 200px;
     border-radius: 12px;
     object-fit: cover;
     display: block;

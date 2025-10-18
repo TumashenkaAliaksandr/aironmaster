@@ -687,6 +687,10 @@
         display: none;
     }
 
+    .item-section {
+        display: none;
+    }
+
     .contact-text-banner p {
         font-size: 16px;
         margin-left: 13px;
