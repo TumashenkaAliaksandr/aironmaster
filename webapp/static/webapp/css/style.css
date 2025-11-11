@@ -924,7 +924,13 @@ nav .nav-linkss.active {
 
 .gradient {
     height: 25px; /* adjust height as needed */
-    background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
+    background: linear-gradient(92deg, #f3f3f3, #8b8b9e) !important;
+    width: 100%;
+}
+
+.first-gradient {
+    height: 25px; /* adjust height as needed */
+    background: linear-gradient(92deg, #ffffff, #8b8b9e) !important;
     width: 100%;
 }
 
@@ -1382,8 +1388,7 @@ nav .nav-linkss.active {
 }
 
 #gallery {
-    background: linear-gradient(66deg, #e8f3d6, #8e8ca2); /* светлый градиент */
-    background: linear-gradient(66deg, #f0f4eb, #8e8ca2); /* светлый градиент */
+    background: linear-gradient(66deg, #ffffff, #aeabc6); /* светлый градиент */
     padding: 2rem;
     /*border-bottom-left-radius: 12px;*/
     /*border-bottom-right-radius: 12px;*/
@@ -2051,12 +2056,12 @@ h2 {
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
 .footer-logo img {
-    height: 80px;
+    height: 60px;
     width: auto;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
     transition: filter 0.3s ease;
@@ -3042,7 +3047,7 @@ html {
 
 .map-responsive iframe {
     width: 100%;
-    height: 350px;
+    height: 444px;
     border: none;
     border-radius: 8px;
 }
@@ -3944,7 +3949,7 @@ html {
 
 
 .custom-metal-bg {
-    background: linear-gradient(66deg, #edf4e7, #8e8ca2);
+    background: linear-gradient(66deg, #f3f3f3, #8e8ca2);
     padding: 20px;
 }
 
@@ -4057,7 +4062,7 @@ html {
 }
 
 .sidebar-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 500;
     margin-bottom: 16px;
     color: #333;
@@ -4175,12 +4180,13 @@ html {
 .custom-sidebar .sidebar-menu a {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 8px 0;
     color: #555;
     text-decoration: none;
     font-weight: 500;
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 18px;
 }
 
 /* Эффект при наведении на ссылку */
@@ -4202,8 +4208,8 @@ html {
 /* Если хотите, чтобы иконки были чуть крупнее на больших экранах */
 @media (min-width: 1024px) {
     .custom-sidebar .dropdown-icon {
-        width: 28px;
-        height: 28px;
+        width: 33px;
+        height: 33px;
     }
 }
 
