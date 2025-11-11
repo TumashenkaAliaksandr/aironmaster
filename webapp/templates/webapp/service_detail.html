@@ -16,7 +16,7 @@
 
             <!-- Слайдер изображений -->
             <section class="slider-section">
-                <h2 class="section-title">Фотографии наших работ</h2>
+                <h2 class="section-title">[◉°] Фотографии наших работ</h2>
                 <div class="slider slider-photos" id="photoSlider">
                     <div class="slider-inner-wrapper">
                         {% for photo in photos %}
@@ -52,20 +52,20 @@
 
             <!-- Описание услуги -->
             <section class="service-description">
-                <h2 class="section-title">Описание услуги</h2>
+                <h2 class="section-title">📓 Описание услуги</h2>
                 {{ service.description|safe }}
             </section>
 
             <!-- Технология -->
             <section class="technology-section">
-                <h2 class="section-title">Технология</h2>
+                <h2 class="section-title">🏘 Технология</h2>
                 {{ service.technology|safe }}
             </section>
 
 
             <!-- Таблица стоимости -->
             <section class="price-section">
-                <h2 class="section-title">Стоимость услуги</h2>
+                <h2 class="section-title">⛃ Стоимость услуги</h2>
                 <table class="price-table">
                     <thead>
                     <tr>
@@ -97,7 +97,7 @@
             </section>
 
             <div class="processing-metal-section">
-                <p class="section-metal-title">Обрабатываемый металл</p>
+                <p class="section-metal-title">✓ Обрабатываемый металл</p>
             </div>
             <div class="processed-metals-wrapper" style="display: flex; gap: 20px; overflow-x: auto; margin-bottom: 22px">
                 {% for metal in metals %}
@@ -119,7 +119,7 @@
 
             <!-- Преимущества -->
             <section class="advantages-section">
-                <h2 class="section-title">Наши преимущества</h2>
+                <h2 class="section-title">🏳 Наши преимущества</h2>
                 <ul class="advantages-list horizontal-list">
                     {% for adv in service.advantages.all %}
                         <li class="advantage-item">
@@ -135,7 +135,7 @@
 
             <!-- Видео -->
             <section class="videos-section">
-                <h2 class="section-title">Видео по сервису</h2>
+                <h2 class="section-title">📽 Видео по сервису</h2>
                 <div class="videos-wrapper">
                     {% for video in service.videos.all %}
                         <video width="320" height="240" controls>
@@ -206,7 +206,7 @@
     <!-- Другие услуги компании -->
     <section class="custom-service-bg">
         <div class="services-inline-bg service-inline-container">
-            <h2 class="section-title-services">Другие услуги компании</h2>
+            <h2 class="section-title-services">֎ Другие услуги компании</h2>
             <div class="services-inline-row">
                 <div class="service-mini-card">
                     <a href="{% url 'service_detail' slug='laser-cutting' %}">
