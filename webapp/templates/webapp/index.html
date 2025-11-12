@@ -35,27 +35,18 @@
                 <div class="sidebar-widget">
                     <h3 class="sidebar-title">🚩 Навигация</h3>
                     <ul class="sidebar-menu">
-                        <li><a href="{% url 'products_by_category' category='procladki' %}">
-                            <img src="{% static 'webapp/icons/aironmaster_procladki.png' %}" alt="Прокладки"
-                                 class="dropdown-icon"/> Прокладки
-                        </a></li>
-                        <li><a href="{% url 'products_by_category' category='steps_and_stairs' %}">
-                            <img src="{% static 'webapp/icons/aironmaster-next-level.png' %}"
-                                 alt="Ступеньки и Лестницы"
-                                 class="dropdown-icon"/> Ступеньки и Лестницы
-                        </a></li>
-                        <li><a href="{% url 'products_by_category' category='grills' %}">
-                            <img src="{% static 'webapp/icons/aironmaster-grill.png' %}" alt="Мангалы"
-                                 class="dropdown-icon"/>
-                            Мангалы
-                        </a></li>
-                        <li><a href="{% url 'products_by_category' category='decor_elements' %}">
-                            <img src="{% static 'webapp/icons/aironmaster-decorelements.png' %}"
-                                 alt="Элементы декора"
-                                 class="dropdown-icon"/> Элементы декора
-                        </a></li>
+                        {% for category in site_bar_category %}
+                            <li>
+                                <a href="{{ category.get_absolute_url }}">
+                                    <img src="{{ category.icon.url }}" alt="{{ category.alt_text }}"
+                                         class="dropdown-icon"/>
+                                    {{ category.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
+
                 {% for service in services_info %}
                     {% if forloop.last %}
                         <div class="sidebar-widget">

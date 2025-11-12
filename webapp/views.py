@@ -13,7 +13,7 @@ from django.core.paginator import Paginator
 from aironmaster import settings
 from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement, \
-    OurWorks, ProcessedMetal, MetalworkingService
+    OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory
 from webapp.utils import handle_order_form
 
 from django.conf import settings
@@ -78,6 +78,8 @@ def index(request):
     services_info = ServicesContact.objects.all()
     banner = get_object_or_404(Banner, pk=1)
     about = About.objects.first()
+    site_bar_category = SiteBarCategory.objects.all()
+
     photose = []
     for i in range(1, 5):
         photo = getattr(banner, f'photo{i}')
@@ -107,6 +109,7 @@ def index(request):
         'about': about,
         'news_list': news_list,
         'mettallo_main': mettallo_main,
+        'site_bar_category': site_bar_category,
     }
 
     if contact_success:

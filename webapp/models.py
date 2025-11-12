@@ -365,3 +365,21 @@ class MetalworkingService(models.Model):
 
     def get_absolute_url(self):
         return reverse('service_detail', kwargs={'slug': self.slug})
+
+
+class SiteBarCategory(models.Model):
+    slug = models.SlugField(max_length=50, unique=True)
+    title = models.CharField(max_length=100)
+    icon = models.ImageField(upload_to='category_icons/')
+    alt_text = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        verbose_name = "Сайт Бар Категории"
+        verbose_name_plural = "Сайт Бар Категории"
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('products_by_category', kwargs={'category': self.slug})
+
