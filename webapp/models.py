@@ -348,3 +348,20 @@ class ProcessedMetal(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class MetalworkingService(models.Model):
+    slug = models.SlugField(max_length=50, unique=True)
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='services/')
+    alt_text = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        verbose_name = "Блок металлообработка"
+        verbose_name_plural = "Блок металлообработка"
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('service_detail', kwargs={'slug': self.slug})

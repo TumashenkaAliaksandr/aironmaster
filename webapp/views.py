@@ -13,7 +13,7 @@ from django.core.paginator import Paginator
 from aironmaster import settings
 from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement, \
-    OurWorks, ProcessedMetal
+    OurWorks, ProcessedMetal, MetalworkingService
 from webapp.utils import handle_order_form
 
 from django.conf import settings
@@ -21,6 +21,7 @@ from django.conf import settings
 def index(request):
     order_form, order_error, order_success = handle_order_form(request)
     news_list = News.objects.all()[:10]
+    mettallo_main = MetalworkingService.objects.all()
 
     error_message = None
     contact_success = False
@@ -105,6 +106,7 @@ def index(request):
         'services_info': services_info,
         'about': about,
         'news_list': news_list,
+        'mettallo_main': mettallo_main,
     }
 
     if contact_success:

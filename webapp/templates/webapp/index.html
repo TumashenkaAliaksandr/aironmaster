@@ -13,53 +13,22 @@
             <div class="custom-metal-block">
                 <h1 class="custom-title">Металлообработка 🏗</h1>
                 <hr class="news-separator" aria-hidden="true"/>
-                <div class="custom-row">
-                    <div class="custom-card">
-                        <a href="{% url 'service_detail' slug='laser-cutting' %}">
-                            <img src="{% static 'webapp/img/aironmaster_trub.jpg' %}"
-                                 alt="услуги лазерной резки металлическая лазерная резка лазерная резка деталей"/>
-                        </a>
-                        <div class="custom-caption">Лазерная резка ТРУБ</div>
-                    </div>
-                    <div class="custom-card">
-                        <a href="{% url 'service_detail' slug='bending' %}">
-                            <img src="{% static 'webapp/img/gibka-metalla.jpg' %}"
-                                 alt="Гибка металла"/>
-                        </a>
-                        <div class="custom-caption">Гибка металла</div>
-                    </div>
-                    <div class="custom-card">
-                        <a href="{% url 'service_detail' slug='vibratory-trowel' %}">
-                            <img src="{% static 'webapp/img/aironmaster_vibrogoltovka.png' %}"
-                                 alt="Лазерная резка труб и профилей"/>
-                        </a>
-                        <div class="custom-caption">Виброголтовка</div>
-                    </div>
+                {% for service in mettallo_main %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                        <div class="custom-row">
+                    {% endif %}
+                <div class="custom-card">
+                    <a href="{{ service.get_absolute_url }}">
+                        <img src="{{ service.image.url }}" alt="{{ service.alt_text }}"/>
+                    </a>
+                    <div class="custom-caption">{{ service.title }}</div>
                 </div>
-                <div class="custom-row">
-                    <div class="custom-card">
-                        <a href="{% url 'service_detail' slug='welding' %}">
-                            <img src="{% static 'webapp/img/aironmaster_svarka.jpeg' %}"
-                                 alt="Сварочные работы"/>
-                        </a>
-                        <div class="custom-caption">Сварочные работы</div>
+                {% if forloop.counter|divisibleby:3 or forloop.last %}
                     </div>
-                    <div class="custom-card">
-                        <a href="{% url 'service_detail' slug='metal-constructions' %}">
-                            <img src="{% static 'webapp/img/aironmaster_metalloconstructions.jpg' %}"
-                                 alt="Изготовление металлоконструкций"/>
-                        </a>
-                        <div class="custom-caption">Изготовление металлоконструкций</div>
-                    </div>
-                    <div class="custom-card">
-                        <a href="{% url 'service_detail' slug='polymer-painting' %}">
-                            <img src="{% static 'webapp/img/aironmaster_poroshok.jpg' %}"
-                                 alt="Полимерная покраска"/>
-                        </a>
-                        <div class="custom-caption">Полимерная покраска</div>
-                    </div>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
+
 
             <!-- Сайдбар справа -->
             <aside class="custom-sidebar">
