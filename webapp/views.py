@@ -274,6 +274,7 @@ def about(request):
     works = OurWorks.objects.all()
     # Формируем ads для динамической рекламы из других объявлений, например, кроме текущего
     ads = Advertisement.objects.exclude(id=advertisement.id)
+    metalworking_services = MetalworkingService.objects.all()
 
     error_message = None
     if request.method == 'POST':
@@ -318,6 +319,7 @@ def about(request):
         'advertisement': advertisement,
         'error_message': error_message,
         'form': form,
+        'metalworking_services': metalworking_services,
     }
     return render(request, 'webapp/about.html', context=context)
 

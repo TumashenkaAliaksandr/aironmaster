@@ -177,6 +177,23 @@
         </div>
     </section>
     <div class="gradient-product-detail"></div>
+    <!-- Другие услуги компании -->
+    <section class="custom-service-bg">
+        <div class="services-inline-bg service-inline-container">
+            <h2 class="section-title-services">֎ Услуги компании</h2>
+            <div class="services-inline-row">
+                {% for service in metalworking_services %}
+                    <div class="service-mini-card">
+                        <a href="{{ service.get_absolute_url }}">
+                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                                 class="service-mini-img"/>
+                        </a>
+                        <div class="service-mini-caption">{{ service.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
 
 {% endblock %}
