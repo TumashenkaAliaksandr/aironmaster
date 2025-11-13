@@ -129,6 +129,7 @@ CATEGORY_MAP = {
 }
 
 def products(request):
+    metalworking_services = MetalworkingService.objects.all()
     CATEGORY_MAP = {
         'metal_structures': 'is_metal_structures',
         'procladki': 'is_prokladki_mtgr',
@@ -161,6 +162,7 @@ def products(request):
             'decor_elements': 'Декоративные элементы',
         },
         'selected_category': selected_category,
+        'metalworking_services': metalworking_services,
     }
     return render(request, 'webapp/products.html', context=context)
 

@@ -107,7 +107,24 @@
             <p>Изделия в данной категории отсутствуют.</p>
         {% endif %}
     </section>
-    <div class="gradient"></div>
+
+    <!-- Другие услуги компании -->
+    <section class="custom-service-bg">
+        <div class="services-inline-bg service-inline-container">
+            <h2 class="section-title-services">֎ Наши услуги</h2>
+            <div class="services-inline-row">
+                {% for service in metalworking_services %}
+                    <div class="service-mini-card">
+                        <a href="{{ service.get_absolute_url }}">
+                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                                 class="service-mini-img"/>
+                        </a>
+                        <div class="service-mini-caption">{{ service.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
     <!-- Кастомное модальное окно -->
     <div id="customModal" class="custom-modal hidden">
