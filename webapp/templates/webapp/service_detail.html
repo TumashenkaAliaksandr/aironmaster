@@ -211,51 +211,19 @@
         <div class="services-inline-bg service-inline-container">
             <h2 class="section-title-services">֎ Другие услуги компании</h2>
             <div class="services-inline-row">
-                <div class="service-mini-card">
-                    <a href="{% url 'service_detail' slug='laser-cutting' %}">
-                        <img src="{% static 'webapp/img/aironmaster_lazer.png' %}" alt="Лазерная резка"
-                             class="service-mini-img"/>
-                    </a>
-                    <div class="service-mini-caption">Лазерная резка</div>
-                </div>
-                <div class="service-mini-card">
-                    <a href="{% url 'service_detail' slug='bending' %}">
-                        <img src="{% static 'webapp/img/aironmaster_gibka.png' %}" alt="Гибка"
-                             class="service-mini-img"/>
-                    </a>
-                    <div class="service-mini-caption">Гибка металла</div>
-                </div>
-                <div class="service-mini-card">
-                    <a href="{% url 'service_detail' slug='vibratory-trowel' %}">
-                        <img src="{% static 'webapp/img/aironmaster_vibrogoltovka_IFfETZG.jpeg' %}"
-                             alt="Виброголтовка" class="service-mini-img"/>
-                    </a>
-                    <div class="service-mini-caption">Виброголтовка</div>
-                </div>
-                <div class="service-mini-card">
-                    <a href="{% url 'service_detail' slug='welding' %}">
-                        <img src="{% static 'webapp/img/aironmaster_svarka.png' %}" alt="Сварочные работы"
-                             class="service-mini-img"/>
-                    </a>
-                    <div class="service-mini-caption">Сварка</div>
-                </div>
-                <div class="service-mini-card">
-                    <a href="{% url 'service_detail' slug='metal-constructions' %}">
-                        <img src="{% static 'webapp/img/aironmaster_truby.png' %}" alt="Металлоконструкции"
-                             class="service-mini-img"/>
-                    </a>
-                    <div class="service-mini-caption">Металлоконструкции</div>
-                </div>
-                <div class="service-mini-card">
-                    <a href="{% url 'service_detail' slug='polymer-painting' %}">
-                        <img src="{% static 'webapp/img/aironmaster_pokraska.png' %}" alt="Полимерная покраска"
-                             class="service-mini-img"/>
-                    </a>
-                    <div class="service-mini-caption">Покраска</div>
-                </div>
+                {% for service in metalworking_services %}
+                    <div class="service-mini-card">
+                        <a href="{{ service.get_absolute_url }}">
+                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                                 class="service-mini-img"/>
+                        </a>
+                        <div class="service-mini-caption">{{ service.title }}</div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>
+
 
 <!-- Модальное окно для увеличенного фото с кнопками навигации -->
 <div id="imageModal">

@@ -204,6 +204,7 @@ def service_detail(request, slug):
     metals = ProcessedMetal.objects.all()
     thicknesses = sorted(set(price.thickness for price in service.prices.all()))
     services_info = ServicesContact.objects.all()
+    metalworking_services = MetalworkingService.objects.all()
     error_message = None
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -255,6 +256,7 @@ def service_detail(request, slug):
         'metals': metals,
         'prices_dict': prices_dict,
         'thicknesses': thicknesses,
+        'metalworking_services': metalworking_services,
     }
 
     return render(request, 'webapp/service_detail.html', context=context)
