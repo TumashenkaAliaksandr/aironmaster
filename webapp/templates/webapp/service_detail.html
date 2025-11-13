@@ -69,32 +69,35 @@
                 <table class="price-table">
                     <thead>
                     <tr>
-                        <th>Тип металла</th>
                         <th>Толщина металла, мм</th>
-                        <th>Стоимость BYN (без НДС)</th>
+                        {% for metal in metals %}
+                            <th>{{ metal.name }}</th>
+                        {% endfor %}
                     </tr>
                     </thead>
                     <tbody>
-                    {% for price in service.prices.all %}
+                    {% for thickness in thicknesses %}
                         <tr>
-                            <td>
-                                {% if price.metal_type %}
-                                    {{ price.metal_type }}
-                                {% else %}
-                                    &mdash;
-                                {% endif %}
-                            </td>
-                            <td>{{ price.thickness }}</td>
-                            <td>{{ price.cost }}</td>
+                            <td>{{ thickness }}</td>
+                            {% for metal in metals %}
+                                <td>
+                                    {% for price in service.prices.all %}
+                                        {% if price.thickness == thickness and price.metal_type.id == metal.id %}
+                                            {{ price.cost }} BYN
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            {% endfor %}
                         </tr>
                     {% empty %}
                         <tr>
-                            <td colspan="3">Информация о стоимости отсутствует.</td>
+                            <td colspan="{{ metals|length|add:'1' }}">Информация о стоимости отсутствует.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </section>
+
 
             <div class="processing-metal-section">
                 <p class="section-metal-title">✓ Обрабатываемый металл</p>

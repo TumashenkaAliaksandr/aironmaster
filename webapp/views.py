@@ -1,4 +1,5 @@
 import smtplib
+from collections import defaultdict
 
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.db.models import Q
@@ -200,7 +201,8 @@ def item_details(request, slug):
 def service_detail(request, slug):
     service = get_object_or_404(OurService, slug=slug)
     photos = service.photos.all()  # related_name='photos'
-    metals = ProcessedMetal.objects.all()[:5]
+    metals = ProcessedMetal.objects.all()
+    thicknesses = sorted(set(price.thickness for price in service.prices.all()))
     services_info = ServicesContact.objects.all()
     error_message = None
     if request.method == 'POST':
@@ -238,6 +240,12 @@ def service_detail(request, slug):
     else:
         form = ContactForm()
 
+    prices = service.prices.all().order_by('metal_type', 'thickness')
+
+    prices_dict = defaultdict(dict)
+    for price in prices:
+        prices_dict[price.metal_type][str(price.thickness)] = price
+
     context = {
         'service': service,
         'photos': photos,
@@ -245,6 +253,8 @@ def service_detail(request, slug):
         'services_info': services_info,
         'form': form,
         'metals': metals,
+        'prices_dict': prices_dict,
+        'thicknesses': thicknesses,
     }
 
     return render(request, 'webapp/service_detail.html', context=context)

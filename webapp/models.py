@@ -29,20 +29,6 @@ class ServiceVideo(models.Model):
     video = models.FileField("Видео", upload_to='service_videos/')
     title = models.CharField("Название видео", max_length=255, blank=True)
 
-class ServicePrice(models.Model):
-    service = models.ForeignKey(OurService, related_name='prices', on_delete=models.CASCADE)
-    metal_type = models.CharField("Тип металла", max_length=100, default="Сталь")  # новое поле для типа металла
-    thickness = models.DecimalField("Толщина металла, мм", max_digits=5, decimal_places=2)
-    cost = models.CharField("Стоимость", max_length=50)  # строковое поле для фразы "от 0,7", "от 1,0" и т.п.
-
-    class Meta:
-        verbose_name = "Стоимость услуги"
-        verbose_name_plural = "Стоимость услуг"
-        ordering = ['metal_type', 'thickness']  # сортируем сначала по металлу, потом по толщине
-
-    def __str__(self):
-        return f"{self.metal_type} - {self.thickness} мм - {self.cost}"
-
 
 class ServiceAdvantage(models.Model):
     service = models.ForeignKey(OurService, related_name='advantages', on_delete=models.CASCADE)
@@ -348,6 +334,36 @@ class ProcessedMetal(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ServicePrice(models.Model):
+    service = models.ForeignKey(OurService, related_name='prices', on_delete=models.CASCADE)
+    metal_type = models.ForeignKey(
+        ProcessedMetal,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        verbose_name="Тип металла",
+        related_name='serviceprice_metal_type'
+    )
+    # metal_type_new = models.ForeignKey(
+    #     ProcessedMetal,
+    #     null=True,
+    #     blank=True,
+    #     on_delete=models.CASCADE,
+    #     verbose_name="Новый тип металла (ForeignKey)",
+    #     related_name='serviceprice_metal_type_new'
+    # )
+    thickness = models.DecimalField("Толщина металла, мм", max_digits=5, decimal_places=2)
+    cost = models.DecimalField("Стоимость BYN (без НДС)", max_digits=10, decimal_places=2, default=0.00)
+
+    class Meta:
+        verbose_name = "Стоимость услуги"
+        verbose_name_plural = "Стоимость услуг"
+        ordering = ['metal_type', 'thickness']
+
+    def __str__(self):
+        return f"{self.metal_type.name} - {self.thickness} мм - {self.cost} BYN"
 
 
 class MetalworkingService(models.Model):
