@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
-from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm, CharaForm
+from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm, CharaForm, TreeModelingForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
     SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement, \
-    AdvertisementVideo, OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory
+    AdvertisementVideo, OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory, ThreeDConstructions
 
 
 class ItemPhotoInline(admin.TabularInline):
@@ -240,3 +240,11 @@ class MetalworkingServiceAdmin(admin.ModelAdmin):
 class SiteBarCategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(ThreeDConstructions)
+class ThreeDConstructionsAdmin(admin.ModelAdmin):
+    form = TreeModelingForm
+    list_display = ('name',)
+    search_fields = ('name', 'descriptions')
+

@@ -399,3 +399,15 @@ class SiteBarCategory(models.Model):
     def get_absolute_url(self):
         return reverse('products_by_category', kwargs={'category': self.slug})
 
+
+class ThreeDConstructions(models.Model):
+    name = models.CharField('Имя', max_length=100, blank=True)
+    descriptions = models.TextField('Описание', blank=True)
+
+    class Meta:
+        verbose_name = "3D Моделирование (описание)"
+        verbose_name_plural = "3D Моделирование (описание)"
+
+    def __str__(self):
+        return self.name
+

@@ -2,13 +2,49 @@
 {% load custom_filters %}
 {% load static %}
 
-
 {% block content %}
     <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
         <ol>
             <li><a href="{% url 'index' %}">Главная</a></li>
-            <li aria-current="page">{{ service.name }}</li>
+            <li aria-current="page">3D Моделирование</li>
         </ol>
     </nav>
+
+    <div id="about" class="first-gradient"></div>
+
+    <section class="item-section-bg">
+        <div class="container">
+            <div class="three-d-description service-description">
+                {% for item in three_d_constructions %}
+                    <article class="three-d-item">
+                        <h2>{{ item.name }}</h2>
+                        <p>{{ item.descriptions|safe }}</p>
+                    </article>
+                {% empty %}
+                    <p>Описание 3D моделирования пока отсутствует.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div id="about" class="first-gradient"></div>
+
+    <!-- Другие услуги компании -->
+    <section class="custom-service-bg">
+        <div class="services-inline-bg service-inline-container">
+            <h2 class="section-title-services">֎ Услуги компании</h2>
+            <div class="services-inline-row">
+                {% for service in metalworking_services %}
+                    <div class="service-mini-card">
+                        <a href="{{ service.get_absolute_url }}">
+                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                                 class="service-mini-img"/>
+                        </a>
+                        <div class="service-mini-caption">{{ service.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

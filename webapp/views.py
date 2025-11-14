@@ -14,7 +14,7 @@ from django.core.paginator import Paginator
 from aironmaster import settings
 from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement, \
-    OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory
+    OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory, ThreeDConstructions
 from webapp.utils import handle_order_form
 
 from django.conf import settings
@@ -629,5 +629,11 @@ def ajax_search(request):
 
 def three_d_modelling(request):
     """3D Modelling page"""
+    metalworking_services = MetalworkingService.objects.all()
+    three_d_constructions = ThreeDConstructions.objects.all()
+    context = {
+        'three_d_constructions': three_d_constructions,
+        'metalworking_services': metalworking_services,
+    }
 
-    return render(request, 'webapp/3d_modelling.html', {})
+    return render(request, 'webapp/3d_modelling.html', context)
