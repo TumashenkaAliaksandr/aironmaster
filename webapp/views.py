@@ -625,3 +625,9 @@ def ajax_search(request):
             })
 
     return JsonResponse({'results': results})
+
+
+def three_d_modelling(request):
+    """3D Modelling page"""
+
+    return render(request, 'webapp/3d_modelling.html', {})

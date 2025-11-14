@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load custom_filters %}
+{% load static %}
+
+
+{% block content %}
+    <nav aria-label="breadcrumb" class="breadcrumb breadcrumps">
+        <ol>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li aria-current="page">{{ service.name }}</li>
+        </ol>
+    </nav>
+
+{% endblock %}

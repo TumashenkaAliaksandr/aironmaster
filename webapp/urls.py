@@ -8,6 +8,7 @@ from .views import sitemap_view, robots_txt, ajax_search
 urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
+    path('3d-modelling/', views.three_d_modelling, name='3d-modelling'),
     path('products/', views.products, name='products'),
     path('products/category/<str:category>/', views.products_by_done, name='products_by_category'),  # фильтр по категории
     path('products/<slug:slug>/', views.item_detail, name='item_detail'),
