@@ -4894,6 +4894,35 @@ html {
     font-size: 24px;
 }
 
+.three-d-text-banner h2 {
+    background: rgba(83, 83, 90, 0.71);
+    margin-left: 44px;
+    text-align: left;
+    padding: 4px;
+    width: 777px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #e2e8df;
+    padding-left: 8px;
+    font-size: 24px;
+}
+
+.three-d-text-banner p{
+    font-size: 18px;
+    margin-left: 44px;
+    text-align: left;
+    padding: 4px;
+    background: rgba(83, 83, 90, 0.71);
+    width: 1110px;
+    border-radius: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    color: whitesmoke;
+    text-transform: uppercase;
+    padding-left: 8px;
+}
+
 .contact-text-banner h2 {
     background: #c77f6285;
     margin-left: 44px;
