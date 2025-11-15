@@ -139,21 +139,22 @@
             <!-- Видео -->
             <section class="videos-section">
                 <h2 class="section-title">📽 Видео по сервису</h2>
-                <div class="videos-wrapper">
+                <div class="videos-wrapper video-service-div">
                     {% for video in service.videos.all %}
-                        <video width="320" height="240" controls>
-                            <source src="{{ video.video.url }}" type="video/mp4">
-                            Ваш браузер не поддерживает видео.
-                        </video>
-                        {% if video.title %}
-                            <p>{{ video.title }}</p>
-                        {% endif %}
+                        <div class="video-service-divvv">
+                            <video controls class="videos-service">
+                                <source src="{{ video.video.url }}" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                            {% if video.title %}
+                                <p>{{ video.title }}</p>
+                            {% endif %}
+                        </div>
                     {% empty %}
                         <p>Видео отсутствуют.</p>
                     {% endfor %}
                 </div>
             </section>
-
 
         </div>
     </section>

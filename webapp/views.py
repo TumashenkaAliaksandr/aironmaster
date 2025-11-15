@@ -200,6 +200,7 @@ def item_details(request, slug):
     item = get_object_or_404(ItemObject, slug=slug)
     return render(request, 'webapp/single_products.html', {'item': item})
 
+
 def service_detail(request, slug):
     service = get_object_or_404(OurService, slug=slug)
     photos = service.photos.all()  # related_name='photos'
