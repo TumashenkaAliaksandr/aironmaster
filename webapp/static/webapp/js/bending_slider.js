@@ -150,3 +150,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init();
 });
+
+
+// Слайдер сервисов фото
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('photoSlider');
+    if (!slider) return;
+
+    const wrapper = slider.querySelector('.slider-inner-wrapper');
+    const slides = wrapper.children;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let slidesToShow = window.innerWidth < 768 ? 1 : 3;
+    let currentIndex = 0;
+
+    function calculateSlideWidth() {
+        if (slides.length === 0) return 0;
+        const style = getComputedStyle(slides[0]);
+        const width = slides[0].getBoundingClientRect().width;
+        const marginLeft = parseFloat(style.marginLeft) || 0;
+        const marginRight = parseFloat(style.marginRight) || 0;
+        return width + marginLeft + marginRight;
+    }
+
+    let slideWidth = calculateSlideWidth();
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+        const maxIndex = totalSlides - slidesToShow;
+        if (currentIndex < 0) currentIndex = maxIndex < 0 ? 0 : maxIndex;
+        if (currentIndex > maxIndex) currentIndex = 0;
+
+        wrapper.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex--;
+        updateSlider();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex++;
+        updateSlider();
+    });
+
+    window.addEventListener('resize', () => {
+        slidesToShow = window.innerWidth < 768 ? 1 : 3;
+        slideWidth = calculateSlideWidth();
+        updateSlider();
+    });
+
+    updateSlider();
+});

@@ -29,26 +29,17 @@
                             </div>
                         {% endfor %}
                     </div>
+                    <!-- Кнопки навигации -->
+                    <button id="prevBtn"
+                            style="position: absolute; top: 90%; left: 5px; transform: translateY(-50%); z-index: 10;">
+                        &#10094;
+                    </button>
+                    <button id="nextBtn"
+                            style="position: absolute; top: 90%; right: 5px; transform: translateY(-50%); z-index: 10;">
+                        &#10095;
+                    </button>
                 </div>
             </section>
-
-
-            <!-- Слайдер видео -->
-            {% if videos.exists %}
-                <section class="slider-section">
-                    <h2 class="section-title">Видео о процессе гибки</h2>
-                    <div class="slider slider-videos" id="videoSlider">
-                        {% for video in videos %}
-                            <div class="slide">
-                                <video controls preload="metadata" width="100%" height="auto">
-                                    <source src="{{ video.url }}" type="video/mp4"/>
-                                    Ваш браузер не поддерживает видео.
-                                </video>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </section>
-            {% endif %}
 
             <!-- Описание услуги -->
             <section class="service-description">

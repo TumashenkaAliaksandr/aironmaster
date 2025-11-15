@@ -5194,6 +5194,31 @@ tbody, td, tfoot, th, thead, tr {
     box-sizing: border-box;
 }
 
+#prevBtn, #nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: linear-gradient(90deg, #fdf9ff8f, #d2f2ff, #fdf9ff8f);
+    border: none;
+    padding: 0 10px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    user-select: none;
+    color: grey;
+}
+#prevBtn:hover, #nextBtn:hover {
+    background: rgba(200, 200, 200, 1);
+}
+#prevBtn {
+    left: 10px;
+}
+#nextBtn {
+    right: 10px;
+}
 
 
 /* Список преимуществ в одну строку */
