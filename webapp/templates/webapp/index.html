@@ -85,7 +85,7 @@
             <div class="about-description">
                 <h2 class="company-name">{{ about.name|default:"АЙРОНМАСТЕР" }}</h2>
                 <p class="company-text">
-                    {{ about.description|safe|default:"Компания «Айронмастер» — современное производственное предприятие, специализирующееся на работе со всеми видами конструкционных сталей, включая высокопрочные марки HARDOX и QUARD, а также с полимерами, цветными металлами и их сплавами. Мы предлагаем полный цикл услуг: от проектирования и разработки индивидуальных решений до изготовления и внедрения готовых изделий любой сложности." }}
+                    {{ about.description|default:"Компания «Айронмастер» — современное производственное предприятие, специализирующееся на работе со всеми видами конструкционных сталей, включая высокопрочные марки HARDOX и QUARD, а также с полимерами, цветными металлами и их сплавами. Мы предлагаем полный цикл услуг: от проектирования и разработки индивидуальных решений до изготовления и внедрения готовых изделий любой сложности." }}
                 </p>
             </div>
         </div>
@@ -226,6 +226,24 @@
     </section>
 
     <div class="gradient"></div>
+
+    <!-- Для чего услуги компании -->
+    <section class="custom-service-bg">
+        <div class="services-inline-bg service-inline-container">
+            <h2 class="section-title-services">֎ Работаем с разными направлениями</h2>
+            <div class="services-inline-row">
+                {% for service in adventure_services %}
+                    <div class="service-mini-card">
+                        <a href="{{ service.get_absolute_url }}">
+                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                                 class="service-mini-img"/>
+                        </a>
+                        <div class="service-mini-caption">{{ service.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
 {#    {% for item in items %}#}
 {#        <section id="screw-spiral" class="item-section">#}

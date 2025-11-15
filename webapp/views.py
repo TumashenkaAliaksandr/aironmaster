@@ -23,6 +23,7 @@ def index(request):
     order_form, order_error, order_success = handle_order_form(request)
     news_list = News.objects.all()[:10]
     mettallo_main = MetalworkingService.objects.all()
+    adventure_services = AdventureService.objects.all()
 
     error_message = None
     contact_success = False
@@ -111,6 +112,7 @@ def index(request):
         'news_list': news_list,
         'mettallo_main': mettallo_main,
         'site_bar_category': site_bar_category,
+        'adventure_services': adventure_services,
     }
 
     if contact_success:
