@@ -14,7 +14,7 @@ from django.core.paginator import Paginator
 from aironmaster import settings
 from webapp.forms import ContactForm
 from webapp.models import ItemObject, Banner, ServicesContact, About, OurService, BannerPage, News, Advertisement, \
-    OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory, ThreeDConstructions
+    OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory, ThreeDConstructions, AdventureService
 from webapp.utils import handle_order_form
 
 from django.conf import settings
