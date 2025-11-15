@@ -187,6 +187,26 @@
 
     <div class="gradient"></div>
 
+    <!-- Для чего услуги компании -->
+    <section class="custom-service-bg">
+        <div class="services-inline-bg service-inline-container">
+            <h2 class="section-title-services">֎ Работаем в разных сферах деятельности</h2>
+            <div class="services-inline-row">
+                {% for service in adventure_services %}
+                    <div class="service-mini-card">
+                        <a href="{{ service.get_absolute_url }}">
+                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                                 class="service-mini-img"/>
+                        </a>
+                        <div class="service-mini-caption">{{ service.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <div class="gradient-adventure"></div>
+
     <section class="item-section-bg">
         <div class="news-carousel">
             <h2 class="news-carousel__title">📽 Новости LIVE</h2>
@@ -223,26 +243,6 @@
             <button class="btn-all-product">Посмотреть все</button>
         </a>
     </div>
-    </section>
-
-    <div class="gradient"></div>
-
-    <!-- Для чего услуги компании -->
-    <section class="custom-service-bg">
-        <div class="services-inline-bg service-inline-container">
-            <h2 class="section-title-services">֎ Работаем в разных сферах деятельности</h2>
-            <div class="services-inline-row">
-                {% for service in adventure_services %}
-                    <div class="service-mini-card">
-                        <a href="{{ service.get_absolute_url }}">
-                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
-                                 class="service-mini-img"/>
-                        </a>
-                        <div class="service-mini-caption">{{ service.title }}</div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
     </section>
 
     <div id="contacts-top"></div>

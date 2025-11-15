@@ -928,6 +928,12 @@ nav .nav-linkss.active {
     width: 100%;
 }
 
+.gradient-adventure {
+    height: 25px; /* adjust height as needed */
+    background: linear-gradient(92deg, #fffefe, #8b8b9e) !important;
+    width: 100%;
+}
+
 .first-gradient {
     height: 25px; /* adjust height as needed */
     background: linear-gradient(92deg, #ffffff, #8b8b9e) !important;
