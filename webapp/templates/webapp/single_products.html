@@ -25,19 +25,19 @@
         <p style="position: relative; z-index: 2;">{{ banner.description }}</p><br/>
     </section>
 
-
-    <div class="gradient"></div>
     <section id="screw-spiral" class="item-section">
+{#    <h2>Продукция Aironmaster</h2>#}
+            <hr class="news-separator" aria-hidden="true"/>
         {% if items %}
             <div class="container">
-                {% for item_row in items|batch:3 %}
+                {% for item_row in items|batch:4 %}
                     <div class="row mb-0">
                         {% for item in item_row %}
                             <div class="col-md-3">
                                 <section id="item-{{ item.id }}" class="item-section">
                                     <div class="content-wrapper">
                                         <h3 class="fixed-lines">{{ item.name|safe }}</h3>
-                                        <p>{{ item.mission|safe }}</p>
+                                        <p>{{ item.mission }}</p>
                                         <p>
                                             {% if item.phone1 %}
                                                 <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>
@@ -67,17 +67,17 @@
                                                         <div class="photo-item-product product">
                                                             {% if forloop.last %}
                                                                 <!-- Вместо второго фото показываем кнопку -->
-                                                                <div style="display: flex; justify-content: center; margin-top: 70px; position: relative;">
-                                                                   <a href="{% url 'item_detail' item.slug %}" class="btn">Подробнее</a>
+                                                                <div style="display: flex; justify-content: center; margin-top: 45px; height: 45px; position: relative;">
+                                                                    <a href="{% url 'item_detail' item.slug %}"
+                                                                       class="btn">Подробнее</a>
 
                                                                 </div>
                                                             {% else %}
-                                                                <div style="display: flex; justify-content: center; margin-top: 20px; position: relative;">
+                                                                <div>
                                                                     <img
                                                                             src="{{ photo.photo.url }}"
                                                                             alt="{{ photo.description }}"
                                                                             class="img-fluid rounded gallery-image"
-                                                                            style="object-fit: cover; width: 180px; height: 100px;"
                                                                             data-src="{{ photo.photo.url }}">
                                                                 </div>
                                                             {% endif %}
@@ -97,6 +97,79 @@
             <p>Изделия в данной категории отсутствуют.</p>
         {% endif %}
     </section>
+
+{##}
+{#    <div class="gradient"></div>#}
+{#    <section id="screw-spiral" class="item-section">#}
+{#        {% if items %}#}
+{#            <div class="container">#}
+{#                {% for item_row in items|batch:3 %}#}
+{#                    <div class="row mb-0">#}
+{#                        {% for item in item_row %}#}
+{#                            <div class="col-md-3">#}
+{#                                <section id="item-{{ item.id }}" class="item-section">#}
+{#                                    <div class="content-wrapper">#}
+{#                                        <h3 class="fixed-lines">{{ item.name|safe }}</h3>#}
+{#                                        <p>{{ item.mission|safe }}</p>#}
+{#                                        <p>#}
+{#                                            {% if item.phone1 %}#}
+{#                                                <a href="tel:{{ item.phone1|cut:" " }}">{{ item.phone1 }}</a><br>#}
+{#                                            {% endif %}#}
+{#                                            {% if item.phone2 %}#}
+{#                                                <a href="tel:{{ item.phone2|cut:" " }}">{{ item.phone2 }}</a>#}
+{#                                            {% endif %}#}
+{#                                        </p>#}
+{#                                        <div class="social-icons-wrapper-two">#}
+{#                                            {% for social in footer_info.social_networks.all %}#}
+{#                                                {% if social.url %}#}
+{#                                                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"#}
+{#                                                       aria-label="{{ social.name }}" class="social-icon">#}
+{#                                                        {% if social.icon %}#}
+{#                                                            <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>#}
+{#                                                        {% else %}#}
+{#                                                            {{ social.name }}#}
+{#                                                        {% endif %}#}
+{#                                                    </a>#}
+{#                                                {% endif %}#}
+{#                                            {% endfor %}#}
+{#                                        </div>#}
+{#                                        <div id="gallery-{{ item.id }}" class="photo-gallery mb-0">#}
+{#                                            <div class="row g-3">#}
+{#                                                {% for photo in item.photos.all|slice:"0:2" %}#}
+{#                                                    <div class="col-6">#}
+{#                                                        <div class="photo-item-product product">#}
+{#                                                            {% if forloop.last %}#}
+{#                                                                <!-- Вместо второго фото показываем кнопку -->#}
+{#                                                                <div style="display: flex; justify-content: center; margin-top: 70px; position: relative;">#}
+{#                                                                   <a href="{% url 'item_detail' item.slug %}" class="btn">Подробнее</a>#}
+{##}
+{#                                                                </div>#}
+{#                                                            {% else %}#}
+{#                                                                <div style="display: flex; justify-content: center; margin-top: 20px; position: relative;">#}
+{#                                                                    <img#}
+{#                                                                            src="{{ photo.photo.url }}"#}
+{#                                                                            alt="{{ photo.description }}"#}
+{#                                                                            class="img-fluid rounded gallery-image"#}
+{#                                                                            style="object-fit: cover; width: 180px; height: 100px;"#}
+{#                                                                            data-src="{{ photo.photo.url }}">#}
+{#                                                                </div>#}
+{#                                                            {% endif %}#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                {% endfor %}#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </section>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        {% else %}#}
+{#            <p>Изделия в данной категории отсутствуют.</p>#}
+{#        {% endif %}#}
+{#    </section>#}
     <div class="gradient"></div>
 
 

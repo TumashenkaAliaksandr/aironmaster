@@ -992,7 +992,7 @@ nav .nav-linkss.active {
 
 /* Внутренний контейнер для ограничения ширины */
 #screw-spiral .content-wrapper {
-    max-width: 300px;
+    max-width: 100%;
     width: 100%;
     height: 300px; /* фиксированная высота */
     border-radius: 12px;
@@ -4186,7 +4186,7 @@ html {
 .custom-sidebar .sidebar-menu a {
     display: flex;
     align-items: center;
-    padding: 8px 0;
+    padding: 6px 0;
     color: #555;
     text-decoration: none;
     font-weight: 500;
@@ -4701,7 +4701,7 @@ html {
     margin-bottom: 50px;
     margin-top: 40px;
     text-transform: uppercase;
-    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.98));
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.55));
 }
 
 /* Список новостей */
@@ -5320,7 +5320,7 @@ tbody, td, tfoot, th, thead, tr {
     align-items: center;
     justify-content: flex-start; /* сверху размещаем содержимое */
     text-align: center;
-    background: #fff;
+    background: #d8ded6;
     border-radius: 9px;
     box-shadow: 0 2px 9px rgba(30, 40, 72, 0.10);
     padding: 10px;
