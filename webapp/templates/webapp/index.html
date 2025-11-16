@@ -194,9 +194,13 @@
             <div class="services-inline-row">
                 {% for service in adventure_services %}
                     <div class="service-mini-card">
-                        <a href="{{ service.get_absolute_url }}">
-                            <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
-                                 class="service-mini-img"/>
+                        {% if service.category %}
+                            <a href="{% url 'products_by_category' category=service.category %}">
+                        {% else %}
+                            <a href="#">
+                        {% endif %}
+                        <img src="{{ service.image.url }}" alt="{{ service.alt_text|default:service.title }}"
+                             class="service-mini-img"/>
                         </a>
                         <div class="service-mini-caption">{{ service.title }}</div>
                     </div>
@@ -204,6 +208,7 @@
             </div>
         </div>
     </section>
+
 
     <div class="gradient-adventure"></div>
 

@@ -417,6 +417,7 @@ class AdventureService(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='services_for/')
     alt_text = models.CharField(max_length=255, blank=True)
+    category = models.CharField(max_length=50, choices=BannerPage.CATEGORY_CHOICES, blank=True)
 
     class Meta:
         verbose_name = "Блок Для"
@@ -426,4 +427,5 @@ class AdventureService(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('service_detail', kwargs={'slug': self.slug})
+        # Формируем url для фильтрации продуктов по категории
+        return reverse('products_by_category', kwargs={'slug': self.category})

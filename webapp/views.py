@@ -23,7 +23,7 @@ def index(request):
     order_form, order_error, order_success = handle_order_form(request)
     news_list = News.objects.all()[:10]
     mettallo_main = MetalworkingService.objects.all()
-    adventure_services = AdventureService.objects.all()
+    adventure_services = AdventureService.objects.exclude(category='')
 
     error_message = None
     contact_success = False
@@ -138,6 +138,7 @@ def products(request):
         'steps_and_stairs': 'is_steps_and_stairs',
         'grills': 'is_grills',
         'decor_elements': 'is_decor_elements',
+        'sport': 'is_sports',
     }
 
     selected_category = request.GET.get('category')
@@ -169,19 +170,15 @@ def products(request):
     return render(request, 'webapp/products.html', context=context)
 
 
-
 def products_by_done(request, category):
     banner = BannerPage.objects.filter(category=category).first()
     field_name = CATEGORY_MAP.get(category)
     if not field_name:
-        # Если категория не найдена, можно вернуть 404 или все изделия
-        items = ItemObject.objects.none()
+        items = ItemObject.objects.none()  # нет подходящих товаров
     else:
-        # Фильтруем изделия, где соответствующее булево поле True
         filter_kwargs = {field_name: True}
         items = ItemObject.objects.filter(**filter_kwargs)
 
-    # Для отображения названия категории на странице
     category_verbose = {
         'metal_structures': 'Металлоконструкции',
         'procladki': 'Прокладки',
