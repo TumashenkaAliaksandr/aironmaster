@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
 
-from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm, CharaForm, TreeModelingForm
+from .forms import BannerForm, OurServiceForm, ItemObjectForm, AdvertisementForm, CharaForm, TreeModelingForm, AboutForm
 from .models import ItemPhoto, ItemObject, Banner, HadContact, ServicesContact, FooterInfo, About, OurService, \
     SocialNetwork, BannerPage, ServicePhoto, News, ServicePrice, ServiceAdvantage, ServiceVideo, Advertisement, \
     AdvertisementVideo, OurWorks, ProcessedMetal, MetalworkingService, SiteBarCategory, ThreeDConstructions, \
@@ -98,6 +98,7 @@ class FooterInfoAdmin(admin.ModelAdmin):
 
 @admin.register(About)
 class AboutAdmin(admin.ModelAdmin):
+    form = AboutForm
     list_display = ('name', 'description', 'photo_preview')
     readonly_fields = ('photo_preview',)
 

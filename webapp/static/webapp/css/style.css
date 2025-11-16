@@ -265,7 +265,7 @@ nav .nav-linkss.active {
 .photo-banner {
     /*width: 100vw;*/
     min-height: 400px;
-    background: url('../img/aironmaster-lazer.gif') center/cover no-repeat;
+    background: url('../img/aironmaster_banner.gif') center/cover no-repeat;
     color: white;
     position: relative;
     display: flex;
