@@ -1,6 +1,6 @@
 body {
     font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ecf7d8;
+    background-color: #eef3e3;
     margin: 0;
     padding: 0;
 
@@ -992,7 +992,7 @@ nav .nav-linkss.active {
 
 /* Внутренний контейнер для ограничения ширины */
 #screw-spiral .content-wrapper {
-    max-width: 100%;
+    /*max-width: 100%;*/
     width: 100%;
     height: 300px; /* фиксированная высота */
     border-radius: 12px;
@@ -5662,10 +5662,10 @@ tbody, td, tfoot, th, thead, tr {
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 175px;
+        max-width: 300px;
         text-align: center;
         margin-top: 21px;
-        font-size: 16px;
+        font-size: 24px;
     }
 
     .advantage-icon {
