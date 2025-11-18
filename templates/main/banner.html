@@ -5,6 +5,10 @@
 {% block content %}
     <section id="home-page" class="photo-banner">
         {% for main_banner in banner %}
+            <video autoplay muted loop playsinline class="photo-banner-video">
+                <source src="{% static 'webapp/img/aironmaster_video_lazer.mp4' %}" type="video/mp4"/>
+                Ваш браузер не поддерживает видео.
+            </video>
             <div class="photo-banner-content">
                 <h2>{{ main_banner.name }}</h2><br>
                 <p>{{ main_banner.description|safe }}</p>
@@ -16,8 +20,7 @@
                         <a href="tel:{{ main_banner.phone2|cut:" " }}">{{ main_banner.phone2 }}</a>
                     {% endif %}
                 </p>
-{#                <a href="{% url 'about' %}" class="btn">Подробнее</a>#}
-            <button id="open-order-form" class="btn">Заказать шнек</button>
+                <button id="open-order-form" class="btn">Заказать шнек</button>
             </div>
         {% endfor %}
     </section>

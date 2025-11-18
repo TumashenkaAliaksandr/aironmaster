@@ -262,20 +262,44 @@ nav .nav-linkss.active {
     }
 }
 
+/*.photo-banner {*/
+/*    !*width: 100vw;*!*/
+/*    min-height: 400px;*/
+/*    background: url('../img/aironmaster_video_lazer.mp4') center/cover no-repeat;*/
+/*    color: white;*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*    padding: 2rem 0;*/
+/*    box-sizing: border-box;*/
+/*    overflow: hidden;*/
+/*}*/
+
 .photo-banner {
-    /*width: 100vw;*/
-    min-height: 400px;
-    background: url('../img/aironmaster_banner.gif') center/cover no-repeat;
-    color: white;
     position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 2rem 0;
     box-sizing: border-box;
-    overflow: hidden;
 }
+
+.photo-banner-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* чтобы видео было фоном */
+}
+
 
 .photo-banner .container {
     z-index: 2;
