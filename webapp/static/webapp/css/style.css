@@ -23,6 +23,85 @@ html {
     overflow-x: hidden;
 }
 
+/* Прелоадер на весь экран */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.sparks {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: transparent;
+}
+
+.spark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fffacd 0%, transparent 80%);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px #ffec66);
+  opacity: 0;
+  animation: spark-move 1.5s linear infinite;
+}
+
+/* Разные направления и задержки искр */
+.spark1 {
+  top: 80%; left: 50%;
+  animation-delay: 0s;
+  animation-direction: normal;
+}
+.spark2 {
+  top: 80%; left: 50%;
+  animation-delay: 0.3s;
+  animation-direction: normal;
+}
+.spark3 {
+  top: 80%; left: 50%;
+  animation-delay: 0.6s;
+  animation-direction: reverse;
+}
+.spark4 {
+  top: 80%; left: 50%;
+  animation-delay: 0.9s;
+  animation-direction: reverse;
+}
+.spark5 {
+  top: 80%; left: 50%;
+  animation-delay: 1.2s;
+  animation-direction: normal;
+}
+
+@keyframes spark-move {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(calc(var(--x) * 30px), calc(var(--y) * 30px)) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--x) * 50px), calc(var(--y) * 50px)) scale(0.5);
+  }
+}
+
+/* Задаём направления движение через кастомные свойства */
+.spark1 { --x: 1; --y: -1; }
+.spark2 { --x: -1; --y: 1; }
+.spark3 { --x: 1; --y: 1; }
+.spark4 { --x: -1; --y: -1; }
+.spark5 { --x: 0; --y: 1; }
+
+
 
 .border-bottom {
     border-bottom: none !important;
