@@ -24,6 +24,7 @@ def index(request):
     news_list = News.objects.all()[:10]
     mettallo_main = MetalworkingService.objects.all()
     adventure_services = AdventureService.objects.exclude(category='')
+    service = OurService.objects.first()
 
     error_message = None
     contact_success = False
@@ -113,6 +114,7 @@ def index(request):
         'mettallo_main': mettallo_main,
         'site_bar_category': site_bar_category,
         'adventure_services': adventure_services,
+        'service': service,
     }
 
     if contact_success:
