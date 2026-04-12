@@ -812,7 +812,7 @@ nav .nav-linkss.active {
 
 #category-burg {
     /*padding: 2.5rem 1.5rem;*/
-    background: linear-gradient(66deg, #f4ffe3, #8e8ca2);
+    background: linear-gradient(66deg, #fbfff6, #e1e0ef);
     color: #2b409c;
     box-sizing: border-box;
     text-align: center;
@@ -1027,7 +1027,7 @@ nav .nav-linkss.active {
 
 .gradient {
     height: 25px; /* adjust height as needed */
-    background: linear-gradient(319deg, #ffffff, #ececf9) !important;
+    background: linear-gradient(319deg, #ffffff, #ededf0) !important;
     width: 100%;
 }
 
@@ -1098,7 +1098,7 @@ nav .nav-linkss.active {
     /*max-width: 100%;*/
     width: 100%;
     height: 300px; /* фиксированная высота */
-    border-radius: 12px;
+    border-radius: 4px;
     box-shadow: 0 6px 20px rgba(90, 26, 126, 0.3);
     padding: 1rem 1.5rem;
     position: relative;
@@ -1613,7 +1613,7 @@ nav .nav-linkss.active {
 #contacts-with-item {
     /*width: 100vw;*/
     padding: 2rem 1.5rem;
-    background: linear-gradient(66deg, #ffffff, #cbcbd3);
+    background: linear-gradient(66deg, #ffffff, #e1e1e5);
     box-sizing: border-box;
     color: #f0f9f9;
     text-align: center;
@@ -1747,12 +1747,13 @@ nav .nav-linkss.active {
     border: none;
     border-radius: 30px;
     color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 500;
+    font-size: 1rem;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 153, 213, 0.6);
     transition: background 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
+    text-transform: uppercase;
 }
 
 .btn-submit:hover,
@@ -4959,7 +4960,7 @@ html {
 
 /* Общие стили контейнеров */
 .service-detail-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 15px;
     color: #222;
@@ -5156,7 +5157,7 @@ tbody, td, tfoot, th, thead, tr {
 #photoSlider {
     overflow: hidden;
     position: relative;
-    max-width: 700px; /* или ваша максимальная ширина */
+    max-width: 1300px; /* или ваша максимальная ширина */
     margin: 0 auto;
 }
 
@@ -5172,12 +5173,14 @@ tbody, td, tfoot, th, thead, tr {
 .slider-inner-wrapper .slide {
     flex: 0 0 31.33%; /* ширина каждого слайда */
     box-sizing: border-box;
-    margin-right: 3% !important; /* горизонтальный отступ, кроме последнего */
-    border-radius: 12px;
+    margin-right: 30px !important; /* горизонтальный отступ, кроме последнего */
+    border-radius: 4px;
     background: #f7f7f7;
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
+    margin-bottom: 4px;
+    margin-left: 4px;
 }
 
 /* Убираем правый отступ у каждого второго слайда */
@@ -5189,7 +5192,7 @@ tbody, td, tfoot, th, thead, tr {
 .slider-inner-wrapper .slide img {
     width: 100%;
     height: 200px;
-    border-radius: 12px;
+    border-radius: 4px;
     object-fit: cover;
     display: block;
     cursor: pointer;
