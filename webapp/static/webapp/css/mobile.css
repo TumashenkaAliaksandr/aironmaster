@@ -128,7 +128,7 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         display: block;
-        height: 56px !important;
+        height: 65px !important;
         object-fit: cover;
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
         transition: transform 0.3s ease;
@@ -137,8 +137,8 @@
         position: static;
         left: auto;
         margin-bottom: 15px;
-        max-width: 56px;
-        max-height: 56px;
+        max-width: 80px;
+        max-height: 80px;
     }
 
     .about-text-banner p {
