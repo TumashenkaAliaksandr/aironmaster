@@ -133,7 +133,7 @@ html {
 
 
 header {
-    background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+    background: linear-gradient(90deg, #8f1bfc, #0099d5, #851fe9);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -1993,7 +1993,7 @@ h2 {
 }
 
 .top-bar {
-    background: linear-gradient(90deg, #4a0073, #0099d5, #3f0e66);
+    background: linear-gradient(90deg, #8f1bfc, #00cbff, #851fe9);
     color: #f0f9f9; /* чуть светлее белого для мягкости */
     font-size: 0.85rem;
     padding: 0.3rem 0;
