@@ -5,26 +5,32 @@
 {% block content %}
     <!-- Banner -->
     {% include 'main/banner.html' %}
-    <!-- ⛏ Изделия компании (вместо adventure_services) -->
+    <!-- ⛏ Изделия компании -->
     <section class="custom-service-bg">
         <div class="services-inline-bg service-inline-container">
-            <h2 class="section-title-services"></h2>
+            <h2 class="section-title-services d-block d-md-none">Изделия</h2>
             <div class="services-inline-row">
                 {% for item in main_items %}
-                    <div class="service-mini-card">
-                        {% if item.slug %}
-                            <a href="/products/{{ item.slug }}/">
-                        {% else %}
-                            <a href="#">
+                    <div class="service-mini-card service-mini-card-h {% if forloop.counter <= 3 %}top-item{% endif %}">
+                        <!-- ✅ БЕЙДЖ В КАРТЕ -->
+                        {% if forloop.counter <= 3 %}
+                            <div class="item-badge item-badge-{{ forloop.counter }}">
+                                ТОП
+                            </div>
                         {% endif %}
-                        {% if item.photos.first %}
-                            <img src="{{ item.photos.first.photo.url }}"
-                                 alt="{{ item.name }}" class="service-mini-img"/>
-                        {% else %}
-                            <img src="{% static 'webapp/img/no_images.png' %}" alt="{{ item.name }}" class="service-mini-img"/>
-                        {% endif %}
+
+                        <!-- ✅ ВЕСЬ БЛОК — КЛИКАБЕЛЬНЫЙ! -->
+                        <a href="{% if item.slug %}/products/{{ item.slug }}/{% else %}#{% endif %}"
+                           class="service-card-link">
+                            {% if item.photos.first %}
+                                <img src="{{ item.photos.first.photo.url }}"
+                                     alt="{{ item.name }}" class="service-mini-img"/>
+                            {% else %}
+                                <img src="{% static 'webapp/img/no_images.png' %}"
+                                     alt="{{ item.name }}" class="service-mini-img"/>
+                            {% endif %}
+                            <div class="service-mini-caption">{{ item.name }}</div>
                         </a>
-                        <div class="service-mini-caption">{{ item.name }}</div>
                     </div>
                 {% empty %}
                     <p>Изделия скоро появятся</p>
@@ -32,12 +38,15 @@
             </div>
         </div>
     </section>
-
     <!-- End Banner -->
     <div id="about" class="first-gradient"></div>
+
+
+
     <section class="custom-metal-bg">
         <div class="custom-container">
             <!-- Основной блок с металлообработкой -->
+
             <div class="custom-metal-block">
                 <h1 class="custom-title">Металлообработка 🏗</h1>
                 <hr class="news-separator" aria-hidden="true"/>
@@ -165,9 +174,9 @@
                                 {# Добавьте сюда другие бейджи, если нужно #}
                             </div>
 
-{#                            <div class="img-btn-container">#}
-{#                                <span class="wish-btn" title="Добавить в избранное">💖</span>#}
-{#                            </div>#}
+                            {#                            <div class="img-btn-container">#}
+                            {#                                <span class="wish-btn" title="Добавить в избранное">💖</span>#}
+                            {#                            </div>#}
                         </div>
 
                         <div class="card-body p-2">
@@ -178,7 +187,8 @@
 
                             <ul class="attributes-card mt-auto">
                                 <li><a href="{% url 'about' %}" class="text-decoration-none">Aironmaster</a></li>
-                                <li><a href="{% url 'products_by_category' category='metal_structures' %}" class="text-decoration-none">▷ Изделия из металла</a></li>
+                                <li><a href="{% url 'products_by_category' category='metal_structures' %}"
+                                       class="text-decoration-none">▷ Изделия из металла</a></li>
                             </ul>
                         </div>
                     </div>
@@ -249,12 +259,12 @@
                 </div>
                 <button class="news-carousel__nav news-carousel__nav--next" aria-label="Вперёд">&#10095;</button>
             </div>
+            <div class="container-xxl p-3">
+                <a href="{% url 'news_list' %}">
+                    <button class="btn-all-product">Посмотреть все</button>
+                </a>
+            </div>
         </div>
-    <div class="container-xxl">
-        <a href="{% url 'news_list' %}">
-            <button class="btn-all-product">Посмотреть все</button>
-        </a>
-    </div>
     </section>
 
     <div id="contacts-top"></div>

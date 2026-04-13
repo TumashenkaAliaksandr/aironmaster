@@ -10,7 +10,7 @@
                 Ваш браузер не поддерживает видео.
             </video>
             <div class="photo-banner-content">
-                <h2>{{ main_banner.name }}</h2><br>
+                <h2><img src="{% static 'webapp/img/aironmaster_lazer_man.png' %}" alt="{{ main_banner.name }}" width="auto" height="55" style="vertical-align: middle; margin-right: 8px;">{{ main_banner.name }}<br></h2>
                 <p>{{ main_banner.description|safe }}</p>
                 <p>
                     {% if main_banner.phone1 %}

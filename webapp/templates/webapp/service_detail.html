@@ -54,40 +54,40 @@
             </section>
 
 
-            <!-- Таблица стоимости -->
-            <section class="price-section">
-                <h2 class="section-title">⛃ Стоимость услуги</h2>
-                <table class="price-table">
-                    <thead>
-                    <tr>
-                        <th>Толщина металла, мм</th>
-                        {% for metal in metals %}
-                            <th>{{ metal.name }}</th>
-                        {% endfor %}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for thickness in thicknesses %}
-                        <tr>
-                            <td>{{ thickness }}</td>
-                            {% for metal in metals %}
-                                <td>
-                                    {% for price in service.prices.all %}
-                                        {% if price.thickness == thickness and price.metal_type.id == metal.id %}
-                                            {{ price.cost }} BYN
-                                        {% endif %}
-                                    {% endfor %}
-                                </td>
-                            {% endfor %}
-                        </tr>
-                    {% empty %}
-                        <tr>
-                            <td colspan="{{ metals|length|add:'1' }}">Информация о стоимости отсутствует.</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </section>
+{#            <!-- Таблица стоимости -->#}
+{#            <section class="price-section">#}
+{#                <h2 class="section-title">⛃ Стоимость услуги</h2>#}
+{#                <table class="price-table">#}
+{#                    <thead>#}
+{#                    <tr>#}
+{#                        <th>Толщина металла, мм</th>#}
+{#                        {% for metal in metals %}#}
+{#                            <th>{{ metal.name }}</th>#}
+{#                        {% endfor %}#}
+{#                    </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#                    {% for thickness in thicknesses %}#}
+{#                        <tr>#}
+{#                            <td>{{ thickness }}</td>#}
+{#                            {% for metal in metals %}#}
+{#                                <td>#}
+{#                                    {% for price in service.prices.all %}#}
+{#                                        {% if price.thickness == thickness and price.metal_type.id == metal.id %}#}
+{#                                            {{ price.cost }} BYN#}
+{#                                        {% endif %}#}
+{#                                    {% endfor %}#}
+{#                                </td>#}
+{#                            {% endfor %}#}
+{#                        </tr>#}
+{#                    {% empty %}#}
+{#                        <tr>#}
+{#                            <td colspan="{{ metals|length|add:'1' }}">Информация о стоимости отсутствует.</td>#}
+{#                        </tr>#}
+{#                    {% endfor %}#}
+{#                    </tbody>#}
+{#                </table>#}
+{#            </section>#}
 
 
             <div class="processing-metal-section">
