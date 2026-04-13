@@ -457,7 +457,7 @@
 
     .gradient {
         height: 17px;
-        background: linear-gradient(92deg, #f2f5f0, #8b8b9e) !important;
+        background: linear-gradient(92deg, #f2f5f0, #cecece) !important;
         width: 100%;
     }
 

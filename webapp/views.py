@@ -97,6 +97,10 @@ def index(request):
 
     photos = item.photos.all()
 
+    main_items = ItemObject.objects.filter(
+        is_main_top=True
+    ).prefetch_related('photos')[:8]
+
     context = {
         'form': form,
         'order_form': order_form,
@@ -115,6 +119,7 @@ def index(request):
         'site_bar_category': site_bar_category,
         'adventure_services': adventure_services,
         'service': service,
+        'main_items': main_items,
     }
 
     if contact_success:

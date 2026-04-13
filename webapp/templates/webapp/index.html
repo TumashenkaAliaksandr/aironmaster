@@ -5,6 +5,34 @@
 {% block content %}
     <!-- Banner -->
     {% include 'main/banner.html' %}
+    <!-- ⛏ Изделия компании (вместо adventure_services) -->
+    <section class="custom-service-bg">
+        <div class="services-inline-bg service-inline-container">
+            <h2 class="section-title-services"></h2>
+            <div class="services-inline-row">
+                {% for item in main_items %}
+                    <div class="service-mini-card">
+                        {% if item.slug %}
+                            <a href="/products/{{ item.slug }}/">
+                        {% else %}
+                            <a href="#">
+                        {% endif %}
+                        {% if item.photos.first %}
+                            <img src="{{ item.photos.first.photo.url }}"
+                                 alt="{{ item.name }}" class="service-mini-img"/>
+                        {% else %}
+                            <img src="{% static 'webapp/img/no_images.png' %}" alt="{{ item.name }}" class="service-mini-img"/>
+                        {% endif %}
+                        </a>
+                        <div class="service-mini-caption">{{ item.name }}</div>
+                    </div>
+                {% empty %}
+                    <p>Изделия скоро появятся</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
     <!-- End Banner -->
     <div id="about" class="first-gradient"></div>
     <section class="custom-metal-bg">
