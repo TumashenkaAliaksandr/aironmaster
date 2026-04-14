@@ -279,7 +279,8 @@ nav .nav-linkss.active {
     display: block;
     left: 0;
     position: relative;
-    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
+    top: 45px;
 }
 
 .about-description {
@@ -937,7 +938,7 @@ nav .nav-linkss.active {
 #screw {
     /*width: 100vw; !* секция на всю ширину окна *!*/
     padding: 2.5rem 1.5rem;
-    background: linear-gradient(66deg, #ffffff, #cbcbd3);
+    background: linear-gradient(66deg, #ffffff, #e3e3e3) !important;
     color: #e0d9f1;
     box-sizing: border-box;
     /*text-align: center; !* центрируем текст *!*/
@@ -1054,13 +1055,13 @@ nav .nav-linkss.active {
 
 .gradient-brcr {
     height: 25px; /* adjust height as needed */
-    background: linear-gradient(92deg, #f2f5f0, #bdbdcc) !important;
+    background: linear-gradient(92deg, #f9faf9, #d9d9e9) !important;
     width: 100%;
 }
 
 .gradient-product-detail {
     height: 25px;
-    background: linear-gradient(92deg, #ffffff, #d0d0d8) !important;
+    background: linear-gradient(92deg, #ffffff, #e7e7e7) !important;
     width: 100%;
 }
 
