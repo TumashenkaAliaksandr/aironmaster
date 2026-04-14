@@ -112,20 +112,20 @@
 
 
             <!-- Преимущества -->
-            <section class="advantages-section">
-                <h2 class="section-title">🏳 Наши преимущества</h2>
-                <ul class="advantages-list horizontal-list">
-                    {% for adv in service.advantages.all %}
-                        <li class="advantage-item">
-                            <img src="{{ adv.icon.url }}" alt="{{ adv.text }}" class="advantage-icon" width="40"
-                                 height="40"/>
-                            <span>{{ adv.text }}</span>
-                        </li>
-                    {% empty %}
-                        <li>Преимущества пока не добавлены.</li>
-                    {% endfor %}
-                </ul>
-            </section>
+            {% if service.advantages.exists %}
+                <section class="advantages-section">
+                    <h2 class="section-title">🏳 Наши преимущества</h2>
+                    <ul class="advantages-list horizontal-list">
+                        {% for adv in service.advantages.all %}
+                            <li class="advantage-item">
+                                <img src="{{ adv.icon.url }}" alt="{{ adv.text }}" class="advantage-icon" width="40"
+                                     height="40"/>
+                                <span>{{ adv.text }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endif %}
 
             <!-- Видео -->
             <section class="videos-section">
