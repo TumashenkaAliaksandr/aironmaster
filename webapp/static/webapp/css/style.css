@@ -4391,6 +4391,7 @@ html {
 @media (max-width: 1050px) {
     .custom-metal-block {
         padding: 13px 7px;
+        display: inline;
     }
 
     .custom-row {

@@ -679,7 +679,7 @@
 
     .custom-card img {
         display: block;
-        width: 345px;
+        width: 220px;
         height: 150px;
         object-fit: cover;
         object-position: center;
@@ -1439,7 +1439,7 @@
 
     .service-mini-card-h {
         height: 135px !important;
-        padding: 4px 0 12px!important;
+        padding: 4px 0 12px !important;
     }
 
     .service-mini-img {
@@ -1452,27 +1452,47 @@
         padding: 4px 10px 12px;
     }
 }
-/* только для этого блока */
-@media (max-width: 768px) {
 
+@media (max-width: 768px) {
     .custom-metal-block .custom-row {
-        display: ruby;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: left;
-        flex-direction: row;
-        font-size: 14px;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        margin: 0 -5px !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
     }
 
-    .custom-metal-block .custom-card {
-        width: calc(50% - 5px); /* две карточки */
-        margin-left: 2.5px;
+    .custom-metal-block .custom-row > .custom-card {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding: 5px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        float: none !important;
+        clear: none !important;
+    }
+
+    .custom-metal-block .custom-card a {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .custom-metal-block .custom-card img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .custom-metal-block .custom-card * {
+        min-width: 0 !important;
     }
 
     .service-inline-container {
         max-width: 1400px;
         margin: 0 auto;
         padding: 10px;
+        box-sizing: border-box;
     }
 
     .product-block-name a {
@@ -1491,6 +1511,7 @@
         max-width: 1400px;
         width: 100%;
         margin: 0 auto;
+        box-sizing: border-box;
     }
 
     .custom-container {
@@ -1501,5 +1522,4 @@
         padding: 0 5px;
         box-sizing: border-box;
     }
-
 }
