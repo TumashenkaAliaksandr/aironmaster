@@ -20,8 +20,8 @@
         <meta name="google-site-verification" content="VoA8GolpB4Ekv2kfgefEfrQ7kwOJPKPlbkO3KLSv2go" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="yandex-verification" content="d69267b265ea97d6"/>
-        <title>Лазерная резка металла Полоцк | ЧПУ резка стали нержавейки алюминия | Айронмастер</title>
-        <meta name="description" content="Лазерная ЧПУ резка металла Полоцк: сталь 25мм, алюминий 20мм, нержавейка 12мм. Точность 0.1мм. Цена от 12₽/м. Срок 1 день. ☎️ +375(29)819-35-03">
+        <title>Лазерная резка металла Витебская область г.Полоцк | ЧПУ резка стали нержавейки алюминия | Айронмастер</title>
+        <meta name="description" content="Лазерная ЧПУ резка металла Витебская область г.Полоцк: сталь 25мм, алюминий 20мм, нержавейка 12мм. Точность 0.1мм. ☎️ +375(29)819-35-03">
         <meta name="keywords" content="лазерная резка металла Полоцк, ЧПУ резка стали Полоцк, резка нержавейки Новополоцк, лазерная резка алюминия Витебск, резка листового металла Полоцк">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{% static 'webapp/img/a_favicon.png' %}">
@@ -73,7 +73,7 @@
 
 
 <header class="border-bottom py-2">
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
         <!-- Логотип слева -->
         <div class="logo">
             <a href="{% url 'index' %}">
@@ -236,10 +236,100 @@
             </form>
             <div id="searchResults"></div>
         </div>
-
-
+        <!-- Кнопка оформления заявки -->
+            <button type="button"
+                    id="openRequestModal"
+                    class="header-request-btn">
+                Оставить заявку
+            </button>
     </div>
 </header>
+
+<!-- Модальное окно заявки -->
+<div id="requestModal"
+     class="request-modal"
+     aria-hidden="true">
+
+    <div class="request-modal-overlay" data-close-modal></div>
+
+    <div class="request-modal-dialog"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="requestModalTitle">
+
+        <button type="button"
+                class="request-modal-close"
+                data-close-modal
+                aria-label="Закрыть окно">
+            &times;
+        </button>
+
+        <div class="request-modal-content">
+            <h2 id="requestModalTitle">🗣 ОСТАВИТЬ ЗАЯВКУ</h2>
+
+            <p>Оставьте свои контакты, и мы свяжемся с вами.</p>
+
+            <form id="request-contact-form"
+                  action=""
+                  method="POST"
+                  novalidate>
+
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                <div class="form-row">
+                    <label for="request_name">Имя</label>
+                    {{ form.name.errors }}
+                    <input type="text"
+                           name="{{ form.name.html_name }}"
+                           id="request_name"
+                           placeholder="Ваше имя"
+                           value="{{ form.name.value|default_if_none:'' }}"
+                           required>
+                </div>
+
+                <div class="form-row">
+                    <label for="request_phone">Телефон</label>
+                    {{ form.phone.errors }}
+                    <input type="text"
+                           name="{{ form.phone.html_name }}"
+                           id="request_phone"
+                           placeholder="Ваш телефон"
+                           value="{{ form.phone.value|default_if_none:'' }}"
+                           required>
+                </div>
+
+                <div class="form-row">
+                    <label for="request_email">Почта</label>
+                    {{ form.email.errors }}
+                    <input type="email"
+                           name="{{ form.email.html_name }}"
+                           id="request_email"
+                           placeholder="Ваш email"
+                           value="{{ form.email.value|default_if_none:'' }}">
+                </div>
+
+                <div class="form-row">
+                    <label for="request_message">Описание</label>
+                    {{ form.message.errors }}
+                    <textarea name="{{ form.message.html_name }}"
+                              id="request_message"
+                              placeholder="Опишите вашу задачу"
+                              required>{{ form.message.value|default_if_none:'' }}</textarea>
+                </div>
+
+                <button type="submit"
+                        name="contact_submit"
+                        value="1"
+                        class="btn btn-submit">
+                    Отправить заявку
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
 
 
 {% block content %}{% endblock %}
