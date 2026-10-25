@@ -1,4 +1,4 @@
- {% load static %}
+{% load static %}
 
 
 <head>
@@ -205,8 +205,15 @@
                         class="nav-linkss {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}"
                         href="{% url 'contacts' %}">Контакты</a></li>
             </ul>
-        </nav>
-        <div class="social-wrapper social-wrapper-haider">
+            <div class="social-wrapper social-wrapper-haider pb-3">
+              <!-- Кнопка оформления заявки -->
+            <button type="button"
+                    id="openRequestModal"
+                    class="header-request-btn">
+                Оставить заявку
+            </button>
+            </div>
+              <div class="social-wrapper social-wrapper-haider">
             {% for social in footer_info.social_networks.all %}
                 {% if social.url %}
                     <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
@@ -221,6 +228,24 @@
                 {% endif %}
             {% endfor %}
         </div>
+        </nav>
+
+         <div class="social-wrapper social-wrapper-haider d-none d-md-flex">
+            {% for social in footer_info.social_networks.all %}
+                {% if social.url %}
+                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer"
+                       aria-label="{{ social.name }}">
+                        {% if social.icon %}
+                            <img src="{{ social.icon.url }}" alt="{{ social.name }}"/>
+                        {% else %}
+                            <!-- Если иконка не загружена, можно показать название или иконку по умолчанию -->
+                            {{ social.name }}
+                        {% endif %}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
         <div class="search-container" style="position: relative;">
             <button id="searchToggle" class="search-icon" aria-label="Поиск" type="button">
                 <!-- Иконка лупы SVG -->
@@ -236,10 +261,10 @@
             </form>
             <div id="searchResults"></div>
         </div>
-        <!-- Кнопка оформления заявки -->
+         <!-- Кнопка оформления заявки -->
             <button type="button"
                     id="openRequestModal"
-                    class="header-request-btn">
+                    class="header-request-btn d-none d-md-flex">
                 Оставить заявку
             </button>
     </div>

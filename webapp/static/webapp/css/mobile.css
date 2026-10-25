@@ -128,7 +128,7 @@
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         display: block;
-        height: 80px !important;
+        height: 100px !important;
         object-fit: cover;
         filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
         transition: transform 0.3s ease;
@@ -679,7 +679,7 @@
 
     .custom-card img {
         display: block;
-        width: 220px;
+        width: 100%;
         height: 150px;
         object-fit: cover;
         object-position: center;
@@ -1284,14 +1284,15 @@
     }
 
     .logo img {
-        height: 60px;
+        height: 50px;
         width: auto;
         display: block;
         position: relative;
         z-index: 1;
         filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
         transition: filter 0.3s;
-        right: 105px;
+        /* right: 105px; */
+        top: 12px;
     }
 
     #breadcrumps {
@@ -1453,39 +1454,34 @@
     }
 }
 
+/* только для этого блока */
 @media (max-width: 768px) {
     .custom-metal-block .custom-row {
-        display: flex !important;
-        flex-wrap: wrap !important;
+        display: flex!important;
         width: 100% !important;
-        margin: 0 -5px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+    }
+
+    .custom-metal-block .custom-card {
+        display: inline-block !important;
+        vertical-align: top !important;
+      /*   width: calc(50% - 5px) !important;
+      max-width: calc(50% - 5px) !important;
+      min-width: calc(50% - 5px) !important; */
+        margin: 0 10px 10px 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
+        font-size: 13px !important;
     }
 
-    .custom-metal-block .custom-row > .custom-card {
-        flex: 0 0 50% !important;
-        max-width: 50% !important;
-        padding: 5px !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-        float: none !important;
-        clear: none !important;
+    .custom-metal-block .custom-card:nth-child(2n) {
+        margin-right: 0 !important;
     }
 
-    .custom-metal-block .custom-card a {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    .custom-metal-block .custom-card img {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .custom-metal-block .custom-card * {
-        min-width: 0 !important;
+    .custom-metal-block .custom-card:nth-child(2n + 1) {
+        clear: left !important;
     }
 
     .service-inline-container {
@@ -1521,5 +1517,774 @@
         align-items: flex-start;
         padding: 0 5px;
         box-sizing: border-box;
+    }
+}
+
+
+
+/* =========================================================
+   AIRONMASTER — МОБИЛЬНЫЙ ХЭДЕР И ОКНО ЗАЯВКИ
+   Только экраны шириной до 767px
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    /* Основная шапка */
+    header.border-bottom.py-2 {
+        position: relative;
+        z-index: 1100;
+        width: 100%;
+        padding: 8px 0 !important;
+        background: linear-gradient(90deg, #4a0073, #0099d5, #543071);
+        border-bottom: 1px solid rgba(255, 255, 255, .2) !important;
+        height: 110px;
+    }
+
+    header.border-bottom.py-2 > .container-fluid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 0 !important;
+        padding: 0 12px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Логотип */
+    header.border-bottom.py-2 .logo {
+        display: flex;
+        align-items: center;
+        flex: 0 1 auto;
+        min-width: 0;
+        margin: 0;
+    }
+
+    header.border-bottom.py-2 .logo a {
+        display: flex;
+        align-items: center;
+        font-size: initial;
+        line-height: 1;
+    }
+
+    header.border-bottom.py-2 .logo img {
+        display: block;
+        width: auto;
+        height: 41px;
+        max-width: 112px;
+        object-fit: contain;
+        position: static;
+        filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, .2));
+    }
+
+    /* Бургер — справа в верхнем ряду */
+    header.border-bottom.py-2 #burgerBtn.burger-btn {
+        position: absolute;
+        display: flex;
+        flex: 0 0 40px;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 37px;
+        height: 37px;
+        margin: 0 0 0 8px;
+        padding: 9px;
+        border: 1px solid rgba(255, 255, 255, .4);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, .08);
+        cursor: pointer;
+        z-index: 1102;
+        right: 66px;
+        top: 18px;
+    }
+
+    header.border-bottom.py-2 #burgerBtn .burger-line {
+        display: block;
+        flex: 0 0 3px;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 3px;
+        transition: transform .25s ease, opacity .25s ease;
+    }
+
+    /* Сохраняем анимацию бургера */
+    header.border-bottom.py-2 #burgerBtn.open .burger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    header.border-bottom.py-2 #burgerBtn.open .burger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    header.border-bottom.py-2 #burgerBtn.open .burger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Десктопная навигация на телефоне скрыта */
+    header.border-bottom.py-2 > .container-fluid > nav.d-none.d-md-block {
+        display: none !important;
+    }
+
+    /* Мобильное меню */
+    header.border-bottom.py-2 #mobileMenu.mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-height: calc(100dvh - 100px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 12px 16px 18px;
+        margin: 0;
+        background: linear-gradient(135deg, #4a0073, #0099d5, #543071);
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, .25);
+        z-index: 1101;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    header.border-bottom.py-2 #mobileMenu.mobile-menu.show {
+        display: block !important;
+    }
+
+    #mobileMenu ul.nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    #mobileMenu ul.nav > li {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    #mobileMenu ul.nav > li:last-child {
+        border-bottom: 0;
+    }
+
+    #mobileMenu .nav-linkss,
+    #mobileMenu .dropbtn {
+        display: block;
+        width: 100%;
+        padding: 13px 8px !important;
+        margin: 0;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+        text-decoration: none;
+        box-sizing: border-box;
+        top: auto;
+    }
+
+    #mobileMenu .nav-linkss:hover,
+    #mobileMenu .nav-linkss:focus,
+    #mobileMenu .nav-linkss.active {
+        color: #ffdf66;
+        background: rgba(255, 255, 255, .08);
+    }
+
+    /* Выпадающие подменю */
+    #mobileMenu .dropdown {
+        position: relative;
+    }
+
+    #mobileMenu .dropdown-content {
+        display: none;
+        position: static;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 0 0 8px 12px;
+        background: rgba(0, 0, 0, .13);
+        border: 0;
+        border-radius: 5px;
+        box-shadow: none;
+        box-sizing: border-box;
+    }
+
+    #mobileMenu .dropdown-content li {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #mobileMenu .dropdown-content a {
+        display: block;
+        padding: 10px 8px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.4;
+        text-decoration: none;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    #mobileMenu .dropdown-content a:hover,
+    #mobileMenu .dropdown-content a:focus {
+        color: #ffdf66;
+        background: rgba(255, 255, 255, .08);
+    }
+
+    /* Соцсети: убираем старое абсолютное позиционирование */
+    header.border-bottom.py-2 .social-wrapper-haider {
+        position: static !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex: 0 0 auto;
+        width: auto;
+        margin: 0 30px 0;
+        padding: 0;
+        order: 10;
+    }
+
+    header.border-bottom.py-2 .social-wrapper-haider a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    header.border-bottom.py-2 .social-wrapper-haider img {
+        display: block;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        padding: 3px;
+        object-fit: contain;
+        border: 1px solid rgba(255, 255, 255, .4);
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+
+    /* Поиск */
+    header.border-bottom.py-2 .search-container {
+        position: relative !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 40px;
+        width: 37px;
+        height: 37px;
+        margin: 10px 0 0 auto;
+        padding: 0;
+        order: 11;
+    }
+
+    header.border-bottom.py-2 #searchToggle.search-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: static !important;
+        left: auto !important;
+        bottom: auto !important;
+        width: 37px;
+        height: 37px;
+        margin: 0;
+        padding: 9px;
+        background: rgba(255, 255, 255, .08);
+        border: 1px solid rgba(255, 255, 255, .4);
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    header.border-bottom.py-2 #searchToggle svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
+
+    header.border-bottom.py-2 #searchForm {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        left: auto;
+        width: min(280px, calc(100vw - 24px));
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+        overflow: hidden;
+        z-index: 1105;
+    }
+
+    header.border-bottom.py-2 #searchForm input {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        padding: 12px;
+        border: 0;
+        outline: 0;
+        background: #fff;
+        color: #222;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    header.border-bottom.py-2 #searchResults {
+        display: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        left: auto;
+        width: min(300px, calc(100vw - 24px));
+        max-height: 55dvh;
+        overflow-y: auto;
+        background: #fff;
+        color: #222;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+        font-size: 14px;
+        z-index: 1106;
+        box-sizing: border-box;
+    }
+
+    /* Кнопка заявки — отдельная строка под логотипом и бургером */
+    header.border-bottom.py-2 #openRequestModal.header-request-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 12;
+       /*  flex: 0 0 100%;
+       width: 100%; */
+        min-height: 35px;
+        margin: 10px 120px 0;
+        padding: 5px 10px;
+        border: 1px solid #2064b2;
+        border-radius: 35px;
+        background: linear-gradient(90deg, #2d73ff, #094678);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.3;
+        text-align: center;
+        white-space: normal;
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: filter .2s ease, transform .2s ease;
+    }
+
+    header.border-bottom.py-2 #openRequestModal.header-request-btn:hover,
+    header.border-bottom.py-2 #openRequestModal.header-request-btn:focus-visible {
+        filter: brightness(1.12);
+    }
+
+    /* =====================================================
+       МОДАЛЬНОЕ ОКНО ЗАЯВКИ
+       ===================================================== */
+
+    #requestModal.request-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 20000;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    #requestModal.request-modal.is-open {
+        display: flex !important;
+    }
+
+    #requestModal .request-modal-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 8, 25, .76);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+
+    #requestModal .request-modal-dialog {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        max-width: 480px;
+        max-height: calc(100dvh - 24px);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: #fff;
+        color: #222;
+        border-radius: 12px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, .35);
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    #requestModal .request-modal-content {
+        width: 100%;
+        padding: 25px 18px 20px;
+        box-sizing: border-box;
+    }
+
+    #requestModal .request-modal-close {
+        position: sticky;
+        float: right;
+        top: 5px;
+        right: 5px;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        margin: 0 0 0 0;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #f0f0f0;
+        color: #333;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    #requestModal .request-modal-content h2 {
+        clear: none;
+        margin: 0 0 12px;
+        padding-right: 0;
+        color: #4a0073;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+    }
+
+    #requestModal .request-modal-content > p {
+        margin: 0 0 18px;
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    #requestModal #request-contact-form {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #requestModal #request-contact-form .form-row {
+        display: block;
+        width: 100%;
+        margin: 0 0 13px;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #requestModal #request-contact-form .form-row label {
+        display: block;
+        margin: 0 0 6px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    #requestModal #request-contact-form .form-row input,
+    #requestModal #request-contact-form .form-row textarea {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 11px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        background: #fff;
+        color: #222;
+        font-family: inherit;
+        font-size: 16px;
+        line-height: 1.4;
+        box-shadow: none;
+        box-sizing: border-box;
+    }
+
+    #requestModal #request-contact-form .form-row input {
+        min-height: 44px;
+    }
+
+    #requestModal #request-contact-form .form-row textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    #requestModal #request-contact-form .form-row input:focus,
+    #requestModal #request-contact-form .form-row textarea:focus {
+        border-color: #0099d5;
+        outline: 0;
+        box-shadow: 0 0 0 3px rgba(0, 153, 213, .15);
+    }
+
+    #requestModal #request-contact-form .btn-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 46px;
+        margin: 5px 0 0;
+        padding: 12px 16px;
+        border: 0;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #4a0073, #0099d5);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.4;
+        white-space: normal;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    #requestModal #request-contact-form .btn-submit:hover {
+        filter: brightness(1.1);
+    }
+
+    #requestModal #request-contact-form .errorlist {
+        margin: 4px 0 6px;
+        padding-left: 18px;
+        color: #c62828;
+        font-size: 13px;
+    }
+
+    body.request-modal-open {
+        overflow: hidden;
+        touch-action: none;
+    }
+}
+
+/* =========================================================
+   ОЧЕНЬ УЗКИЕ ЭКРАНЫ: 320–375px
+   ========================================================= */
+
+@media (max-width: 375px) {
+    header.border-bottom.py-2 > .container-fluid {
+        padding-right: 9px !important;
+        padding-left: 9px !important;
+    }
+
+    header.border-bottom.py-2 .logo img {
+        height: 43px;
+        max-width: 135px;
+    }
+
+    header.border-bottom.py-2 #burgerBtn.burger-btn {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        margin-left: 5px;
+    }
+
+    header.border-bottom.py-2 .social-wrapper-haider {
+        gap: 5px;
+    }
+
+    header.border-bottom.py-2 .social-wrapper-haider img {
+        width: 25px;
+        height: 25px;
+    }
+
+    header.border-bottom.py-2 #openRequestModal.header-request-btn {
+        min-height: 40px;
+        font-size: 14px;
+    }
+
+    #requestModal.request-modal {
+        padding: 8px;
+    }
+
+    #requestModal .request-modal-dialog {
+        max-height: calc(100dvh - 16px);
+        border-radius: 10px;
+    }
+
+    #requestModal .request-modal-content {
+        padding: 21px 14px 16px;
+    }
+
+    #requestModal .request-modal-content h2 {
+        font-size: 19px;
+    }
+}
+
+/* =========================================================
+   НИЗКИЕ ЭКРАНЫ В ГОРИЗОНТАЛЬНОЙ ОРИЕНТАЦИИ
+   ========================================================= */
+
+@media (max-width: 767px) and (max-height: 500px) {
+    #requestModal.request-modal {
+        align-items: flex-start;
+        padding: 6px;
+    }
+
+    #requestModal .request-modal-dialog {
+        max-height: calc(100dvh - 12px);
+    }
+
+    #requestModal .request-modal-content {
+        padding-top: 18px;
+        padding-bottom: 14px;
+    }
+
+    #requestModal #request-contact-form .form-row {
+        margin-bottom: 9px;
+    }
+
+    #requestModal #request-contact-form .form-row textarea {
+        min-height: 65px;
+    }
+}
+
+
+/* Выпадающие списки в мобильном меню */
+@media (max-width: 767px) {
+    .mobile-menu .nav-item.dropdown {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Подменю закрыто по умолчанию */
+    .mobile-menu .nav-item.dropdown > .dropdown-content {
+        display: none !important;
+        position: static !important;
+        width: 100%;
+        margin: 0;
+        padding: 6px 0 6px 15px;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 6px;
+        box-shadow: none;
+        list-style: none;
+    }
+
+    /* Показываем подменю только у открытого пункта */
+    .mobile-menu .nav-item.dropdown.open > .dropdown-content {
+        display: block !important;
+    }
+
+    .mobile-menu .nav-item.dropdown > .dropbtn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 0;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .mobile-menu .dropdown-content li {
+        margin: 0 !important;
+    }
+
+    .mobile-menu .dropdown-content a {
+        display: block;
+        padding: 10px 0;
+        color: #fff;
+        text-decoration: none;
+        overflow-wrap: anywhere;
+    }
+
+    .mobile-menu .dropdown-content a:hover,
+    .mobile-menu .dropdown-content a:focus {
+        color: #ffcc00;
+    }
+
+    /* Индикатор раскрытия */
+    .mobile-menu .nav-item.dropdown > .dropbtn::after {
+        content: "＋";
+        margin-left: 12px;
+        flex-shrink: 0;
+    }
+
+    .mobile-menu .nav-item.dropdown.open > .dropbtn::after {
+        content: "−";
+    }
+}
+
+
+/* Исправление мобильного слайдера */
+@media (max-width: 768px) {
+    #photoSlider {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    #photoSlider .slider-inner-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 0;
+        box-sizing: border-box;
+    }
+
+    #photoSlider .slider-inner-wrapper .slide {
+        flex: 0 0 100%;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        margin: 0 !important;
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    #photoSlider .slider-inner-wrapper .slide img {
+        display: block;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+        box-sizing: border-box;
+    }
+
+    #photoSlider .slider-inner-wrapper .slide:hover {
+        transform: none;
+    }
+
+    .service-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    filter: drop-shadow(2px 1px 0px rgba(255, 255, 255, 0.55));
+    }
+
+     .service-detail-container {
+    margin: 0 auto;
+    padding: 15px;
+    color: #222;
+    font-size: 1rem;
     }
 }
