@@ -176,3 +176,65 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', function () {
   document.getElementById('preloader').style.display = 'none';
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('requestModal');
+
+    const openButton = document.getElementById('openRequestModal');
+    const mobileOpenButton = document.getElementById('openRequestModalmobile');
+
+    if (!modal) {
+        return;
+    }
+
+    const closeButtons = modal.querySelectorAll('[data-close-modal]');
+    let previousFocus = null;
+
+    function openModal() {
+        previousFocus = document.activeElement;
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('request-modal-open');
+
+        const firstInput = modal.querySelector(
+            'input:not([type="hidden"]), textarea, select'
+        );
+
+        if (firstInput) {
+            firstInput.focus();
+        }
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('request-modal-open');
+
+        if (previousFocus) {
+            previousFocus.focus();
+        }
+    }
+
+    if (openButton) {
+        openButton.addEventListener('click', openModal);
+    }
+
+    if (mobileOpenButton) {
+        mobileOpenButton.addEventListener('click', openModal);
+    }
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (
+            event.key === 'Escape' &&
+            modal.classList.contains('is-open')
+        ) {
+            closeModal();
+        }
+    });
+});

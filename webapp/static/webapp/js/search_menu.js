@@ -52,13 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
       title.style.fontWeight = 'bold';
       a.appendChild(title);
 
+
       if (result.description) {
         const desc = document.createElement('div');
-        desc.textContent = result.description;
+
+        // Преобразуем HTML в обычный текст без тегов
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(
+            result.description,
+            'text/html'
+        );
+
+        desc.textContent = parsed.body.textContent
+            .replace(/\s+/g, ' ')
+            .trim();
+
         desc.style.fontSize = '0.85em';
         desc.style.color = '#666';
+
         a.appendChild(desc);
       }
+
 
       a.addEventListener('mouseover', () => { a.style.backgroundColor = '#f0f0f0'; });
       a.addEventListener('mouseout', () => { a.style.backgroundColor = 'transparent'; });
